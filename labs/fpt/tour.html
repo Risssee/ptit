@@ -150,7 +150,7 @@
       document.querySelector("#opticalInfoClose").addEventListener("click",closeFptOpticalInfo);
       opticalInfo.addEventListener("click",event=>{if(event.target===opticalInfo)closeFptOpticalInfo();});
       document.addEventListener("keydown",event=>{if(event.key==="Escape")closeFptOpticalInfo();});
-      embedpano({xml:"tour.xml",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
+      embedpano({xml:"tour.xml?v=5",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
         window.ptitKrpano=instance;
         window.ptitAttachTourLoader?.(instance);
         instance.call("delayedcall(0.3, skin_hideskin(instant); set(layer[skin_btn_show].visible,false); );");

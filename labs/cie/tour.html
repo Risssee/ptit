@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#111216" />
     <title>PTIT CIE Virtual Tour</title>
     <link rel="stylesheet" href="../../assets/tour-controls.css?v=2" />
-    <link rel="stylesheet" href="../../assets/tour-navigation.css?v=1" />
+    <link rel="stylesheet" href="../../assets/scene-narration.css?v=1" />
     <style>
       :root {
         --red: #d71920;
@@ -323,7 +323,7 @@
       }
 
       function showCieStudentInfo() {
-        window.dispatchEvent(new CustomEvent("ptit:stop-guided-narration"));
+        window.dispatchEvent(new CustomEvent("ptit:stop-scene-narration"));
         document.querySelector("#infoImage").hidden = false;
         document.querySelector("#infoTitle").textContent = "Bộ phận Quản lý lưu học sinh";
         document.querySelector("#infoModal .modal-card p:last-of-type").textContent =
@@ -353,7 +353,7 @@
       }
 
       embedpano({
-        xml: "tour.xml",
+        xml: "tour.xml?v=5",
         target: "pano",
         html5: "only",
         mobilescale: 1,
@@ -387,7 +387,7 @@
         if (event.key === "Escape") { modal.classList.remove("open"); stopStudentNarration(); }
       });
     </script>
-    <script src="../../assets/audio/background-music.js?v=2"></script>
+    <script src="../../assets/audio/background-music.js?v=3"></script>
     <script src="../../assets/tour-controls.js?v=2"></script>
     <script>
       window.PTIT_TOUR_NAV_CONFIG = {
@@ -444,6 +444,7 @@
         ]
       };
     </script>
-    <script src="../../assets/tour-navigation.js?v=1"></script>
+    <script src="scene-narration-config.js?v=3"></script>
+    <script src="../../assets/scene-narration.js?v=3"></script>
   </body>
 </html>

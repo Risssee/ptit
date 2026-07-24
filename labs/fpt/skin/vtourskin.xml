@@ -272,7 +272,7 @@
 	<style name="skin_thumbtext_style" type="text" align="bottom" width="100%" y="5" enabled="false" bg="false" bgborder="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-size:10px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
 
 	<!-- skin_hotspotstyle - style for the hotspots -->
-	<style name="skin_hotspotstyle" url="hotspot-3dvista-style.svg" edge="center" distorted="true"
+	<style name="skin_hotspotstyle" url="hotspot-nav-ptit.png?v=1" edge="center" distorted="true"
 	       tooltip=""
 	       linkedscene=""
 	       linkedscene_lookat=""
@@ -280,22 +280,22 @@
 	       use3dtransition="false"
 	       onclick="skin_hotspotstyle_click();"
 	       depth="1000"
-	       width="180"
-	       height="150"
-	       rx="68"
-	       scale="0.66"
-	       alpha="0.82"
-	       onover.addevent="stoptween(scale,alpha); tween(scale,0.76,0.2,easeOutQuad); tween(alpha,1.0,0.2);"
-	       onout.addevent="stoptween(scale,alpha); tween(scale,0.66,0.3,easeOutQuad); tween(alpha,0.82,0.3,easeOutQuad, skin_hotspot_ripple());"
-	       ondown.addevent="stoptween(scale); tween(scale,0.59,0.1,easeOutQuad);"
-	       onup.addevent="tween(scale,0.76,0.16,easeOutBack);"
+	       width="220"
+	       height="134"
+	       rx="55"
+	       scale="0.62"
+	       alpha="0.88"
+	       onover.addevent="stoptween(scale,alpha); tween(scale,0.72,0.2,easeOutBack); tween(alpha,1.0,0.18);"
+	       onout.addevent="stoptween(scale,alpha); tween(scale,0.62,0.26,easeOutQuad); tween(alpha,0.88,0.22,easeOutQuad, skin_hotspot_ripple());"
+	       ondown.addevent="stoptween(scale); tween(scale,0.56,0.1,easeOutQuad);"
+	       onup.addevent="tween(scale,0.72,0.16,easeOutBack);"
 	       onloaded.addevent="skin_hotspotstyle_setup(); skin_hotspot_ripple();"
 	       />
 
 	<action name="skin_hotspot_ripple" scope="local">
 		if(caller.hovering == false AND caller.enabled,
-			tween(caller.scale|caller.alpha,0.71|1.0,0.8,easeOutSine,
-				tween(caller.scale|caller.alpha,0.64|0.66,0.8,easeInOutSine, skin_hotspot_ripple(); );
+			tween(caller.scale|caller.alpha,0.66|1.0,1.2,easeOutSine,
+				tween(caller.scale|caller.alpha,0.60|0.76,1.2,easeInOutSine, skin_hotspot_ripple(); );
 			);
 		);
 	</action>
@@ -329,15 +329,9 @@
 			copy(hs_linkedscene, caller.linkedscene);
 			set(caller.enabled, false);
 			skin_hidetooltips();
-			if(caller.use3dtransition,
-				skin_scene3dtransition(get(hs_linkedscene),get(caller.linkedscene_hoffset));
-			  ,
-				if(caller.linkedscene_lookat, txtsplit(caller.linkedscene_lookat, ',', hs_lookat_h, hs_lookat_v, hs_lookat_fov); );
-				tween(caller.depth|caller.alpha|caller.oy|caller.rx, 4000|0.0|-50|-60, 0.5, default,
-					skin_loadscene(get(hs_linkedscene), get(skin_settings.loadscene_blend));
-					if(hs_lookat_h !== null, skin_lookat(get(hs_lookat_h), get(hs_lookat_v), get(hs_lookat_fov)); );
-				);
-			);
+			if(caller.linkedscene_lookat, txtsplit(caller.linkedscene_lookat, ',', hs_lookat_h, hs_lookat_v, hs_lookat_fov); );
+			skin_loadscene(get(hs_linkedscene), get(skin_settings.loadscene_blend));
+			if(hs_lookat_h !== null, skin_lookat(get(hs_lookat_h), get(hs_lookat_v), get(hs_lookat_fov)); );
 		);
 	</action>
 	

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="220" viewBox="0 0 360 220">
+  <defs>
+    <linearGradient id="surface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24a8d8" stop-opacity=".94"/>
+      <stop offset=".52" stop-color="#0879b5" stop-opacity=".90"/>
+      <stop offset="1" stop-color="#064c83" stop-opacity=".94"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".88"/>
+      <stop offset=".48" stop-color="#9ee8ff" stop-opacity=".62"/>
+      <stop offset="1" stop-color="#4abfe7" stop-opacity=".26"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-50%" width="160%" height="220%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-50%" width="160%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <ellipse cx="180" cy="177" rx="120" ry="24" fill="#001a2e" opacity=".34" filter="url(#shadow)"/>
+  <ellipse cx="180" cy="143" rx="132" ry="58" fill="#49c7ef" opacity=".20" filter="url(#glow)"/>
+  <ellipse cx="180" cy="139" rx="120" ry="51" fill="url(#surface)" stroke="url(#rim)" stroke-width="4"/>
+  <ellipse cx="180" cy="135" rx="108" ry="42" fill="none" stroke="#d7f6ff" stroke-opacity=".34" stroke-width="2"/>
+  <path d="M180 79 L239 128 L218 139 L180 110 L142 139 L121 128 Z"
+        fill="#ffffff" opacity=".98" filter="url(#glow)"/>
+  <path d="M180 116 L218 146 L199 156 L180 142 L161 156 L142 146 Z"
+        fill="#dff8ff" opacity=".88"/>
+  <ellipse cx="145" cy="108" rx="36" ry="8" fill="#ffffff" opacity=".13" transform="rotate(-8 145 108)"/>
+</svg>

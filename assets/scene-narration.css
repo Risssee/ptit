@@ -1,0 +1,99 @@
+.scene-narration {
+  position: fixed;
+  z-index: 45;
+  left: 18px;
+  bottom: 18px;
+  width: min(430px, calc(100vw - 36px));
+  padding: 16px 48px 15px 17px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(20, 23, 25, 0.9);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms;
+}
+
+.scene-narration.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scene-narration__eyebrow {
+  margin: 0 0 5px;
+  color: #ef3942;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scene-narration__title {
+  margin: 0 0 5px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.scene-narration__text {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.scene-narration__actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 11px;
+}
+
+.scene-narration__replay {
+  min-height: 34px;
+  padding: 0 13px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.scene-narration__replay:hover { background: rgba(255, 255, 255, 0.16); }
+.scene-narration__replay:disabled { cursor: not-allowed; opacity: 0.45; }
+
+.scene-narration__status {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+}
+
+.scene-narration__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.72);
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+@media (max-width: 680px) {
+  .scene-narration { bottom: 78px; }
+  .scene-narration__text { -webkit-line-clamp: 2; }
+}
+

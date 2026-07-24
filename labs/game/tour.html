@@ -71,7 +71,7 @@
     <script>
       const names={scene_game_0l:"Hành lang trước Game Lab",scene_game_1l:"Lối vào Game Lab",scene_game_2:"Khu máy tính · Góc trái",scene_game_3:"Không gian trung tâm",scene_game_4:"Khu máy tính · Góc phải",scene_game_5:"Khu thực hành phía trong",scene_game_6:"Cuối phòng Game Lab"};
       let lastScene="";
-      embedpano({xml:"tour.xml",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
+      embedpano({xml:"tour.xml?v=5",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
         window.ptitKrpano=instance;
         window.ptitAttachTourLoader?.(instance);
         instance.call("delayedcall(0.3, skin_hideskin(instant); set(layer[skin_btn_show].visible,false); );");

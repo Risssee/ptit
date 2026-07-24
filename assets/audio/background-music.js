@@ -123,8 +123,10 @@
     updateButton();
     if (!enabled) {
       window.dispatchEvent(new CustomEvent("ptit:stop-guided-narration"));
+      window.dispatchEvent(new CustomEvent("ptit:stop-scene-narration"));
       window.dispatchEvent(new CustomEvent("ptit:stop-infopost-narration"));
     }
+    window.dispatchEvent(new CustomEvent("ptit:audiochange", { detail: { enabled } }));
   }
 
   function showConsent() {
