@@ -4,8 +4,6 @@
   const config = window.PTIT_SCENE_NARRATION_CONFIG;
   if (!config || !config.scenes) return;
 
-  const visitedKey = config.visitedKey || "ptit-scene-narration-visited";
-  const visited = new Set(JSON.parse(sessionStorage.getItem(visitedKey) || "[]"));
   let currentScene = "";
   let currentEntry = null;
   let timer = 0;
@@ -101,12 +99,10 @@
   }
 
   function scheduleAutoNarration(scene, entry) {
-    if (!entry || !audioAllowed() || visited.has(scene)) return;
+    if (!entry || !audioAllowed()) return;
     clearTimeout(timer);
     timer = window.setTimeout(() => {
       if (currentScene !== scene || !audioAllowed()) return;
-      visited.add(scene);
-      sessionStorage.setItem(visitedKey, JSON.stringify(Array.from(visited)));
       speak(entry);
     }, config.delay || 700);
   }

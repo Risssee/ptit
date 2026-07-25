@@ -1753,6 +1753,69 @@ function formatEdgeSceneTitle(sceneName) {
     return xmlTitle || sceneName.replace(/^scene_/, '').replace(/_/g, ' ');
 }
 
+let persistentHotspotLabels = [];
+let persistentHotspotLabelTimer = 0;
+
+function getNavigationHotspotLabel(index) {
+    const linkedScene = krpano.get(`hotspot[${index}].linkedscene`) || '';
+    const tooltip = (krpano.get(`hotspot[${index}].tooltip`) || '').trim();
+    if (tooltip) return tooltip;
+    return linkedScene ? formatEdgeSceneTitle(linkedScene) : '';
+}
+
+function positionPersistentHotspotLabels() {
+    if (!krpano || !persistentHotspotLabels.length) return;
+    const pano = document.getElementById('pano');
+    const width = pano ? pano.clientWidth : 0;
+    const height = pano ? pano.clientHeight : 0;
+
+    persistentHotspotLabels.forEach((item, index) => {
+        const ath = Number(krpano.get(`hotspot[${item.hotspotIndex}].ath`));
+        const atv = Number(krpano.get(`hotspot[${item.hotspotIndex}].atv`));
+        if (!Number.isFinite(ath) || !Number.isFinite(atv)) {
+            item.element.hidden = true;
+            return;
+        }
+        krpano.call(`spheretoscreen(${ath},${atv},ptit_hs_label_x_${index},ptit_hs_label_y_${index});`);
+        const x = Number(krpano.get(`ptit_hs_label_x_${index}`));
+        const y = Number(krpano.get(`ptit_hs_label_y_${index}`));
+        const visible = Number.isFinite(x) && Number.isFinite(y) && x > -100 && y > -60 && x < width + 100 && y < height + 80;
+        item.element.hidden = !visible;
+        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 54}px, 0) translateX(-50%)`;
+    });
+}
+
+function renderPersistentHotspotLabels() {
+    const pano = document.getElementById('pano');
+    if (!pano || !krpano) return;
+    let overlay = document.getElementById('persistent-hotspot-labels');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'persistent-hotspot-labels';
+        overlay.className = 'persistent-hotspot-labels';
+        pano.appendChild(overlay);
+    }
+    overlay.replaceChildren();
+    persistentHotspotLabels = [];
+
+    const total = Number(krpano.get('hotspot.count')) || 0;
+    for (let i = 0; i < total; i += 1) {
+        const style = krpano.get(`hotspot[${i}].style`) || '';
+        const linkedScene = krpano.get(`hotspot[${i}].linkedscene`) || '';
+        if (!linkedScene || !style.split('|').includes('skin_hotspotstyle')) continue;
+        const label = getNavigationHotspotLabel(i);
+        if (!label) continue;
+        const element = document.createElement('span');
+        element.className = 'persistent-hotspot-label';
+        element.textContent = label;
+        overlay.appendChild(element);
+        persistentHotspotLabels.push({ hotspotIndex: i, element });
+    }
+    positionPersistentHotspotLabels();
+    window.clearInterval(persistentHotspotLabelTimer);
+    persistentHotspotLabelTimer = window.setInterval(positionPersistentHotspotLabels, 80);
+}
+
 function updateEdgeSceneNavigation(sceneName) {
     if (!krpano) return;
     const nav = document.getElementById('edge-scene-navigation');
@@ -1818,6 +1881,7 @@ function handleSceneChange(sceneName) {
     removeLegacyInfoSpot();
     renderSceneHotspots(sceneName);
     enforceStableNavigationHotspotTextures();
+    window.setTimeout(renderPersistentHotspotLabels, 120);
 
     // Update Sidebar highlighting
     document.querySelectorAll('.scene-item').forEach(el => el.classList.remove('active'));

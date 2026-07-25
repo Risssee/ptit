@@ -862,6 +862,34 @@ body.mini-game-active .app-sidebar {
 
 
 /* Mobile Responsiveness */
+.persistent-hotspot-labels {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.persistent-hotspot-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 210px;
+    padding: 7px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: #fff;
+    background: rgba(18, 20, 24, 0.88);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+    will-change: transform;
+}
+
 @media (max-width: 1024px) {
     .app-container {
         grid-template-areas: 
