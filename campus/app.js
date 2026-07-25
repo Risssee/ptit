@@ -1758,15 +1758,28 @@ let persistentHotspotLabelTimer = 0;
 
 function getNavigationHotspotLabel(index) {
     const linkedScene = krpano.get(`hotspot[${index}].linkedscene`) || '';
-    const tooltip = (krpano.get(`hotspot[${index}].tooltip`) || '').trim();
-    if (tooltip) return tooltip;
     if (!linkedScene) return '';
     const destination = formatEdgeSceneTitle(linkedScene).replace(/^CIE\s*-\s*/i, '');
-    return `Hướng tới ${destination}`;
+    const naturalDestination = destination
+        ? destination.charAt(0).toLocaleLowerCase('vi-VN') + destination.slice(1)
+        : destination;
+    return `Hướng sang ${naturalDestination}`;
+}
+
+function disableLegacyNavigationTooltip() {
+    if (!krpano) return;
+    try {
+        krpano.set('skin_settings.tooltips_hotspots', false);
+        krpano.set('layer[skin_tooltip].visible', false);
+        krpano.set('layer[skin_tooltip].alpha', 0);
+    } catch (error) {
+        console.log('Skip legacy hotspot tooltip cleanup:', error);
+    }
 }
 
 function positionPersistentHotspotLabels() {
     if (!krpano || !persistentHotspotLabels.length) return;
+    disableLegacyNavigationTooltip();
     const pano = document.getElementById('pano');
     const width = pano ? pano.clientWidth : 0;
     const height = pano ? pano.clientHeight : 0;
@@ -1783,7 +1796,7 @@ function positionPersistentHotspotLabels() {
         const y = Number(krpano.get(`ptit_hs_label_y_${index}`));
         const visible = Number.isFinite(x) && Number.isFinite(y) && x > -100 && y > -60 && x < width + 100 && y < height + 80;
         item.element.hidden = !visible;
-        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 72}px, 0) translateX(-50%)`;
+        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 78}px, 0) translateX(-50%)`;
     });
 }
 
@@ -1799,6 +1812,7 @@ function renderPersistentHotspotLabels() {
     }
     overlay.replaceChildren();
     persistentHotspotLabels = [];
+    disableLegacyNavigationTooltip();
 
     const total = Number(krpano.get('hotspot.count')) || 0;
     for (let i = 0; i < total; i += 1) {
