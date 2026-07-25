@@ -200,24 +200,7 @@
 		</image>
 
 		<hotspot name="spot1955790043" style="skin_hotspotstyle" ath="-0.382" atv="33.656" depth="1000.0" linkedscene="scene_1" linkedscene_lookat="181.63,-3.41,131.27" linkedscene_spot="spot1955789621" linkedscene_hoffset="7.15" use3dtransition="true" />
-		<hotspot name="spot1955790072" style="skin_hotspotstyle" ath="-178.794" atv="12.717" depth="1000.0" linkedscene="scene_3" linkedscene_lookat="189.13,2.59,120.0" linkedscene_spot="spot1955790206" linkedscene_hoffset="356.08" use3dtransition="true" />
-
-	</scene>
-
-	<scene name="scene_3" title="3" onstart="" thumburl="panos/3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/3.tiles/preview.jpg" />
-
-		<image>
-			<cube url="panos/3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
-		</image>
-
-		<hotspot name="spot1955790206" style="skin_hotspotstyle" ath="-2.711" atv="31.186" depth="1000.0" linkedscene="scene_2" linkedscene_lookat="189.13,2.59,120.0" linkedscene_spot="spot1955790072" linkedscene_hoffset="3.92" use3dtransition="true" />
-		<hotspot name="spot1955790238" style="skin_hotspotstyle" ath="-177.937" atv="10.864" depth="1000.0" linkedscene="scene_4" linkedscene_lookat="194.1,-1.49,120.0" linkedscene_spot="spot1955790331" linkedscene_hoffset="360.0" use3dtransition="true" />
+		<hotspot name="spot1955790072" style="skin_hotspotstyle" ath="-178.794" atv="12.717" depth="1000.0" linkedscene="scene_4" linkedscene_lookat="189.13,2.59,120.0" linkedscene_spot="spot1955790206" linkedscene_hoffset="356.08" use3dtransition="true" />
 
 	</scene>
 
@@ -233,7 +216,7 @@
 			<cube url="panos/4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
 		</image>
 
-		<hotspot name="spot1955790331" style="skin_hotspotstyle" ath="2.063" atv="10.864" depth="1000.0" linkedscene="scene_3" linkedscene_lookat="194.1,-1.49,120.0" linkedscene_spot="spot1955790238" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot1955790331" style="skin_hotspotstyle" ath="2.063" atv="10.864" depth="1000.0" linkedscene="scene_2" linkedscene_lookat="194.1,-1.49,120.0" linkedscene_spot="spot1955790238" linkedscene_hoffset="0.0" use3dtransition="true" />
 		<hotspot name="spot1958448490" style="skin_hotspotstyle" ath="-176.717" atv="14.302" depth="1000.0" linkedscene="scene_5" linkedscene_spot="spot1958448582" linkedscene_hoffset="360.0" use3dtransition="true" />
 		
 

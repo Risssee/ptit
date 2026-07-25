@@ -313,9 +313,14 @@
 			set(caller.enabled, false);
 			skin_hidetooltips();
 			if(caller.linkedscene_lookat, txtsplit(caller.linkedscene_lookat, ',', hs_lookat_h, hs_lookat_v, hs_lookat_fov); );
-			<!-- A preloaded fade avoids exposed black cube faces during indoor transitions. -->
-			skin_loadscene(get(hs_linkedscene), get(skin_settings.loadscene_blend));
-			if(hs_lookat_h !== null, skin_lookat(get(hs_lookat_h), get(hs_lookat_v), get(hs_lookat_fov)); );
+			if(caller.use3dtransition AND device.webgl,
+				<!-- walk-through 3D transition, using the hotspot's own position as the transition anchor -->
+				skin_scene3dtransition(get(hs_linkedscene), get(caller.linkedscene_hoffset));
+			  ,
+				<!-- fallback: plain crossfade blend (also avoids exposed black cube faces during indoor transitions) -->
+				skin_loadscene(get(hs_linkedscene), get(skin_settings.loadscene_blend));
+				if(hs_lookat_h !== null, skin_lookat(get(hs_lookat_h), get(hs_lookat_v), get(hs_lookat_fov)); );
+			);
 		);
 	</action>
 	
