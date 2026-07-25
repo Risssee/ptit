@@ -1760,7 +1760,9 @@ function getNavigationHotspotLabel(index) {
     const linkedScene = krpano.get(`hotspot[${index}].linkedscene`) || '';
     const tooltip = (krpano.get(`hotspot[${index}].tooltip`) || '').trim();
     if (tooltip) return tooltip;
-    return linkedScene ? formatEdgeSceneTitle(linkedScene) : '';
+    if (!linkedScene) return '';
+    const destination = formatEdgeSceneTitle(linkedScene).replace(/^CIE\s*-\s*/i, '');
+    return `Hướng tới ${destination}`;
 }
 
 function positionPersistentHotspotLabels() {
@@ -1781,7 +1783,7 @@ function positionPersistentHotspotLabels() {
         const y = Number(krpano.get(`ptit_hs_label_y_${index}`));
         const visible = Number.isFinite(x) && Number.isFinite(y) && x > -100 && y > -60 && x < width + 100 && y < height + 80;
         item.element.hidden = !visible;
-        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 54}px, 0) translateX(-50%)`;
+        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 72}px, 0) translateX(-50%)`;
     });
 }
 
