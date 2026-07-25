@@ -50,15 +50,11 @@ const sceneData = {
 const sceneGroups = [
   {
     "title": "Cổng trường",
-    "scenes": [
-      "scene_1"
-    ]
+    "scenes": ["scene_1"]
   },
   {
     "title": "Tòa A1",
-    "scenes": [
-      "scene_gpbk2218_1773131077123"
-    ]
+    "scenes": ["scene_gpbk2218_1773131077123"]
   },
   {
     "title": "Phòng học A1",
@@ -1755,15 +1751,31 @@ function formatEdgeSceneTitle(sceneName) {
 
 let persistentHotspotLabels = [];
 let persistentHotspotLabelTimer = 0;
+let persistentHotspotLabelsRenderDelay = 0;
 
-function getNavigationHotspotLabel(index) {
-    const linkedScene = krpano.get(`hotspot[${index}].linkedscene`) || '';
-    if (!linkedScene) return '';
-    const destination = formatEdgeSceneTitle(linkedScene).replace(/^CIE\s*-\s*/i, '');
-    const naturalDestination = destination
-        ? destination.charAt(0).toLocaleLowerCase('vi-VN') + destination.slice(1)
-        : destination;
-    return `Hướng sang ${naturalDestination}`;
+const hotspotLabelMap = {
+    'spot1955789621': 'Lối vào cổng chính',
+    'spot1955790331': 'Lối ra cổng chính',
+    'spot1958162037': 'Lối vào tòa A1',
+    'spot1955816296': 'Lối ra',
+    'spot1955816383': 'Hướng vào Cie',
+    'spot1955817620': 'Hướng vào Naver',
+    'spot1955790715': 'Hướng ra tòa A2',
+    'spot1955818317': 'Lối vào tòa A1',
+    'spot1955795935': 'Hướng ra kí túc xá',
+    'spot1955791467': 'Hướng ra tòa A2',
+    'spot1955814281': 'Lối vào tòa A2',
+    'spot1955791907': 'Hướng ra thư viện',
+    'spot1955814281': 'Lối vào tòa A2',
+    'spot1955814281': 'Lối vào tòa A2',
+    'spot1955814281': 'Lối vào tòa A2',
+    'spot1958161240': 'Hướng ra tòa A1'
+    // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
+};
+
+function getNavigationHotspotLabel(hotspotName) {
+    if (!hotspotName) return '';
+    return hotspotLabelMap[hotspotName] || '';
 }
 
 function disableLegacyNavigationTooltip() {
@@ -1785,19 +1797,53 @@ function positionPersistentHotspotLabels() {
     const height = pano ? pano.clientHeight : 0;
 
     persistentHotspotLabels.forEach((item, index) => {
-        const ath = Number(krpano.get(`hotspot[${item.hotspotIndex}].ath`));
-        const atv = Number(krpano.get(`hotspot[${item.hotspotIndex}].atv`));
+        // Luôn tra cứu theo TÊN hotspot (không dùng index mảng), vì trong lúc
+        // chuyển scene (use3dtransition) krpano có thể thêm/xoá hotspot của
+        // scene cũ và scene mới cùng lúc, khiến index bị dịch chuyển và trỏ
+        // nhầm sang hotspot khác -> chữ bị "nhảy" lên cao / hiện sai vị trí.
+        const stillExists = krpano.get(`hotspot[${item.hotspotName}].name`);
+        if (!stillExists) {
+            item.element.hidden = true;
+            return;
+        }
+
+        const ath = Number(krpano.get(`hotspot[${item.hotspotName}].ath`));
+        const atv = Number(krpano.get(`hotspot[${item.hotspotName}].atv`));
         if (!Number.isFinite(ath) || !Number.isFinite(atv)) {
             item.element.hidden = true;
             return;
         }
+
+        // Điểm gốc
         krpano.call(`spheretoscreen(${ath},${atv},ptit_hs_label_x_${index},ptit_hs_label_y_${index});`);
         const x = Number(krpano.get(`ptit_hs_label_x_${index}`));
         const y = Number(krpano.get(`ptit_hs_label_y_${index}`));
+
+        // Điểm phụ lệch sang phải 5 độ theo ath, cùng atv, để tính hướng "ngang" của mặt phẳng tại đó
+        const athRight = ath + 5;
+        krpano.call(`spheretoscreen(${athRight},${atv},ptit_hs_label_rx_${index},ptit_hs_label_ry_${index});`);
+        const rx = Number(krpano.get(`ptit_hs_label_rx_${index}`));
+        const ry = Number(krpano.get(`ptit_hs_label_ry_${index}`));
+
         const visible = Number.isFinite(x) && Number.isFinite(y) && x > -100 && y > -60 && x < width + 100 && y < height + 80;
         item.element.hidden = !visible;
-        if (visible) item.element.style.transform = `translate3d(${x}px, ${y - 78}px, 0) translateX(-50%)`;
+        if (!visible) return;
+
+        let angleDeg = 0;
+        if (Number.isFinite(rx) && Number.isFinite(ry)) {
+            const dx = rx - x;
+            const dy = ry - y;
+            angleDeg = Math.atan2(dy, dx) * (180 / Math.PI);
+        }
+
+        item.element.style.transform =
+            `translate3d(${x}px, ${y - 36}px, 0) translateX(-50%) rotate(${angleDeg}deg)`;
     });
+}
+
+function hotspotLabelLoop() {
+    positionPersistentHotspotLabels();
+    persistentHotspotLabelTimer = window.requestAnimationFrame(hotspotLabelLoop);
 }
 
 function renderPersistentHotspotLabels() {
@@ -1816,20 +1862,25 @@ function renderPersistentHotspotLabels() {
 
     const total = Number(krpano.get('hotspot.count')) || 0;
     for (let i = 0; i < total; i += 1) {
-        const style = krpano.get(`hotspot[${i}].style`) || '';
-        const linkedScene = krpano.get(`hotspot[${i}].linkedscene`) || '';
+        const hotspotName = krpano.get(`hotspot[${i}].name`) || '';
+        if (!hotspotName) continue;
+        // Dùng lại tên để tra cứu style/linkedscene, tránh phụ thuộc vào index i
+        const style = krpano.get(`hotspot[${hotspotName}].style`) || '';
+        const linkedScene = krpano.get(`hotspot[${hotspotName}].linkedscene`) || '';
         if (!linkedScene || !style.split('|').includes('skin_hotspotstyle')) continue;
-        const label = getNavigationHotspotLabel(i);
+        const label = getNavigationHotspotLabel(hotspotName);
         if (!label) continue;
         const element = document.createElement('span');
         element.className = 'persistent-hotspot-label';
         element.textContent = label;
         overlay.appendChild(element);
-        persistentHotspotLabels.push({ hotspotIndex: i, element });
+        persistentHotspotLabels.push({ hotspotName, element });
     }
     positionPersistentHotspotLabels();
-    window.clearInterval(persistentHotspotLabelTimer);
-    persistentHotspotLabelTimer = window.setInterval(positionPersistentHotspotLabels, 80);
+
+    // Chỉ có duy nhất MỘT vòng lặp rAF đang chạy tại mọi thời điểm.
+    window.cancelAnimationFrame(persistentHotspotLabelTimer);
+    persistentHotspotLabelTimer = window.requestAnimationFrame(hotspotLabelLoop);
 }
 
 function updateEdgeSceneNavigation(sceneName) {
@@ -1891,13 +1942,17 @@ function initEdgeSceneNavigation() {
 function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
+    const oldOverlay = document.getElementById('persistent-hotspot-labels');
+    if (oldOverlay) oldOverlay.replaceChildren();
+    persistentHotspotLabels = [];
     updateEdgeSceneNavigation(sceneName);
     closeHotspotInfo();
     closeInfo();
     removeLegacyInfoSpot();
     renderSceneHotspots(sceneName);
     enforceStableNavigationHotspotTextures();
-    window.setTimeout(renderPersistentHotspotLabels, 120);
+    window.clearTimeout(persistentHotspotLabelsRenderDelay);
+    persistentHotspotLabelsRenderDelay = window.setTimeout(renderPersistentHotspotLabels, 120);
 
     // Update Sidebar highlighting
     document.querySelectorAll('.scene-item').forEach(el => el.classList.remove('active'));
