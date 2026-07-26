@@ -34,7 +34,8 @@
 
 		<hotspot name="spot2064644934" style="skin_hotspotstyle" ath="-174.895" atv="50.865" depth="1000.0" linkedscene="scene_cie_cuatruoc" linkedscene_lookat="3.09,-0.21,120.0" linkedscene_spot="spot2064644334" linkedscene_hoffset="353.04" use3dtransition="true" />
 		<hotspot name="spot2064645272" style="skin_hotspotstyle" ath="3.478" atv="21.765" depth="1000.0" linkedscene="scene_cie_sanhchinh2f" linkedscene_lookat="-6.19,-0.82,120.0" linkedscene_spot="spot2064645653" linkedscene_hoffset="350.57" use3dtransition="true" />
-
+        <hotspot name="info_sanhchinh1_1" style="skin_infopoststyle" ath="0.0" atv="0.0"
+         onclick="js(showCieRoomInfo('sanhchinh1_1'));" />
 	</scene>
 
 	<scene name="scene_cie_sanhchinh2f" title="Cie_SanhChinh2f" onstart="" thumburl="/labs/cie/panos/Cie_SanhChinh2f.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -69,6 +70,8 @@
 
 		<hotspot name="spot2064646494" style="skin_hotspotstyle" ath="178.015" atv="38.477" depth="1000.0" linkedscene="scene_cie_sanhchinh2f" linkedscene_lookat="-3.5,-0.82,120.0" linkedscene_spot="spot2064645802" linkedscene_hoffset="-7.62" use3dtransition="true" />
 		<hotspot name="spot2064646544" style="skin_hotspotstyle" ath="46.128" atv="19.656" depth="1000.0" linkedscene="scene_cie_sanhchinh4f" linkedscene_lookat="4.33,0.62,120.0" linkedscene_spot="spot2064646796" linkedscene_hoffset="-0.84" use3dtransition="true" />
+        <hotspot name="info_sanhchinh3_1" style="skin_infopoststyle" ath="0.0" atv="0.0"
+         onclick="js(showCieRoomInfo('sanhchinh3_1'));" />
 
 	</scene>
 
@@ -87,6 +90,10 @@
 		<hotspot name="spot2064646796" style="skin_hotspotstyle" ath="-134.714" atv="28.686" depth="1000.0" linkedscene="scene_cie_sanhchinh3f" linkedscene_lookat="4.33,0.62,120.0" linkedscene_spot="spot2064646544" linkedscene_hoffset="360.84" use3dtransition="true" />
 		<hotspot name="spot2064647047" style="skin_hotspotstyle" ath="3.494" atv="25.787" depth="1000.0" linkedscene="scene_cie_hl6_b" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2064647542" linkedscene_hoffset="180.1" use3dtransition="true" />
 		<hotspot name="spot2071633161" style="skin_hotspotstyle" ath="-176.2" atv="24.38" depth="1000.0" linkedscene="scene_cie_sanhchinh5" linkedscene_lookat="4.12,-0.0,120.0" linkedscene_spot="spot2071632900" linkedscene_hoffset="357.22" use3dtransition="true" />
+        <hotspot name="info_sanhchinh4_1" style="skin_infopoststyle" ath="0.0" atv="0.0"
+         onclick="js(showCieRoomInfo('sanhchinh4_1'));" />
+        <hotspot name="info_sanhchinh4_2" style="skin_infopoststyle" ath="60.0" atv="0.0"
+         onclick="js(showCieRoomInfo('sanhchinh4_2'));" />
 
 	</scene>
 
@@ -104,6 +111,8 @@
 
 		<hotspot name="spot2071632386" style="skin_hotspotstyle" ath="-91.985" atv="24.818" depth="1000.0" linkedscene="scene_cie_sanhchinh2f" linkedscene_lookat="88.92,0.88,120.0" linkedscene_spot="spot2071632068" linkedscene_hoffset="350.24" use3dtransition="true" />
 		<hotspot name="spot2071632900" style="skin_hotspotstyle" ath="1.016" atv="16.582" depth="1000.0" linkedscene="scene_cie_sanhchinh4f" linkedscene_lookat="4.12,-0.0,120.0" linkedscene_spot="spot2071633161" linkedscene_hoffset="2.78" use3dtransition="true" />
+        <hotspot name="info_sanhchinh5_1" style="skin_infopoststyle" ath="0.0" atv="0.0"
+         onclick="js(showCieRoomInfo('sanhchinh5_1'));" />
 
 	</scene>
 

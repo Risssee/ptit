@@ -248,6 +248,56 @@ const computerHotspot = {
 // Centralized hotspot config (scale-friendly for many hotspots).
 const hotspotData = {
     scene_1: [],
+    scene_cie_sanhchinh1h: [
+        {
+            id: 'sanhchinh1_1',
+            // Cửa Bộ phận Phát triển dự án, ngay dưới bảng xanh.
+            ath: -119.0,
+            atv: 12.0,
+            title: 'Bộ phận phát triển dự án',
+            text: 'Bộ phận Phát triển dự án là đầu mối kết nối, xây dựng và mở rộng các chương trình hợp tác giáo dục quốc tế của Trung tâm CIE, chịu trách nhiệm nghiên cứu các dự án liên kết đào tạo, trao đổi sinh viên và phát triển mạng lưới đối tác với các trường đại học, tổ chức uy tín trên toàn thế giới.',
+            tooltip: 'Xem thông tin'
+        }
+    ],
+    scene_cie_sanhchinh3f: [
+        {
+            id: 'sanhchinh3_1',
+            // Căn giữa cánh cửa, ngay dưới bảng xanh.
+            ath: -8.0,
+            atv: 10.0,
+            title: 'Bộ phận quản lý đào tạo',
+            text: 'Bộ phận quản lý đào tạo chịu trách nhiệm tổ chức, vận hành và quản lý chất lượng các chương trình đào tạo liên kết quốc tế, bao gồm việc xây dựng thời khóa biểu, theo dõi tiến độ học tập, quy đổi tín chỉ và hỗ trợ giải đáp mọi thắc mắc về lộ trình học tập của sinh viên.',
+            tooltip: 'Xem thông tin'
+        }
+    ],
+    scene_cie_sanhchinh4f: [
+        {
+            id: 'sanhchinh4_1',
+            ath: 66.0,
+            atv: 10.0,
+            title: 'Bộ phận quản lý lưu học sinh',
+            text: 'Bộ phận quản lý lưu học sinh là đơn vị hỗ trợ toàn diện cho sinh viên quốc tế tại PTIT cũng như sinh viên Việt Nam tham gia các chương trình trao đổi, từ việc giải quyết các thủ tục hành chính, visa, lưu trú cho đến đồng hành trong đời sống và các hoạt động hòa nhập văn hóa.',
+            tooltip: 'Xem thông tin'
+        },
+        {
+            id: 'sanhchinh4_2',
+            ath: 146.0,
+            atv: 10.0,
+            title: 'Phòng giáo sư thỉnh giảng',
+            text: 'Phòng giáo sư thỉnh giảng là không gian làm việc, nghiên cứu hiện đại và tiếp đón các giảng viên, chuyên gia quốc tế đến giảng dạy tại CIE, phục vụ công tác trao đổi chuyên môn, thảo luận nghiên cứu chuyên sâu nhằm mang lại nguồn tri thức toàn cầu cho Học viện.',
+            tooltip: 'Xem thông tin'
+        }
+    ],
+    scene_cie_sanhchinh5: [
+        {
+            id: 'sanhchinh5_1',
+            ath: 57.0,
+            atv: 10.0,
+            title: 'Lãnh đạo trung tâm',
+            text: 'Lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
+            tooltip: 'Xem thông tin'
+        }
+    ],
     scene_gpbk2203_1773130660359: [bookshelfHotspot],
     scene_gpbk2204_1773130697446: [bookshelfHotspot],
     scene_gpbk2205_1773130740283: [computerHotspot],
@@ -537,7 +587,12 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
         activeDynamicHotspots.push(hotspotName);
     }
     krpano.call(`addhotspot(${hotspotName});`);
-    krpano.call(`hotspot[${hotspotName}].loadstyle(skin_info_hotspot);`);
+    const hotspotStyle = sceneName.startsWith('scene_cie_')
+        ? 'skin_infopoststyle'
+        : 'skin_info_hotspot';
+    krpano.call(`hotspot[${hotspotName}].loadstyle(${hotspotStyle});`);
+    krpano.call(`set(hotspot[${hotspotName}].visible, true);`);
+    krpano.call(`set(hotspot[${hotspotName}].enabled, true);`);
     krpano.call(`set(hotspot[${hotspotName}].scale, 0.3);`);
     krpano.call(`set(hotspot[${hotspotName}].edge, center);`);
     krpano.call(`set(hotspot[${hotspotName}].distorted, false);`);
@@ -881,7 +936,8 @@ function renderSceneHotspots(sceneName) {
     if (!krpano) return;
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
-    if (!CAMPUS_INFO_HOTSPOTS_ENABLED) return;
+    const isCieScene = sceneName.startsWith('scene_cie_');
+    if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isCieScene) return;
 
     const sceneHotspots = hotspotData[sceneName] || [];
     console.log(`[Hotspot Diagnostic] scene=${sceneName}, dataCount=${sceneHotspots.length}, isGarden=${sceneName.includes('2201')}`);
