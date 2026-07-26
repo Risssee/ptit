@@ -931,7 +931,7 @@ function onready(krpano_interface) {
     enforceStableNavigationHotspotTextures();
     disableNativeTitleTooltips();
     initSidebar();
-    initEdgeSceneNavigation();
+    //initEdgeSceneNavigation();
     updateSceneGroupEditorSceneList();
     const initialScene = krpano.get('xml.scene');
     if (initialScene) {
@@ -1766,9 +1766,19 @@ const hotspotLabelMap = {
     'spot1955791467': 'Hướng ra tòa A2',
     'spot1955814281': 'Lối vào tòa A2',
     'spot1955791907': 'Hướng ra thư viện',
-    'spot1955814281': 'Lối vào tòa A2',
-    'spot1955814281': 'Lối vào tòa A2',
-    'spot1955814281': 'Lối vào tòa A2',
+    'spot2064647047': 'Lối vào khu vực phòng học',
+    'spot2064668574': 'Phòng 503',
+    'spot2064727680': 'Phòng 504',
+    'spot2064662582': 'Phòng 505',
+    'spot2064670297': 'Phòng 503',
+    'spot2064729964': 'Phòng 504',
+    'spot2064730512': 'Phòng 502',
+    'spot2064657073': 'Phòng 506',
+    'spot2064653483': 'Phòng 506',
+    'spot2064654222': 'Phòng 501',
+    'spot2064652296': 'Lối ra cửa sau',
+    'spot2064652725': 'Lối vào khu vực phòng học',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
     'spot1958161240': 'Hướng ra tòa A1'
     // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
 };
@@ -1797,10 +1807,7 @@ function positionPersistentHotspotLabels() {
     const height = pano ? pano.clientHeight : 0;
 
     persistentHotspotLabels.forEach((item, index) => {
-        // Luôn tra cứu theo TÊN hotspot (không dùng index mảng), vì trong lúc
-        // chuyển scene (use3dtransition) krpano có thể thêm/xoá hotspot của
-        // scene cũ và scene mới cùng lúc, khiến index bị dịch chuyển và trỏ
-        // nhầm sang hotspot khác -> chữ bị "nhảy" lên cao / hiện sai vị trí.
+        // Luôn tra cứu theo TÊN hotspot (không dùng index mảng)
         const stillExists = krpano.get(`hotspot[${item.hotspotName}].name`);
         if (!stillExists) {
             item.element.hidden = true;
@@ -1836,8 +1843,9 @@ function positionPersistentHotspotLabels() {
             angleDeg = Math.atan2(dy, dx) * (180 / Math.PI);
         }
 
+        const offsetY = item.labelOffsetY || 36;
         item.element.style.transform =
-            `translate3d(${x}px, ${y - 36}px, 0) translateX(-50%) rotate(${angleDeg}deg)`;
+            `translate3d(${x}px, ${y - offsetY}px, 0) translateX(-50%) rotate(${angleDeg}deg)`;
     });
 }
 
@@ -1874,7 +1882,15 @@ function renderPersistentHotspotLabels() {
         element.className = 'persistent-hotspot-label';
         element.textContent = label;
         overlay.appendChild(element);
-        persistentHotspotLabels.push({ hotspotName, element });
+
+        // Đo số dòng thực tế để quyết định offset lên trên hotspot
+        const cs = getComputedStyle(element);
+        const lineHeightPx = parseFloat(cs.lineHeight) || 16;
+        const contentHeight = element.offsetHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        const lineCount = Math.max(1, Math.round(contentHeight / lineHeightPx));
+        const labelOffsetY = lineCount >= 2 ? 50 : 36;
+
+        persistentHotspotLabels.push({ hotspotName, element, labelOffsetY });
     }
     positionPersistentHotspotLabels();
 
