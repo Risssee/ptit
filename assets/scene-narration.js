@@ -22,7 +22,7 @@
       <button class="scene-narration__replay" type="button">↻ Nghe lại</button>
       <span class="scene-narration__status"></span>
     </div>`;
-  document.body.appendChild(card);
+  if (config.showCard !== false) document.body.appendChild(card);
 
   const title = card.querySelector(".scene-narration__title");
   const text = card.querySelector(".scene-narration__text");

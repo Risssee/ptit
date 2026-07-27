@@ -1,4 +1,5 @@
 window.PTIT_SCENE_NARRATION_CONFIG = {
+  showCard: false,
   visitedKey: "ptit-cie-scene-narration-visited",
   delay: 700,
   rate: 0.96,
