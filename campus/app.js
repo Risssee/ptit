@@ -364,7 +364,13 @@ function stopHotspotAudio() {
     if (currentHotspotAudio) {
         currentHotspotAudio.pause();
         currentHotspotAudio.currentTime = 0;
+        currentHotspotAudio = null;
     }
+}
+
+function stopInfopostNarration() {
+    stopHotspotAudio();
+    stopPopupSpeech();
 }
 
 function stopHotspotInfoFollow() {
@@ -822,10 +828,16 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         openInfo();
     }
 
-    stopHotspotAudio();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     if (hotspot && hotspot.audio) {
-        currentHotspotAudio = new Audio(hotspot.audio);
-        currentHotspotAudio.play().catch(() => {
+        const infopostAudio = new Audio(hotspot.audio);
+        currentHotspotAudio = infopostAudio;
+        infopostAudio.addEventListener('ended', () => {
+            if (currentHotspotAudio === infopostAudio) currentHotspotAudio = null;
+        }, { once: true });
+        infopostAudio.play().catch(() => {
             console.log('Audio autoplay is blocked until user interacts.');
         });
     }
@@ -1657,7 +1669,9 @@ async function speakPopupInfo() {
     const text = getPopupSpeechText();
     if (!text) return;
 
-    stopPopupSpeech();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     popupSpeechActive = true;
     updatePopupSpeakButtonUI();
 
@@ -1901,7 +1915,6 @@ const SvgSoundOff = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29
 function toggleSound() {
     const btn = document.getElementById('sound-btn');
     if (!audioStarted) {
-        krpano.call("playsound(bgm, 'https://res.cloudinary.com/dwekftmad/video/upload/v1773977375/sound_gpu146.mp3', 0);");
         audioStarted = true;
         audioMuted = false;
         if(btn) {
@@ -1914,13 +1927,14 @@ function toggleSound() {
     
     audioMuted = !audioMuted;
     if (audioMuted) {
-        krpano.call("pausesound(bgm);");
+        window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+        window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+        window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
         if(btn) {
             btn.innerHTML = SvgSoundOff;
             btn.classList.remove('playing');
         }
     } else {
-        krpano.call("resumesound(bgm);");
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
@@ -1929,13 +1943,7 @@ function toggleSound() {
     window.dispatchEvent(new CustomEvent('ptit:audiochange', { detail: { enabled: !audioMuted } }));
 }
 
-window.addEventListener('ptit:narrationstart', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('pausesound(bgm);');
-});
-
-window.addEventListener('ptit:narrationend', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('resumesound(bgm);');
-});
+window.addEventListener('ptit:stop-infopost-narration', stopInfopostNarration);
 
 // Add global interaction to start sound
 document.addEventListener('click', () => {

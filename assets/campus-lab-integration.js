@@ -30,6 +30,9 @@
   }
 
   function showCieStudentInfo() {
+    window.dispatchEvent(new CustomEvent("ptit:stop-scene-narration"));
+    window.dispatchEvent(new CustomEvent("ptit:stop-guided-narration"));
+    window.dispatchEvent(new CustomEvent("ptit:stop-infopost-narration"));
     cieInfo.classList.add("is-open");
     cieInfoAudio.currentTime = 0;
     cieInfoAudio.play().catch(() => {});
@@ -62,6 +65,7 @@
   window.ptitEnterCieTour = enterCie;
   window.ptitReturnToCampusTour = returnToCampus;
   window.showCieStudentInfo = showCieStudentInfo;
+  window.addEventListener("ptit:stop-infopost-narration", closeCieInfo);
   switcher.querySelector("button").addEventListener("click", returnToCampus);
   cieInfo.querySelector(".integrated-cie-info__close").addEventListener("click", closeCieInfo);
   cieInfo.addEventListener("click", (event) => { if (event.target === cieInfo) closeCieInfo(); });

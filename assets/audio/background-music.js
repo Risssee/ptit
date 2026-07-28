@@ -1,12 +1,12 @@
 (() => {
-  const script = document.currentScript;
-  const musicUrl = new URL("background.mp3", script.src).href;
   const storageKey = "ptit-vtour-music-muted";
   const consentKey = "ptit-vtour-audio-consent";
   const playbackKey = "ptit-vtour-music-playback";
-  const audio = new Audio(musicUrl);
+  // Background music is intentionally disabled; this controller now only
+  // manages consent for narration and other spoken audio.
+  const audio = new Audio();
   audio.loop = true;
-  audio.preload = "auto";
+  audio.preload = "none";
   audio.volume = 0.22;
 
   const savedConsent = localStorage.getItem(consentKey);

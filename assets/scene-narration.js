@@ -60,6 +60,7 @@
       return;
     }
     stopSpeech(false);
+    window.dispatchEvent(new CustomEvent("ptit:stop-guided-narration"));
     window.dispatchEvent(new CustomEvent("ptit:stop-infopost-narration"));
     if (entry.audio) {
       narrationAudio = new Audio(entry.audio);
