@@ -202,6 +202,7 @@ const sceneInfoOverridesInCode = {
 
 let krpano = null;
 let currentHotspotAudio = null;
+let currentHotspotIsCieDepartmentAudio = false;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -415,6 +416,20 @@ function stopHotspotAudio() {
     if (currentHotspotAudio) {
         currentHotspotAudio.pause();
         currentHotspotAudio.currentTime = 0;
+        currentHotspotAudio = null;
+    }
+    if (currentHotspotIsCieDepartmentAudio) {
+        setCieInfopostMusicDucked(false);
+        currentHotspotIsCieDepartmentAudio = false;
+    }
+}
+
+function setCieInfopostMusicDucked(ducked) {
+    if (!krpano || !audioStarted || audioMuted) return;
+    try {
+        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.18 : 1.0}, 0.25);`);
+    } catch (error) {
+        console.log('Skip changing background volume for CIE infopost:', error);
     }
 }
 
@@ -849,6 +864,13 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     if (!hotspot && !sceneName) return;
 
+    const isCieDepartmentAudio = Boolean(
+        sceneName.startsWith('scene_cie_')
+        && hotspot?.audio?.includes('/labs/cie/audio/departments/')
+    );
+    if (isCieDepartmentAudio) stopPopupSpeech();
+    if (popupSpeakBtn) popupSpeakBtn.hidden = isCieDepartmentAudio;
+
     // Directly open the main modal popup as requested for better experience
     if (sceneName) {
         currentSceneName = sceneName;
@@ -880,9 +902,19 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     stopHotspotAudio();
     if (hotspot && hotspot.audio) {
-        currentHotspotAudio = new Audio(hotspot.audio);
-        currentHotspotAudio.play().catch(() => {
+        const infopostAudio = new Audio(hotspot.audio);
+        currentHotspotAudio = infopostAudio;
+        currentHotspotIsCieDepartmentAudio = isCieDepartmentAudio;
+        if (isCieDepartmentAudio) setCieInfopostMusicDucked(true);
+        infopostAudio.addEventListener('ended', () => {
+            if (currentHotspotAudio !== infopostAudio) return;
+            currentHotspotAudio = null;
+            if (currentHotspotIsCieDepartmentAudio) setCieInfopostMusicDucked(false);
+            currentHotspotIsCieDepartmentAudio = false;
+        }, { once: true });
+        infopostAudio.play().catch(() => {
             console.log('Audio autoplay is blocked until user interacts.');
+            if (currentHotspotAudio === infopostAudio) stopHotspotAudio();
         });
     }
 }
@@ -2087,7 +2119,9 @@ function openInfo() {
 function closeInfo() {
     document.getElementById('info-popup').classList.remove('active');
     document.getElementById('popup-overlay').classList.remove('active');
+    stopHotspotAudio();
     stopPopupSpeech();
+    if (popupSpeakBtn) popupSpeakBtn.hidden = false;
     exitPopupEditMode();
 }
 

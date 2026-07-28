@@ -380,6 +380,7 @@ function showCieRoomInfo(key) {
   const data = cieInfoPoints[key];
   if (!data) return;
   window.dispatchEvent(new CustomEvent("ptit:stop-scene-narration"));
+  stopStudentNarration();
   document.querySelector("#infoImage").hidden = !data.image;
   if (data.image) document.querySelector("#infoImage").src = data.image;
   document.querySelector("#infoTitle").textContent = data.title;
