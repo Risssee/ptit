@@ -256,6 +256,7 @@ const hotspotData = {
             atv: 12.0,
             title: 'Bộ phận phát triển dự án',
             text: 'Bộ phận Phát triển dự án là đầu mối kết nối, xây dựng và mở rộng các chương trình hợp tác giáo dục quốc tế của Trung tâm CIE, chịu trách nhiệm nghiên cứu các dự án liên kết đào tạo, trao đổi sinh viên và phát triển mạng lưới đối tác với các trường đại học, tổ chức uy tín trên toàn thế giới.',
+            audio: '/labs/cie/audio/departments/project-development.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -267,6 +268,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Bộ phận quản lý đào tạo',
             text: 'Bộ phận quản lý đào tạo chịu trách nhiệm tổ chức, vận hành và quản lý chất lượng các chương trình đào tạo liên kết quốc tế, bao gồm việc xây dựng thời khóa biểu, theo dõi tiến độ học tập, quy đổi tín chỉ và hỗ trợ giải đáp mọi thắc mắc về lộ trình học tập của sinh viên.',
+            audio: '/labs/cie/audio/departments/training-management.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -277,6 +279,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Bộ phận quản lý lưu học sinh',
             text: 'Bộ phận quản lý lưu học sinh là đơn vị hỗ trợ toàn diện cho sinh viên quốc tế tại PTIT cũng như sinh viên Việt Nam tham gia các chương trình trao đổi, từ việc giải quyết các thủ tục hành chính, visa, lưu trú cho đến đồng hành trong đời sống và các hoạt động hòa nhập văn hóa.',
+            audio: '/labs/cie/audio/departments/international-student-management.mp3',
             tooltip: 'Xem thông tin'
         },
         {
@@ -285,6 +288,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Phòng giáo sư thỉnh giảng',
             text: 'Phòng giáo sư thỉnh giảng là không gian làm việc, nghiên cứu hiện đại và tiếp đón các giảng viên, chuyên gia quốc tế đến giảng dạy tại CIE, phục vụ công tác trao đổi chuyên môn, thảo luận nghiên cứu chuyên sâu nhằm mang lại nguồn tri thức toàn cầu cho Học viện.',
+            audio: '/labs/cie/audio/departments/visiting-professor.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -295,6 +299,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Lãnh đạo trung tâm',
             text: 'Lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
+            audio: '/labs/cie/audio/departments/center-leadership.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -410,6 +415,8 @@ function stopHotspotAudio() {
     if (currentHotspotAudio) {
         currentHotspotAudio.pause();
         currentHotspotAudio.currentTime = 0;
+        currentHotspotAudio = null;
+        window.dispatchEvent(new CustomEvent('ptit:narrationend'));
     }
 }
 
@@ -873,11 +880,20 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         openInfo();
     }
 
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
     stopHotspotAudio();
     if (hotspot && hotspot.audio) {
         currentHotspotAudio = new Audio(hotspot.audio);
+        currentHotspotAudio.preload = 'auto';
+        currentHotspotAudio.addEventListener('ended', () => {
+            currentHotspotAudio = null;
+            window.dispatchEvent(new CustomEvent('ptit:narrationend'));
+        }, { once: true });
+        window.dispatchEvent(new CustomEvent('ptit:narrationstart'));
         currentHotspotAudio.play().catch(() => {
             console.log('Audio autoplay is blocked until user interacts.');
+            currentHotspotAudio = null;
+            window.dispatchEvent(new CustomEvent('ptit:narrationend'));
         });
     }
 }
