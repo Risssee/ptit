@@ -203,6 +203,9 @@ const sceneInfoOverridesInCode = {
 let krpano = null;
 let currentHotspotAudio = null;
 let currentHotspotIsCieDepartmentAudio = false;
+const BACKGROUND_MUSIC_VOLUME = 0.5;
+const BACKGROUND_MUSIC_DUCKED_VOLUME = 0.12;
+let backgroundMusicDucked = false;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -425,9 +428,11 @@ function stopHotspotAudio() {
 }
 
 function setBackgroundMusicDucked(ducked) {
+    backgroundMusicDucked = ducked;
     if (!krpano || !audioStarted || audioMuted) return;
     try {
-        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.18 : 1.0}, 0.25);`);
+        const volume = ducked ? BACKGROUND_MUSIC_DUCKED_VOLUME : BACKGROUND_MUSIC_VOLUME;
+        krpano.call(`changesoundvolume(bgm, ${volume}, 0.25);`);
     } catch (error) {
         console.log('Skip changing background music volume:', error);
     }
@@ -2166,6 +2171,7 @@ function toggleSound() {
         krpano.call("playsound(bgm, '/assets/audio/background.mp3', 0);");
         audioStarted = true;
         audioMuted = false;
+        setBackgroundMusicDucked(backgroundMusicDucked);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
@@ -2183,6 +2189,7 @@ function toggleSound() {
         }
     } else {
         krpano.call("resumesound(bgm);");
+        setBackgroundMusicDucked(backgroundMusicDucked);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
