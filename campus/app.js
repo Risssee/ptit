@@ -419,18 +419,23 @@ function stopHotspotAudio() {
         currentHotspotAudio = null;
     }
     if (currentHotspotIsCieDepartmentAudio) {
-        setCieInfopostMusicDucked(false);
+        setBackgroundMusicDucked(false);
         currentHotspotIsCieDepartmentAudio = false;
     }
 }
 
-function setCieInfopostMusicDucked(ducked) {
+function setBackgroundMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
     try {
         krpano.call(`changesoundvolume(bgm, ${ducked ? 0.18 : 1.0}, 0.25);`);
     } catch (error) {
-        console.log('Skip changing background volume for CIE infopost:', error);
+        console.log('Skip changing background music volume:', error);
     }
+}
+
+function stopInfopostNarration() {
+    stopHotspotAudio();
+    stopPopupSpeech();
 }
 
 function stopHotspotInfoFollow() {
@@ -900,16 +905,18 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         openInfo();
     }
 
-    stopHotspotAudio();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     if (hotspot && hotspot.audio) {
         const infopostAudio = new Audio(hotspot.audio);
         currentHotspotAudio = infopostAudio;
         currentHotspotIsCieDepartmentAudio = isCieDepartmentAudio;
-        if (isCieDepartmentAudio) setCieInfopostMusicDucked(true);
+        if (isCieDepartmentAudio) setBackgroundMusicDucked(true);
         infopostAudio.addEventListener('ended', () => {
             if (currentHotspotAudio !== infopostAudio) return;
             currentHotspotAudio = null;
-            if (currentHotspotIsCieDepartmentAudio) setCieInfopostMusicDucked(false);
+            if (currentHotspotIsCieDepartmentAudio) setBackgroundMusicDucked(false);
             currentHotspotIsCieDepartmentAudio = false;
         }, { once: true });
         infopostAudio.play().catch(() => {
@@ -1684,6 +1691,7 @@ function updatePopupSpeakButtonUI() {
 }
 
 function stopPopupSpeech() {
+    const wasActive = popupSpeechActive;
     if (popupTtsAudio) {
         try {
             popupTtsAudio.pause();
@@ -1701,6 +1709,7 @@ function stopPopupSpeech() {
     popupSpeechUtterance = null;
     popupSpeechActive = false;
     updatePopupSpeakButtonUI();
+    if (wasActive) window.dispatchEvent(new CustomEvent('ptit:narrationend'));
 }
 
 function getPopupSpeechText() {
@@ -1746,7 +1755,9 @@ async function speakPopupInfo() {
     const text = getPopupSpeechText();
     if (!text) return;
 
-    stopPopupSpeech();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     popupSpeechActive = true;
     updatePopupSpeakButtonUI();
 
@@ -1774,11 +1785,16 @@ async function speakPopupInfo() {
         popupSpeechUtterance = null;
         popupSpeechActive = false;
         updatePopupSpeakButtonUI();
+        window.dispatchEvent(new CustomEvent('ptit:narrationend'));
     };
     utterance.onerror = () => {
         popupSpeechUtterance = null;
         popupSpeechActive = false;
         updatePopupSpeakButtonUI();
+        window.dispatchEvent(new CustomEvent('ptit:narrationend'));
+    };
+    utterance.onstart = () => {
+        window.dispatchEvent(new CustomEvent('ptit:narrationstart'));
     };
 
     popupSpeechUtterance = utterance;
@@ -2176,12 +2192,14 @@ function toggleSound() {
 }
 
 window.addEventListener('ptit:narrationstart', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('pausesound(bgm);');
+    setBackgroundMusicDucked(true);
 });
 
 window.addEventListener('ptit:narrationend', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('resumesound(bgm);');
+    setBackgroundMusicDucked(false);
 });
+
+window.addEventListener('ptit:stop-infopost-narration', stopInfopostNarration);
 
 // Add global interaction to start sound
 document.addEventListener('click', (event) => {
