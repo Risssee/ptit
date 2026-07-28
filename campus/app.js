@@ -202,7 +202,7 @@ const sceneInfoOverridesInCode = {
 
 let krpano = null;
 let currentHotspotAudio = null;
-let currentHotspotIsCieDepartmentAudio = false;
+let currentHotspotDucksMusic = false;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -418,18 +418,18 @@ function stopHotspotAudio() {
         currentHotspotAudio.currentTime = 0;
         currentHotspotAudio = null;
     }
-    if (currentHotspotIsCieDepartmentAudio) {
-        setCieInfopostMusicDucked(false);
-        currentHotspotIsCieDepartmentAudio = false;
+    if (currentHotspotDucksMusic) {
+        setInfopostMusicDucked(false);
+        currentHotspotDucksMusic = false;
     }
 }
 
-function setCieInfopostMusicDucked(ducked) {
+function setInfopostMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
     try {
-        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.18 : 1.0}, 0.25);`);
+        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.01 : 1.0}, 0.001);`);
     } catch (error) {
-        console.log('Skip changing background volume for CIE infopost:', error);
+        console.log('Skip changing background volume for infopost:', error);
     }
 }
 
@@ -903,14 +903,15 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
     stopHotspotAudio();
     if (hotspot && hotspot.audio) {
         const infopostAudio = new Audio(hotspot.audio);
+        infopostAudio.volume = 1.0;
         currentHotspotAudio = infopostAudio;
-        currentHotspotIsCieDepartmentAudio = isCieDepartmentAudio;
-        if (isCieDepartmentAudio) setCieInfopostMusicDucked(true);
+        currentHotspotDucksMusic = true;
+        setInfopostMusicDucked(true);
         infopostAudio.addEventListener('ended', () => {
             if (currentHotspotAudio !== infopostAudio) return;
             currentHotspotAudio = null;
-            if (currentHotspotIsCieDepartmentAudio) setCieInfopostMusicDucked(false);
-            currentHotspotIsCieDepartmentAudio = false;
+            if (currentHotspotDucksMusic) setInfopostMusicDucked(false);
+            currentHotspotDucksMusic = false;
         }, { once: true });
         infopostAudio.play().catch(() => {
             console.log('Audio autoplay is blocked until user interacts.');
