@@ -11,6 +11,7 @@
 
   const savedConsent = localStorage.getItem(consentKey);
   let muted = savedConsent ? savedConsent !== "enabled" : true;
+  let infopostAudioActive = false;
   audio.muted = muted;
   window.ptitAudioAllowed = () => localStorage.getItem(consentKey) === "enabled";
 
@@ -183,7 +184,17 @@
     if (!muted) audio.volume = 0.055;
   });
   window.addEventListener("ptit:narrationend", () => {
+    audio.volume = infopostAudioActive ? 0.055 : 0.22;
+  });
+  window.addEventListener("ptit:infopost-audio-start", async () => {
+    infopostAudioActive = true;
+    audio.volume = 0.055;
+    if (!muted) await startMusic();
+  });
+  window.addEventListener("ptit:infopost-audio-end", async () => {
+    infopostAudioActive = false;
     audio.volume = 0.22;
+    if (!muted) await startMusic();
   });
 
   document.addEventListener("pointerdown", startMusic, { once: true, passive: true });

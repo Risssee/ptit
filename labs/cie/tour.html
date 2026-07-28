@@ -305,14 +305,21 @@
       studentNarration.preload = "auto";
       const cieInfoNarration = new Audio();
       cieInfoNarration.preload = "auto";
+      let infopostAudioActive = false;
+
+      function setInfopostAudioActive(active) {
+        if (infopostAudioActive === active) return;
+        infopostAudioActive = active;
+        window.dispatchEvent(new CustomEvent(active ? "ptit:infopost-audio-start" : "ptit:infopost-audio-end"));
+        document.querySelector("#narrationBadge").classList.toggle("visible", active);
+      }
 
       function stopStudentNarration() {
         if (!studentNarration.paused) studentNarration.pause();
         studentNarration.currentTime = 0;
         if (!cieInfoNarration.paused) cieInfoNarration.pause();
         cieInfoNarration.currentTime = 0;
-        window.dispatchEvent(new CustomEvent("ptit:narrationend"));
-        document.querySelector("#narrationBadge").classList.remove("visible");
+        setInfopostAudioActive(false);
       }
 
       function formatSceneName(name) {
@@ -328,18 +335,16 @@
 
       function showCieStudentInfo() {
         window.dispatchEvent(new CustomEvent("ptit:stop-scene-narration"));
+        stopStudentNarration();
         document.querySelector("#infoImage").hidden = false;
         document.querySelector("#infoTitle").textContent = "Bộ phận Quản lý lưu học sinh";
         document.querySelector("#infoModal .modal-card p:last-of-type").textContent =
           "Đầu mối hỗ trợ, quản lý và cung cấp thông tin dành cho lưu học sinh đang học tập tại Học viện.";
         document.querySelector("#infoModal").classList.add("open");
         if (window.ptitAudioAllowed && !window.ptitAudioAllowed()) return;
-        document.querySelector("#narrationBadge").classList.add("visible");
         studentNarration.currentTime = 0;
-        window.dispatchEvent(new CustomEvent("ptit:narrationstart"));
         studentNarration.play().catch(() => {
-          window.dispatchEvent(new CustomEvent("ptit:narrationend"));
-          document.querySelector("#narrationBadge").classList.remove("visible");
+          setInfopostAudioActive(false);
         });
       }
       // ==== Info point dùng chung cho các scene Cie ====
@@ -387,26 +392,21 @@ function showCieRoomInfo(key) {
   document.querySelector("#infoModal .modal-card p:last-of-type").textContent = data.text;
   document.querySelector("#infoModal").classList.add("open");
   if (data.audio && !(window.ptitAudioAllowed && !window.ptitAudioAllowed())) {
-    document.querySelector("#narrationBadge").classList.add("visible");
     cieInfoNarration.src = data.audio;
     cieInfoNarration.currentTime = 0;
-    window.dispatchEvent(new CustomEvent("ptit:narrationstart"));
     cieInfoNarration.play().catch(() => {
-      window.dispatchEvent(new CustomEvent("ptit:narrationend"));
-      document.querySelector("#narrationBadge").classList.remove("visible");
+      setInfopostAudioActive(false);
     });
   }
 }
 // Expose the callback explicitly because krpano invokes it from its own JS scope.
 window.showCieRoomInfo = showCieRoomInfo;
-      studentNarration.addEventListener("ended", () => {
-        window.dispatchEvent(new CustomEvent("ptit:narrationend"));
-        document.querySelector("#narrationBadge").classList.remove("visible");
-      });
-      cieInfoNarration.addEventListener("ended", () => {
-        window.dispatchEvent(new CustomEvent("ptit:narrationend"));
-        document.querySelector("#narrationBadge").classList.remove("visible");
-      });
+      studentNarration.addEventListener("play", () => setInfopostAudioActive(true));
+      studentNarration.addEventListener("ended", () => setInfopostAudioActive(false));
+      studentNarration.addEventListener("error", () => setInfopostAudioActive(false));
+      cieInfoNarration.addEventListener("play", () => setInfopostAudioActive(true));
+      cieInfoNarration.addEventListener("ended", () => setInfopostAudioActive(false));
+      cieInfoNarration.addEventListener("error", () => setInfopostAudioActive(false));
 
       function updateSceneTitle() {
         if (!krpano) return;
@@ -451,7 +451,7 @@ window.showCieRoomInfo = showCieRoomInfo;
         if (event.key === "Escape") { modal.classList.remove("open"); stopStudentNarration(); }
       });
     </script>
-    <script src="../../assets/audio/background-music.js?v=3"></script>
+    <script src="../../assets/audio/background-music.js?v=4"></script>
     <script src="../../assets/tour-controls.js?v=2"></script>
     <script>
       window.PTIT_TOUR_NAV_CONFIG = {
