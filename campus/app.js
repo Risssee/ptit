@@ -2147,7 +2147,7 @@ const SvgSoundOff = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29
 function toggleSound() {
     const btn = document.getElementById('sound-btn');
     if (!audioStarted) {
-        krpano.call("playsound(bgm, 'https://res.cloudinary.com/dwekftmad/video/upload/v1773977375/sound_gpu146.mp3', 0);");
+        krpano.call("playsound(bgm, '/assets/audio/background.mp3', 0);");
         audioStarted = true;
         audioMuted = false;
         if(btn) {
@@ -2184,7 +2184,8 @@ window.addEventListener('ptit:narrationend', () => {
 });
 
 // Add global interaction to start sound
-document.addEventListener('click', () => {
+document.addEventListener('click', (event) => {
+    if (event.target.closest?.('#sound-btn')) return;
     if (!audioStarted && krpano) {
         // Only auto-start if it's the first real interaction and audio isn't started yet
         // We can choose to stay muted or just start. Let's start for a better UX if the user clicked something.
