@@ -55,7 +55,7 @@
     </div>
     <div class="campus-minimap__map">
       <span class="campus-minimap__position" title="Vị trí hiện tại"></span>
-      <a class="campus-minimap__lab" data-lab="cie" style="left:34.5%;top:56.5%" href="../labs/cie/tour.html" aria-label="Trung tâm CIE"><span>C</span></a>
+      <a class="campus-minimap__lab" data-lab="cie" style="left:34.5%;top:56.5%" href="../campus/tour.html?startscene=scene_cie_cuatruoc" aria-label="Trung tâm CIE"><span>C</span></a>
       <a class="campus-minimap__lab" style="left:55%;top:42.5%" href="../labs/fpt/tour.html" aria-label="Phòng lab FPT"><span>F</span></a>
       <a class="campus-minimap__lab" style="left:43%;top:29%" href="../labs/game/tour.html" aria-label="PTIT Game Lab"><span>G</span></a>
     </div>`;
