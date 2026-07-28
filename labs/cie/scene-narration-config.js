@@ -1,38 +1,107 @@
 window.PTIT_SCENE_NARRATION_CONFIG = {
   showCard: false,
-  visitedKey: "ptit-cie-scene-narration-visited",
   delay: 700,
   rate: 0.96,
   scenes: {
-    scene_cie_cuatruoc: { title: "Cửa trước Trung tâm CIE"},
-    scene_cie_sanhchinh1h: { title: "Sảnh chính"},
-    scene_cie_sanhchinh2f: {},
-    scene_cie_sanhchinh3f: {},
-    scene_cie_sanhchinh4f: {},
-    scene_cie_sanh5: {},
-    scene_cie_sanhsau1: { title: "Sảnh sau"},
-    scene_cie_cuasau: { title: "Cửa sau Trung tâm CIE"},
-    scene_cie_hl1: { title: "Hành lang 1", text: "Bạn đang ở cuối hành lang tầng năm. Từ đây, chúng ta có thể tiếp tục tham quan phòng năm không sáu hoặc di chuyển về khu vực sảnh sau." },
-    scene_cie_hl2: { title: "Hành lang 2", text: "Đây là khu vực hành lang dẫn đến phòng năm không một và phòng năm không sáu, hai điểm tiếp theo trong hành trình khám phá C I E." },
-    scene_cie_hl3: { title: "Hành lang 3", text: "Chúng ta đang tiến sâu hơn vào khu vực phòng học của trung tâm. Mỗi phòng đều được bố trí phục vụ những hoạt động học tập và trao đổi khác nhau." },
-    scene_cie_hl4: { title: "Hành lang 4", text: "Từ vị trí này, bạn có thể tiếp tục đến các không gian học tập ở hai phía hành lang." },
-    scene_cie_hl5: { title: "Hành lang 5", text: "Bạn đang ở khu vực trung tâm của hành lang, nơi kết nối nhanh đến các phòng năm không hai, năm không ba, năm không bốn và năm không năm." },
-    scene_cie_hl6_b: { },
-    scene_cie_hl7: { title: "Hành lang tầng 5", text: "Chào mừng bạn đến hành lang tầng năm. Phía trước là hệ thống phòng học và phòng chức năng của Trung tâm C I E." },
-    scene_cie_p501_b: { title: "Phòng 501"},
-    scene_cie_p502_1c: { title: "Phòng 502"},
-    scene_cie_p502_2c: { title: "Phòng 502"},
-    scene_cie_p503_1e: { title: "Phòng 503"},
-    scene_cie_p503_2e: { title: "Phòng 503"},
-    scene_cie_p504_1f: { title: "Phòng 504"},
-    scene_cie_p504_2f: { title: "Phòng 504"},
-    scene_cie_p505_1: { title: "Phòng 505"},
-    scene_cie_p505_2: { title: "Phòng 505"},
-    scene_cie_p506_1: { title: "Phòng 506"},
-    scene_cie_p506_2: { title: "Phòng 506" }
+    scene_cie_cuatruoc: {
+      title: "Cửa trước Trung tâm CIE",
+      audio: "/labs/cie/audio/scenes/scene_cie_cuatruoc.mp3"
+    },
+    scene_cie_sanhchinh1h: {
+      title: "Sảnh chính 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanhchinh1h.mp3"
+    },
+    scene_cie_sanhchinh2f: {
+      title: "Sảnh chính 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanh2.mp3"
+    },
+    scene_cie_sanhchinh3f: {
+      title: "Sảnh chính 3",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanh3.mp3"
+    },
+    scene_cie_sanhchinh4f: {
+      title: "Sảnh chính 4",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanh4.mp3"
+    },
+    scene_cie_sanhchinh5: {
+      title: "Sảnh chính 5",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanh5.mp3"
+    },
+    scene_cie_cuasau: {
+      title: "Cửa sau Trung tâm CIE",
+      audio: "/labs/cie/audio/scenes/scene_cie_cuasau.mp3"
+    },
+    scene_cie_hl1_b: {
+      title: "Hành lang 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl1.mp3"
+    },
+    scene_cie_hl2_b: {
+      title: "Hành lang 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl2.mp3"
+    },
+    scene_cie_hl3_b: {
+      title: "Hành lang 3",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl3.mp3"
+    },
+    scene_cie_hl4_b: {
+      title: "Hành lang 4",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl4.mp3"
+    },
+    scene_cie_hl5_b: {
+      title: "Hành lang 5",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl5.mp3"
+    },
+    scene_cie_hl6_b: {
+      title: "Hành lang 6",
+      audio: "/labs/cie/audio/scenes/scene_cie_hl6_b.mp3"
+    },
+    scene_cie_p501_b: {
+      title: "Phòng 501",
+      audio: "/labs/cie/audio/scenes/scene_cie_p501_b.mp3"
+    },
+    scene_cie_p502_1c: {
+      title: "Phòng 502 · Góc 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_p502_1c.mp3"
+    },
+    scene_cie_p502_2c: {
+      title: "Phòng 502 · Góc 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_p502_2c.mp3"
+    },
+    scene_cie_p503_1e: {
+      title: "Phòng 503 · Góc 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_p503_1e.mp3"
+    },
+    scene_cie_p503_2e: {
+      title: "Phòng 503 · Góc 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_p503_2e.mp3"
+    },
+    scene_cie_p504_1f: {
+      title: "Phòng 504 · Góc 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_p504_1f.mp3"
+    },
+    scene_cie_p504_2f: {
+      title: "Phòng 504 · Góc 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_p504_2f.mp3"
+    },
+    scene_cie_p505_1: {
+      title: "Phòng 505 · Góc 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_p505_1.mp3"
+    },
+    scene_cie_p505_2: {
+      title: "Phòng 505 · Góc 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_p505_2.mp3"
+    },
+    scene_cie_p506_1: {
+      title: "Phòng 506 · Góc 1",
+      audio: "/labs/cie/audio/scenes/scene_cie_p506_1.mp3"
+    },
+    scene_cie_p506_2: {
+      title: "Phòng 506 · Góc 2",
+      audio: "/labs/cie/audio/scenes/scene_cie_p506_2.mp3"
+    },
+    scene_cie_sanhsau: {
+      title: "Sảnh sau",
+      audio: "/labs/cie/audio/scenes/scene_cie_sanhsau.mp3"
+    }
   }
 };
-
-Object.entries(window.PTIT_SCENE_NARRATION_CONFIG.scenes).forEach(([scene, entry]) => {
-  entry.audio = `/labs/cie/audio/scenes/${scene}.mp3`;
-});

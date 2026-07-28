@@ -424,6 +424,11 @@ function stopHotspotAudio() {
     }
 }
 
+function stopInfopostNarration() {
+    stopHotspotAudio();
+    stopPopupSpeech();
+}
+
 function setCieInfopostMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
     try {
@@ -900,7 +905,9 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         openInfo();
     }
 
-    stopHotspotAudio();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     if (hotspot && hotspot.audio) {
         const infopostAudio = new Audio(hotspot.audio);
         currentHotspotAudio = infopostAudio;
@@ -1746,7 +1753,9 @@ async function speakPopupInfo() {
     const text = getPopupSpeechText();
     if (!text) return;
 
-    stopPopupSpeech();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     popupSpeechActive = true;
     updatePopupSpeakButtonUI();
 
@@ -2182,6 +2191,8 @@ window.addEventListener('ptit:narrationstart', () => {
 window.addEventListener('ptit:narrationend', () => {
     if (audioStarted && !audioMuted && krpano) krpano.call('resumesound(bgm);');
 });
+
+window.addEventListener('ptit:stop-infopost-narration', stopInfopostNarration);
 
 // Add global interaction to start sound
 document.addEventListener('click', (event) => {
