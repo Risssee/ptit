@@ -203,6 +203,8 @@ const sceneInfoOverridesInCode = {
 let krpano = null;
 let currentHotspotAudio = null;
 let currentHotspotIsCieDepartmentAudio = false;
+const BACKGROUND_MUSIC_VOLUME = 0.2;
+const BACKGROUND_MUSIC_INFOPORT_VOLUME = 0.04;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -427,7 +429,8 @@ function stopHotspotAudio() {
 function setCieInfopostMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
     try {
-        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.18 : 1.0}, 0.25);`);
+        const volume = ducked ? BACKGROUND_MUSIC_INFOPORT_VOLUME : BACKGROUND_MUSIC_VOLUME;
+        krpano.call(`changesoundvolume(bgm, ${volume}, 0.25);`);
     } catch (error) {
         console.log('Skip changing background volume for CIE infopost:', error);
     }
@@ -900,7 +903,9 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         openInfo();
     }
 
-    stopHotspotAudio();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     if (hotspot && hotspot.audio) {
         const infopostAudio = new Audio(hotspot.audio);
         currentHotspotAudio = infopostAudio;
@@ -1746,7 +1751,9 @@ async function speakPopupInfo() {
     const text = getPopupSpeechText();
     if (!text) return;
 
-    stopPopupSpeech();
+    window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-guided-narration'));
+    window.dispatchEvent(new CustomEvent('ptit:stop-infopost-narration'));
     popupSpeechActive = true;
     updatePopupSpeakButtonUI();
 
@@ -2150,6 +2157,7 @@ function toggleSound() {
         krpano.call("playsound(bgm, '/assets/audio/background.mp3', 0);");
         audioStarted = true;
         audioMuted = false;
+        krpano.call(`changesoundvolume(bgm, ${BACKGROUND_MUSIC_VOLUME}, 0);`);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
@@ -2167,6 +2175,7 @@ function toggleSound() {
         }
     } else {
         krpano.call("resumesound(bgm);");
+        krpano.call(`changesoundvolume(bgm, ${BACKGROUND_MUSIC_VOLUME}, 0);`);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
@@ -2180,7 +2189,15 @@ window.addEventListener('ptit:narrationstart', () => {
 });
 
 window.addEventListener('ptit:narrationend', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('resumesound(bgm);');
+    if (audioStarted && !audioMuted && krpano) {
+        krpano.call('resumesound(bgm);');
+        krpano.call(`changesoundvolume(bgm, ${BACKGROUND_MUSIC_VOLUME}, 0);`);
+    }
+});
+
+window.addEventListener('ptit:stop-infopost-narration', () => {
+    stopHotspotAudio();
+    stopPopupSpeech();
 });
 
 // Add global interaction to start sound
