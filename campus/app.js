@@ -947,7 +947,6 @@ function onready(krpano_interface) {
     enforceStableNavigationHotspotTextures();
     disableNativeTitleTooltips();
     initSidebar();
-    initEdgeSceneNavigation();
     updateSceneGroupEditorSceneList();
     const initialScene = krpano.get('xml.scene');
     if (initialScene) {
