@@ -870,13 +870,9 @@
 				);
 			);
 
-			if(scene.count GT 1,
-				set(layer[skin_btn_prev_fs].visible, true);
-				set(layer[skin_btn_next_fs].visible, true);
-			  ,
-				set(layer[skin_btn_prev_fs].visible, false);
-				set(layer[skin_btn_next_fs].visible, false);
-			);
+			<!-- Replaced by the HTML edge navigation with visible destination labels. -->
+			set(layer[skin_btn_prev_fs].visible, false);
+			set(layer[skin_btn_next_fs].visible, false);
 
 			calc(parentname, 'skin_thumb_' + scene[get(xml.scene)].thumbindex);
 			if(scene[get(xml.scene)].thumburl AND scene[get(xml.scene)].skipthumb != true AND layer[get(parentname)],
@@ -1462,4 +1458,4 @@
 	</action>
 	
 
-</krpano> 
+</krpano>

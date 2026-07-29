@@ -1,0 +1,83 @@
+(() => {
+  const falcon = "https://www.falcongames.com";
+  const studioVisual = `${falcon}/wp-content/uploads/2022/05/Asset-1@4x-8-1.png`;
+  const slides = [
+    { kind:"achievement", title:"Falcon in Numbers", eyebrow:"Thành tựu nổi bật", image:studioVisual, description:"Life is a game, we choose to create together.", stats:[["10+","Game titles"],["500+","Games launched"],["3B+","Downloads"],["150+","Staff"]], action:"Khám phá studio", href:`${falcon}/about/` },
+    { kind:"game", title:"1945 Air Force", eyebrow:"Arcade air combat", image:`${falcon}/wp-content/uploads/2022/06/110522_Screenshot_1945_2048x1000.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"game", title:"Galaxiga", eyebrow:"Classic space shooter", image:`${falcon}/wp-content/uploads/2022/06/Screenshot_Galaxiga_2048x1000-A2.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"game", title:"Falcon Squad", eyebrow:"Galaxy shooter", image:`${falcon}/wp-content/uploads/2022/08/Feature_Falcon_1024x500.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"game", title:"Goods Sorting: Match 3 Puzzle", eyebrow:"Match 3 puzzle", image:`${falcon}/wp-content/uploads/2024/06/240705_Goodssort_AND_NHATVC_05a24_EN_1024x500_A1.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"game", title:"Hexa Stack: Sorting Puzzle", eyebrow:"Sorting puzzle", image:`${falcon}/wp-content/uploads/2024/06/240422_Hexasort_AND_NHATVC_04a24_EN_1024x500.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"game", title:"Color Water Sort Wooden Puzzle", eyebrow:"Color sorting puzzle", image:`${falcon}/wp-content/uploads/2024/06/Color-Water-Sort-Woody-Puzzle_1024x500-A2.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
+    { kind:"publishing", title:"Publishing at Scale", eyebrow:"Năng lực phát hành", image:studioVisual, description:"Falcon công bố hệ sinh thái phát hành, phân tích dữ liệu và tối ưu hiệu quả sản phẩm cho nhà phát triển.", stats:[["500+","Games launched"],["3B+","Downloads"]], action:"Xem Publishing", href:`${falcon}/publishing/` },
+    { kind:"career", title:"Where Amazing Games Are Born and Raised", eyebrow:"Đội ngũ & nghề nghiệp", image:studioVisual, description:"Khám phá môi trường studio và các cơ hội nghề nghiệp đang được Falcon công bố.", stats:[["150+","Staff"]], action:"Xem Career", href:`${falcon}/career/` },
+    { kind:"career", title:"Submit Your Game", eyebrow:"Kết nối nhà phát triển", image:studioVisual, description:"Gửi sản phẩm tới hệ sinh thái publishing của Falcon qua biểu mẫu chính thức.", action:"Submit Game", href:`${falcon}/formpublishing/` }
+  ];
+  const sceneStarts = {
+    scene_game_0l:0,
+    scene_game_1l:1,
+    scene_game_2:2,
+    scene_game_3:7,
+    scene_game_4:3,
+    scene_game_5:8,
+    scene_game_6:9
+  };
+
+  const panel = document.createElement("aside");
+  panel.className = "game-flex";
+  panel.setAttribute("aria-label", "Thành tựu và sản phẩm nổi bật của Falcon Game Studio");
+  panel.innerHTML = `
+    <img class="game-flex__media" alt="" />
+    <div class="game-flex__shade"></div>
+    <div class="game-flex__top"><span class="game-flex__brand">Falcon Showcase</span><span class="game-flex__source">Dữ liệu từ falcongames.com</span></div>
+    <div class="game-flex__content">
+      <p class="game-flex__eyebrow"></p><h2 class="game-flex__title"></h2><p class="game-flex__description"></p>
+      <div class="game-flex__stats"></div>
+      <div class="game-flex__meta"><a class="game-flex__link" target="_blank" rel="noopener noreferrer"></a><span class="game-flex__counter"></span></div>
+      <div class="game-flex__dots"></div>
+    </div>
+    <div class="game-flex__nav"><button type="button" data-game-prev aria-label="Nội dung trước">‹</button><button type="button" data-game-next aria-label="Nội dung tiếp theo">›</button></div>`;
+  document.body.appendChild(panel);
+
+  const image = panel.querySelector(".game-flex__media");
+  const title = panel.querySelector(".game-flex__title");
+  const eyebrow = panel.querySelector(".game-flex__eyebrow");
+  const description = panel.querySelector(".game-flex__description");
+  const stats = panel.querySelector(".game-flex__stats");
+  const link = panel.querySelector(".game-flex__link");
+  const counter = panel.querySelector(".game-flex__counter");
+  const dots = panel.querySelector(".game-flex__dots");
+  let currentScene = "";
+  let slideIndex = 0;
+
+  function renderSlide(index) {
+    slideIndex = (index + slides.length) % slides.length;
+    const slide = slides[slideIndex];
+    panel.dataset.kind = slide.kind;
+    image.style.opacity = "0";
+    image.src = slide.image;
+    image.alt = `Hình ảnh ${slide.title} từ Falcon Game Studio`;
+    image.onload = () => { image.style.opacity = "1"; };
+    eyebrow.textContent = slide.eyebrow;
+    title.textContent = slide.title;
+    description.textContent = slide.description || "";
+    description.hidden = !slide.description;
+    stats.innerHTML = (slide.stats || []).map(([value,label]) => `<div class="game-flex__stat"><strong>${value}</strong><span>${label}</span></div>`).join("");
+    stats.hidden = !slide.stats?.length;
+    link.textContent = slide.action;
+    link.href = slide.href;
+    counter.textContent = `${slideIndex + 1} / ${slides.length}`;
+    dots.innerHTML = slides.map((_,i) => `<span class="game-flex__dot${i === slideIndex ? " active" : ""}"></span>`).join("");
+  }
+
+  panel.querySelector("[data-game-prev]").addEventListener("click", () => renderSlide(slideIndex - 1));
+  panel.querySelector("[data-game-next]").addEventListener("click", () => renderSlide(slideIndex + 1));
+
+  window.setInterval(() => {
+    const scene = window.ptitKrpano?.get("xml.scene") || "";
+    if (!scene || scene === currentScene) return;
+    currentScene = scene;
+    panel.hidden = !(scene in sceneStarts);
+    if (!panel.hidden) renderSlide(sceneStarts[scene]);
+  }, 250);
+})();

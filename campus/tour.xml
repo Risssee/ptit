@@ -2823,7 +2823,7 @@
 			<cube url="panos/stgjnh_taafg8A2_githva.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
 		</image>
 
-		<hotspot name="spot1960149780" style="skin_hotspotstyle" ath="0.956" atv="17.312" depth="1000.0" linkedscene="scene_stgjnh_ttgnng8a2_trswthbc" linkedscene_spot="spot1960149980" linkedscene_hoffset="356.02" use3dtransition="true" />
+		<hotspot name="spot1960149780" style="skin_hotspotstyle" ath="0.956" atv="17.312" depth="1000.0" ptit_label="Vào FPT Telecom Lab" ptit_url="/labs/fpt/tour.html?startscene=scene_viettel2a_" tooltip="Vào FPT Telecom Lab" onclick="openurl('/labs/fpt/tour.html?startscene=scene_viettel2a_',_self);" />
 		<hotspot name="spot1960150450" style="skin_hotspotstyle" ath="176.747" atv="25.155" depth="1000.0" linkedscene="scene_stgjnh_ttgnng8a2_sau" linkedscene_spot="spot1960150576" linkedscene_hoffset="4.99" use3dtransition="true" />
 		<hotspot name="spot1960152727" style="skin_hotspotstyle" ath="176.701" atv="5.149" depth="1000.0" linkedscene="scene_phpyng_hthnc_ttgnng8a2_1" linkedscene_spot="spot1960152916" linkedscene_hoffset="-114.54" use3dtransition="true" />
 		<hotspot name="spot1960169825" style="skin_hotspotstyle" ath="34.517" atv="12.512" depth="1000.0" linkedscene="scene_stgjnh_ttgnng3a2_githva" linkedscene_spot="spot1960169630" linkedscene_hoffset="256.77" use3dtransition="true" />
@@ -3101,7 +3101,7 @@
 			<cube url="panos/ttgnng_3_qri_lpqn_ttgnng_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
 		</image>
 
-		<hotspot name="spot1960158898" style="skin_hotspotstyle" ath="25.413" atv="-3.695" depth="1000.0" linkedscene="scene_stgjnh_ttgnng_6_a3_trphi" linkedscene_spot="spot1960159184" linkedscene_hoffset="101.46" use3dtransition="true" />
+		<hotspot name="spot1960158898" style="skin_hotspotstyle" ath="25.413" atv="-3.695" depth="1000.0" ptit_label="Vào PTIT Game Lab" ptit_url="/labs/game/tour.html?startscene=scene_game_0l" tooltip="Vào PTIT Game Lab" onclick="openurl('/labs/game/tour.html?startscene=scene_game_0l',_self);" />
 		<hotspot name="spot1960166955" style="skin_hotspotstyle" ath="3.212" atv="31.835" depth="1000.0" linkedscene="scene_hpgnh_lang_ttgnng3_a3" linkedscene_spot="spot1960166587" linkedscene_hoffset="307.57" use3dtransition="true" />
 
 	

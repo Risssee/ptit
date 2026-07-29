@@ -6,7 +6,8 @@
     <meta name="theme-color" content="#111216" />
     <title>PTIT Game Lab Virtual Tour</title>
     <link rel="stylesheet" href="../../assets/tour-controls.css?v=2" />
-    <link rel="stylesheet" href="../../assets/tour-navigation.css?v=1" />
+    <link rel="stylesheet" href="../../assets/unified-tour-ui.css?v=5" />
+    <link rel="stylesheet" href="game-flex-content.css?v=4" />
     <style>
       :root { --red:#d71920; --glass:rgba(17,18,22,.76); font-family:Inter,"Segoe UI",Arial,sans-serif; }
       * { box-sizing:border-box; }
@@ -71,7 +72,7 @@
     <script>
       const names={scene_game_0l:"Hành lang trước Game Lab",scene_game_1l:"Lối vào Game Lab",scene_game_2:"Khu máy tính · Góc trái",scene_game_3:"Không gian trung tâm",scene_game_4:"Khu máy tính · Góc phải",scene_game_5:"Khu thực hành phía trong",scene_game_6:"Cuối phòng Game Lab"};
       let lastScene="";
-      embedpano({xml:"tour.xml?v=5",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
+      embedpano({xml:"tour.xml?v=6",target:"pano",html5:"only",passQueryParameters:"startscene,startlookat",onready(instance){
         window.ptitKrpano=instance;
         window.ptitAttachTourLoader?.(instance);
         instance.call("delayedcall(0.3, skin_hideskin(instant); set(layer[skin_btn_show].visible,false); );");
@@ -80,34 +81,17 @@
     </script>
     <script src="../../assets/audio/background-music.js?v=2"></script>
     <script src="../../assets/tour-controls.js?v=2"></script>
+    <script src="scene-narration-config.js?v=1"></script>
+    <script src="../../assets/scene-narration.js?v=6"></script>
     <script>
-      window.PTIT_TOUR_NAV_CONFIG={
-        title:"Sơ đồ PTIT Game Lab",
-        floors:[{
-          id:"game",label:"Phòng Game Lab",
-          nodes:[
-            {id:"g0",label:"Hành lang",short:"Hành lang",scene:"scene_game_0l",type:"entrance",x:8,y:52},
-            {id:"g1",label:"Lối vào",short:"Lối vào",scene:"scene_game_1l",type:"lab",x:25,y:52},
-            {id:"g2",label:"Góc trái",short:"Góc trái",scene:"scene_game_2",type:"lab",x:43,y:20},
-            {id:"g3",label:"Trung tâm",short:"Trung tâm",scene:"scene_game_3",type:"lab",x:43,y:52},
-            {id:"g4",label:"Góc phải",short:"Góc phải",scene:"scene_game_4",type:"lab",x:62,y:20},
-            {id:"g5",label:"Phía trong",short:"Phía trong",scene:"scene_game_5",type:"lab",x:62,y:70},
-            {id:"g6",label:"Cuối phòng",short:"Cuối phòng",scene:"scene_game_6",type:"lab",x:84,y:70}
-          ],
-          edges:[["g0","g1"],["g1","g2"],["g1","g3"],["g3","g4"],["g3","g5"],["g5","g6"]]
-        }],
-        guided:[
-          {scene:"scene_game_0l",lookat:[0,0,105],title:"Chào mừng đến với Game Lab",description:"Bắt đầu hành trình từ hành lang phía trước phòng lab.",audio:"audio/guided/01-game-welcome.mp3",narration:"Xin chào! Chào mừng bạn đến với chuyến tham quan thực tế ảo PTIT Game Lab. Trong hành trình này, chúng ta sẽ khám phá không gian học tập, hệ thống máy tính và các khu vực thực hành bên trong phòng lab."},
-          {scene:"scene_game_1l",lookat:[0,0,105],title:"Lối vào Game Lab",description:"Vị trí chuyển tiếp từ hành lang vào không gian thực hành.",audio:"audio/guided/02-game-entrance.mp3",narration:"Bạn đang ở lối vào PTIT Game Lab. Từ đây, bạn có thể quan sát cách bố trí tổng thể của phòng và di chuyển đến các khu vực máy tính ở hai bên."},
-          {scene:"scene_game_2",lookat:[0,0,105],title:"Khu máy tính bên trái",description:"Một góc quan sát của hệ thống máy tính phục vụ thực hành.",audio:"audio/guided/03-game-left-computers.mp3",narration:"Đây là khu vực máy tính bên trái của phòng lab. Các máy được bố trí thành từng dãy, tạo điều kiện cho sinh viên học tập, thực hành và phối hợp làm việc theo nhóm."},
-          {scene:"scene_game_3",lookat:[0,0,105],title:"Không gian trung tâm",description:"Điểm quan sát chính kết nối các khu vực trong Game Lab.",audio:"audio/guided/04-game-center.mp3",narration:"Bạn đang ở khu vực trung tâm của Game Lab. Từ vị trí này, có thể quan sát toàn bộ hệ thống máy tính, khu vực giảng dạy và những lối di chuyển chính trong phòng."},
-          {scene:"scene_game_4",lookat:[0,0,105],title:"Khu máy tính bên phải",description:"Không gian máy tính và nhận diện ALCON Game Lab.",audio:"audio/guided/05-game-right-computers.mp3",narration:"Tiếp theo là khu vực máy tính bên phải. Không gian được thiết kế đồng bộ với màu sắc nhận diện của Game Lab và bố trí thiết bị theo hướng thuận tiện cho việc hướng dẫn thực hành."},
-          {scene:"scene_game_5",lookat:[0,0,105],title:"Khu thực hành phía trong",description:"Khu vực học tập nằm sâu hơn bên trong phòng lab.",audio:"audio/guided/06-game-inner-area.mp3",narration:"Chúng ta đang tiến vào khu vực thực hành phía trong. Đây là nơi sinh viên tiếp tục làm việc trên hệ thống máy tính và triển khai các bài tập hoặc dự án liên quan đến trò chơi số."},
-          {scene:"scene_game_6",lookat:[0,0,105],title:"Cuối phòng Game Lab",description:"Điểm quan sát cuối của tuyến tham quan.",audio:"audio/guided/07-game-end-area.mp3",narration:"Bạn đang ở điểm cuối của phòng Game Lab. Từ đây, bạn có thể nhìn lại toàn bộ không gian, các dãy máy tính và cách tổ chức khu vực học tập trong phòng."},
-          {scene:"scene_game_6",lookat:[180,0,105],title:"Kết thúc chuyến tham quan",description:"Tiếp tục khám phá tự do hoặc quay lại bản đồ PTIT.",audio:"audio/guided/08-game-closing.mp3",narration:"Chuyến tham quan PTIT Game Lab xin được khép lại tại đây. Hy vọng hành trình đã giúp bạn hiểu rõ hơn về không gian học tập và thực hành của phòng lab. Cảm ơn bạn đã tham quan và hẹn gặp lại!"}
-        ]
+      window.PTIT_UNIFIED_UI = {
+        place: "game",
+        title: "PTIT Game Lab",
+        sceneNames: names,
+        sceneOrder: ["scene_game_0l", "scene_game_1l", "scene_game_2", "scene_game_3", "scene_game_4", "scene_game_5", "scene_game_6"]
       };
     </script>
-    <script src="../../assets/tour-navigation.js?v=1"></script>
+    <script src="../../assets/unified-tour-ui.js?v=3"></script>
+    <script src="game-flex-content.js?v=3"></script>
   </body>
 </html>

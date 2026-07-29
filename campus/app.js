@@ -49,94 +49,71 @@ const sceneData = {
 // If left empty, sidebar will auto-group by sceneData[scene].title (legacy behavior).
 const sceneGroups = [
   {
-    "title": "Cổng trường",
-    "scenes": ["scene_1"]
+    "title": "Khuôn viên",
+    "scenes": [
+      "scene_1",
+      "scene_vswthdn_nhtgtt_1"
+    ]
   },
   {
     "title": "Tòa A1",
-    "scenes": ["scene_gpbk2218_1773131077123"]
-  },
-  {
-    "title": "Phòng học A1",
     "scenes": [
+      "scene_gpbk2218_1773131077123",
       "scene_gpbk2226_1773131353550"
     ]
   },
   {
-    "title": "Trung tâm CIE",
+    "title": "Trung tâm & phòng lab",
     "scenes": [
+      "scene_gpbk2270_1773201080635",
       "scene_cie_cuatruoc"
     ]
   },
   {
     "title": "Tòa A2",
     "scenes": [
-      "scene_10"
-    ]
-  },
-  {
-    "title": "Phòng học A2",
-    "scenes": [
-      "scene_gpbk0065_1773206564173"
-    ]
-  },
-  {
-    "title": "Hội trường A2",
-    "scenes": [
+      "scene_10",
+      "scene_gpbk0065_1773206564173",
       "scene_gpbk0066_1773206449967"
-    ]
-  },
-  {
-    "title": "Vườn Nhật",
-    "scenes": [
-      "scene_vswthdn_nhtgtt_1"
     ]
   },
   {
     "title": "Tòa A3",
     "scenes": [
-      "scene_gpbk2195_1773130397237"
-    ]
-  },
-  {
-    "title": "Phòng học A3",
-    "scenes": [
+      "scene_gpbk2195_1773130397237",
       "scene_gpbk2237_1773200161431"
     ]
   },
   {
-    "title": "Thư viện",
+    "title": "Tiện ích sinh viên",
     "scenes": [
-      "scene_gpbk2202_1773130555661"
-    ]
-  },
-  {
-    "title": "Canteen",
-    "scenes": [
-      "scene_gpbk2282_1773201339253"
-    ]
-  },
-  {
-    "title": "Sân bóng rổ",
-    "scenes": [
-      "scene_gpbk2260_1773200808324"
-    ]
-  },
-  {
-    "title": "Sân bóng chuyền",
-    "scenes": [
+      "scene_gpbk2202_1773130555661",
+      "scene_gpbk2282_1773201339253",
+      "scene_gpbk2260_1773200808324",
       "scene_gpbk2286_1773201396711"
-    ]
-  },
-  {
-    "title": "Lab CTS",
-    "scenes": [
-      "scene_gpbk2270_1773201080635"
     ]
   }
 ];
 
-const SCENE_GROUPS_STORAGE_KEY = 'ptit_scene_groups_v1';
+const sidebarSceneLabels = {
+    scene_1: 'Cổng chính',
+    scene_vswthdn_nhtgtt_1: 'Vườn Nhật',
+    scene_gpbk2218_1773131077123: 'Tòa A1',
+    scene_gpbk2226_1773131353550: 'Phòng học A1',
+    scene_gpbk2270_1773201080635: 'Lab CTS',
+    scene_cie_cuatruoc: 'Trung tâm CIE',
+    scene_10: 'Tòa A2',
+    scene_gpbk0065_1773206564173: 'Phòng học A2',
+    scene_gpbk0066_1773206449967: 'Hội trường A2',
+    scene_gpbk2195_1773130397237: 'Tòa A3',
+    scene_gpbk2237_1773200161431: 'Phòng học A3',
+    scene_gpbk2202_1773130555661: 'Thư viện',
+    scene_gpbk2282_1773201339253: 'Canteen',
+    scene_gpbk2260_1773200808324: 'Sân bóng rổ',
+    scene_gpbk2286_1773201396711: 'Sân bóng chuyền'
+};
+
+const SCENE_GROUPS_STORAGE_KEY = 'ptit_scene_groups_v2';
 let customSceneGroups = null;
 let sceneGroupEditorModel = [];
 let sceneGroupEditorUI = null;
@@ -1025,7 +1002,7 @@ function onready(krpano_interface) {
     enforceStableNavigationHotspotTextures();
     disableNativeTitleTooltips();
     initSidebar();
-    //initEdgeSceneNavigation();
+    initEdgeSceneNavigation();
     updateSceneGroupEditorSceneList();
     const initialScene = krpano.get('xml.scene');
     if (initialScene) {
@@ -1156,6 +1133,7 @@ function getSidebarGroups() {
 }
 
 function getGroupTitleForScene(sceneName) {
+    if (sidebarSceneLabels[sceneName]) return sidebarSceneLabels[sceneName];
     const sourceGroups = (Array.isArray(customSceneGroups) && customSceneGroups.length > 0)
         ? customSceneGroups
         : sceneGroups;
@@ -1556,12 +1534,14 @@ function initSidebar() {
         // We can add an id mapping for easier access later
         groupContainer.dataset.group = title;
         
-        const header = document.createElement('div');
+        const header = document.createElement('button');
         header.className = 'accordion-header';
+        header.type = 'button';
+        header.setAttribute('aria-expanded', 'false');
         
         // Render title only (without scene count badge)
         header.innerHTML = `
-            <span>${title}</span>
+            <span>${title}<small>${groupScenes.length} địa điểm</small></span>
             <span class="accordion-icon">▼</span>
         `;
         
@@ -1569,7 +1549,8 @@ function initSidebar() {
         body.className = 'accordion-body';
         
         header.onclick = () => {
-             groupContainer.classList.toggle('expanded');
+             const expanded = groupContainer.classList.toggle('expanded');
+             header.setAttribute('aria-expanded', String(expanded));
         };
 
         // Grid container for thumbnails to save space
@@ -1577,11 +1558,13 @@ function initSidebar() {
         grid.className = 'scene-grid';
 
         groupScenes.forEach((scene, index) => {
-             const item = document.createElement('div');
+             const item = document.createElement('button');
              item.className = 'scene-item';
+             item.type = 'button';
              item.id = `nav-${scene.sceneName}`;
              
-             let label = groupScenes.length > 1 ? `Góc ${index + 1}` : 'Xem';
+             const label = sidebarSceneLabels[scene.sceneName] || scene.title || `Điểm ${index + 1}`;
+             item.setAttribute('aria-label', `Chuyển đến ${label}`);
              
              item.innerHTML = `
                  <div class="thumb-wrapper">
@@ -1822,17 +1805,17 @@ function formatEdgeSceneTitle(sceneName) {
     const cieLabels = {
         scene_cie_cuatruoc: 'CIE - Cửa trước',
         scene_cie_cuasau: 'CIE - Cửa sau',
-        scene_cie_sanh1: 'CIE - Sảnh chính 1',
-        scene_cie_sanh2: 'CIE - Sảnh chính 2',
-        scene_cie_sanh3: 'CIE - Sảnh chính 3',
-        scene_cie_sanh4: 'CIE - Sảnh chính 4',
-        scene_cie_sanh5: 'CIE - Sảnh tầng 5',
+        scene_cie_sanhchinh1h: 'CIE - Sảnh chính 1',
+        scene_cie_sanhchinh2f: 'CIE - Sảnh chính 2',
+        scene_cie_sanhchinh3f: 'CIE - Sảnh chính 3',
+        scene_cie_sanhchinh4f: 'CIE - Sảnh chính 4',
+        scene_cie_sanhchinh5: 'CIE - Sảnh chính 5',
         scene_cie_sanhsau: 'CIE - Sảnh sau'
     };
     if (cieLabels[sceneName]) return cieLabels[sceneName];
-    const hallway = sceneName.match(/^scene_cie_hl(\d+)$/);
+    const hallway = sceneName.match(/^scene_cie_hl(\d+)(?:_[a-z0-9]+)?$/);
     if (hallway) return `CIE - Hành lang ${hallway[1]}`;
-    const room = sceneName.match(/^scene_cie_p(\d+)(?:_([ab]))?$/);
+    const room = sceneName.match(/^scene_cie_p(\d+)(?:_([a-z0-9]+))?$/);
     if (room) return `CIE - Phòng ${room[1]}${room[2] ? ` (${room[2].toUpperCase()})` : ''}`;
 
     const groupTitle = getGroupTitleForScene(sceneName);
@@ -1969,12 +1952,27 @@ function renderPersistentHotspotLabels() {
         // Dùng lại tên để tra cứu style/linkedscene, tránh phụ thuộc vào index i
         const style = krpano.get(`hotspot[${hotspotName}].style`) || '';
         const linkedScene = krpano.get(`hotspot[${hotspotName}].linkedscene`) || '';
-        if (!linkedScene || !style.split('|').includes('skin_hotspotstyle')) continue;
-        const label = getNavigationHotspotLabel(hotspotName);
+        const externalLabel = krpano.get(`hotspot[${hotspotName}].ptit_label`) || '';
+        const externalUrl = krpano.get(`hotspot[${hotspotName}].ptit_url`) || '';
+        if ((!linkedScene && !externalLabel) || !style.split('|').includes('skin_hotspotstyle')) continue;
+        const label = externalLabel || getNavigationHotspotLabel(hotspotName);
         if (!label) continue;
         const element = document.createElement('span');
         element.className = 'persistent-hotspot-label';
         element.textContent = label;
+        if (externalUrl) {
+            element.classList.add('persistent-hotspot-label--external');
+            element.setAttribute('role', 'button');
+            element.tabIndex = 0;
+            const openExternalTour = () => { window.location.href = externalUrl; };
+            element.addEventListener('click', openExternalTour);
+            element.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    openExternalTour();
+                }
+            });
+        }
         overlay.appendChild(element);
 
         // Đo số dòng thực tế để quyết định offset lên trên hotspot
@@ -1997,19 +1995,24 @@ function updateEdgeSceneNavigation(sceneName) {
     if (!krpano) return;
     const nav = document.getElementById('edge-scene-navigation');
     if (!nav) return;
-    const names = getAllSceneNamesFromTour();
+    const isCieScene = sceneName.startsWith('scene_cie_');
+    const names = getAllSceneNamesFromTour().filter((name) =>
+        name.startsWith('scene_cie_') === isCieScene
+    );
     if (names.length < 2) {
         nav.hidden = true;
         return;
     }
     nav.hidden = false;
     const index = Math.max(0, names.indexOf(sceneName));
-    const previousName = names[(index - 1 + names.length) % names.length];
-    const nextName = names[(index + 1) % names.length];
+    const previousName = index > 0 ? names[index - 1] : '';
+    const nextName = index < names.length - 1 ? names[index + 1] : '';
     const previousButton = nav.querySelector('[data-edge-direction="previous"]');
     const nextButton = nav.querySelector('[data-edge-direction="next"]');
-    const previousTitle = formatEdgeSceneTitle(previousName);
-    const nextTitle = formatEdgeSceneTitle(nextName);
+    const previousTitle = previousName ? formatEdgeSceneTitle(previousName) : '';
+    const nextTitle = nextName ? formatEdgeSceneTitle(nextName) : '';
+    previousButton.hidden = !previousName;
+    nextButton.hidden = !nextName;
     previousButton.dataset.targetScene = previousName;
     nextButton.dataset.targetScene = nextName;
     previousButton.querySelector('.edge-scene-nav__label').textContent = previousTitle;
@@ -2028,12 +2031,12 @@ function initEdgeSceneNavigation() {
     nav.setAttribute('aria-label', 'Chuyển scene');
     nav.innerHTML = `
         <button class="edge-scene-nav__button edge-scene-nav__button--previous" data-edge-direction="previous" type="button">
-            <span class="edge-scene-nav__icon" aria-hidden="true">‹</span>
-            <span class="edge-scene-nav__copy"><small>Scene trước</small><strong class="edge-scene-nav__label"></strong></span>
+            <span class="edge-scene-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></span>
+            <span class="edge-scene-nav__copy"><small>Về scene trước</small><strong class="edge-scene-nav__label"></strong></span>
         </button>
         <button class="edge-scene-nav__button edge-scene-nav__button--next" data-edge-direction="next" type="button">
-            <span class="edge-scene-nav__copy"><small>Scene tiếp theo</small><strong class="edge-scene-nav__label"></strong></span>
-            <span class="edge-scene-nav__icon" aria-hidden="true">›</span>
+            <span class="edge-scene-nav__copy"><small>Đến scene tiếp theo</small><strong class="edge-scene-nav__label"></strong></span>
+            <span class="edge-scene-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>`;
     nav.addEventListener('click', (event) => {
         const button = event.target.closest('.edge-scene-nav__button');
@@ -2081,6 +2084,7 @@ function handleSceneChange(sceneName) {
         const groupContainer = activeItem.closest('.accordion-group');
         if (groupContainer && !groupContainer.classList.contains('expanded')) {
             groupContainer.classList.add('expanded');
+            groupContainer.querySelector('.accordion-header')?.setAttribute('aria-expanded', 'true');
         }
         groupContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
@@ -2151,6 +2155,9 @@ function toggleSound() {
         krpano.call("playsound(bgm, '/assets/audio/background.mp3', 0);");
         audioStarted = true;
         audioMuted = false;
+        // The first user interaction can be an infopost click. In that case the
+        // duck request happened before bgm existed, so apply it again now.
+        setInfopostMusicDucked(currentHotspotDucksMusic);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
@@ -2168,6 +2175,8 @@ function toggleSound() {
         }
     } else {
         krpano.call("resumesound(bgm);");
+        // Keep the background quiet when unmuting while an infopost is speaking.
+        setInfopostMusicDucked(currentHotspotDucksMusic);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
             btn.classList.add('playing');
