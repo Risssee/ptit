@@ -1,0 +1,285 @@
+﻿<krpano version="1.23" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="openstreetmaps"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               autotour="false"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext=""
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+	
+
+	
+	<scene name="scene_viettel0c" title="viettel0c" onstart="" thumburl="panos/viettel0c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/viettel0c.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/viettel0c.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076859798" style="skin_hotspotstyle" ath="1.55" atv="22.859" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_lookat="3.29,-1.2,120.0" linkedscene_spot="spot2076860187" linkedscene_hoffset="1.41" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_2c" title="Viettel_2c" onstart="" thumburl="panos/Viettel_2c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_2c.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_2c.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		
+		<hotspot name="spot2076861211" style="skin_hotspotstyle" ath="30.926" atv="48.586" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_lookat="183.54,-0.35,120.0" linkedscene_spot="spot2076860853" linkedscene_hoffset="184.53" use3dtransition="true" />
+		<hotspot name="spot2076872374" style="skin_hotspotstyle" ath="-175.762" atv="17.78" depth="1000.0" linkedscene="scene_viettel_3f" linkedscene_lookat="179.24,0.25,120.0" linkedscene_spot="spot2076872611" linkedscene_hoffset="353.8" use3dtransition="true" />
+		<hotspot name="spot2076872754" style="skin_hotspotstyle" ath="-89.156" atv="29.479" depth="1000.0" linkedscene="scene_viettel_4c" linkedscene_lookat="271.98,0.55,120.0" linkedscene_spot="spot2076873136" linkedscene_hoffset="361.49" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_3f" title="Viettel_3f" onstart="" thumburl="panos/Viettel_3f.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_3f.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_3f.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076872611" style="skin_hotspotstyle" ath="-1.963" atv="23.835" depth="1000.0" linkedscene="scene_viettel_2c" linkedscene_lookat="179.24,0.25,120.0" linkedscene_spot="spot2076872374" linkedscene_hoffset="6.2" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_4c" title="Viettel_4c" onstart="" thumburl="panos/Viettel_4c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_4c.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_4c.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076873136" style="skin_hotspotstyle" ath="93.647" atv="22.316" depth="1000.0" linkedscene="scene_viettel_2c" linkedscene_lookat="271.98,0.55,120.0" linkedscene_spot="spot2076872754" linkedscene_hoffset="-1.49" use3dtransition="true" />
+		<hotspot name="spot2076873213" style="skin_hotspotstyle" ath="-115.56" atv="23.537" depth="1000.0" linkedscene="scene_viettel_6c" linkedscene_lookat="4.33,0.41,120.0" linkedscene_spot="spot2076873551" linkedscene_hoffset="144.41" use3dtransition="true" />
+		<hotspot name="spot2076874175" style="skin_hotspotstyle" ath="114.268" atv="25.029" depth="1000.0" linkedscene="scene_viettel_5c" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2076874442" linkedscene_hoffset="224.81" use3dtransition="true" />
+		<hotspot name="spot2076878032" style="skin_hotspotstyle" ath="-0.23" atv="54.13" depth="1000.0" linkedscene="scene_viettel_cua2b" linkedscene_lookat="182.99,0.65,120.0" linkedscene_spot="spot2076877693" linkedscene_hoffset="180.64" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_5c" title="Viettel_5c" onstart="" thumburl="panos/Viettel_5c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_5c.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_5c.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076874442" style="skin_hotspotstyle" ath="157.907" atv="23.301" depth="1000.0" linkedscene="scene_viettel_4c" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2076874175" linkedscene_hoffset="135.19" use3dtransition="true" />
+		<hotspot name="spot2076874517" style="skin_hotspotstyle" ath="20.321" atv="21.303" depth="1000.0" linkedscene="scene_viettel_7g" linkedscene_lookat="-0.62,-0.21,120.0" linkedscene_spot="spot2076874761" linkedscene_hoffset="38.84" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_6c" title="Viettel_6c" onstart="" thumburl="panos/Viettel_6c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_6c.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_6c.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076873551" style="skin_hotspotstyle" ath="-153.26" atv="34.169" depth="1000.0" linkedscene="scene_viettel_4c" linkedscene_lookat="4.33,0.41,120.0" linkedscene_spot="spot2076873213" linkedscene_hoffset="215.59" use3dtransition="true" />
+		<hotspot name="spot2076873746" style="skin_hotspotstyle" ath="-12.855" atv="24.163" depth="1000.0" linkedscene="scene_viettel_7g" linkedscene_lookat="0.04,1.12,120.0" linkedscene_spot="spot2076873981" linkedscene_hoffset="318.99" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_7g" title="Viettel_7g" onstart="" thumburl="panos/Viettel_7g.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_7g.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_7g.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076873981" style="skin_hotspotstyle" ath="126.2" atv="23.149" depth="1000.0" linkedscene="scene_viettel_6c" linkedscene_lookat="0.04,1.12,120.0" linkedscene_spot="spot2076873746" linkedscene_hoffset="41.01" use3dtransition="true" />
+		<hotspot name="spot2076874761" style="skin_hotspotstyle" ath="-120.837" atv="28.889" depth="1000.0" linkedscene="scene_viettel_5c" linkedscene_lookat="-0.62,-0.21,120.0" linkedscene_spot="spot2076874517" linkedscene_hoffset="321.16" use3dtransition="true" />
+		<hotspot name="spot2076874981" style="skin_hotspotstyle" ath="106.297" atv="20.236" depth="1000.0" linkedscene="scene_viettel_8h" linkedscene_lookat="-89.1,-0.62,120.0" linkedscene_spot="spot2076875255" linkedscene_hoffset="162.21" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_8h" title="Viettel_8h" onstart="" thumburl="panos/Viettel_8h.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_8h.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_8h.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076875255" style="skin_hotspotstyle" ath="103.644" atv="44.564" depth="1000.0" linkedscene="scene_viettel_7g" linkedscene_lookat="-89.1,-0.62,120.0" linkedscene_spot="spot2076874981" linkedscene_hoffset="197.79" use3dtransition="true" />
+		<hotspot name="spot2076876183" style="skin_hotspotstyle" ath="26.254" atv="24.268" depth="1000.0" linkedscene="scene_viettel_9h" linkedscene_lookat="88.01,0.5,120.0" linkedscene_spot="spot2076876404" linkedscene_hoffset="83.08" use3dtransition="true" />
+
+		
+
+	</scene>
+
+	<scene name="scene_viettel_9h" title="Viettel_9h" onstart="" thumburl="panos/Viettel_9h.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_9h.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_9h.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076876404" style="skin_hotspotstyle" ath="-69.598" atv="28.682" depth="1000.0" linkedscene="scene_viettel_8h" linkedscene_lookat="88.01,0.5,120.0" linkedscene_spot="spot2076876183" linkedscene_hoffset="276.92" use3dtransition="true" />
+		<hotspot name="spot2076876616" style="skin_hotspotstyle" ath="73.345" atv="32.442" depth="1000.0" linkedscene="scene_viettel_10h" linkedscene_lookat="179.47,-0.27,120.0" linkedscene_spot="spot2076876894" linkedscene_hoffset="64.01" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_10h" title="Viettel_10h" onstart="" thumburl="panos/Viettel_10h.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_10h.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_10h.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076876894" style="skin_hotspotstyle" ath="-42.647" atv="36.652" depth="1000.0" linkedscene="scene_viettel_9h" linkedscene_lookat="179.47,-0.27,120.0" linkedscene_spot="spot2076876616" linkedscene_hoffset="295.99" use3dtransition="true" />
+
+	</scene>
+
+	<scene name="scene_viettel_cua1" title="viettel_Cua1" onstart="" thumburl="panos/viettel_Cua1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/viettel_Cua1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/viettel_Cua1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076860187" style="skin_hotspotstyle" ath="-177.044" atv="55.339" depth="1000.0" linkedscene="scene_viettel0c" linkedscene_lookat="3.29,-1.2,120.0" linkedscene_spot="spot2076859798" linkedscene_hoffset="358.59" use3dtransition="true" />
+		<hotspot name="spot2076860853" style="skin_hotspotstyle" ath="1.288" atv="57.468" depth="1000.0" linkedscene="scene_viettel_2c" linkedscene_lookat="183.54,-0.35,120.0" linkedscene_spot="spot2076861211" linkedscene_hoffset="175.47" use3dtransition="true" />
+		<hotspot name="spot2076877253" style="skin_hotspotstyle" ath="93.53" atv="20.026" depth="1000.0" linkedscene="scene_viettel_cua2b" linkedscene_lookat="91.47,0.62,120.0" linkedscene_spot="spot2076877604" linkedscene_hoffset="360.0" use3dtransition="true" />
+		
+
+	</scene>
+
+	<scene name="scene_viettel_cua2b" title="Viettel_Cua2b" onstart="" thumburl="panos/Viettel_Cua2b.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/Viettel_Cua2b.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/Viettel_Cua2b.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2076877604" style="skin_hotspotstyle" ath="273.53" atv="20.026" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_lookat="91.47,0.62,120.0" linkedscene_spot="spot2076877253" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2076877693" style="skin_hotspotstyle" ath="0.414" atv="60.049" depth="1000.0" linkedscene="scene_viettel_4c" linkedscene_lookat="182.99,0.65,120.0" linkedscene_spot="spot2076878032" linkedscene_hoffset="179.36" use3dtransition="true" />
+
+	</scene>
+
+
+</krpano>
