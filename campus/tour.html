@@ -14,11 +14,13 @@
 		html { height:100%; }
 		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
 	</style>
-	<link rel="stylesheet" href="style.css?v=43" />
+	<link rel="stylesheet" href="style.css?v=44" />
+	<!-- Nội dung riêng của Game Lab; CSS chỉ tác động lên bảng Falcon. -->
+	<link rel="stylesheet" href="../labs/game/game-flex-content.css?v=6" />
 	<link rel="stylesheet" href="../assets/campus-minimap.css?v=2" />
 	<link rel="stylesheet" href="../assets/campus-lab-integration.css?v=1" />
 	<link rel="stylesheet" href="../assets/scene-narration.css?v=1" />
-	<link rel="stylesheet" href="../assets/unified-tour-ui.css?v=5" />
+	
 </head>
 <body>
 
@@ -39,10 +41,13 @@
         </div>
 		<div class="header-actions">
 			<img class="header-right-logo" src="IMG_20260403_162544-removebg-preview.png" alt="CTS Lab Logo">
+			<!--
+			NÚT "ĐIỂM HIỆN TẠI" TẠM ẨN VÌ ĐANG TRÙNG CHỨC NĂNG VỚI INFOPORT.
 			<button class="header-btn header-btn--labeled" id="info-btn" title="Thông tin điểm hiện tại" aria-label="Thông tin điểm hiện tại">
 				<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
 				<span>Điểm hiện tại</span>
 			</button>
+			-->
             <button class="header-btn" id="sound-btn" title="Âm thanh">
                 <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
             </button>
@@ -68,7 +73,7 @@
         <div id="pano">
             <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
             <script src="tour.js"></script>
-            <script src="app.js?v=133"></script>
+            <script src="app.js?v=158"></script>
             <script>
                 // Khi mở trực tiếp campus mà không chỉ định scene, luôn bắt đầu ở cổng chính.
                 if (!new URLSearchParams(window.location.search).has("startscene")) {
@@ -77,7 +82,7 @@
                     window.history.replaceState(null, "", campusUrl);
                 }
                 embedpano({
-		xml:"tour.xml?v=31",
+				xml:"tour.xml?v=43",
                     target: "pano",
                     html5: "always",
                     mobilescale: 1.0,
@@ -127,12 +132,7 @@
                 
                 <div class="info-section">
                     <h3>Mục đích sử dụng</h3>
-                    <p id="popup-purpose">Mô tả thông tin chi tiết về cảnh quay này.</p>
-                </div>
-
-                <div class="info-section">
-                    <h3>Mô tả thêm</h3>
-                    <p id="popup-desc">Thông tin bổ sung...</p>
+                    <p id="popup-desc">Thông tin chi tiết đang được cập nhật...</p>
                 </div>
             </div>
         </div>
@@ -153,15 +153,20 @@
 
 <script src="../assets/campus-minimap.js?v=2"></script>
 <script src="../assets/campus-lab-integration.js?v=3"></script>
-<script src="../labs/cie/scene-narration-config.js?v=4"></script>
-<script src="../assets/scene-narration.js?v=5"></script>
+<!-- Mỗi lab tự quản lý audio; bộ phát chung hợp nhất config rồi chỉ khởi tạo một lần. -->
+<script src="../labs/cie/scene-narration-config.js?v=7"></script>
+<script src="../labs/game/scene-narration-config.js?v=1"></script>
+<script src="../labs/fpt/scene-narration-config.js?v=2"></script>
+<script src="../assets/scene-narration.js?v=6"></script>
+<!-- Bảng Falcon chỉ được gắn vào hotspot trên tường của scene_game_1l. -->
+<script src="../labs/game/game-flex-content.js?v=5"></script>
 <script>
     window.PTIT_UNIFIED_UI = {
         place: "campus",
         title: "Khuôn viên PTIT"
     };
 </script>
-<script src="../assets/unified-tour-ui.js?v=3"></script>
+
 
 </body>
 </html>

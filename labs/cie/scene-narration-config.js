@@ -1,4 +1,5 @@
-window.PTIT_SCENE_NARRATION_CONFIG = {
+(() => {
+const config = {
   showCard: false,
   visitedKey: "ptit-cie-scene-narration-visited",
   delay: 700,
@@ -33,6 +34,11 @@ window.PTIT_SCENE_NARRATION_CONFIG = {
   }
 };
 
-Object.entries(window.PTIT_SCENE_NARRATION_CONFIG.scenes).forEach(([scene, entry]) => {
+Object.entries(config.scenes).forEach(([scene, entry]) => {
   entry.audio = `/labs/cie/audio/scenes/${scene}.mp3`;
 });
+
+// Mỗi khu vực tự đăng ký config; scene-narration.js sẽ hợp nhất tất cả trước khi chạy.
+window.PTIT_SCENE_NARRATION_CONFIGS = window.PTIT_SCENE_NARRATION_CONFIGS || [];
+window.PTIT_SCENE_NARRATION_CONFIGS.push(config);
+})();

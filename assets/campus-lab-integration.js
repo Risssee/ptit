@@ -2,12 +2,6 @@
   "use strict";
 
   const state = { mode: "campus", lastCampusScene: "scene_1" };
-  const switcher = document.createElement("div");
-  switcher.className = "campus-lab-switcher";
-  switcher.innerHTML = `
-    <div><strong>Trung tâm CIE</strong><br><span>Đang tham quan bên trong phòng lab</span></div>
-    <button type="button">← Quay lại khuôn viên</button>`;
-  document.body.appendChild(switcher);
 
   const cieInfo = document.createElement("div");
   cieInfo.className = "integrated-cie-info";
@@ -62,7 +56,6 @@
   window.ptitEnterCieTour = enterCie;
   window.ptitReturnToCampusTour = returnToCampus;
   window.showCieStudentInfo = showCieStudentInfo;
-  switcher.querySelector("button").addEventListener("click", returnToCampus);
   cieInfo.querySelector(".integrated-cie-info__close").addEventListener("click", closeCieInfo);
   cieInfo.addEventListener("click", (event) => { if (event.target === cieInfo) closeCieInfo(); });
 

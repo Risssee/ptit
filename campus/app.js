@@ -59,14 +59,14 @@ const sceneGroups = [
     "title": "Tòa A1",
     "scenes": [
       "scene_gpbk2218_1773131077123",
-      "scene_gpbk2226_1773131353550"
+      "scene_gpbk2226_1773131353550",
+      "scene_cie_cuatruoc"
     ]
   },
   {
     "title": "Trung tâm & phòng lab",
     "scenes": [
-      "scene_gpbk2270_1773201080635",
-      "scene_cie_cuatruoc"
+      "scene_gpbk2270_1773201080635"
     ]
   },
   {
@@ -74,20 +74,23 @@ const sceneGroups = [
     "scenes": [
       "scene_10",
       "scene_gpbk0065_1773206564173",
-      "scene_gpbk0066_1773206449967"
+      "scene_gpbk0066_1773206449967",
+      "scene_stgjnh_taafg8a2_githva",
+      "scene_fpt1"
     ]
   },
   {
     "title": "Tòa A3",
     "scenes": [
       "scene_gpbk2195_1773130397237",
-      "scene_gpbk2237_1773200161431"
+      "scene_gpbk2237_1773200161431",
+      "scene_game_0l"
     ]
   },
   {
     "title": "Tiện ích sinh viên",
     "scenes": [
-      "scene_gpbk2202_1773130555661",
+      "scene_gpbk2201_1773130534438",
       "scene_gpbk2282_1773201339253",
       "scene_gpbk2260_1773200808324",
       "scene_gpbk2286_1773201396711"
@@ -102,15 +105,44 @@ const sidebarSceneLabels = {
     scene_gpbk2226_1773131353550: 'Phòng học A1',
     scene_gpbk2270_1773201080635: 'Lab CTS',
     scene_cie_cuatruoc: 'Trung tâm CIE',
+    scene_game_0l: 'Game Lab',
+    scene_stgjnh_taafg8a2_githva: 'Viettel Lab',
+    scene_fpt1: 'FPT Telecom Lab',
     scene_10: 'Tòa A2',
     scene_gpbk0065_1773206564173: 'Phòng học A2',
     scene_gpbk0066_1773206449967: 'Hội trường A2',
     scene_gpbk2195_1773130397237: 'Tòa A3',
     scene_gpbk2237_1773200161431: 'Phòng học A3',
     scene_gpbk2202_1773130555661: 'Thư viện',
+    scene_gpbk2201_1773130534438: 'Thư viện',
+    scene_lib_1f: 'Thư viện',
     scene_gpbk2282_1773201339253: 'Canteen',
     scene_gpbk2260_1773200808324: 'Sân bóng rổ',
     scene_gpbk2286_1773201396711: 'Sân bóng chuyền'
+};
+
+// GÓC NHÌN KHI BẤM THẺ VIETTEL / FPT TRÊN SIDEBAR
+// Hai thẻ cùng mở scene_viettel_cua1 nhưng nhìn về hai hướng khác nhau.
+// hlookat: xoay trái/phải | vlookat: lên/xuống | fov: độ rộng góc nhìn.
+const sidebarSceneLaunchOverrides = {
+    scene_gpbk2201_1773130534438: {
+        targetScene: 'scene_gpbk2201_1773130534438',
+        hlookat: 180.0,
+        vlookat: 0.0,
+        fov: 120.0
+    },
+    scene_stgjnh_taafg8a2_githva: {
+        targetScene: 'scene_viettel_cua1',
+        hlookat: 0.0,
+        vlookat: 0.0,
+        fov: 120.0
+    },
+    scene_fpt1: {
+        targetScene: 'scene_viettel_cua1',
+        hlookat: -84.0,
+        vlookat: 0.0,
+        fov: 120.0
+    }
 };
 
 const SCENE_GROUPS_STORAGE_KEY = 'ptit_scene_groups_v2';
@@ -180,6 +212,11 @@ const sceneInfoOverridesInCode = {
 let krpano = null;
 let currentHotspotAudio = null;
 let currentHotspotDucksMusic = false;
+// DIEU CHINH AM LUONG BGM (0.0 - 1.0)
+// - BACKGROUND_MUSIC_VOLUME: am luong BGM khi phat binh thuong.
+// - BACKGROUND_MUSIC_DUCKED_VOLUME: am luong BGM khi narration hoac infopost dang phat.
+const BACKGROUND_MUSIC_VOLUME = 0.5;
+const BACKGROUND_MUSIC_DUCKED_VOLUME = 0.2;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -226,14 +263,65 @@ const computerHotspot = {
 // Centralized hotspot config (scale-friendly for many hotspots).
 const hotspotData = {
     scene_1: [],
+
+    // ========================================================================
+    // INFOPORT FPT TELECOM LAB
+    // Ảnh: /labs/fpt/assets/ | Sound infoport: /labs/fpt/audio/
+    // ========================================================================
+    scene_fpt2a: [
+        {
+            id: 'fpt_odn_equipment',
+            ath: 77.0,
+            atv: 1.0,
+            title: 'Mô hình thiết bị mạng ODN',
+            text: 'Mô hình giới thiệu các phần tử thụ động trên mạng phân phối quang như hộp cáp, bộ chia quang, cáp thuê bao và thiết bị đầu cuối. Sinh viên sử dụng mô hình để nhận diện thiết bị, tìm hiểu cấu trúc ODN và thực hành đấu nối tuyến thuê bao.',
+            image: '/labs/fpt/assets/fpt-odn-equipment.jpeg',
+            audio: '/labs/fpt/audio/fpt-odn-equipment.mp3',
+            tooltip: 'Mô hình thiết bị mạng ODN'
+        },
+        {
+            id: 'fpt_external_cabling',
+            ath: 112.0,
+            atv: 0.0,
+            title: 'Sơ đồ phối cáp ngoại vi',
+            text: 'Mô hình minh họa cách tổ chức và phân phối tuyến cáp từ mạng chính đến các hộp cáp nhánh và điểm thuê bao. Qua đó, sinh viên thực hành đọc sơ đồ, xác định tuyến cáp và kiểm tra mối liên kết giữa các điểm phối cáp.',
+            image: '/labs/fpt/assets/fpt-external-cabling.jpeg',
+            audio: '/labs/fpt/audio/fpt-external-cabling.mp3',
+            tooltip: 'Sơ đồ phối cáp ngoại vi'
+        }
+    ],
+
+    // ========================================================================
+    // INFOPORT GAME LAB
+    // Chỉnh nội dung, vị trí và audio của Game
+    // ========================================================================
+    // ath: trái/phải; atv: lên/xuống.
+    scene_game_3: [
+        {
+            id: 'game_computer_practice_area',
+            ath: 45.0,
+            atv: 25.0,
+            title: 'Khu vực máy tính thực hành',
+            text: 'Khu vực thực hành được thiết kế rộng rãi với các trang thiết bị hiện đại nhằm phục vụ các buổi học, nghiên cứu chuyên sâu về game. Dàn máy tính có cấu hình cao, giúp sinh viên sử dụng mượt mà các công cụ phát triển game nặng (như Unity, Unreal Engine) cũng như thử nghiệm các tựa game đòi hỏi đồ họa cao. Đồng thời đây cũng là nơi kiểm thử và đánh giá các dự án do chính các đội ngũ tại Game Lab phát triển.',
+            image: '/labs/game/assets/computer-practice-area.jpg',
+            audio: '/labs/game/audio/guided/02-game-entrance.mp3',
+            tooltip: 'Khu vực máy tính thực hành'
+        }
+    ],
+
+    // ========================================================================
+    // INFOPORT TRUNG TÂM CIE
+    // Toàn bộ các scene có tiền tố scene_cie_ bên dưới đều thuộc CIE.
+    // ========================================================================
     scene_cie_sanhchinh1h: [
         {
             id: 'sanhchinh1_1',
-            // Cửa Bộ phận Phát triển dự án, ngay dưới bảng xanh.
+            // Cửa Bộ phận Phát triển dự án
             ath: -119.0,
             atv: 12.0,
             title: 'Bộ phận phát triển dự án',
             text: 'Bộ phận Phát triển dự án là đầu mối kết nối, xây dựng và mở rộng các chương trình hợp tác giáo dục quốc tế của Trung tâm CIE, chịu trách nhiệm nghiên cứu các dự án liên kết đào tạo, trao đổi sinh viên và phát triển mạng lưới đối tác với các trường đại học, tổ chức uy tín trên toàn thế giới.',
+            image: '/labs/cie/assets/infoports/project-development.jpg',
             audio: '/labs/cie/audio/departments/project-development.mp3',
             tooltip: 'Xem thông tin'
         }
@@ -246,6 +334,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Bộ phận quản lý đào tạo',
             text: 'Bộ phận quản lý đào tạo chịu trách nhiệm tổ chức, vận hành và quản lý chất lượng các chương trình đào tạo liên kết quốc tế, bao gồm việc xây dựng thời khóa biểu, theo dõi tiến độ học tập, quy đổi tín chỉ và hỗ trợ giải đáp mọi thắc mắc về lộ trình học tập của sinh viên.',
+            image: '/labs/cie/assets/infoports/training-management.jpg',
             audio: '/labs/cie/audio/departments/training-management.mp3',
             tooltip: 'Xem thông tin'
         }
@@ -257,6 +346,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Bộ phận quản lý lưu học sinh',
             text: 'Bộ phận quản lý lưu học sinh là đơn vị hỗ trợ toàn diện cho sinh viên quốc tế tại PTIT cũng như sinh viên Việt Nam tham gia các chương trình trao đổi, từ việc giải quyết các thủ tục hành chính, visa, lưu trú cho đến đồng hành trong đời sống và các hoạt động hòa nhập văn hóa.',
+            image: '/labs/cie/assets/infoports/international-students.jpg',
             audio: '/labs/cie/audio/departments/international-student-management.mp3',
             tooltip: 'Xem thông tin'
         },
@@ -266,6 +356,7 @@ const hotspotData = {
             atv: 10.0,
             title: 'Phòng giáo sư thỉnh giảng',
             text: 'Phòng giáo sư thỉnh giảng là không gian làm việc, nghiên cứu hiện đại và tiếp đón các giảng viên, chuyên gia quốc tế đến giảng dạy tại CIE, phục vụ công tác trao đổi chuyên môn, thảo luận nghiên cứu chuyên sâu nhằm mang lại nguồn tri thức toàn cầu cho Học viện.',
+            image: '/labs/cie/assets/infoports/visiting-professor.jpg',
             audio: '/labs/cie/audio/departments/visiting-professor.mp3',
             tooltip: 'Xem thông tin'
         }
@@ -277,10 +368,15 @@ const hotspotData = {
             atv: 10.0,
             title: 'Lãnh đạo trung tâm',
             text: 'Lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
+            image: '/labs/cie/assets/infoports/center-leadership.jpg',
             audio: '/labs/cie/audio/departments/center-leadership.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
+
+    // ========================================================================
+    // KẾT THÚC KHU VỰC INFOPORT CIE - từ đây trở xuống là hotspot Campus khác.
+    // ========================================================================
     scene_gpbk2203_1773130660359: [bookshelfHotspot],
     scene_gpbk2204_1773130697446: [bookshelfHotspot],
     scene_gpbk2205_1773130740283: [computerHotspot],
@@ -401,10 +497,14 @@ function stopHotspotAudio() {
     }
 }
 
+// Narration tự động và audio infoport không phát chồng nhau.
+window.addEventListener('ptit:stop-infopost-narration', stopHotspotAudio);
+
 function setInfopostMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
     try {
-        krpano.call(`changesoundvolume(bgm, ${ducked ? 0.01 : 1.0}, 0.001);`);
+        const volume = ducked ? BACKGROUND_MUSIC_DUCKED_VOLUME : BACKGROUND_MUSIC_VOLUME;
+        krpano.call(`tween(sound[bgm].volume, ${volume}, 0.25);`);
     } catch (error) {
         console.log('Skip changing background volume for infopost:', error);
     }
@@ -584,7 +684,8 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
         activeDynamicHotspots.push(hotspotName);
     }
     krpano.call(`addhotspot(${hotspotName});`);
-    const hotspotStyle = sceneName.startsWith('scene_cie_')
+    // Game và CIE dùng cùng biểu tượng infoport để giao diện đồng nhất.
+    const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt')
         ? 'skin_infopoststyle'
         : 'skin_info_hotspot';
     krpano.call(`hotspot[${hotspotName}].loadstyle(${hotspotStyle});`);
@@ -841,12 +942,10 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     if (!hotspot && !sceneName) return;
 
-    const isCieDepartmentAudio = Boolean(
-        sceneName.startsWith('scene_cie_')
-        && hotspot?.audio?.includes('/labs/cie/audio/departments/')
-    );
-    if (isCieDepartmentAudio) stopPopupSpeech();
-    if (popupSpeakBtn) popupSpeakBtn.hidden = isCieDepartmentAudio;
+    // Infoport có MP3 thu sẵn sẽ tự phát file đó, vì vậy ẩn nút "Đọc" ở cả CIE và Game.
+    const hasRecordedHotspotAudio = Boolean(hotspot?.audio);
+    if (hasRecordedHotspotAudio) stopPopupSpeech();
+    if (popupSpeakBtn) popupSpeakBtn.hidden = hasRecordedHotspotAudio;
 
     // Directly open the main modal popup as requested for better experience
     if (sceneName) {
@@ -879,8 +978,9 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     stopHotspotAudio();
     if (hotspot && hotspot.audio) {
+        window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
         const infopostAudio = new Audio(hotspot.audio);
-        infopostAudio.volume = 1.0;
+        infopostAudio.volume = 1;        
         currentHotspotAudio = infopostAudio;
         currentHotspotDucksMusic = true;
         setInfopostMusicDucked(true);
@@ -951,8 +1051,9 @@ function renderSceneHotspots(sceneName) {
     if (!krpano) return;
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
-    const isCieScene = sceneName.startsWith('scene_cie_');
-    if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isCieScene) return;
+    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt');
+    // CIE, Game và FPT có infoport riêng dù hotspot thông tin đại trà của Campus đang tắt.
+    if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isManagedLabScene) return;
 
     const sceneHotspots = hotspotData[sceneName] || [];
     console.log(`[Hotspot Diagnostic] scene=${sceneName}, dataCount=${sceneHotspots.length}, isGarden=${sceneName.includes('2201')}`);
@@ -1042,6 +1143,78 @@ function loadStoredSceneGroups() {
                 title: 'Trung tâm CIE',
                 scenes: ['scene_cie_cuatruoc']
             };
+        });
+        // Bổ sung Game Lab vào cấu hình sidebar cũ đã lưu trong trình duyệt.
+        // Nếu không migrate, localStorage cũ sẽ ghi đè sceneGroups mới trong source code.
+        const alreadyHasGame = customSceneGroups.some(group => group.scenes.includes('scene_game_0l'));
+        if (!alreadyHasGame) {
+            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
+                && group.title.toLowerCase().includes('lab'));
+            if (labGroup) {
+                labGroup.scenes.push('scene_game_0l');
+            } else {
+                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: ['scene_game_0l'] });
+            }
+            migrated = true;
+        }
+        // Bổ sung Viettel Lab vào cấu hình sidebar cũ đang lưu trong trình duyệt.
+        const viettelEntryScene = 'scene_stgjnh_taafg8a2_githva';
+        const alreadyHasViettel = customSceneGroups.some(group => group.scenes.includes(viettelEntryScene));
+        if (!alreadyHasViettel) {
+            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
+                && group.title.toLowerCase().includes('lab'));
+            if (labGroup) {
+                labGroup.scenes.push(viettelEntryScene);
+            } else {
+                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: [viettelEntryScene] });
+            }
+            migrated = true;
+        }
+        // Bổ sung FPT Telecom Lab vào cấu hình sidebar cũ đang lưu trong trình duyệt.
+        const fptEntryScene = 'scene_fpt1';
+        const alreadyHasFpt = customSceneGroups.some(group => group.scenes.includes(fptEntryScene));
+        if (!alreadyHasFpt) {
+            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
+                && group.title.toLowerCase().includes('lab'));
+            if (labGroup) {
+                labGroup.scenes.push(fptEntryScene);
+            } else {
+                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: [fptEntryScene] });
+            }
+            migrated = true;
+        }
+        // Giữ đúng vị trí các lab theo tòa, kể cả khi trình duyệt đang giữ cấu hình sidebar cũ.
+        const canonicalLabGroups = [
+            { sceneName: 'scene_cie_cuatruoc', groupTitle: 'Tòa A1' },
+            { sceneName: 'scene_stgjnh_taafg8a2_githva', groupTitle: 'Tòa A2' },
+            { sceneName: 'scene_fpt1', groupTitle: 'Tòa A2' },
+            { sceneName: 'scene_game_0l', groupTitle: 'Tòa A3' }
+        ];
+        // Thẻ sidebar dùng scene ngoài cửa; mũi tên trong scene này dẫn vào tour Thư viện mới.
+        const oldLibraryScene = 'scene_gpbk2202_1773130555661';
+        const oldLibraryCardScene = 'scene_lib_1f';
+        customSceneGroups.forEach(group => {
+            const hadOldLibrary = group.scenes.includes(oldLibraryScene) || group.scenes.includes(oldLibraryCardScene);
+            if (!hadOldLibrary) return;
+            group.scenes = group.scenes.filter(sceneName => sceneName !== oldLibraryScene && sceneName !== oldLibraryCardScene);
+            migrated = true;
+        });
+        canonicalLabGroups.push({ sceneName: 'scene_gpbk2201_1773130534438', groupTitle: 'Tiện ích sinh viên' });
+        canonicalLabGroups.forEach(({ sceneName, groupTitle }) => {
+            const targetGroup = customSceneGroups.find(group => group.title.trim().toLowerCase() === groupTitle.toLowerCase());
+            const containingGroups = customSceneGroups.filter(group => group.scenes.includes(sceneName));
+            const alreadyCorrect = containingGroups.length === 1 && containingGroups[0] === targetGroup;
+            if (alreadyCorrect) return;
+
+            customSceneGroups.forEach(group => {
+                group.scenes = group.scenes.filter(item => item !== sceneName);
+            });
+            if (targetGroup) {
+                targetGroup.scenes.push(sceneName);
+            } else {
+                customSceneGroups.push({ title: groupTitle, scenes: [sceneName] });
+            }
+            migrated = true;
         });
         if (migrated) saveStoredSceneGroups(customSceneGroups);
     } catch (error) {
@@ -1574,6 +1747,11 @@ function initSidebar() {
              `;
              
              item.onclick = () => {
+                 const launch = sidebarSceneLaunchOverrides[scene.sceneName];
+                 if (launch) {
+                     krpano.call(`loadscene(${launch.targetScene}, null, MERGE, BLEND(1.0)); lookat(${launch.hlookat},${launch.vlookat},${launch.fov});`);
+                     return;
+                 }
                  krpano.call(`loadscene(${scene.sceneName}, null, MERGE, BLEND(1.0))`);
              };
              
@@ -1802,6 +1980,13 @@ function enforceStableNavigationHotspotTextures() {
 
 function formatEdgeSceneTitle(sceneName) {
     if (!sceneName) return '';
+    const fptLabels = {
+        scene_fpt1: 'FPT - Không gian tổng quan',
+        scene_fpt2a: 'FPT - Thiết bị mạng ODN',
+        scene_fpt3a: 'FPT - Khu vực thực hành',
+        scene_fpt4a: 'FPT - Khu vực cuối phòng'
+    };
+    if (fptLabels[sceneName]) return fptLabels[sceneName];
     const cieLabels = {
         scene_cie_cuatruoc: 'CIE - Cửa trước',
         scene_cie_cuasau: 'CIE - Cửa sau',
@@ -1855,6 +2040,25 @@ const hotspotLabelMap = {
     'spot2064654222': 'Phòng 501',
     'spot2064652296': 'Lối ra cửa sau',
     'spot2064652725': 'Lối vào khu vực phòng học',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot1955821036': 'Lối vào thư viện',
+    'spot1955821476': 'Hướng ra tòa A3',
+    'spot1955809495': 'Lối vào tòa A3',
+    'spot1955821904': 'Hướng ra sân bóng chuyền',
+    'spot1955821867': 'Hướng ra thư viện',
+    'spot1958162455': 'Lối vào hội trường A2',
+    'spot1955797526': 'Khu vực để xe',
+    'spot1955820214': 'Sân bóng chuyền',
+    'spot1955818535': 'Lối vào nhà ăn',
+    'spot1955807182': 'Hướng ra kí túc xá',
+    'spot2067815808': 'Lối vào Game lab',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot2064644334': 'Lối vào sảnh chính Cie',
     'spot2064644334': 'Lối vào sảnh chính Cie',
     'spot1958161240': 'Hướng ra tòa A1'
     // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
@@ -1995,6 +2199,8 @@ function updateEdgeSceneNavigation(sceneName) {
     if (!krpano) return;
     const nav = document.getElementById('edge-scene-navigation');
     if (!nav) return;
+    nav.hidden = true;   // Hidden edge scene navigation
+    return;  
     const isCieScene = sceneName.startsWith('scene_cie_');
     const names = getAllSceneNamesFromTour().filter((name) =>
         name.startsWith('scene_cie_') === isCieScene
@@ -2152,7 +2358,7 @@ const SvgSoundOff = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29
 function toggleSound() {
     const btn = document.getElementById('sound-btn');
     if (!audioStarted) {
-        krpano.call("playsound(bgm, '/assets/audio/background.mp3', 0);");
+        krpano.call(`playsound(bgm, '/assets/audio/background.mp3', true, ${BACKGROUND_MUSIC_VOLUME});`);
         audioStarted = true;
         audioMuted = false;
         // The first user interaction can be an infopost click. In that case the
@@ -2184,15 +2390,17 @@ function toggleSound() {
     }
     window.dispatchEvent(new CustomEvent('ptit:audiochange', { detail: { enabled: !audioMuted } }));
 }
-
 window.addEventListener('ptit:narrationstart', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('pausesound(bgm);');
+    if (audioStarted && !audioMuted && krpano) {
+        krpano.call(`tween(sound[bgm].volume, ${BACKGROUND_MUSIC_DUCKED_VOLUME}, 0.25);`);
+    }
 });
 
 window.addEventListener('ptit:narrationend', () => {
-    if (audioStarted && !audioMuted && krpano) krpano.call('resumesound(bgm);');
+    if (audioStarted && !audioMuted && krpano) {
+        krpano.call(`tween(sound[bgm].volume, ${BACKGROUND_MUSIC_VOLUME}, 0.25);`);
+    }
 });
-
 // Add global interaction to start sound
 document.addEventListener('click', (event) => {
     if (event.target.closest?.('#sound-btn')) return;

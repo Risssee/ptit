@@ -638,7 +638,7 @@ body.mini-game-active .app-sidebar {
 }
 
 #info-popup h2 {
-    font-family: 'Outfit', sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 24px;
@@ -694,12 +694,10 @@ body.mini-game-active .app-sidebar {
 }
 
 #info-popup:not(.popup-editing) #popup-title,
-#info-popup:not(.popup-editing) #popup-purpose,
 #info-popup:not(.popup-editing) #popup-desc {
     user-select: none;
 }
 
-#info-popup.popup-editing #popup-purpose,
 #info-popup.popup-editing #popup-desc {
     cursor: text;
     user-select: text;

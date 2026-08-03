@@ -1,7 +1,16 @@
 (function () {
   "use strict";
 
-  const config = window.PTIT_SCENE_NARRATION_CONFIG;
+  // Hợp nhất config độc lập của Campus/CIE/Game. Vẫn hỗ trợ biến config cũ để
+  // các tour độc lập như FPT không bị ảnh hưởng.
+  const registeredConfigs = window.PTIT_SCENE_NARRATION_CONFIGS || [];
+  const legacyConfig = window.PTIT_SCENE_NARRATION_CONFIG;
+  const configParts = legacyConfig ? [legacyConfig, ...registeredConfigs] : registeredConfigs;
+  const config = configParts.reduce((merged, part) => ({
+    ...merged,
+    ...part,
+    scenes: { ...merged.scenes, ...(part.scenes || {}) }
+  }), { scenes: {} });
   if (!config || !config.scenes) return;
 
   let currentScene = "";

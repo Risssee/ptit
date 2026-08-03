@@ -18,7 +18,7 @@
     linkedscene_lookat="0.0,0.0,100.0"
     linkedscene_spot="spot1955816383"
     linkedscene_hoffset="0.0"
-    use3dtransition="true" tooltip="Quay lại khuôn viên" />
+    use3dtransition="true" tooltip="Quay lại khuôn viên" /> 
 	</scene>
     <scene name="scene_cie_sanhchinh1h" title="Cie_SanhChinh1h" onstart="" thumburl="/labs/cie/panos/Cie_SanhChinh1h.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		

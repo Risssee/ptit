@@ -14,6 +14,14 @@
   font-family: Inter,"Segoe UI",Arial,sans-serif;
   isolation: isolate;
 }
+/* Khi JS gắn panel vào hotspot game_showcase_wall, bảng trở thành vật thể trên tường. */
+.game-flex.game-flex--wall {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  transform:none;
+}
 .game-flex__media,.game-flex__shade { position:absolute; inset:0; }
 .game-flex__media { width:100%; height:100%; object-fit:cover; transition:opacity .22s ease,transform .55s ease; }
 .game-flex:hover .game-flex__media { transform:scale(1.035); }
@@ -60,4 +68,5 @@
   .game-flex__source { display:none; }
   .game-flex__nav { right:10px; bottom:10px; }
   .game-flex__nav button { width:31px; height:31px; }
+  .game-flex.game-flex--wall { inset:0; width:100%; height:100%; }
 }

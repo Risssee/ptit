@@ -13,18 +13,14 @@
     { kind:"career", title:"Where Amazing Games Are Born and Raised", eyebrow:"Đội ngũ & nghề nghiệp", image:studioVisual, description:"Khám phá môi trường studio và các cơ hội nghề nghiệp đang được Falcon công bố.", stats:[["150+","Staff"]], action:"Xem Career", href:`${falcon}/career/` },
     { kind:"career", title:"Submit Your Game", eyebrow:"Kết nối nhà phát triển", image:studioVisual, description:"Gửi sản phẩm tới hệ sinh thái publishing của Falcon qua biểu mẫu chính thức.", action:"Submit Game", href:`${falcon}/formpublishing/` }
   ];
-  const sceneStarts = {
-    scene_game_0l:0,
-    scene_game_1l:1,
-    scene_game_2:2,
-    scene_game_3:7,
-    scene_game_4:3,
-    scene_game_5:8,
-    scene_game_6:9
-  };
+  // ===== VỊ TRÍ BẢNG FALCON SHOWCASE =====
+  // Sửa tọa độ tại /labs/game/tour.xml
+  const SHOWCASE_SCENE = "scene_game_1l";
+  const SHOWCASE_HOTSPOT = "game_showcase_wall";
 
   const panel = document.createElement("aside");
   panel.className = "game-flex";
+  panel.hidden = true;
   panel.setAttribute("aria-label", "Thành tựu và sản phẩm nổi bật của Falcon Game Studio");
   panel.innerHTML = `
     <img class="game-flex__media" alt="" />
@@ -73,11 +69,39 @@
   panel.querySelector("[data-game-prev]").addEventListener("click", () => renderSlide(slideIndex - 1));
   panel.querySelector("[data-game-next]").addEventListener("click", () => renderSlide(slideIndex + 1));
 
+  function parkPanel() {
+    panel.hidden = true;
+    panel.classList.remove("game-flex--wall");
+    // Hotspot bị krpano hủy khi đổi scene; giữ panel trong body để có thể gắn lại an toàn.
+    if (panel.parentElement !== document.body) document.body.appendChild(panel);
+  }
+
+  function mountPanelOnWall() {
+    const hotspot = window.ptitKrpano?.get(`hotspot[${SHOWCASE_HOTSPOT}]`);
+    const hotspotElement = hotspot?.sprite;
+    if (!(hotspotElement instanceof HTMLElement)) return false;
+
+    if (panel.parentElement !== hotspotElement) hotspotElement.appendChild(panel);
+    panel.classList.add("game-flex--wall");
+    panel.hidden = false;
+    return true;
+  }
+
   window.setInterval(() => {
     const scene = window.ptitKrpano?.get("xml.scene") || "";
-    if (!scene || scene === currentScene) return;
-    currentScene = scene;
-    panel.hidden = !(scene in sceneStarts);
-    if (!panel.hidden) renderSlide(sceneStarts[scene]);
+    if (!scene) return;
+
+    if (scene !== SHOWCASE_SCENE) {
+      if (!panel.hidden || panel.parentElement !== document.body) parkPanel();
+      currentScene = scene;
+      return;
+    }
+
+    if (scene !== currentScene) {
+      currentScene = scene;
+      renderSlide(0);
+    }
+    // Poll tiếp vì sprite của hotspot được tạo sau khi scene đã bắt đầu tải.
+    mountPanelOnWall();
   }, 250);
 })();
