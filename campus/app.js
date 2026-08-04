@@ -276,7 +276,7 @@ const hotspotData = {
             title: 'Mô hình thiết bị mạng ODN',
             text: 'Mô hình giới thiệu các phần tử thụ động trên mạng phân phối quang như hộp cáp, bộ chia quang, cáp thuê bao và thiết bị đầu cuối. Sinh viên sử dụng mô hình để nhận diện thiết bị, tìm hiểu cấu trúc ODN và thực hành đấu nối tuyến thuê bao.',
             image: '/labs/fpt/assets/fpt-odn-equipment.jpeg',
-            audio: '/labs/fpt/audio/fpt-odn-equipment.mp3',
+            audio: '/labs/fpt/audio/fpt-odn-equipment.mp3?v=2',
             tooltip: 'Mô hình thiết bị mạng ODN'
         },
         {
@@ -286,7 +286,7 @@ const hotspotData = {
             title: 'Sơ đồ phối cáp ngoại vi',
             text: 'Mô hình minh họa cách tổ chức và phân phối tuyến cáp từ mạng chính đến các hộp cáp nhánh và điểm thuê bao. Qua đó, sinh viên thực hành đọc sơ đồ, xác định tuyến cáp và kiểm tra mối liên kết giữa các điểm phối cáp.',
             image: '/labs/fpt/assets/fpt-external-cabling.jpeg',
-            audio: '/labs/fpt/audio/fpt-external-cabling.mp3',
+            audio: '/labs/fpt/audio/fpt-external-cabling.mp3?v=2',
             tooltip: 'Sơ đồ phối cáp ngoại vi'
         }
     ],
@@ -304,7 +304,8 @@ const hotspotData = {
             title: 'Khu vực máy tính thực hành',
             text: 'Khu vực thực hành được thiết kế rộng rãi với các trang thiết bị hiện đại nhằm phục vụ các buổi học, nghiên cứu chuyên sâu về game. Dàn máy tính có cấu hình cao, giúp sinh viên sử dụng mượt mà các công cụ phát triển game nặng (như Unity, Unreal Engine) cũng như thử nghiệm các tựa game đòi hỏi đồ họa cao. Đồng thời đây cũng là nơi kiểm thử và đánh giá các dự án do chính các đội ngũ tại Game Lab phát triển.',
             image: '/labs/game/assets/computer-practice-area.jpg',
-            audio: '/labs/game/audio/guided/02-game-entrance.mp3',
+            // Sound riêng của infoport thực hành, không dùng chung với narration scene_game_1l.
+            audio: '/labs/game/audio/guided/03-game-practice-area.mp3?v=2',
             tooltip: 'Khu vực máy tính thực hành'
         }
     ],

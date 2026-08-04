@@ -6,11 +6,12 @@
     scenes: {
       scene_game_0l: {
         title: "Chào mừng đến với Game Lab",
-        audio: "/labs/game/audio/guided/01-game-welcome.mp3"
+        audio: "/labs/game/audio/guided/01-game-welcome.mp3?v=5"
       },
       scene_game_1l: {
         title: "Lối vào Game Lab",
-        audio: "/labs/game/audio/guided/02-game-entrance.mp3"
+        // Giữ nguyên sound gốc khi người xem bước vào scene_game_1l.
+        audio: "/labs/game/audio/guided/02-game-entrance.mp3?v=2"
       }
     }
   };

@@ -1,9 +1,7 @@
 <krpano version="1.23" title="Virtual Tour" bgcolor="0xD8DDE3">
 
 	<include url="skin/vtourskin.xml?v=6" />
-	<!-- Đồng bộ scene CIE mới, sử dụng trực tiếp ảnh tại /labs/cie/. -->
 	<include url="cie-scenes.xml?v=2" />
-	<!-- Game Lab chỉ có một XML nguồn tại /labs/game/tour.xml; dùng chung runtime/skin/BGM của Campus. -->
 	<include url="/labs/game/tour.xml?v=7" />
 	<style name="skin_infopoststyle"
 	       visible="false" enabled="false"
@@ -16,10 +14,8 @@
 	       ondown="tween(scale,0.46,0.1,easeOutQuad);"
 	       onup="tween(scale,0.64,0.14,easeOutBack);" />
 
-	<!-- Global Events -->
 	<events onnewscene="js(handleSceneChange(get(xml.scene)))" onloadcomplete="skin_hideskin(instant);" keep="true" />
 
-	<!-- Custom Actions -->
 	<action name="open_web_info">
 		js(openInfo());
 	</action>
@@ -164,14 +160,10 @@
 	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
 
 
-	<!-- 🔊 SOUND PLUGIN -->
+	<!-- SOUND PLUGIN -->
 	<plugin name="soundinterface"
 			url="%SWFPATH%/plugins/soundinterface.js"
 			preload="true" />
-
-
-	
-
 
 	<scene name="scene_1" title="1" onstart="" thumburl="panos/1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
@@ -3111,7 +3103,7 @@
 		<hotspot name="info_spot" style="skin_info_hotspot" ath="10.0" atv="0.0" />
 	</scene>
 
-	<!-- Viettel Lab: dùng scene hành lang tầng 8 A2 của Campus làm điểm vào, không nhập scene_viettel0c bị trùng. -->
+	<!-- Viettel Lab -->
 <scene name="scene_viettel_2c" title="Viettel_2c" onstart="" thumburl="/labs/Viettel/panos/Viettel_2c.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -3307,7 +3299,7 @@
 
 	</scene>
 
-	<!-- FPT Telecom Lab: dùng scene_viettel_cua1 làm cửa chung, không nhập scene_viettel2a_ bị trùng. -->
+	<!-- FPT Telecom Lab -->
 <scene name="scene_fpt1" title="fpt1" onstart="" thumburl="/labs/fpt/panos/fpt1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -3376,7 +3368,7 @@
 
 	</scene>
 
-	<!-- THƯ VIỆN MỚI: panorama giữ riêng trong /labs/Library/panos/. -->
+	<!-- THƯ VIỆN -->
 <scene name="scene_lib_1f" title="Lib_1f" onstart="" thumburl="/labs/Library/panos/Lib_1f.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />
@@ -3391,7 +3383,6 @@
 
 		<hotspot name="spot2077062364" style="skin_hotspotstyle" ath="-0.388" atv="16.717" depth="1000.0" linkedscene="scene_lib_2f" linkedscene_lookat="1.24,0.62,120.0" linkedscene_spot="spot2077062582" linkedscene_hoffset="0.41" use3dtransition="true" />
 		<hotspot name="spot2077077292" style="skin_hotspotstyle" ath="134.352" atv="25.934" depth="1000.0" linkedscene="scene_lib_11f" linkedscene_lookat="-86.83,-1.41,120.0" linkedscene_spot="spot2077077672" linkedscene_hoffset="138.95" use3dtransition="true" />
-		<!-- Quay lại khuôn viên Campus từ điểm đầu Thư viện mới. -->
 		<hotspot name="spot_library_return_campus" style="skin_hotspotstyle" ath="180.0" atv="25.0" depth="1000.0" linkedscene="scene_gpbk2201_1773130534438" linkedscene_lookat="0.0,0.0,120.0" use3dtransition="false" onclick="loadscene(scene_gpbk2201_1773130534438, null, MERGE, BLEND(0.8)); lookat(0.0,0.0,120.0);" />
 
 
