@@ -2213,6 +2213,8 @@
 
 		<hotspot name="spot1960141333" style="skin_hotspotstyle" ath="52.338" atv="13.714" depth="1000.0" linkedscene="scene_gpbk2389_1773819679330" linkedscene_spot="spot1960141457" linkedscene_hoffset="44.06" use3dtransition="true" />
 		<hotspot name="spot1960167657" style="skin_hotspotstyle" ath="-42.265" atv="22.479" depth="1000.0" linkedscene="scene_gpbk2242_1773200327351" linkedscene_spot="spot1960167260" linkedscene_hoffset="307.98" use3dtransition="true" />
+		<!-- Vào Samsung Lab. -->
+		<hotspot name="spot_samsung_entrance" style="skin_hotspotstyle" ath="120.0" atv="40.0" depth="700.0" linkedscene="scene_ss_1" linkedscene_lookat="180.0,0.0,120.0" linkedscene_spot="spot_samsung_exit" use3dtransition="true" />
 
 	</scene>
 
@@ -3710,6 +3712,42 @@
 		<hotspot name="spot2077077672" style="skin_hotspotstyle" ath="93.307" atv="41.921" depth="1000.0" linkedscene="scene_lib_1f" linkedscene_lookat="-86.83,-1.41,120.0" linkedscene_spot="spot2077077292" linkedscene_hoffset="221.05" use3dtransition="true" />
 		<hotspot name="spot2077077765" style="skin_hotspotstyle" ath="-172.118" atv="18.419" depth="1000.0" linkedscene="scene_lib_10f" linkedscene_lookat="-8.24,0.38,120.0" linkedscene_spot="spot2077078110" linkedscene_hoffset="258.46" use3dtransition="true" />
 
+	</scene>
+
+	<!-- Samsung Lab -->
+	<scene name="scene_ss_1" title="SS_1" onstart="" thumburl="/labs/samsung/panos/SS_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		<control bouncinglimits="calc:image.cube ? true : false" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="/labs/samsung/panos/SS_1.tiles/preview.jpg" />
+		<image>
+			<cube url="/labs/samsung/panos/SS_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+		<hotspot name="spot2080351245" style="skin_hotspotstyle" ath="-9.726" atv="15.528" depth="1000.0" linkedscene="scene_ss_2" linkedscene_lookat="-8.66,2.68,120.0" linkedscene_spot="spot2080351440" linkedscene_hoffset="364.94" use3dtransition="true" />
+		<hotspot name="spot2080352030" style="skin_hotspotstyle" ath="81.572" atv="26.132" depth="1000.0" linkedscene="scene_ss_3" linkedscene_lookat="-184.9,0.34,120.0" linkedscene_spot="spot2080352497" linkedscene_hoffset="91.02" use3dtransition="true" />
+		<!-- Ra hành lang A2; góc nhìn sau khi ra hướng dọc hành lang. -->
+		<hotspot name="spot_samsung_exit" style="skin_hotspotstyle" ath="260.0" atv="18.0" depth="1100.0" linkedscene="scene_gpbk2388_1773819661170" linkedscene_lookat="90.0,0.0,120.0" linkedscene_spot="spot_samsung_entrance" use3dtransition="true" />
+	</scene>
+
+	<scene name="scene_ss_2" title="SS_2" onstart="" thumburl="/labs/samsung/panos/SS_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		<control bouncinglimits="calc:image.cube ? true : false" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="/labs/samsung/panos/SS_2.tiles/preview.jpg" />
+		<image>
+			<cube url="/labs/samsung/panos/SS_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+		<hotspot name="spot2080351440" style="skin_hotspotstyle" ath="175.21" atv="17.923" depth="1000.0" linkedscene="scene_ss_1" linkedscene_lookat="-8.66,2.68,120.0" linkedscene_spot="spot2080351245" linkedscene_hoffset="-4.94" use3dtransition="true" />
+		<hotspot name="spot2080351571" style="skin_hotspotstyle" ath="84.587" atv="18.333" depth="1000.0" linkedscene="scene_ss_3" linkedscene_lookat="-99.4,0.41,120.0" linkedscene_spot="spot2080351882" linkedscene_hoffset="156.82" use3dtransition="true" />
+	</scene>
+
+	<scene name="scene_ss_3" title="SS_3" onstart="" thumburl="/labs/samsung/panos/SS_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		<control bouncinglimits="calc:image.cube ? true : false" />
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="/labs/samsung/panos/SS_3.tiles/preview.jpg" />
+		<image>
+			<cube url="/labs/samsung/panos/SS_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+		<hotspot name="spot2080351882" style="skin_hotspotstyle" ath="54.528" atv="28.545" depth="1000.0" linkedscene="scene_ss_2" linkedscene_lookat="-99.4,0.41,120.0" linkedscene_spot="spot2080351571" linkedscene_hoffset="203.18" use3dtransition="true" />
+		<hotspot name="spot2080352497" style="skin_hotspotstyle" ath="-7.409" atv="20.6" depth="1000.0" linkedscene="scene_ss_1" linkedscene_lookat="-184.9,0.34,120.0" linkedscene_spot="spot2080352030" linkedscene_hoffset="268.98" use3dtransition="true" />
 	</scene>
 
 </krpano>

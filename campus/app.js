@@ -76,7 +76,8 @@ const sceneGroups = [
       "scene_gpbk0065_1773206564173",
       "scene_gpbk0066_1773206449967",
       "scene_stgjnh_taafg8a2_githva",
-      "scene_fpt1"
+      "scene_fpt1",
+      "scene_ss_1"
     ]
   },
   {
@@ -108,6 +109,7 @@ const sidebarSceneLabels = {
     scene_game_0l: 'Game Lab',
     scene_stgjnh_taafg8a2_githva: 'Viettel Lab',
     scene_fpt1: 'FPT Telecom Lab',
+    scene_ss_1: 'Samsung Lab',
     scene_10: 'Tòa A2',
     scene_gpbk0065_1773206564173: 'Phòng học A2',
     scene_gpbk0066_1773206449967: 'Hội trường A2',
@@ -264,6 +266,23 @@ const computerHotspot = {
 // Centralized hotspot config (scale-friendly for many hotspots).
 const hotspotData = {
     scene_1: [],
+
+    // ========================================================================
+    // INFOPORT SAMSUNG LAB - sửa vị trí, nội dung, ảnh và audio tại đây.
+    // ========================================================================
+    scene_ss_1: [
+        {
+            // Hệ thống máy tính thực hành Samsung.
+            id: 'samsung_computer_system',
+            ath: 0.0,
+            atv: 5.0,
+            title: 'Hệ thống máy tính thực hành Samsung',
+            text: 'Phòng lab được trang bị dàn máy tính để bàn đồng bộ Samsung bố trí thành nhiều dãy song song. Mỗi máy trạm được kết nối mạng nội bộ tốc độ cao, phục vụ các buổi thực hành lập trình, xử lý dữ liệu và phát triển ứng dụng di động. Hệ thống máy có cấu hình đủ mạnh để vận hành mượt mà các công cụ phát triển nặng như Android Studio, giúp sinh viên trải nghiệm môi trường phát triển phần mềm chuyên nghiệp ngay tại trường.',
+            image: '/labs/samsung/assets/infoports/samsung-computer-lab.jpg',
+            audio: '/labs/samsung/audio/infoports/01-computer-system.mp3?v=1',
+            tooltip: 'Xem hệ thống máy tính'
+        }
+    ],
 
     // ========================================================================
     // INFOPORT VIETTEL LAB 
@@ -825,7 +844,7 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     }
     krpano.call(`addhotspot(${hotspotName});`);
     // Game và CIE dùng cùng biểu tượng infoport để giao diện đồng nhất.
-    const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_')
+    const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_') || sceneName.startsWith('scene_ss_')
         ? 'skin_infopoststyle'
         : 'skin_info_hotspot';
     krpano.call(`hotspot[${hotspotName}].loadstyle(${hotspotStyle});`);
@@ -1191,7 +1210,7 @@ function renderSceneHotspots(sceneName) {
     if (!krpano) return;
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
-    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_');
+    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_') || sceneName.startsWith('scene_ss_');
     // CIE, Game và FPT có infoport riêng dù hotspot thông tin đại trà của Campus đang tắt.
     if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isManagedLabScene) return;
 
@@ -1328,6 +1347,7 @@ function loadStoredSceneGroups() {
             { sceneName: 'scene_cie_cuatruoc', groupTitle: 'Tòa A1' },
             { sceneName: 'scene_stgjnh_taafg8a2_githva', groupTitle: 'Tòa A2' },
             { sceneName: 'scene_fpt1', groupTitle: 'Tòa A2' },
+            { sceneName: 'scene_ss_1', groupTitle: 'Tòa A2' },
             { sceneName: 'scene_game_0l', groupTitle: 'Tòa A3' }
         ];
         // Thẻ sidebar dùng scene ngoài cửa; mũi tên trong scene này dẫn vào tour Thư viện mới.
@@ -2204,7 +2224,7 @@ const hotspotLabelMap = {
     'spot1955819184': 'Lối vào nhà ăn',
     'spot1955799511': 'Hướng ra CTS lab',
     'spot1955799238': 'Hướng ra nhà ăn',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot_samsung_entrance': 'Lối vào Samsung lab',
     'spot1958161240': 'Hướng ra tòa A1'
     // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
 };
