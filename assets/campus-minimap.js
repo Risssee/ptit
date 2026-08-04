@@ -2,17 +2,17 @@
   "use strict";
 
   const outdoorRoute = [
-    [39,82],[43,77],[47,72],[51,67],[55,63],
-    [57,57],[55,51],[51,47],[48,42],[54,38],
-    [61,35],[67,34],[72,37],[76,42],[73,48],
-    [68,52],[62,55],[57,59],[52,62],[47,59],
-    [43,55],[39,50],[36,45],[40,39],[45,34]
+    [58.5,88],[58.5,83],[58,78],[56,73],[52,69],
+    [49,65],[49,59],[49,53],[49,47],[49,41],
+    [49,35],[49,29],[49,23],[49,17],[49,11],
+    [53,8],[58,8],[63,8],[66,12],[66,20],
+    [66,28],[66,36],[66,44],[66,52],[66,60]
   ];
 
   const anchors = {
-    gate: [39,82], a1: [57,58], a2: [67,37], a3: [57,24],
-    library: [42,42], garden: [50,49], canteen: [74,31],
-    basketball: [38,59], volleyball: [42,31], cts: [36,60]
+    gate: [58.5,88], a1: [43.5,74], a2: [66,45], a3: [66,12],
+    library: [31,18], garden: [49,35], canteen: [49,22],
+    basketball: [31,69], volleyball: [31,42], cts: [43.5,74]
   };
 
   const knownScenes = {
@@ -21,6 +21,8 @@
     scene_gpbk2224_1773131289876: anchors.a1,
     scene_gpbk0065_1773206564173: anchors.a2,
     scene_gpbk0066_1773206449967: anchors.a2,
+    scene_gpbk2388_1773819661170: anchors.a2,
+    scene_gpbk2389_1773819679330: anchors.a2,
     scene_gpbk2195_1773130397237: anchors.a3,
     scene_gpbk2237_1773200161431: anchors.a3,
     scene_gpbk2202_1773130555661: anchors.library,
@@ -32,6 +34,8 @@
 
   function positionFor(scene) {
     if (scene.startsWith("scene_cie_")) return anchors.cts;
+    if (scene.startsWith("scene_fpt") || scene.startsWith("scene_viettel_") || scene.startsWith("scene_ss_")) return anchors.a2;
+    if (scene.startsWith("scene_game_")) return anchors.a3;
     if (knownScenes[scene]) return knownScenes[scene];
     const numeric = scene.match(/^scene_(\d+)$/);
     if (numeric) return outdoorRoute[Math.max(0, Math.min(24, Number(numeric[1]) - 1))];
@@ -42,6 +46,32 @@
     if (/gpbk22(17|18|19|20|21|22|24|25|26)/.test(scene)) return anchors.a1;
     if (/gpbk22(34|35|36|37|38|39|4|5)/.test(scene)) return anchors.a3;
     return anchors.gate;
+  }
+
+  // Đường mô phỏng từ cổng đến từng tòa; chấm đỏ đi lần lượt qua các điểm này.
+  function pathFromGate(target) {
+    if (target === anchors.a1 || target === anchors.cts) {
+      return [[58.5,83], [58,77], [52,69], target];
+    }
+    if (target === anchors.a2) {
+      return [[58.5,83], [62,76], [66,69], [66,57], target];
+    }
+    if (target === anchors.a3) {
+      return [[58.5,83], [58,69], [49,59], [49,35], [49,17], [57,12], target];
+    }
+    return [target];
+  }
+
+  function routeFor(target) {
+    const anchorValues = Object.values(anchors);
+    const startsAtBuilding = anchorValues.includes(currentPosition) && currentPosition !== anchors.gate;
+    const reverseCurrentPath = startsAtBuilding ? pathFromGate(currentPosition).slice().reverse() : [];
+
+    if (target === anchors.gate) return [...reverseCurrentPath, anchors.gate];
+    if (startsAtBuilding && target !== currentPosition) {
+      return [...reverseCurrentPath, anchors.gate, ...pathFromGate(target)];
+    }
+    return pathFromGate(target);
   }
 
   const minimap = document.createElement("aside");
@@ -55,9 +85,6 @@
     </div>
     <div class="campus-minimap__map">
       <span class="campus-minimap__position" title="Vị trí hiện tại"></span>
-      <a class="campus-minimap__lab" data-lab="cie" style="left:34.5%;top:56.5%" href="../campus/tour.html?startscene=scene_cie_cuatruoc" aria-label="Trung tâm CIE"><span>C</span></a>
-      <a class="campus-minimap__lab" style="left:55%;top:42.5%" href="../labs/fpt/tour.html" aria-label="Phòng lab FPT"><span>F</span></a>
-      <a class="campus-minimap__lab" style="left:43%;top:29%" href="../labs/game/tour.html" aria-label="PTIT Game Lab"><span>G</span></a>
     </div>`;
   document.body.appendChild(minimap);
 
@@ -65,6 +92,22 @@
   const sceneLabel = minimap.querySelector(".campus-minimap__scene");
   const toggle = minimap.querySelector(".campus-minimap__toggle");
   let currentScene = "";
+  let currentPosition = anchors.gate;
+  let movementToken = 0;
+
+  function moveDot(target) {
+    if (target === currentPosition) return;
+    const token = ++movementToken;
+    const points = routeFor(target);
+    points.forEach(([x, y], index) => {
+      window.setTimeout(() => {
+        if (token !== movementToken) return;
+        dot.style.left = `${x}%`;
+        dot.style.top = `${y}%`;
+        if (index === points.length - 1) currentPosition = target;
+      }, index * 620);
+    });
+  }
 
   toggle.addEventListener("click", () => {
     const collapsed = minimap.classList.toggle("is-collapsed");
@@ -78,9 +121,7 @@
     const scene = instance.get("xml.scene") || "";
     if (!scene || scene === currentScene) return;
     currentScene = scene;
-    const [x, y] = positionFor(scene);
-    dot.style.left = `${x}%`;
-    dot.style.top = `${y}%`;
+    moveDot(positionFor(scene));
     const sceneTitle = instance.get(`scene[${scene}].title`) || scene.replace(/^scene_/, "");
     sceneLabel.textContent = sceneTitle;
   }, 300);
