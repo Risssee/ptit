@@ -138,8 +138,9 @@ const sidebarSceneLaunchOverrides = {
         fov: 120.0
     },
     scene_fpt1: {
-        targetScene: 'scene_viettel_cua1',
-        hlookat: -84.0,
+        // Thẻ FPT mở thẳng không gian tổng quan của FPT.
+        targetScene: 'scene_fpt1',
+        hlookat: 0.0,
         vlookat: 0.0,
         fov: 120.0
     }
@@ -265,6 +266,145 @@ const hotspotData = {
     scene_1: [],
 
     // ========================================================================
+    // INFOPORT VIETTEL LAB 
+    // ========================================================================
+    scene_viettel_9h: [
+        {
+            // ----------------------------------------------------------------
+            // INFOPORT 1: HỆ THỐNG CORE 4G
+            // ----------------------------------------------------------------
+            id: 'viettel_core_4g',
+            ath: -35.0,
+            atv: 4.0,
+            title: 'Hệ thống Core 4G (EPC - IMS - HSS)',
+            text: 'Đây là mạng lõi chịu trách nhiệm xác thực, quản lý kết nối và điều hướng toàn bộ lưu lượng dữ liệu/thoại của người dùng.\n\nEPC (Evolved Packet Core): Mạng lõi gói của 4G, gồm các thành phần như MME (quản lý di động), SGW/PGW (điều hướng và định tuyến dữ liệu Internet), giúp thiết bị di động kết nối mượt mà vào mạng IP.\n\nHSS (Home Subscriber Server): Cơ sở dữ liệu trung tâm chứa toàn bộ thông tin thuê bao như số điện thoại, gói cước, quyền truy cập và vị trí hiện tại.\n\nIMS (IP Multimedia Subsystem): Nền tảng cung cấp dịch vụ đa phương tiện trên nền IP, cốt lõi để triển khai dịch vụ thoại chất lượng cao VoLTE trên mạng 4G.',
+            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
+
+            audio: '/labs/Viettel/audio/infoports/01-core-4g.mp3?v=1',
+  
+            tooltip: 'Xem hệ thống Core 4G'
+        },
+        {
+            // ----------------------------------------------------------------
+            // INFOPORT 2: HỆ THỐNG OCS 4G
+            // ----------------------------------------------------------------
+            id: 'viettel_ocs_4g',
+          
+            ath: 0.0,
+            atv: 4.0,
+         
+            title: 'Hệ thống OCS 4G ',
+           
+            text: 'Hệ thống OCS được coi là bộ não kinh doanh của nhà mạng di động.\n\nChức năng chính: Tính cước và kiểm soát tài khoản theo thời gian thực (Real-time charging) cho cả thuê bao trả trước lẫn trả sau.\n\nCơ chế hoạt động: Khi bạn gọi điện, nhắn tin hay truy cập Data 4G, OCS sẽ kiểm tra số dư/gói cước ngay lập tức, trừ tiền/dung lượng theo từng giây/MB và ngắt kết nối tự động ngay khi tài khoản hết hạn hoặc hết tiền.',
+           
+            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
+         
+            audio: '/labs/Viettel/audio/infoports/02-ocs-4g.mp3?v=1',
+          
+            tooltip: 'Xem hệ thống OCS 4G'
+        },
+        {
+            // ----------------------------------------------------------------
+            // INFOPORT 3: TỦ NGUỒN DC
+            // ----------------------------------------------------------------
+            id: 'viettel_dc_power',
+            
+            ath: 35.0,
+            atv: 4.0,
+          
+            title: 'Tủ nguồn DC ',
+            
+            text: 'Đây là hạ tầng cung cấp năng lượng chuyên dụng cho toàn bộ thiết bị viễn thông trong phòng lab.\n\nCác thiết bị viễn thông và máy chủ chuyên dụng hoạt động chủ yếu bằng nguồn điện một chiều DC (thường là -48V DC) để đảm bảo độ ổn định cao, chống nhiễu và dễ kết nối với hệ thống ắc quy dự phòng (UPS).\n\nThiết bị có vai trò chuyển đổi điện lưới AC thành điện DC ổn định, duy trì hoạt động liên tục 24/7 cho hệ thống Core và OCS mà không bị gián đoạn khi có sự cố điện.',
+           
+            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
+           
+            audio: '/labs/Viettel/audio/infoports/03-dc-power.mp3?v=1',
+           
+            tooltip: 'Xem tủ nguồn DC'
+        }
+    ],
+
+    // ========================================================================
+    // INFOPORT THƯ VIỆN 
+    // ========================================================================
+    scene_lib_1f: [
+        {
+            // Tủ gửi đồ cá nhân.
+            id: 'library_lockers',
+            ath: 110.0,
+            atv: 5.0,
+            title: 'Tủ gửi đồ cá nhân',
+            text: 'Hệ thống tủ locker thông minh được chia thành nhiều ô nhỏ có đánh số cẩn thận, giúp sinh viên yên tâm lưu trữ cặp sách, đồ dùng cá nhân trước khi vào thư viện.',
+            image: '/labs/Library/assets/infoports/tu.jpg',
+            audio: '/labs/Library/audio/infoports/01-lockers.mp3?v=1',
+            tooltip: 'Xem tủ gửi đồ'
+        },
+        {
+            // Hệ thống cửa tự động.
+            id: 'library_automatic_gate',
+            ath: 183.0,
+            atv: 35.0,
+            title: 'Hệ thống cửa tự động',
+            text: 'Để đảm bảo an ninh và quản lý lưu lượng người ra vào hiệu quả, thư viện được trang bị cổng kiểm soát tự động dạng tay quay hiện đại. Sinh viên và cán bộ chỉ cần quét khuôn mặt tại màn hình gắn trên trụ inox là cửa quay sẽ mở tự động. Ngay bên cạnh cổng vào là lối ra riêng biệt có biển chỉ dẫn rõ ràng, giúp luồng di chuyển của bạn đọc luôn thông suốt và trật tự.',
+            image: '/labs/Library/assets/infoports/cua.jpg',
+            audio: '/labs/Library/audio/infoports/02-automatic-gate.mp3?v=1',
+            tooltip: 'Xem hệ thống cửa'
+        }
+    ],
+    scene_lib_2f: [
+        {
+            // Trung tâm Thông tin Thư viện.
+            id: 'library_information_center',
+            ath: 0.0,
+            atv: 5.0,
+            title: 'Trung tâm Thông tin Thư viện',
+            text: 'Đây là khu vực bàn giao dịch được thiết kế tối giản, tinh tế với tone màu gỗ sáng và vách kính giao tiếp trong suốt. Phía trước quầy trang bị dãy ghế cao tạo chỗ ngồi thoải mái cho sinh viên trong lúc chờ làm thủ tục mượn - trả sách hoặc nhờ cán bộ thư viện hỗ trợ tra cứu thông tin. Không gian bên trong quầy được kết nối trực tiếp với kho sách chuyên ngành, đảm bảo quá trình cung cấp tài liệu diễn ra nhanh chóng và chính xác.',
+            image: '/labs/Library/assets/infoports/tttv.jpg',
+            audio: '/labs/Library/audio/infoports/03-information-center.mp3?v=1',
+            tooltip: 'Xem trung tâm thông tin'
+        }
+    ],
+    scene_lib_9f: [
+        {
+            // Kho sách mở.
+            id: 'library_open_shelves',
+            ath: 30.0,
+            atv: 5.0,
+            title: 'Kho sách mở và các dãy kệ tài liệu chuyên ngành',
+            text: 'Kho sách của thư viện được sắp xếp khoa học theo các dãy kệ cao tầng phân loại chuẩn nghiệp vụ, với lối đi giữa các kệ rộng rãi và đầy đủ ánh sáng. Mọi đầu sách từ giáo trình chuyên ngành Công nghệ thông tin, Bưu chính Viễn thông, Kinh tế cho đến sách tham khảo ngoại văn đều được dán nhãn phân loại rõ ràng trên từng ngăn kệ. Thiết kế kho mở giúp sinh viên tự do di chuyển, chủ động tìm kiếm và đọc thử tài liệu trực tiếp tại chỗ một cách dễ dàng.',
+            image: '/labs/Library/assets/infoports/sach.jpg',
+            audio: '/labs/Library/audio/infoports/04-open-shelves.mp3?v=1',
+            tooltip: 'Xem kho sách mở'
+        }
+    ],
+    scene_lib_8_1e: [
+        {
+            // Bàn học cá nhân.
+            id: 'library_individual_desks',
+            ath: -60.0,
+            atv: 5.0,
+            title: 'Khu vực bàn học cá nhân',
+            text: 'Dành riêng cho những sinh viên cần sự riêng tư và tập trung tối đa, khu vực này được trang bị các bàn học đơn có vách ngăn cao hai bên. Mỗi vị trí học đều được tích hợp sẵn ổ cắm điện, đèn học và cửa sổ lấy sáng tự nhiên có rèm cuốn điều chỉnh linh hoạt. Thiết kế này giúp loại bỏ tối đa các tác nhân gây xao nhãng xung quanh, mang đến không gian tự học chuẩn mực và hiệu quả nhất.',
+            image: '/labs/Library/assets/infoports/tuHoc.jpg',
+            audio: '/labs/Library/audio/infoports/05-individual-desks.mp3?v=1',
+            tooltip: 'Xem khu vực bàn học'
+        }
+    ],
+    scene_lib_6e: [
+        {
+            // Máy tính thực hành.
+            id: 'library_computer_area',
+            ath: 0.0,
+            atv: 5.0,
+            title: 'Khu vực máy tính thực hành',
+            text: 'Nhằm hỗ trợ tối đa việc khai thác tài nguyên số và thực hành lập trình, phòng máy tính thư viện được đầu tư trang thiết bị rất đồng bộ. Các bàn máy tính được chia theo từng dãy ngăn cách bởi vách lửng, trang bị màn hình chất lượng cao, tai nghe chuyên dụng và kết nối Internet tốc độ cao. Đây là không gian lý tưởng để sinh viên tra cứu thư viện số dlib, làm bài tập lớn, luyện tập kỹ năng CNTT hoặc tham gia các buổi học trực tuyến ngay tại thư viện.',
+            image: '/labs/Library/assets/infoports/mt.jpg',
+            audio: '/labs/Library/audio/infoports/06-computer-area.mp3?v=1',
+            tooltip: 'Xem khu vực máy tính'
+        }
+    ],
+
+    // ========================================================================
     // INFOPORT FPT TELECOM LAB
     // Ảnh: /labs/fpt/assets/ | Sound infoport: /labs/fpt/audio/
     // ========================================================================
@@ -293,7 +433,6 @@ const hotspotData = {
 
     // ========================================================================
     // INFOPORT GAME LAB
-    // Chỉnh nội dung, vị trí và audio của Game
     // ========================================================================
     // ath: trái/phải; atv: lên/xuống.
     scene_game_3: [
@@ -686,7 +825,7 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     }
     krpano.call(`addhotspot(${hotspotName});`);
     // Game và CIE dùng cùng biểu tượng infoport để giao diện đồng nhất.
-    const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt')
+    const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_')
         ? 'skin_infopoststyle'
         : 'skin_info_hotspot';
     krpano.call(`hotspot[${hotspotName}].loadstyle(${hotspotStyle});`);
@@ -1052,7 +1191,7 @@ function renderSceneHotspots(sceneName) {
     if (!krpano) return;
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
-    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt');
+    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_');
     // CIE, Game và FPT có infoport riêng dù hotspot thông tin đại trà của Campus đang tắt.
     if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isManagedLabScene) return;
 
@@ -2053,13 +2192,18 @@ const hotspotLabelMap = {
     'spot1955818535': 'Lối vào nhà ăn',
     'spot1955807182': 'Hướng ra kí túc xá',
     'spot2067815808': 'Lối vào Game lab',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
-    'spot2064644334': 'Lối vào sảnh chính Cie',
+    'spot1955798112': 'Sân bóng rổ',
+    'spot1955799014': 'Hướng ra kí túc xá',
+    'spot2076860853': 'Phòng thực hành Viettel',
+    'spot2076877253': 'Hướng sang phòng hội thảo',
+    'spot2076877604': 'Hướng sang phòng thực hành',
+    'spot2076877693': 'Phòng hội thảo Viettel',
+    'spot2076873136': 'Hướng sang phòng thực hành',
+    'spot2076872754': 'Hướng sang phòng hội thảo',
+    'spot2076874981': 'Hướng sang phòng Server',
+    'spot1955819184': 'Lối vào nhà ăn',
+    'spot1955799511': 'Hướng ra CTS lab',
+    'spot1955799238': 'Hướng ra nhà ăn',
     'spot2064644334': 'Lối vào sảnh chính Cie',
     'spot1958161240': 'Hướng ra tòa A1'
     // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
