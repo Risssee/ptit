@@ -1,8 +1,3 @@
-/**
- * PTIT VIRTUAL TOUR - Application Controller
- * Manages the web interface, sidebar navigation, and KRpano integration.
- */
-
 // Data for the popup information
 const sceneData = {
     'scene_1': { 
@@ -45,8 +40,6 @@ const sceneData = {
     },
 };
 
-// Sidebar config: define title blocks first, then put scene ids inside each block.
-// If left empty, sidebar will auto-group by sceneData[scene].title (legacy behavior).
 const sceneGroups = [
   {
     "title": "Khuôn viên",
@@ -123,10 +116,14 @@ const sidebarSceneLabels = {
     scene_gpbk2286_1773201396711: 'Sân bóng chuyền'
 };
 
-// GÓC NHÌN KHI BẤM THẺ VIETTEL / FPT TRÊN SIDEBAR
-// Hai thẻ cùng mở scene_viettel_cua1 nhưng nhìn về hai hướng khác nhau.
-// hlookat: xoay trái/phải | vlookat: lên/xuống | fov: độ rộng góc nhìn.
 const sidebarSceneLaunchOverrides = {
+    // CIE trong danh muc: hlookat 0 la mat cua chinh cua panorama Cie_CuaTruoc.
+    scene_cie_cuatruoc: {
+        targetScene: 'scene_cie_cuatruoc',
+        hlookat: 0.0,
+        vlookat: 0.0,
+        fov: 120.0
+    },
     scene_gpbk2201_1773130534438: {
         targetScene: 'scene_gpbk2201_1773130534438',
         hlookat: 180.0,
@@ -145,14 +142,15 @@ const sidebarSceneLaunchOverrides = {
         hlookat: 0.0,
         vlookat: 0.0,
         fov: 120.0
+    },
+    scene_ss_1: {
+        // Thẻ Samsung mở scene hành lang ngoài cửa; popup sẽ hiện tại scene này.
+        targetScene: 'scene_gpbk2388_1773819661170',
+        hlookat: 120.0,
+        vlookat: 5.0,
+        fov: 120.0
     }
 };
-
-const SCENE_GROUPS_STORAGE_KEY = 'ptit_scene_groups_v2';
-let customSceneGroups = null;
-let sceneGroupEditorModel = [];
-let sceneGroupEditorUI = null;
-let draggingGroupIndex = null;
 
 // Hardcoded popup info overrides in source code.
 // Put per-scene description / purpose edits here to persist across environments.
@@ -215,7 +213,6 @@ const sceneInfoOverridesInCode = {
 let krpano = null;
 let currentHotspotAudio = null;
 let currentHotspotDucksMusic = false;
-// DIEU CHINH AM LUONG BGM (0.0 - 1.0)
 // - BACKGROUND_MUSIC_VOLUME: am luong BGM khi phat binh thuong.
 // - BACKGROUND_MUSIC_DUCKED_VOLUME: am luong BGM khi narration hoac infopost dang phat.
 const BACKGROUND_MUSIC_VOLUME = 0.5;
@@ -228,14 +225,8 @@ let coordTrackerRaf = null;
 let coordTrackerEl = null;
 let hotspotBuilder = null;
 let runtimePlacedHotspots = {};
-// Disable only the information hotspots rendered inside Campus Tour.
-// Standalone lab tours keep their own information hotspots.
 const CAMPUS_INFO_HOTSPOTS_ENABLED = false;
-const ENABLE_SCENE_GROUP_EDITOR = false; // set true to show "Sắp xếp nhóm"
-const ENABLE_POPUP_INFO_EDIT = false; // set true to show "Sửa/Lưu/Hủy" popup info
-const SCENE_INFO_OVERRIDES_STORAGE_KEY = 'ptit_scene_info_overrides_v1';
 let sceneInfoOverrides = { ...sceneInfoOverridesInCode };
-let popupEditMode = false;
 let panoTitleObserver = null;
 let popupSpeakBtn = null;
 let popupSpeechUtterance = null;
@@ -244,13 +235,12 @@ let popupTtsAudio = null;
 
 const bookshelfHotspot = {
     id: 'library_books',
-    // Move exactly to the center of the aisle as requested by user
     ath: 0.0,
     atv: 0.0,
     title: 'Khu vực sách và Tạp chí chuyên ngành',
     text: 'Với hàng vạn đầu sách chuyên ngành về Công nghệ, Viễn thông, Điện tử & Kinh tế. Ngọn nguồn tri thức và cảm hứng của sinh viên PTIT.\n(Ảnh được AI Generate để tăng tính trực quan)',
     tooltip: 'Khám phá tri thức',
-    image: 'library_bookshelves_ai.png'
+    image: '/labs/Library/assets/infoports/sach.jpg'
 };
 
 const computerHotspot = {
@@ -260,15 +250,12 @@ const computerHotspot = {
     title: 'Khu vực Máy tính tự học',
     text: 'Hệ thống máy tính cấu hình cao kết nối Internet và kho tài liệu số OPAC.\nPhục vụ sinh viên nghiên cứu, làm bài tập và tra cứu độc lập.\n(Ảnh được AI Generate để tăng sự sinh động)',
     tooltip: 'Khu tự học',
-    image: 'library_computers_ai.png'
+    image: '/labs/Library/assets/infoports/mt.jpg'
 };
-
-// Centralized hotspot config (scale-friendly for many hotspots).
 const hotspotData = {
     scene_1: [],
-
     // ========================================================================
-    // INFOPORT SAMSUNG LAB - sửa vị trí, nội dung, ảnh và audio tại đây.
+    // INFOPORT SAMSUNG LAB 
     // ========================================================================
     scene_ss_1: [
         {
@@ -425,7 +412,6 @@ const hotspotData = {
 
     // ========================================================================
     // INFOPORT FPT TELECOM LAB
-    // Ảnh: /labs/fpt/assets/ | Sound infoport: /labs/fpt/audio/
     // ========================================================================
     scene_fpt2a: [
         {
@@ -453,7 +439,6 @@ const hotspotData = {
     // ========================================================================
     // INFOPORT GAME LAB
     // ========================================================================
-    // ath: trái/phải; atv: lên/xuống.
     scene_game_3: [
         {
             id: 'game_computer_practice_area',
@@ -462,7 +447,6 @@ const hotspotData = {
             title: 'Khu vực máy tính thực hành',
             text: 'Khu vực thực hành được thiết kế rộng rãi với các trang thiết bị hiện đại nhằm phục vụ các buổi học, nghiên cứu chuyên sâu về game. Dàn máy tính có cấu hình cao, giúp sinh viên sử dụng mượt mà các công cụ phát triển game nặng (như Unity, Unreal Engine) cũng như thử nghiệm các tựa game đòi hỏi đồ họa cao. Đồng thời đây cũng là nơi kiểm thử và đánh giá các dự án do chính các đội ngũ tại Game Lab phát triển.',
             image: '/labs/game/assets/computer-practice-area.jpg',
-            // Sound riêng của infoport thực hành, không dùng chung với narration scene_game_1l.
             audio: '/labs/game/audio/guided/03-game-practice-area.mp3?v=2',
             tooltip: 'Khu vực máy tính thực hành'
         }
@@ -470,7 +454,6 @@ const hotspotData = {
 
     // ========================================================================
     // INFOPORT TRUNG TÂM CIE
-    // Toàn bộ các scene có tiền tố scene_cie_ bên dưới đều thuộc CIE.
     // ========================================================================
     scene_cie_sanhchinh1h: [
         {
@@ -488,7 +471,6 @@ const hotspotData = {
     scene_cie_sanhchinh3f: [
         {
             id: 'sanhchinh3_1',
-            // Căn giữa cánh cửa, ngay dưới bảng xanh.
             ath: -8.0,
             atv: 10.0,
             title: 'Bộ phận quản lý đào tạo',
@@ -534,14 +516,13 @@ const hotspotData = {
     ],
 
     // ========================================================================
-    // KẾT THÚC KHU VỰC INFOPORT CIE - từ đây trở xuống là hotspot Campus khác.
+    // INFOPORT Thu vien
     // ========================================================================
     scene_gpbk2203_1773130660359: [bookshelfHotspot],
     scene_gpbk2204_1773130697446: [bookshelfHotspot],
     scene_gpbk2205_1773130740283: [computerHotspot],
     scene_gpbk2206_1773130766175: [computerHotspot],
     scene_gpbk2207_1773130803595: [computerHotspot],
-    // Garden scene should be EMPTY. If you see library hotspots here, it is a CACHE error.
     scene_gpbk2201_1773130534438: [],
     scene_gpbk2202_1773130555661: [
         {
@@ -551,7 +532,7 @@ const hotspotData = {
             title: 'Chào mừng đến Thư viện PTIT',
             text: 'Thư viện Học viện Công nghệ Bưu chính Viễn thông là không gian tự học tĩnh lặng, nơi sinh viên miệt mài với sách vở và laptop.\nKhông gian sang trọng, hiện đại với nguồn sáng ấm áp.',
             tooltip: 'Khu vực tự đọc',
-            image: 'library_reading_area_ai.png'
+            image: '/labs/Library/assets/infoports/tuHoc.jpg'
         },
         {
             id: 'library_lookup',
@@ -760,18 +741,6 @@ function copyTextToClipboard(text) {
     });
 }
 
-function buildPersistConfigSnippet() {
-    const normalizedGroups = normalizeSceneGroups(sceneGroupEditorModel);
-    const infoOverrides = sceneInfoOverrides && typeof sceneInfoOverrides === 'object'
-        ? sceneInfoOverrides
-        : {};
-    return [
-        `const sceneGroups = ${JSON.stringify(normalizedGroups, null, 2)};`,
-        '',
-        `const sceneInfoOverridesInCode = ${JSON.stringify(infoOverrides, null, 2)};`
-    ].join('\n');
-}
-
 function getBuilderSnippetXML() {
     if (!hotspotBuilder) return '';
     const name = hotspotBuilder.nameInput.value.trim() || 'info_new_hotspot';
@@ -843,7 +812,6 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
         activeDynamicHotspots.push(hotspotName);
     }
     krpano.call(`addhotspot(${hotspotName});`);
-    // Game và CIE dùng cùng biểu tượng infoport để giao diện đồng nhất.
     const hotspotStyle = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_') || sceneName.startsWith('scene_ss_')
         ? 'skin_infopoststyle'
         : 'skin_info_hotspot';
@@ -1087,7 +1055,7 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
         if (sceneName === 'scene_gpbk2205_1773130740283' || sceneName === 'scene_gpbk2206_1773130766175' || sceneName === 'scene_gpbk2207_1773130803595') {
             genericTitle = 'Khu vực Máy tính tự học';
             defaultGenericText = 'Hệ thống máy tính cấu hình cao kết nối Internet và kho tài liệu số OPAC.\nPhục vụ sinh viên nghiên cứu, làm bài tập và tra cứu độc lập.\n(Ảnh được AI Generate để tăng sự sinh động)';
-            dynamicImage = 'library_computers_ai.png';
+            dynamicImage = '/labs/Library/assets/infoports/mt.jpg';
         }
 
         hotspot = {
@@ -1101,18 +1069,14 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     if (!hotspot && !sceneName) return;
 
-    // Infoport có MP3 thu sẵn sẽ tự phát file đó, vì vậy ẩn nút "Đọc" ở cả CIE và Game.
+    // Infoport có MP3 thu sẵn sẽ tự phát 
     const hasRecordedHotspotAudio = Boolean(hotspot?.audio);
     if (hasRecordedHotspotAudio) stopPopupSpeech();
     if (popupSpeakBtn) popupSpeakBtn.hidden = hasRecordedHotspotAudio;
-
-    // Directly open the main modal popup as requested for better experience
     if (sceneName) {
         currentSceneName = sceneName;
-        // Check if we have specific hotspot data to show in the main popup
         const data = getMergedSceneInfo(sceneName);
-        
-        // Update popup content with hotspot specific info if needed
+    
         document.getElementById('popup-title').innerText = (hotspot && hotspot.title) ? hotspot.title : data.title;
         document.getElementById('popup-desc').innerText = (hotspot && hotspot.text) ? hotspot.text : data.description;
         
@@ -1211,9 +1175,7 @@ function renderSceneHotspots(sceneName) {
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
     const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_') || sceneName.startsWith('scene_ss_');
-    // CIE, Game và FPT có infoport riêng dù hotspot thông tin đại trà của Campus đang tắt.
     if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isManagedLabScene) return;
-
     const sceneHotspots = hotspotData[sceneName] || [];
     console.log(`[Hotspot Diagnostic] scene=${sceneName}, dataCount=${sceneHotspots.length}, isGarden=${sceneName.includes('2201')}`);
     sceneHotspots.forEach((item) => {
@@ -1252,9 +1214,6 @@ function disableNativeTitleTooltips() {
 }
 
 
-/**
- * KRpano onready callback
- */
 function onready(krpano_interface) {
     krpano = krpano_interface;
     window.ptitKrpano = krpano_interface;
@@ -1263,138 +1222,9 @@ function onready(krpano_interface) {
     disableNativeTitleTooltips();
     initSidebar();
     initEdgeSceneNavigation();
-    updateSceneGroupEditorSceneList();
     const initialScene = krpano.get('xml.scene');
     if (initialScene) {
         handleSceneChange(initialScene);
-    }
-}
-
-function normalizeSceneGroups(input) {
-    if (!Array.isArray(input)) return [];
-    return input
-        .filter(group => group && typeof group.title === 'string' && Array.isArray(group.scenes))
-        .map(group => ({
-            title: group.title.trim(),
-            scenes: Array.from(new Set(
-                group.scenes
-                    .filter(sceneName => typeof sceneName === 'string')
-                    .map(sceneName => sceneName.trim())
-                    .filter(Boolean)
-            ))
-        }))
-        .filter(group => group.title);
-}
-
-function loadStoredSceneGroups() {
-    try {
-        const raw = localStorage.getItem(SCENE_GROUPS_STORAGE_KEY);
-        if (!raw) return;
-        const parsed = JSON.parse(raw);
-        const normalized = normalizeSceneGroups(parsed);
-        let migrated = false;
-        customSceneGroups = normalized.map((group) => {
-            const isLegacyIecGroup = group.title.toUpperCase().includes('IEC')
-                || group.scenes.includes('scene_gpbk2224_1773131289876');
-            if (!isLegacyIecGroup) return group;
-            migrated = true;
-            return {
-                title: 'Trung tâm CIE',
-                scenes: ['scene_cie_cuatruoc']
-            };
-        });
-        // Bổ sung Game Lab vào cấu hình sidebar cũ đã lưu trong trình duyệt.
-        // Nếu không migrate, localStorage cũ sẽ ghi đè sceneGroups mới trong source code.
-        const alreadyHasGame = customSceneGroups.some(group => group.scenes.includes('scene_game_0l'));
-        if (!alreadyHasGame) {
-            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
-                && group.title.toLowerCase().includes('lab'));
-            if (labGroup) {
-                labGroup.scenes.push('scene_game_0l');
-            } else {
-                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: ['scene_game_0l'] });
-            }
-            migrated = true;
-        }
-        // Bổ sung Viettel Lab vào cấu hình sidebar cũ đang lưu trong trình duyệt.
-        const viettelEntryScene = 'scene_stgjnh_taafg8a2_githva';
-        const alreadyHasViettel = customSceneGroups.some(group => group.scenes.includes(viettelEntryScene));
-        if (!alreadyHasViettel) {
-            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
-                && group.title.toLowerCase().includes('lab'));
-            if (labGroup) {
-                labGroup.scenes.push(viettelEntryScene);
-            } else {
-                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: [viettelEntryScene] });
-            }
-            migrated = true;
-        }
-        // Bổ sung FPT Telecom Lab vào cấu hình sidebar cũ đang lưu trong trình duyệt.
-        const fptEntryScene = 'scene_fpt1';
-        const alreadyHasFpt = customSceneGroups.some(group => group.scenes.includes(fptEntryScene));
-        if (!alreadyHasFpt) {
-            const labGroup = customSceneGroups.find(group => group.title.toLowerCase().includes('trung tâm')
-                && group.title.toLowerCase().includes('lab'));
-            if (labGroup) {
-                labGroup.scenes.push(fptEntryScene);
-            } else {
-                customSceneGroups.push({ title: 'Trung tâm & phòng lab', scenes: [fptEntryScene] });
-            }
-            migrated = true;
-        }
-        // Giữ đúng vị trí các lab theo tòa, kể cả khi trình duyệt đang giữ cấu hình sidebar cũ.
-        const canonicalLabGroups = [
-            { sceneName: 'scene_cie_cuatruoc', groupTitle: 'Tòa A1' },
-            { sceneName: 'scene_stgjnh_taafg8a2_githva', groupTitle: 'Tòa A2' },
-            { sceneName: 'scene_fpt1', groupTitle: 'Tòa A2' },
-            { sceneName: 'scene_ss_1', groupTitle: 'Tòa A2' },
-            { sceneName: 'scene_game_0l', groupTitle: 'Tòa A3' }
-        ];
-        // Thẻ sidebar dùng scene ngoài cửa; mũi tên trong scene này dẫn vào tour Thư viện mới.
-        const oldLibraryScene = 'scene_gpbk2202_1773130555661';
-        const oldLibraryCardScene = 'scene_lib_1f';
-        customSceneGroups.forEach(group => {
-            const hadOldLibrary = group.scenes.includes(oldLibraryScene) || group.scenes.includes(oldLibraryCardScene);
-            if (!hadOldLibrary) return;
-            group.scenes = group.scenes.filter(sceneName => sceneName !== oldLibraryScene && sceneName !== oldLibraryCardScene);
-            migrated = true;
-        });
-        canonicalLabGroups.push({ sceneName: 'scene_gpbk2201_1773130534438', groupTitle: 'Tiện ích sinh viên' });
-        canonicalLabGroups.forEach(({ sceneName, groupTitle }) => {
-            const targetGroup = customSceneGroups.find(group => group.title.trim().toLowerCase() === groupTitle.toLowerCase());
-            const containingGroups = customSceneGroups.filter(group => group.scenes.includes(sceneName));
-            const alreadyCorrect = containingGroups.length === 1 && containingGroups[0] === targetGroup;
-            if (alreadyCorrect) return;
-
-            customSceneGroups.forEach(group => {
-                group.scenes = group.scenes.filter(item => item !== sceneName);
-            });
-            if (targetGroup) {
-                targetGroup.scenes.push(sceneName);
-            } else {
-                customSceneGroups.push({ title: groupTitle, scenes: [sceneName] });
-            }
-            migrated = true;
-        });
-        if (migrated) saveStoredSceneGroups(customSceneGroups);
-    } catch (error) {
-        console.log('Skip loading stored scene groups:', error);
-    }
-}
-
-function saveStoredSceneGroups(groups) {
-    try {
-        localStorage.setItem(SCENE_GROUPS_STORAGE_KEY, JSON.stringify(groups, null, 2));
-    } catch (error) {
-        console.log('Skip saving scene groups:', error);
-    }
-}
-
-function clearStoredSceneGroups() {
-    try {
-        localStorage.removeItem(SCENE_GROUPS_STORAGE_KEY);
-    } catch (error) {
-        console.log('Skip clearing scene groups:', error);
     }
 }
 
@@ -1411,7 +1241,6 @@ function getAllSceneNamesFromTour() {
 
 function getSceneMeta(sceneName) {
     const meta = sceneData[sceneName] ? { ...sceneData[sceneName] } : {};
-    // Always prefer scene thumb from tour.xml (startup-aligned thumbnail).
     if (krpano) {
         const thumb = krpano.get(`scene[${sceneName}].thumburl`);
         if (thumb) meta.thumb = thumb;
@@ -1434,9 +1263,7 @@ function getSceneMeta(sceneName) {
 
 function getSidebarGroups() {
     const groups = {};
-    const sourceGroups = (Array.isArray(customSceneGroups) && customSceneGroups.length > 0)
-        ? customSceneGroups
-        : sceneGroups;
+    const sourceGroups = sceneGroups;
 
     if (Array.isArray(sourceGroups) && sourceGroups.length > 0) {
         sourceGroups.forEach((group) => {
@@ -1467,9 +1294,7 @@ function getSidebarGroups() {
 
 function getGroupTitleForScene(sceneName) {
     if (sidebarSceneLabels[sceneName]) return sidebarSceneLabels[sceneName];
-    const sourceGroups = (Array.isArray(customSceneGroups) && customSceneGroups.length > 0)
-        ? customSceneGroups
-        : sceneGroups;
+    const sourceGroups = sceneGroups;
 
     if (Array.isArray(sourceGroups) && sourceGroups.length > 0) {
         for (const group of sourceGroups) {
@@ -1487,7 +1312,6 @@ function getGroupTitleForScene(sceneName) {
 }
 
 function isSceneInConfiguredGroups(sceneName) {
-    // The user requested ALL scenes to be able to show popups.
     return true;
 }
 
@@ -1499,372 +1323,17 @@ function setInfoButtonEnabled(enabled) {
     infoBtn.tabIndex = enabled ? 0 : -1;
 }
 
-function getCurrentSceneGroupModel() {
-    const sourceGroups = (Array.isArray(customSceneGroups) && customSceneGroups.length > 0)
-        ? customSceneGroups
-        : sceneGroups;
-
-    if (Array.isArray(sourceGroups) && sourceGroups.length > 0) {
-        return normalizeSceneGroups(sourceGroups);
-    }
-    // Default editor mode:
-    // - show existing group titles
-    // - keep scenes unassigned so users can drag manually.
-    const titleSet = new Set();
-    Object.keys(sceneData).forEach((sceneName) => {
-        const title = (sceneData[sceneName]?.title || '').trim();
-        if (title) titleSet.add(title);
-    });
-    return Array.from(titleSet).map(title => ({ title, scenes: [] }));
-}
-
-function buildSceneGroupEditorItem(sceneName) {
-    const data = getSceneMeta(sceneName);
-    const item = document.createElement('div');
-    item.draggable = true;
-    item.dataset.scene = sceneName;
-    item.style.display = 'flex';
-    item.style.alignItems = 'center';
-    item.style.gap = '8px';
-    item.style.padding = '6px';
-    item.style.marginBottom = '6px';
-    item.style.border = '1px solid #dedede';
-    item.style.borderRadius = '8px';
-    item.style.background = '#fff';
-    item.style.cursor = 'grab';
-    item.innerHTML = `<img src="${data.thumb}" alt="" style="width:46px;height:26px;object-fit:cover;border-radius:4px;"> <span style="font-size:12px;color:#222;">${sceneName}</span>`;
-    item.addEventListener('dragstart', (event) => {
-        event.dataTransfer.setData('text/plain', sceneName);
-    });
-    return item;
-}
-
-function updateSceneGroupEditorSceneList() {
-    if (!sceneGroupEditorUI || !sceneGroupEditorUI.scenePool) return;
-    const usedMap = {};
-    sceneGroupEditorModel.forEach((group) => {
-        group.scenes.forEach((sceneName) => {
-            usedMap[sceneName] = group.title;
-        });
-    });
-    const allScenes = getAllSceneNamesFromTour();
-    sceneGroupEditorUI.scenePool.innerHTML = '';
-    if (allScenes.length === 0) {
-        sceneGroupEditorUI.scenePool.innerHTML = '<div style="font-size:12px;color:#666;">Không có scene trong tour</div>';
-        return;
-    }
-    allScenes.forEach((sceneName) => {
-        const item = buildSceneGroupEditorItem(sceneName);
-        if (item) {
-            const badge = document.createElement('span');
-            badge.style.marginLeft = 'auto';
-            badge.style.fontSize = '11px';
-            badge.style.color = '#666';
-            badge.innerText = usedMap[sceneName] ? `Trong: ${usedMap[sceneName]}` : 'Chưa xếp';
-            item.appendChild(badge);
-            sceneGroupEditorUI.scenePool.appendChild(item);
-        }
-    });
-}
-
-function persistSceneGroupsFromEditor(options = {}) {
-    const { refreshSidebar = false, statusText = '' } = options;
-    const normalized = normalizeSceneGroups(sceneGroupEditorModel);
-    customSceneGroups = normalized;
-    saveStoredSceneGroups(normalized);
-    if (refreshSidebar) {
-        initSidebar();
-    }
-    if (sceneGroupEditorUI && sceneGroupEditorUI.status && statusText) {
-        sceneGroupEditorUI.status.innerText = statusText;
-    }
-}
-
-function renderSceneGroupEditorGroups() {
-    if (!sceneGroupEditorUI || !sceneGroupEditorUI.groupsWrap) return;
-    sceneGroupEditorUI.groupsWrap.innerHTML = '';
-    if (!sceneGroupEditorModel.length) {
-        sceneGroupEditorUI.groupsWrap.innerHTML = '<div style="font-size:12px;color:#666;">Chưa có nhóm nào. Hãy nhập tên nhóm và bấm Thêm.</div>';
-        return;
-    }
-    sceneGroupEditorModel.forEach((group, groupIndex) => {
-        const box = document.createElement('div');
-        box.style.border = '1px solid #d6d6d6';
-        box.style.borderRadius = '10px';
-        box.style.padding = '8px';
-        box.style.marginBottom = '8px';
-        box.style.background = '#fafafa';
-        box.dataset.groupOrderIndex = String(groupIndex);
-        box.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px;"><strong style="font-size:13px;color:#222;flex:1;">${group.title}</strong><button data-drag-group="${groupIndex}" draggable="true" title="Kéo để đổi thứ tự nhóm" style="border:1px solid #ccc;background:#fff;border-radius:6px;padding:2px 6px;cursor:grab;">↕</button><button data-rename-group="${groupIndex}" style="border:1px solid #ccc;background:#fff;border-radius:6px;padding:2px 6px;cursor:pointer;">Sửa tên</button><button data-remove-group="${groupIndex}" style="border:1px solid #ccc;background:#fff;border-radius:6px;padding:2px 6px;cursor:pointer;">Xóa</button></div>`;
-        const headerRow = box.firstElementChild;
-        if (headerRow) {
-            headerRow.draggable = true;
-            headerRow.style.cursor = 'grab';
-            headerRow.addEventListener('dragstart', (event) => {
-                draggingGroupIndex = groupIndex;
-                event.dataTransfer.setData('text/plain', `group:${groupIndex}`);
-            });
-            headerRow.addEventListener('dragend', () => {
-                draggingGroupIndex = null;
-            });
-        }
-        box.addEventListener('dragover', (event) => {
-            event.preventDefault();
-        });
-        box.addEventListener('drop', (event) => {
-            event.preventDefault();
-            const payload = event.dataTransfer.getData('text/plain');
-            const fromIndex = payload.startsWith('group:')
-                ? Number(payload.replace('group:', ''))
-                : draggingGroupIndex;
-            const toIndex = groupIndex;
-            if (!Number.isFinite(fromIndex) || !Number.isFinite(toIndex) || fromIndex === toIndex) return;
-            const [moved] = sceneGroupEditorModel.splice(fromIndex, 1);
-            sceneGroupEditorModel.splice(toIndex, 0, moved);
-            draggingGroupIndex = null;
-            renderSceneGroupEditorGroups();
-            updateSceneGroupEditorSceneList();
-            persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu thứ tự nhóm' });
-        });
-        const drop = document.createElement('div');
-        drop.dataset.groupIndex = String(groupIndex);
-        drop.style.minHeight = '36px';
-        drop.style.border = '1px dashed #bfc6d1';
-        drop.style.borderRadius = '8px';
-        drop.style.padding = '6px';
-        drop.style.background = '#f4f7fb';
-        drop.addEventListener('dragover', (event) => event.preventDefault());
-        drop.addEventListener('drop', (event) => {
-            event.preventDefault();
-            const sceneName = event.dataTransfer.getData('text/plain');
-            const validSceneNames = new Set(getAllSceneNamesFromTour());
-            if (!sceneName || !validSceneNames.has(sceneName)) return;
-            sceneGroupEditorModel.forEach(g => {
-                g.scenes = g.scenes.filter(s => s !== sceneName);
-            });
-            sceneGroupEditorModel[groupIndex].scenes.push(sceneName);
-            renderSceneGroupEditorGroups();
-            updateSceneGroupEditorSceneList();
-            persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu scene trong nhóm' });
-        });
-
-        group.scenes.forEach((sceneName, sceneIndex) => {
-            const item = buildSceneGroupEditorItem(sceneName);
-            if (item) {
-                const removeSceneBtn = document.createElement('button');
-                removeSceneBtn.type = 'button';
-                removeSceneBtn.dataset.removeScene = `${groupIndex}:${sceneIndex}`;
-                removeSceneBtn.style.marginLeft = '6px';
-                removeSceneBtn.style.border = '1px solid #ccc';
-                removeSceneBtn.style.background = '#fff';
-                removeSceneBtn.style.borderRadius = '6px';
-                removeSceneBtn.style.padding = '1px 6px';
-                removeSceneBtn.style.cursor = 'pointer';
-                removeSceneBtn.style.fontSize = '11px';
-                removeSceneBtn.innerText = 'X';
-                removeSceneBtn.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                });
-                item.appendChild(removeSceneBtn);
-                drop.appendChild(item);
-            }
-        });
-        box.appendChild(drop);
-        sceneGroupEditorUI.groupsWrap.appendChild(box);
-    });
-
-    sceneGroupEditorUI.groupsWrap.querySelectorAll('[data-drag-group]').forEach((btn) => {
-        btn.addEventListener('dragstart', (event) => {
-            const index = Number(btn.dataset.dragGroup);
-            if (!Number.isFinite(index)) return;
-            draggingGroupIndex = index;
-            event.dataTransfer.setData('text/plain', `group:${index}`);
-        });
-        btn.addEventListener('dragend', () => {
-            draggingGroupIndex = null;
-        });
-    });
-
-    sceneGroupEditorUI.groupsWrap.querySelectorAll('[data-rename-group]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const index = Number(btn.dataset.renameGroup);
-            if (!Number.isFinite(index) || !sceneGroupEditorModel[index]) return;
-            const current = sceneGroupEditorModel[index].title || '';
-            const nextTitle = window.prompt('Nhập tên nhóm mới:', current);
-            if (nextTitle === null) return;
-            const trimmed = nextTitle.trim();
-            if (!trimmed) return;
-            sceneGroupEditorModel[index].title = trimmed;
-            renderSceneGroupEditorGroups();
-            updateSceneGroupEditorSceneList();
-            persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu tên nhóm' });
-        });
-    });
-
-    sceneGroupEditorUI.groupsWrap.querySelectorAll('[data-remove-group]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const index = Number(btn.dataset.removeGroup);
-            if (!Number.isFinite(index)) return;
-            sceneGroupEditorModel.splice(index, 1);
-            renderSceneGroupEditorGroups();
-            updateSceneGroupEditorSceneList();
-            persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu sau khi xóa nhóm' });
-        });
-    });
-
-    sceneGroupEditorUI.groupsWrap.querySelectorAll('[data-remove-scene]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const [groupIndexRaw, sceneIndexRaw] = String(btn.dataset.removeScene || '').split(':');
-            const groupIndex = Number(groupIndexRaw);
-            const sceneIndex = Number(sceneIndexRaw);
-            if (!Number.isFinite(groupIndex) || !Number.isFinite(sceneIndex)) return;
-            if (!sceneGroupEditorModel[groupIndex]) return;
-            sceneGroupEditorModel[groupIndex].scenes.splice(sceneIndex, 1);
-            renderSceneGroupEditorGroups();
-            updateSceneGroupEditorSceneList();
-            persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu sau khi bỏ scene khỏi nhóm' });
-        });
-    });
-}
-
-function ensureSceneGroupEditorUI() {
-    if (!ENABLE_SCENE_GROUP_EDITOR) return;
-    if (sceneGroupEditorUI) return;
-    const sidebarHeader = document.querySelector('.sidebar-header');
-    if (!sidebarHeader) return;
-
-    const toggleBtn = document.createElement('button');
-    toggleBtn.type = 'button';
-    toggleBtn.innerText = 'Sắp xếp nhóm';
-    toggleBtn.style.marginTop = '10px';
-    toggleBtn.style.border = '1px solid #ddd';
-    toggleBtn.style.background = '#fff';
-    toggleBtn.style.borderRadius = '8px';
-    toggleBtn.style.padding = '6px 10px';
-    toggleBtn.style.cursor = 'pointer';
-    toggleBtn.style.fontSize = '12px';
-    sidebarHeader.appendChild(toggleBtn);
-
-    const panel = document.createElement('div');
-    panel.style.position = 'fixed';
-    panel.style.top = '16px';
-    panel.style.left = '16px';
-    panel.style.right = '16px';
-    panel.style.bottom = '16px';
-    panel.style.width = 'auto';
-    panel.style.maxHeight = 'none';
-    panel.style.overflow = 'auto';
-    panel.style.zIndex = '4000';
-    panel.style.background = '#ffffff';
-    panel.style.color = '#222';
-    panel.style.border = '1px solid #d9d9d9';
-    panel.style.borderRadius = '12px';
-    panel.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
-    panel.style.padding = '12px';
-    panel.style.display = 'none';
-    panel.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px;">
-            <strong style="font-size:14px;">Kéo thả scene vào nhóm</strong>
-            <button id="sg-close" style="border:1px solid #ccc;background:#fff;border-radius:6px;padding:2px 8px;cursor:pointer;">Đóng</button>
-        </div>
-        <div style="display:flex;gap:10px;height:calc(100% - 96px);min-height:420px;">
-            <div style="flex:1;min-width:0;display:flex;flex-direction:column;">
-                <div style="font-size:12px;margin-bottom:6px;color:#555;">Scene chưa xếp</div>
-                <div id="sg-scene-pool" style="flex:1;min-height:60px;border:1px solid #ddd;border-radius:8px;padding:6px;background:#f8f8f8;overflow:auto;"></div>
-            </div>
-            <div style="flex:1;min-width:0;display:flex;flex-direction:column;">
-                <div style="display:flex;gap:6px;margin-bottom:6px;">
-                    <input id="sg-new-title" placeholder="Tên nhóm mới" style="flex:1;padding:5px;border:1px solid #ccc;border-radius:6px;">
-                    <button id="sg-add-group" style="border:1px solid #ccc;background:#fff;border-radius:6px;padding:4px 8px;cursor:pointer;">Thêm</button>
-                </div>
-                <div id="sg-groups-wrap" style="flex:1;overflow:auto;"></div>
-            </div>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:10px;">
-            <button id="sg-apply" style="flex:1;border:1px solid #9bc2a4;background:#e8f7ec;border-radius:8px;padding:6px;cursor:pointer;">Áp dụng ngay</button>
-            <button id="sg-copy" style="flex:1;border:1px solid #9aaee0;background:#edf2ff;border-radius:8px;padding:6px;cursor:pointer;">Copy config</button>
-            <button id="sg-copy-all" style="flex:1;border:1px solid #9aaee0;background:#edf2ff;border-radius:8px;padding:6px;cursor:pointer;">Copy groups + info</button>
-            <button id="sg-reset" style="flex:1;border:1px solid #e0b39a;background:#fff3eb;border-radius:8px;padding:6px;cursor:pointer;">Reset</button>
-        </div>
-        <div id="sg-status" style="margin-top:8px;font-size:12px;color:#666;"></div>
-    `;
-    document.body.appendChild(panel);
-
-    sceneGroupEditorUI = {
-        panel,
-        toggleBtn,
-        closeBtn: panel.querySelector('#sg-close'),
-        scenePool: panel.querySelector('#sg-scene-pool'),
-        groupsWrap: panel.querySelector('#sg-groups-wrap'),
-        addGroupBtn: panel.querySelector('#sg-add-group'),
-        newTitleInput: panel.querySelector('#sg-new-title'),
-        applyBtn: panel.querySelector('#sg-apply'),
-        copyBtn: panel.querySelector('#sg-copy'),
-        copyAllBtn: panel.querySelector('#sg-copy-all'),
-        resetBtn: panel.querySelector('#sg-reset'),
-        status: panel.querySelector('#sg-status')
-    };
-
-    const openEditor = () => {
-        sceneGroupEditorModel = getCurrentSceneGroupModel();
-        renderSceneGroupEditorGroups();
-        updateSceneGroupEditorSceneList();
-        panel.style.display = 'block';
-        sceneGroupEditorUI.status.innerText = 'Kéo scene vào nhóm, kéo nhóm để đổi thứ tự rồi bấm Áp dụng ngay';
-    };
-
-    toggleBtn.addEventListener('click', openEditor);
-    sceneGroupEditorUI.closeBtn.addEventListener('click', () => { panel.style.display = 'none'; });
-    sceneGroupEditorUI.addGroupBtn.addEventListener('click', () => {
-        const title = sceneGroupEditorUI.newTitleInput.value.trim();
-        if (!title) return;
-        sceneGroupEditorModel.push({ title, scenes: [] });
-        sceneGroupEditorUI.newTitleInput.value = '';
-        renderSceneGroupEditorGroups();
-        updateSceneGroupEditorSceneList();
-        persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã tự lưu nhóm mới' });
-    });
-    sceneGroupEditorUI.applyBtn.addEventListener('click', () => {
-        persistSceneGroupsFromEditor({ refreshSidebar: true, statusText: 'Đã áp dụng và lưu local' });
-    });
-    sceneGroupEditorUI.copyBtn.addEventListener('click', () => {
-        copyTextToClipboard(`const sceneGroups = ${JSON.stringify(normalizeSceneGroups(sceneGroupEditorModel), null, 2)};`)
-            .then(() => { sceneGroupEditorUI.status.innerText = 'Đã copy config sceneGroups'; })
-            .catch(() => { sceneGroupEditorUI.status.innerText = 'Copy thất bại'; });
-    });
-    sceneGroupEditorUI.copyAllBtn.addEventListener('click', () => {
-        copyTextToClipboard(buildPersistConfigSnippet())
-            .then(() => { sceneGroupEditorUI.status.innerText = 'Đã copy config groups + popup info để dán vào app.js'; })
-            .catch(() => { sceneGroupEditorUI.status.innerText = 'Copy thất bại'; });
-    });
-    sceneGroupEditorUI.resetBtn.addEventListener('click', () => {
-        customSceneGroups = null;
-        clearStoredSceneGroups();
-        initSidebar();
-        sceneGroupEditorModel = getCurrentSceneGroupModel();
-        renderSceneGroupEditorGroups();
-        updateSceneGroupEditorSceneList();
-        sceneGroupEditorUI.status.innerText = 'Đã reset về mặc định';
-    });
-}
-
-/**
- * Initialize the Sidebar with accordions
- */
 function initSidebar() {
     const list = document.getElementById('scene-list');
-    list.innerHTML = ''; // Clear existing
+    list.innerHTML = ''; 
 
     const groups = getSidebarGroups();
 
-    // Render accordions
     Object.keys(groups).forEach(title => {
         const groupScenes = groups[title];
         
         const groupContainer = document.createElement('div');
         groupContainer.className = 'accordion-group';
-        // We can add an id mapping for easier access later
         groupContainer.dataset.group = title;
         
         const header = document.createElement('button');
@@ -1872,7 +1341,6 @@ function initSidebar() {
         header.type = 'button';
         header.setAttribute('aria-expanded', 'false');
         
-        // Render title only (without scene count badge)
         header.innerHTML = `
             <span>${title}<small>${groupScenes.length} địa điểm</small></span>
             <span class="accordion-icon">▼</span>
@@ -1885,8 +1353,6 @@ function initSidebar() {
              const expanded = groupContainer.classList.toggle('expanded');
              header.setAttribute('aria-expanded', String(expanded));
         };
-
-        // Grid container for thumbnails to save space
         const grid = document.createElement('div');
         grid.className = 'scene-grid';
 
@@ -1907,12 +1373,18 @@ function initSidebar() {
              `;
              
              item.onclick = () => {
-                 const launch = sidebarSceneLaunchOverrides[scene.sceneName];
-                 if (launch) {
-                     krpano.call(`loadscene(${launch.targetScene}, null, MERGE, BLEND(1.0)); lookat(${launch.hlookat},${launch.vlookat},${launch.fov});`);
-                     return;
-                 }
-                 krpano.call(`loadscene(${scene.sceneName}, null, MERGE, BLEND(1.0))`);
+                 const navigateToScene = () => {
+                     const launch = sidebarSceneLaunchOverrides[scene.sceneName];
+                     if (launch) {
+                         krpano.call(`loadscene(${launch.targetScene}, null, MERGE, BLEND(1.0)); lookat(${launch.hlookat},${launch.vlookat},${launch.fov});`);
+                         return;
+                     }
+                     krpano.call(`loadscene(${scene.sceneName}, null, MERGE, BLEND(1.0))`);
+                 };
+
+                 // Popup gioi thieu lab co the chan dieu huong va chay tiep sau khi dong.
+                 if (window.ptitOpenLabIntroForScene?.(scene.sceneName, navigateToScene)) return;
+                 navigateToScene();
              };
              
              grid.appendChild(item);
@@ -1925,28 +1397,6 @@ function initSidebar() {
     });
 }
 
-function loadSceneInfoOverrides() {
-    try {
-        sceneInfoOverrides = { ...sceneInfoOverridesInCode };
-        const raw = localStorage.getItem(SCENE_INFO_OVERRIDES_STORAGE_KEY);
-        if (!raw) return;
-        const parsed = JSON.parse(raw);
-        if (parsed && typeof parsed === 'object') {
-            sceneInfoOverrides = { ...sceneInfoOverridesInCode, ...parsed };
-        }
-    } catch (error) {
-        console.log('Skip loading scene info overrides:', error);
-    }
-}
-
-function saveSceneInfoOverrides() {
-    try {
-        localStorage.setItem(SCENE_INFO_OVERRIDES_STORAGE_KEY, JSON.stringify(sceneInfoOverrides));
-    } catch (error) {
-        console.log('Skip saving scene info overrides:', error);
-    }
-}
-
 function getMergedSceneInfo(sceneName) {
     const base = sceneData[sceneName] || {
         title: krpano.get(`scene[${sceneName}].title`) || sceneName,
@@ -1955,48 +1405,6 @@ function getMergedSceneInfo(sceneName) {
     const override = sceneInfoOverrides[sceneName] || {};
     const { title: _ignoredTitle, ...overrideWithoutTitle } = override;
     return { ...base, ...overrideWithoutTitle };
-}
-
-function setPopupEditable(editable) {
-    const popup = document.getElementById('info-popup');
-    if (popup) popup.classList.toggle('popup-editing', editable);
-    ['popup-purpose', 'popup-desc'].forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.contentEditable = editable ? 'true' : 'false';
-        el.style.outline = editable ? '1px dashed #d0d6df' : 'none';
-        el.style.padding = editable ? '2px 4px' : '';
-        el.style.borderRadius = editable ? '6px' : '';
-        el.style.cursor = editable ? 'text' : 'default';
-    });
-}
-
-function updatePopupEditButtons() {
-    const editBtn = document.getElementById('popup-edit-btn');
-    const saveBtn = document.getElementById('popup-save-btn');
-    const cancelBtn = document.getElementById('popup-cancel-btn');
-    if (!ENABLE_POPUP_INFO_EDIT) {
-        if (editBtn) editBtn.style.display = 'none';
-        if (saveBtn) saveBtn.style.display = 'none';
-        if (cancelBtn) cancelBtn.style.display = 'none';
-        setPopupEditable(false);
-        return;
-    }
-    if (editBtn) editBtn.style.display = popupEditMode ? 'none' : 'inline-block';
-    if (saveBtn) saveBtn.style.display = popupEditMode ? 'inline-block' : 'none';
-    if (cancelBtn) cancelBtn.style.display = popupEditMode ? 'inline-block' : 'none';
-}
-
-function enterPopupEditMode() {
-    popupEditMode = true;
-    setPopupEditable(true);
-    updatePopupEditButtons();
-}
-
-function exitPopupEditMode() {
-    popupEditMode = false;
-    setPopupEditable(false);
-    updatePopupEditButtons();
 }
 
 function updatePopupSpeakButtonUI() {
@@ -2037,7 +1445,6 @@ function getPopupSpeechText() {
     return chunks.join(' ');
 }
 
-// Ensure voices are loaded asynchronously
 if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = () => {
         window.speechSynthesis.getVoices();
@@ -2047,18 +1454,12 @@ if ('speechSynthesis' in window) {
 function getPreferredSpeechVoice() {
     if (!('speechSynthesis' in window)) return null;
     const voices = window.speechSynthesis.getVoices() || [];
-    
-    // Some browsers use 'vi-VN', others might just be 'vi'
     const viVoice = voices.find((voice) => String(voice.lang || '').toLowerCase() === 'vi-vn')
         || voices.find((voice) => String(voice.lang || '').toLowerCase().startsWith('vi'));
         
     if (viVoice) return viVoice;
-
-    // Use Google Vietnamese voice if available specifically on Chrome
     const googleVi = voices.find(v => v.name.includes('Google') && v.lang.includes('vi'));
     if (googleVi) return googleVi;
-
-    // Temporary fallback when Vietnamese voice isn't installed yet.
     return voices.find((voice) => String(voice.lang || '').toLowerCase() === 'en-us')
         || voices.find((voice) => String(voice.lang || '').toLowerCase().startsWith('en'))
         || voices[0] || null;
@@ -2175,6 +1576,7 @@ let persistentHotspotLabels = [];
 let persistentHotspotLabelTimer = 0;
 let persistentHotspotLabelsRenderDelay = 0;
 
+// Them chu phia tren hotspot
 const hotspotLabelMap = {
     'spot1955789621': 'Lối vào cổng chính',
     'spot1955790331': 'Lối ra cổng chính',
@@ -2226,7 +1628,6 @@ const hotspotLabelMap = {
     'spot1955799238': 'Hướng ra nhà ăn',
     'spot_samsung_entrance': 'Lối vào Samsung lab',
     'spot1958161240': 'Hướng ra tòa A1'
-    // thêm dòng mới cho mỗi hotspot bạn muốn đặt tên
 };
 
 function getNavigationHotspotLabel(hotspotName) {
@@ -2260,6 +1661,20 @@ function positionPersistentHotspotLabels() {
             return;
         }
 
+        // Chi hien chu khi CHINH ANH HOTSPOT da tai va dang hien.
+        // Nho vay chu va bieu tuong xuat hien cung luc, khong con chu "chay truoc".
+        const hotspotLoaded = krpano.get(`hotspot[${item.hotspotName}].loaded`);
+        const hotspotVisible = krpano.get(`hotspot[${item.hotspotName}].visible`);
+        const hotspotAlpha = Number(krpano.get(`hotspot[${item.hotspotName}].alpha`));
+        const hotspotReady = (hotspotLoaded === true || hotspotLoaded === 'true' || hotspotLoaded === 1)
+            && hotspotVisible !== false
+            && hotspotVisible !== 'false'
+            && (!Number.isFinite(hotspotAlpha) || hotspotAlpha > 0.01);
+        if (!hotspotReady) {
+            item.element.hidden = true;
+            return;
+        }
+
         const ath = Number(krpano.get(`hotspot[${item.hotspotName}].ath`));
         const atv = Number(krpano.get(`hotspot[${item.hotspotName}].atv`));
         if (!Number.isFinite(ath) || !Number.isFinite(atv)) {
@@ -2271,8 +1686,6 @@ function positionPersistentHotspotLabels() {
         krpano.call(`spheretoscreen(${ath},${atv},ptit_hs_label_x_${index},ptit_hs_label_y_${index});`);
         const x = Number(krpano.get(`ptit_hs_label_x_${index}`));
         const y = Number(krpano.get(`ptit_hs_label_y_${index}`));
-
-        // Điểm phụ lệch sang phải 5 độ theo ath, cùng atv, để tính hướng "ngang" của mặt phẳng tại đó
         const athRight = ath + 5;
         krpano.call(`spheretoscreen(${athRight},${atv},ptit_hs_label_rx_${index},ptit_hs_label_ry_${index});`);
         const rx = Number(krpano.get(`ptit_hs_label_rx_${index}`));
@@ -2281,6 +1694,11 @@ function positionPersistentHotspotLabels() {
         const visible = Number.isFinite(x) && Number.isFinite(y) && x > -100 && y > -60 && x < width + 100 && y < height + 80;
         item.element.hidden = !visible;
         if (!visible) return;
+
+        // Dong bo ca do mo khi hotspot dang pulse/fade.
+        item.element.style.opacity = Number.isFinite(hotspotAlpha)
+            ? String(Math.max(0, Math.min(1, hotspotAlpha)))
+            : '1';
 
         let angleDeg = 0;
         if (Number.isFinite(rx) && Number.isFinite(ry)) {
@@ -2318,7 +1736,6 @@ function renderPersistentHotspotLabels() {
     for (let i = 0; i < total; i += 1) {
         const hotspotName = krpano.get(`hotspot[${i}].name`) || '';
         if (!hotspotName) continue;
-        // Dùng lại tên để tra cứu style/linkedscene, tránh phụ thuộc vào index i
         const style = krpano.get(`hotspot[${hotspotName}].style`) || '';
         const linkedScene = krpano.get(`hotspot[${hotspotName}].linkedscene`) || '';
         const externalLabel = krpano.get(`hotspot[${hotspotName}].ptit_label`) || '';
@@ -2343,8 +1760,6 @@ function renderPersistentHotspotLabels() {
             });
         }
         overlay.appendChild(element);
-
-        // Đo số dòng thực tế để quyết định offset lên trên hotspot
         const cs = getComputedStyle(element);
         const lineHeightPx = parseFloat(cs.lineHeight) || 16;
         const contentHeight = element.offsetHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
@@ -2354,8 +1769,6 @@ function renderPersistentHotspotLabels() {
         persistentHotspotLabels.push({ hotspotName, element, labelOffsetY });
     }
     positionPersistentHotspotLabels();
-
-    // Chỉ có duy nhất MỘT vòng lặp rAF đang chạy tại mọi thời điểm.
     window.cancelAnimationFrame(persistentHotspotLabelTimer);
     persistentHotspotLabelTimer = window.requestAnimationFrame(hotspotLabelLoop);
 }
@@ -2364,7 +1777,7 @@ function updateEdgeSceneNavigation(sceneName) {
     if (!krpano) return;
     const nav = document.getElementById('edge-scene-navigation');
     if (!nav) return;
-    nav.hidden = true;   // Hidden edge scene navigation
+    nav.hidden = true;   
     return;  
     const isCieScene = sceneName.startsWith('scene_cie_');
     const names = getAllSceneNamesFromTour().filter((name) =>
@@ -2419,13 +1832,12 @@ function initEdgeSceneNavigation() {
     main.appendChild(nav);
 }
 
-
-/**
- * Callback from KRpano on scene change
- */
 function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
+    // DARK CAMPUS UI: phat su kien de lop giao dien doc dung scene dang chay.
+    // Khong thay doi logic tour; xoa dong nay neu xoa campus-dark-ui.js.
+    window.dispatchEvent(new CustomEvent('ptit:scenechange', { detail: { sceneName } }));
     const oldOverlay = document.getElementById('persistent-hotspot-labels');
     if (oldOverlay) oldOverlay.replaceChildren();
     persistentHotspotLabels = [];
@@ -2437,11 +1849,8 @@ function handleSceneChange(sceneName) {
     enforceStableNavigationHotspotTextures();
     window.clearTimeout(persistentHotspotLabelsRenderDelay);
     persistentHotspotLabelsRenderDelay = window.setTimeout(renderPersistentHotspotLabels, 120);
-
-    // Update Sidebar highlighting
     document.querySelectorAll('.scene-item').forEach(el => el.classList.remove('active'));
     
-    // Mark active scene
     const activeItem = document.getElementById(`nav-${sceneName}`);
     if (activeItem) {
         activeItem.classList.add('active');
@@ -2460,7 +1869,6 @@ function handleSceneChange(sceneName) {
         groupContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Update data for popup
     const data = getMergedSceneInfo(sceneName);
 
     const popup = document.getElementById('info-popup');
@@ -2477,15 +1885,11 @@ function handleSceneChange(sceneName) {
     }
     if (popupSpeechActive) stopPopupSpeech();
 
-    // Gate "info" popup availability by configured scene groups.
     const infoAllowed = isSceneInConfiguredGroups(sceneName);
     setInfoButtonEnabled(infoAllowed);
     if (!infoAllowed) closeInfo();
 }
 
-/**
- * Modal Management
- */
 function openInfo() {
     if (!isSceneInConfiguredGroups(currentSceneName)) return;
     document.getElementById('info-popup').classList.add('active');
@@ -2498,7 +1902,6 @@ function closeInfo() {
     stopHotspotAudio();
     stopPopupSpeech();
     if (popupSpeakBtn) popupSpeakBtn.hidden = false;
-    exitPopupEditMode();
 }
 
 function toggleInfo() {
@@ -2515,7 +1918,7 @@ function toggleInfo() {
  * UI Controls
  */
 let audioStarted = false;
-let audioMuted = true; // Started muted by default before click
+let audioMuted = true; 
 window.ptitAudioAllowed = () => audioStarted && !audioMuted;
 const SvgSoundOn = '<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
 const SvgSoundOff = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>';
@@ -2526,8 +1929,6 @@ function toggleSound() {
         krpano.call(`playsound(bgm, '/assets/audio/background.mp3', true, ${BACKGROUND_MUSIC_VOLUME});`);
         audioStarted = true;
         audioMuted = false;
-        // The first user interaction can be an infopost click. In that case the
-        // duck request happened before bgm existed, so apply it again now.
         setInfopostMusicDucked(currentHotspotDucksMusic);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
@@ -2546,7 +1947,6 @@ function toggleSound() {
         }
     } else {
         krpano.call("resumesound(bgm);");
-        // Keep the background quiet when unmuting while an infopost is speaking.
         setInfopostMusicDucked(currentHotspotDucksMusic);
         if(btn) {
             btn.innerHTML = SvgSoundOn;
@@ -2566,12 +1966,9 @@ window.addEventListener('ptit:narrationend', () => {
         krpano.call(`tween(sound[bgm].volume, ${BACKGROUND_MUSIC_VOLUME}, 0.25);`);
     }
 });
-// Add global interaction to start sound
 document.addEventListener('click', (event) => {
     if (event.target.closest?.('#sound-btn')) return;
     if (!audioStarted && krpano) {
-        // Only auto-start if it's the first real interaction and audio isn't started yet
-        // We can choose to stay muted or just start. Let's start for a better UX if the user clicked something.
         toggleSound(); 
     }
 }, { once: true });
@@ -2585,21 +1982,13 @@ function toggleSidebar() {
     container.classList.toggle('sidebar-collapsed');
 }
 
-
-// Event Listeners initialization
 document.addEventListener('DOMContentLoaded', () => {
     disableNativeTitleTooltips();
-    loadSceneInfoOverrides();
-    loadStoredSceneGroups();
-    ensureSceneGroupEditorUI();
-
-    // Info Modal
     const closeBtn = document.querySelector('.close-btn');
     const overlay = document.getElementById('popup-overlay');
     if (closeBtn) closeBtn.addEventListener('click', closeInfo);
     if (overlay) overlay.addEventListener('click', closeInfo);
 
-    // Bottom Controls
     const soundBtn = document.getElementById('sound-btn');
     const fsBtn = document.getElementById('fs-btn');
     const infoBtn = document.getElementById('info-btn');
@@ -2616,12 +2005,8 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleInfo();
         });
     }
-
-    // Sidebar Toggle
     const sidebarToggle = document.getElementById('sidebar-toggle');
     if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-
-    // Hotspot Info Panel
     const hotspotCloseBtn = document.getElementById('hotspot-info-close');
     if (hotspotCloseBtn) hotspotCloseBtn.addEventListener('click', closeHotspotInfo);
     const hotspotMoreBtn = document.getElementById('hotspot-info-more');
@@ -2637,10 +2022,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const popupEditBtn = document.getElementById('popup-edit-btn');
-    const popupSaveBtn = document.getElementById('popup-save-btn');
-    const popupCancelBtn = document.getElementById('popup-cancel-btn');
-    const popupActions = document.querySelector('.popup-edit-actions');
+    const popupActions = document.querySelector('.popup-actions');
 
     if (popupActions && !document.getElementById('popup-speak-btn')) {
         const speakBtn = document.createElement('button');
@@ -2654,32 +2036,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePopupSpeakButtonUI();
     }
 
-    if (ENABLE_POPUP_INFO_EDIT && popupEditBtn) popupEditBtn.addEventListener('click', enterPopupEditMode);
-    if (ENABLE_POPUP_INFO_EDIT && popupCancelBtn) {
-        popupCancelBtn.addEventListener('click', () => {
-            if (currentSceneName) handleSceneChange(currentSceneName);
-            exitPopupEditMode();
-        });
-    }
-    if (ENABLE_POPUP_INFO_EDIT && popupSaveBtn) {
-        popupSaveBtn.addEventListener('click', () => {
-            if (!currentSceneName) return;
-            sceneInfoOverrides[currentSceneName] = {
-                purpose: document.getElementById('popup-purpose')?.innerText?.trim() || '',
-                description: document.getElementById('popup-desc')?.innerText?.trim() || ''
-            };
-            saveSceneInfoOverrides();
-            handleSceneChange(currentSceneName);
-            exitPopupEditMode();
-        });
-    }
-    updatePopupEditButtons();
-
-    // Initialize gating state early.
     setInfoButtonEnabled(isSceneInConfiguredGroups(currentSceneName));
 });
 
-// Exposed for KRpano
 window.handleSceneChange = handleSceneChange;
 window.onready = onready;
 window.openHotspotInfo = openHotspotInfo;

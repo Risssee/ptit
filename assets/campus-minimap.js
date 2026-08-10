@@ -79,21 +79,34 @@
   minimap.setAttribute("aria-label", "Bản đồ thu nhỏ khuôn viên PTIT");
   minimap.innerHTML = `
     <div class="campus-minimap__head">
-      <strong>Bản đồ PTIT</strong>
+      <strong>Bản đồ</strong>
       <span class="campus-minimap__scene">Đang xác định vị trí…</span>
       <button class="campus-minimap__toggle" type="button" aria-label="Thu gọn bản đồ">−</button>
     </div>
     <div class="campus-minimap__map">
       <span class="campus-minimap__position" title="Vị trí hiện tại"></span>
-    </div>`;
+    </div>
+    <span class="campus-minimap__resize" aria-hidden="true" title="Kéo để đổi kích thước bản đồ"></span>`;
   document.body.appendChild(minimap);
 
   const dot = minimap.querySelector(".campus-minimap__position");
   const sceneLabel = minimap.querySelector(".campus-minimap__scene");
   const toggle = minimap.querySelector(".campus-minimap__toggle");
+  const resizeHandle = minimap.querySelector(".campus-minimap__resize");
+  // ICON BAN DO: dang mo thi hien "thu nho", dang dong thi hien "phong to".
+  const collapseIcon = `
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M2.5 5.5h3v-3M13.5 5.5h-3v-3M2.5 10.5h3v3M13.5 10.5h-3v3" />
+    </svg>`;
+  const expandIcon = `
+    <svg viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M6.5 2.5h-4v4M9.5 2.5h4v4M6.5 13.5h-4v-4M9.5 13.5h4v-4" />
+    </svg>`;
+  toggle.innerHTML = collapseIcon;
   let currentScene = "";
   let currentPosition = anchors.gate;
   let movementToken = 0;
+  let minimapScale = 1;
 
   function moveDot(target) {
     if (target === currentPosition) return;
@@ -111,8 +124,46 @@
 
   toggle.addEventListener("click", () => {
     const collapsed = minimap.classList.toggle("is-collapsed");
-    toggle.textContent = collapsed ? "+" : "−";
+    toggle.innerHTML = collapsed ? expandIcon : collapseIcon;
     toggle.setAttribute("aria-label", collapsed ? "Mở bản đồ" : "Thu gọn bản đồ");
+  });
+
+  // KEO GOC TREN BEN TRAI: SCALE TOAN BO KHUNG, CHIEU DAI/CHIỀU RONG LUON CUNG TY LE.
+  resizeHandle.addEventListener("pointerdown", (event) => {
+    if (minimap.classList.contains("is-collapsed")) return;
+    event.preventDefault();
+    resizeHandle.setPointerCapture(event.pointerId);
+
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const baseWidth = minimap.offsetWidth;
+    const baseHeight = minimap.offsetHeight;
+    const startVisualWidth = baseWidth * minimapScale;
+    const startVisualHeight = baseHeight * minimapScale;
+
+    const onMove = (moveEvent) => {
+      const deltaX = startX - moveEvent.clientX;
+      const deltaY = startY - moveEvent.clientY;
+      const scaleFromWidth = (startVisualWidth + deltaX) / baseWidth;
+      const scaleFromHeight = (startVisualHeight + deltaY) / baseHeight;
+      const requestedScale = (scaleFromWidth + scaleFromHeight) / 2;
+      const viewportScale = Math.min(
+        (window.innerWidth - 36) / baseWidth,
+        (window.innerHeight - 36) / baseHeight
+      );
+      minimapScale = Math.min(Math.max(.72, viewportScale), Math.max(.72, requestedScale));
+      minimap.style.setProperty("--minimap-scale", minimapScale.toFixed(3));
+    };
+
+    const onEnd = () => {
+      resizeHandle.removeEventListener("pointermove", onMove);
+      resizeHandle.removeEventListener("pointerup", onEnd);
+      resizeHandle.removeEventListener("pointercancel", onEnd);
+    };
+
+    resizeHandle.addEventListener("pointermove", onMove);
+    resizeHandle.addEventListener("pointerup", onEnd);
+    resizeHandle.addEventListener("pointercancel", onEnd);
   });
 
   window.setInterval(() => {

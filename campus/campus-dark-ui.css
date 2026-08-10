@@ -1,0 +1,284 @@
+body.campus-ui-dark {
+    --dark-panel: #1c1b1b;
+    --dark-panel-soft: rgba(28, 27, 27, .96);
+    --dark-border: rgba(255, 255, 255, .11);
+    --dark-text: #fff;
+    --dark-muted: rgba(255, 255, 255, .58);
+    --dark-red: #b80e23;
+    --dark-green: #00ff11;
+
+    /* ================================================================
+       CHINH CO CHU GIAO DIEN 
+       ================================================================ */
+    --dark-location-title-size: 17px;
+    --dark-location-area-size: 12px;
+    --dark-menu-title-size: 15px;
+    --dark-group-title-size: 13px;
+    --dark-group-count-size: 10.5px;
+    --dark-place-size: 12px;
+    --dark-badge-size: 10px;
+    background: #000;
+    color: var(--dark-text);
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+body.campus-ui-dark .app-container,
+body.campus-ui-dark .app-container.sidebar-collapsed {
+    display: block;
+    width: 100vw;
+    height: 100dvh;
+}
+
+body.campus-ui-dark .app-main {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body.campus-ui-dark .app-header {
+    position: fixed;
+    z-index: 100001;
+    inset: 0;
+    display: block;
+    height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+body.campus-ui-dark .brand,
+body.campus-ui-dark .header-right-logo,
+body.campus-ui-dark #fs-btn { display: none !important; }
+
+body.campus-ui-dark #sidebar-toggle,
+body.campus-ui-dark .header-btn {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    background: var(--dark-panel-soft);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    pointer-events: auto;
+    backdrop-filter: blur(14px);
+}
+
+body.campus-ui-dark #sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+body.campus-ui-dark #sidebar-toggle svg,
+body.campus-ui-dark .header-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+body.campus-ui-dark #sidebar-toggle svg { fill: #fff; stroke: none; }
+body.campus-ui-dark .header-actions {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    pointer-events: none;
+}
+
+body.campus-ui-dark .header-btn:hover,
+body.campus-ui-dark #sidebar-toggle:hover { background: #2a2929; }
+
+/* Bang ten dia diem o giua phia tren. */
+.dark-campus-location { display: none; }
+body.campus-ui-dark .dark-campus-location {
+    position: fixed;
+    z-index: 100000;
+    top: 20px;
+    left: 50%;
+    display: grid;
+    width: min(310px, calc(100vw - 250px));
+    min-height: 62px;
+    place-content: center;
+    padding: 9px 24px;
+    border: 1px solid var(--dark-border);
+    border-radius: 16px;
+    background: var(--dark-panel-soft);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
+    color: #fff;
+    text-align: center;
+    pointer-events: none;
+    transform: translateX(-50%);
+    backdrop-filter: blur(14px);
+}
+
+body.campus-ui-dark .dark-campus-location strong { font-size: var(--dark-location-title-size); font-weight: 700; }
+body.campus-ui-dark .dark-campus-location span { margin-top: 5px; color: var(--dark-muted); font-size: var(--dark-location-area-size); }
+body.campus-ui-dark .dark-campus-location i {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: var(--dark-green);
+    box-shadow: 0 0 8px rgba(0, 255, 17, .7);
+}
+
+/* Danh muc den: van dung chinh DOM va su kien cua sidebar hien tai. */
+body.campus-ui-dark .app-sidebar {
+    position: fixed;
+    z-index: 100000;
+    top: 76px;
+    left: 20px;
+    display: flex;
+    width: 310px;
+    max-width: calc(100vw - 40px);
+    height: min(630px, calc(100dvh - 96px));
+    border: 1px solid var(--dark-border);
+    border-radius: 17px;
+    background: var(--dark-panel-soft);
+    box-shadow: 0 20px 46px rgba(0, 0, 0, .42);
+    color: #fff;
+    opacity: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transform: translateY(-9px);
+    transition: opacity .18s ease, visibility .18s ease, transform .18s ease;
+    backdrop-filter: blur(18px);
+}
+
+body.campus-ui-dark.dark-menu-open .app-sidebar {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+body.campus-ui-dark .sidebar-header {
+    min-width: 0;
+    align-items: flex-start;
+    padding: 18px 16px 11px;
+    border: 0;
+    text-align: left;
+}
+
+body.campus-ui-dark .sidebar-header h2 {
+    color: #fff;
+    font-family: inherit;
+    font-size: var(--dark-menu-title-size);
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+body.campus-ui-dark .scene-list {
+    min-width: 0;
+    padding: 4px 10px 14px;
+}
+
+body.campus-ui-dark .accordion-group {
+    margin: 0 0 6px;
+    overflow: hidden;
+    border: 1px solid var(--dark-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, .025);
+}
+
+body.campus-ui-dark .accordion-header {
+    min-height: 54px;
+    padding: 10px 12px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: var(--dark-group-title-size);
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+body.campus-ui-dark .accordion-header[data-dark-mark]::before {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    flex: 0 0 28px;
+    border: 1px solid rgba(188, 61, 84, .2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .045);
+    color: #bc3d54;
+    font-size: var(--dark-badge-size);
+    font-weight: 650;
+    content: attr(data-dark-mark);
+}
+body.campus-ui-dark .accordion-header > span:first-child { flex: 1; }
+
+body.campus-ui-dark .accordion-header:hover { background: rgba(255, 255, 255, .06); }
+body.campus-ui-dark .accordion-header small { color: var(--dark-muted); font-size: var(--dark-group-count-size); }
+body.campus-ui-dark .accordion-icon { color: rgba(255, 255, 255, .72); }
+body.campus-ui-dark .accordion-body { padding: 0 7px; }
+body.campus-ui-dark .accordion-group.expanded .accordion-body { padding: 0 7px 7px; }
+body.campus-ui-dark .scene-grid { grid-template-columns: 1fr; gap: 4px; }
+
+body.campus-ui-dark .scene-grid .scene-item {
+    min-height: 38px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+}
+
+body.campus-ui-dark .scene-grid .scene-item:hover { background: rgba(255, 255, 255, .07); }
+body.campus-ui-dark .scene-grid .scene-item.active { background: var(--dark-red); }
+body.campus-ui-dark .scene-grid .thumb-wrapper {
+    aspect-ratio: auto;
+    min-height: 38px;
+    border: 0;
+    background: transparent;
+}
+body.campus-ui-dark .scene-grid .thumb-wrapper img { display: none; }
+body.campus-ui-dark .scene-label {
+    position: static;
+    display: flex;
+    min-height: 38px;
+    align-items: center;
+    padding: 8px 11px;
+    background: transparent;
+    color: #fff;
+    font-size: var(--dark-place-size);
+    font-weight: 550;
+    text-align: left;
+}
+
+/* Ban do chi doi vo ngoai sang den, noi dung va logic vi tri giu nguyen. */
+body.campus-ui-dark .campus-minimap {
+    border-color: var(--dark-border);
+    background: var(--dark-panel-soft);
+    color: #fff;
+    font-family: inherit;
+}
+body.campus-ui-dark .campus-minimap__head {
+    border-color: var(--dark-border);
+    background: var(--dark-panel-soft);
+}
+body.campus-ui-dark .campus-minimap__scene { color: var(--dark-muted); }
+body.campus-ui-dark .campus-minimap__toggle { background: rgba(255,255,255,.08); color: #fff; }
+
+@media (max-width: 680px) {
+    body.campus-ui-dark #sidebar-toggle { top: 10px; left: 10px; }
+    body.campus-ui-dark .header-actions { top: 10px; right: 10px; }
+    body.campus-ui-dark #sidebar-toggle,
+    body.campus-ui-dark .header-btn { width: 40px; height: 40px; border-radius: 11px; }
+    body.campus-ui-dark .dark-campus-location { top: 10px; width: calc(100vw - 124px); min-height: 54px; padding: 7px 10px; }
+    body.campus-ui-dark .dark-campus-location strong { font-size: 14px; }
+    body.campus-ui-dark .dark-campus-location span { font-size: 10px; }
+    body.campus-ui-dark .app-sidebar { top: 60px; left: 10px; width: calc(100vw - 20px); max-width: 310px; height: calc(100dvh - 70px); }
+    body.campus-ui-dark .campus-minimap { right: 10px; bottom: 10px; }
+}

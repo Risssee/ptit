@@ -606,13 +606,13 @@ body.mini-game-active .app-sidebar {
     flex-direction: column;
 }
 
-.popup-edit-actions {
+.popup-actions {
     display: flex;
     gap: 8px;
     margin-bottom: 20px;
 }
 
-.popup-edit-actions button {
+.popup-actions button {
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 6px;
     background: rgba(255,255,255,0.05);
@@ -624,7 +624,7 @@ body.mini-game-active .app-sidebar {
     transition: all 0.2s;
 }
 
-.popup-edit-actions button:hover {
+.popup-actions button:hover {
     background: rgba(255,255,255,0.15);
 }
 
@@ -693,14 +693,9 @@ body.mini-game-active .app-sidebar {
     cursor: default;
 }
 
-#info-popup:not(.popup-editing) #popup-title,
-#info-popup:not(.popup-editing) #popup-desc {
+#info-popup #popup-title,
+#info-popup #popup-desc {
     user-select: none;
-}
-
-#info-popup.popup-editing #popup-desc {
-    cursor: text;
-    user-select: text;
 }
 
 .lessons-list {

@@ -6,3 +6,72 @@
 .integrated-cie-info__copy h2 { margin:0 0 9px; font-size:22px; }
 .integrated-cie-info__copy p { margin:0; color:#69717c; font-size:13px; line-height:1.6; }
 .integrated-cie-info__close { position:absolute; top:12px; right:12px; width:36px; height:36px; border:0; border-radius:50%; background:rgba(20,23,25,.88); color:#fff; font-size:22px; cursor:pointer; }
+
+/* Popup giới thiệu dùng chung một kích thước cho tất cả lab. */
+.integrated-lab-intro {
+  position: fixed;
+  z-index: 100001;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5,6,8,.18);
+  backdrop-filter: blur(2px);
+}
+.integrated-lab-intro.is-open { display: grid; }
+.integrated-lab-intro__card {
+  width: min(760px, calc(100vw - 40px));
+  height: 310px;
+  display: grid;
+  grid-template-columns: 54% 46%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: #1c1b1b;
+  color: #fff;
+  box-shadow: 0 26px 80px rgba(0,0,0,.46);
+  font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
+}
+.integrated-lab-intro__image {
+  width: calc(100% - 22px);
+  height: calc(100% - 22px);
+  min-height: 0;
+  display: block;
+  margin: 11px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.integrated-lab-intro__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 44px 34px 34px 18px;
+  min-height: 0;
+}
+.integrated-lab-intro__copy h2 { margin: 0 0 13px; font-size: 18px; font-weight: 700; }
+.integrated-lab-intro__copy p { margin: 0; max-height: 190px; overflow-y: auto; color: rgba(255,255,255,.74); font-size: 12.5px; line-height: 1.58; }
+.integrated-lab-intro__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+.integrated-lab-intro__close:hover { background: rgba(255,255,255,.11); }
+
+@media (max-width: 640px) {
+  .integrated-lab-intro__card { height: auto; grid-template-columns: 1fr; }
+  .integrated-lab-intro__image { height: 190px; min-height: 190px; }
+  .integrated-lab-intro__copy { padding: 28px 24px 26px; }
+}
