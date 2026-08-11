@@ -625,6 +625,17 @@ const hotspotData = {
     ]
 };
 
+// SAMSUNG: cung mot infoport o scene gan hon, dat tren man hinh may tinh phia truoc.
+// Chi can sua noi dung/anh/audio tai scene_ss_1; scene_ss_2 tu dong dung chung du lieu.
+hotspotData.scene_ss_2 = [
+    {
+        ...hotspotData.scene_ss_1[0],
+        ath: 39.0,
+        atv: 8.0,
+        scale: 0.42
+    }
+];
+
 function stopHotspotAudio() {
     if (currentHotspotAudio) {
         currentHotspotAudio.pause();
@@ -801,6 +812,7 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     const safeTooltip = (item.tooltip || '').replace(/'/g, "\\'");
     const resolvedAth = Number.isFinite(item.ath) ? item.ath : (Number(krpano.get('view.hlookat')) || 0);
     const resolvedAtv = Number.isFinite(item.atv) ? item.atv : (Number(krpano.get('view.vlookat')) || 0);
+    const hotspotScale = Number.isFinite(item.scale) ? item.scale : 0.3;
     try {
         if (krpano.get(`hotspot[${hotspotName}]`)) {
             krpano.call(`removehotspot(${hotspotName});`);
@@ -818,15 +830,15 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     krpano.call(`hotspot[${hotspotName}].loadstyle(${hotspotStyle});`);
     krpano.call(`set(hotspot[${hotspotName}].visible, true);`);
     krpano.call(`set(hotspot[${hotspotName}].enabled, true);`);
-    krpano.call(`set(hotspot[${hotspotName}].scale, 0.3);`);
+    krpano.call(`set(hotspot[${hotspotName}].scale, ${hotspotScale});`);
     krpano.call(`set(hotspot[${hotspotName}].edge, center);`);
     krpano.call(`set(hotspot[${hotspotName}].distorted, false);`);
     krpano.call(`set(hotspot[${hotspotName}].zorder, 999);`);
     krpano.call(`set(hotspot[${hotspotName}].handcursor, true);`);
-    krpano.call(`set(hotspot[${hotspotName}].onover, tween(scale,0.3));`);
-    krpano.call(`set(hotspot[${hotspotName}].onout, tween(scale,0.3));`);
-    krpano.call(`set(hotspot[${hotspotName}].ondown, tween(scale,0.3));`);
-    krpano.call(`set(hotspot[${hotspotName}].onup, tween(scale,0.3));`);
+    krpano.call(`set(hotspot[${hotspotName}].onover, tween(scale,${hotspotScale}));`);
+    krpano.call(`set(hotspot[${hotspotName}].onout, tween(scale,${hotspotScale}));`);
+    krpano.call(`set(hotspot[${hotspotName}].ondown, tween(scale,${hotspotScale}));`);
+    krpano.call(`set(hotspot[${hotspotName}].onup, tween(scale,${hotspotScale}));`);
     krpano.call(`set(hotspot[${hotspotName}].ath, ${resolvedAth});`);
     krpano.call(`set(hotspot[${hotspotName}].atv, ${resolvedAtv});`);
     if (safeTooltip) {

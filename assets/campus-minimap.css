@@ -30,7 +30,9 @@
 .campus-minimap__head strong { font-size: 12px; }
 /* Khong hien scene/so thu tu ben canh chu "Ban do PTIT". */
 .campus-minimap__scene { display: none; }
-.campus-minimap__toggle { width: 30px; height: 30px; display: grid; place-items: center; margin-left: auto; padding: 0; border: 0; border-radius: 8px; background: #f0f2f4; color: #4b535d; cursor: pointer; }
+.campus-minimap__toggle { width: 30px; height: 30px; display: grid; place-items: center; margin-left: auto; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #4b535d; cursor: pointer; transition: background-color 160ms ease; }
+.campus-minimap__toggle:hover,
+.campus-minimap__toggle:focus-visible { background: #f0f2f4; }
 .campus-minimap__toggle svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Vung keo vo hinh o goc tren ben trai; scale dong deu toan bo ban do. */

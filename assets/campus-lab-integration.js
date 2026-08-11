@@ -49,6 +49,7 @@
     {
       id: "samsung",
       scenes: ["scene_gpbk2388_1773819661170"],
+      internalScenePrefixes: ["scene_ss_"],
       image: "/labs/samsung/assets/ss.png",
       audio: "/labs/samsung/audio/guided/PopUp.mp3",
       title: "SAMSUNG LAB",
@@ -67,6 +68,7 @@
   let activeLabId = null;
   let pendingLabIntroId = null;
   let visibleLabIntro = null;
+  let lastReadyScene = "";
   let introAudio = null;
   let introAudioIsDucking = false;
 
@@ -87,6 +89,13 @@
     const name = String(sceneName || "");
     return LAB_INTROS.find((intro) =>
       intro.scenes?.includes(name) || intro.scenePrefixes?.some((prefix) => name.startsWith(prefix))
+    ) || null;
+  }
+
+  function findLabContextIntro(sceneName) {
+    const name = String(sceneName || "");
+    return findLabIntro(name) || LAB_INTROS.find((intro) =>
+      intro.internalScenePrefixes?.some((prefix) => name.startsWith(prefix))
     ) || null;
   }
 
@@ -143,12 +152,33 @@
     return true;
   };
 
+  // MO LAI POPUP LAB: dung chung anh, noi dung va audio dang cau hinh trong LAB_INTROS.
+  window.ptitHasLabIntroForScene = (sceneName) => Boolean(findLabContextIntro(sceneName));
+  window.ptitReopenCurrentLabIntro = () => {
+    const sceneName = getKrpano()?.get("xml.scene") || "";
+    const intro = findLabContextIntro(sceneName);
+    if (!intro) return false;
+    activeLabId = intro.id;
+    showLabIntro(intro);
+    return true;
+  };
+
   // Popup chỉ mở khi ảnh scene đích đã tải và render xong.
   window.addEventListener("ptit:sceneready", (event) => {
     const sceneName = event.detail?.sceneName || "";
+    const previousScene = lastReadyScene;
+    lastReadyScene = sceneName;
     const intro = findLabIntro(sceneName);
     if (!intro) {
       activeLabId = null;
+      pendingLabIntroId = null;
+      return;
+    }
+
+    // Di tu ben trong lab ra scene cua: khong tu dong mo lai popup gioi thieu.
+    const isLeavingThisLab = intro.internalScenePrefixes?.some((prefix) => previousScene.startsWith(prefix));
+    if (isLeavingThisLab && pendingLabIntroId !== intro.id) {
+      activeLabId = intro.id;
       pendingLabIntroId = null;
       return;
     }
