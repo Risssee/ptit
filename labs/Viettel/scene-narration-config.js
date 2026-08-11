@@ -8,10 +8,6 @@
     delay: 700,
     visitedKey: "ptit-viettel-scene-narration-visited",
     scenes: {
-      scene_viettel_cua1: {
-        title: "Giới thiệu Viettel Lab",
-        audio: "/labs/Viettel/audio/guided/01-welcome.mp3?v=1"
-      },
       scene_viettel_2c: {
         title: "Phòng thực hành máy tính và công nghệ",
         audio: "/labs/Viettel/audio/guided/02-computer-practice.mp3?v=1"

@@ -7,9 +7,10 @@
     delay: 700,
     visitedKey: "ptit-samsung-scene-narration-visited",
     scenes: {
+      // Popup nằm ngoài cửa; khi vào phòng Samsung thì phát lời dẫn riêng của scene.
       scene_ss_1: {
         title: "Giới thiệu Samsung Lab",
-        audio: "/labs/samsung/audio/guided/01-samsung-welcome.mp3?v=1"
+        audio: "/labs/samsung/audio/guided/01-samsung-welcome.mp3?v=3"
       }
     }
   };

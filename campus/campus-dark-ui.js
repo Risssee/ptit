@@ -176,7 +176,56 @@
         locationCard.innerHTML = '<strong>Khuôn viên</strong><span><i></i>Cổng trường</span>';
         document.body.appendChild(locationCard);
 
-        // Nut dat lai goc nhin cua panorama; khong thay doi logic tour.
+        // Tự ghi lại góc người dùng nhìn thấy sau mỗi lần chuyển scene.
+        let capturedSceneName = '';
+        let capturedInitialView = null;
+        let captureInitialViewTimer = 0;
+
+        function readCurrentView() {
+            if (typeof krpano === 'undefined' || !krpano) return null;
+            return {
+                hlookat: Number(krpano.get('view.hlookat')) || 0,
+                vlookat: Number(krpano.get('view.vlookat')) || 0,
+                fov: Number(krpano.get('view.fov')) || 100
+            };
+        }
+
+        function readXmlViewFallback(sceneName) {
+            if (typeof krpano === 'undefined' || !krpano) return null;
+            const content = String(krpano.get(`scene[${sceneName}].content`) || '');
+            const readNumber = function (attribute, fallback) {
+                const match = content.match(new RegExp(`<view\\b[^>]*\\b${attribute}="([^"]+)"`, 'i'));
+                const value = match ? Number(match[1]) : Number.NaN;
+                return Number.isFinite(value) ? value : fallback;
+            };
+            return {
+                hlookat: readNumber('hlookat', Number(krpano.get('view.hlookat')) || 0),
+                vlookat: readNumber('vlookat', Number(krpano.get('view.vlookat')) || 0),
+                fov: readNumber('fov', Number(krpano.get('view.fov')) || 100)
+            };
+        }
+
+        function scheduleInitialViewCapture(sceneName) {
+            window.clearTimeout(captureInitialViewTimer);
+            const currentScene = typeof krpano !== 'undefined' && krpano ? (krpano.get('xml.scene') || '') : '';
+            capturedSceneName = currentScene;
+            capturedInitialView = currentScene ? readCurrentView() : null;
+            captureInitialViewTimer = window.setTimeout(function () {
+                if (typeof krpano === 'undefined' || !krpano) return;
+                const actualScene = krpano.get('xml.scene') || '';
+                if (!actualScene || (sceneName && actualScene !== sceneName)) return;
+                capturedSceneName = actualScene;
+                capturedInitialView = readCurrentView();
+            }, 650);
+        }
+
+        function getSceneInitialView() {
+            if (typeof krpano === 'undefined' || !krpano) return null;
+            const sceneName = krpano.get('xml.scene') || '';
+            if (sceneName === capturedSceneName && capturedInitialView) return capturedInitialView;
+            return readXmlViewFallback(sceneName) || readCurrentView();
+        }
+
         const resetButton = document.createElement('button');
         resetButton.className = 'dark-campus-reset header-btn';
         resetButton.type = 'button';
@@ -184,8 +233,9 @@
         resetButton.setAttribute('aria-label', 'Đặt lại góc nhìn');
         resetButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.34 5.66M20 4v7h-7"/></svg>';
         resetButton.addEventListener('click', function () {
-            if (typeof krpano === 'undefined' || !krpano) return;
-            krpano.call('lookto(0,0,100,smooth(300,300,300));');
+            const initialView = getSceneInitialView();
+            if (!initialView) return;
+            krpano.call(`lookto(${initialView.hlookat},${initialView.vlookat},${initialView.fov},smooth(300,300,300));`);
         });
         headerActions.appendChild(resetButton);
 
@@ -227,6 +277,10 @@
         window.addEventListener('ptit:scenechange', function (event) {
             syncLocationCard(event.detail && event.detail.sceneName);
         });
+        window.addEventListener('ptit:sceneready', function (event) {
+            scheduleInitialViewCapture(event.detail && event.detail.sceneName);
+        });
+        scheduleInitialViewCapture(typeof krpano !== 'undefined' && krpano ? krpano.get('xml.scene') : '');
 
         // Icon loa net mong giong bo icon Figma; su kien am thanh van do app.js xu ly.
         const soundButton = document.getElementById('sound-btn');

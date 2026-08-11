@@ -8,10 +8,6 @@
     delay: 700,
     visitedKey: "ptit-fpt-scene-narration-visited",
     scenes: {
-      scene_fpt1: {
-        title: "Không gian tổng quan",
-        audio: "/labs/fpt/audio/guided/03-overview.mp3?v=2"
-      },
       scene_fpt2a: {
         title: "Mô hình thiết bị mạng ODN",
         audio: "/labs/fpt/audio/guided/05-odn.mp3?v=2"

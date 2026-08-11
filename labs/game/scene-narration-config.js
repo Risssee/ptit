@@ -4,10 +4,6 @@
   // Muốn đổi sound, đặt MP3 mới trong /labs/game/audio/guided/ rồi sửa đường dẫn `audio`.
   const config = {
     scenes: {
-      scene_game_0l: {
-        title: "Chào mừng đến với Game Lab",
-        audio: "/labs/game/audio/guided/01-game-welcome.mp3?v=5"
-      },
       scene_game_1l: {
         title: "Lối vào Game Lab",
         // Giữ nguyên sound gốc khi người xem bước vào scene_game_1l.

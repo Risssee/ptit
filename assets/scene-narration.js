@@ -146,6 +146,10 @@
     const enabled = Boolean(event.detail?.enabled);
     replay.disabled = !enabled;
     status.textContent = enabled ? "" : "Âm thanh đang tắt";
+    if (!enabled) {
+      stopSpeech(false);
+      return;
+    }
     if (enabled && currentEntry) {
       card.classList.add("is-visible");
       scheduleAutoNarration(currentScene, currentEntry);

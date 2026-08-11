@@ -14,7 +14,7 @@
 	       ondown="tween(scale,0.46,0.1,easeOutQuad);"
 	       onup="tween(scale,0.64,0.14,easeOutBack);" />
 
-	<events onnewscene="js(handleSceneChange(get(xml.scene)))" onloadcomplete="skin_hideskin(instant);" keep="true" />
+	<events onnewscene="js(handleSceneChange(get(xml.scene)))" onloadcomplete="skin_hideskin(instant); js(handleSceneLoadComplete(get(xml.scene)));" keep="true" />
 
 	<action name="open_web_info">
 		js(openInfo());

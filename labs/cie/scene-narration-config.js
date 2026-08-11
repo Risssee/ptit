@@ -5,7 +5,6 @@ const config = {
   delay: 700,
   rate: 0.96,
   scenes: {
-    scene_cie_cuatruoc: { title: "Cửa trước Trung tâm CIE"},
     scene_cie_sanhchinh1h: { title: "Sảnh chính"},
     scene_cie_sanhchinh2f: {},
     scene_cie_sanhchinh3f: {},

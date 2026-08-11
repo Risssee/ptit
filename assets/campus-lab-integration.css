@@ -20,10 +20,10 @@
 }
 .integrated-lab-intro.is-open { display: grid; }
 .integrated-lab-intro__card {
-  width: min(760px, calc(100vw - 40px));
-  height: 310px;
+  width: min(840px, calc(100vw - 40px));
+  height: 344px;
   display: grid;
-  grid-template-columns: 54% 46%;
+  grid-template-columns: 53% 47%;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 18px;
@@ -33,24 +33,48 @@
   font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
 }
 .integrated-lab-intro__image {
-  width: calc(100% - 22px);
-  height: calc(100% - 22px);
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
   min-height: 0;
   display: block;
-  margin: 11px;
-  border-radius: 8px;
+  margin: 12px;
+  border-radius: 10px;
   object-fit: cover;
 }
 .integrated-lab-intro__copy {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 44px 34px 34px 18px;
+  justify-content: flex-start;
+  padding: 58px 38px 34px 24px;
   min-height: 0;
 }
-.integrated-lab-intro__copy h2 { margin: 0 0 13px; font-size: 18px; font-weight: 700; }
-.integrated-lab-intro__copy p { margin: 0; max-height: 190px; overflow-y: auto; color: rgba(255,255,255,.74); font-size: 12.5px; line-height: 1.58; }
+.integrated-lab-intro__copy h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+/* Vùng nội dung dài: cuộn gọn trong thẻ, không dùng thanh cuộn trắng mặc định. */
+.integrated-lab-intro__copy p {
+  margin: 0;
+  max-height: 218px;
+  padding-right: 13px;
+  overflow-y: auto;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+  line-height: 1.68;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) transparent;
+}
+.integrated-lab-intro__copy p::-webkit-scrollbar { width: 5px; }
+.integrated-lab-intro__copy p::-webkit-scrollbar-track { background: transparent; }
+.integrated-lab-intro__copy p::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255,255,255,.25);
+}
+.integrated-lab-intro__copy p::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.42); }
 .integrated-lab-intro__close {
   position: absolute;
   top: 14px;
@@ -74,4 +98,5 @@
   .integrated-lab-intro__card { height: auto; grid-template-columns: 1fr; }
   .integrated-lab-intro__image { height: 190px; min-height: 190px; }
   .integrated-lab-intro__copy { padding: 28px 24px 26px; }
+  .integrated-lab-intro__copy p { max-height: 210px; }
 }

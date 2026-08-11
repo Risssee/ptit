@@ -464,7 +464,7 @@ const hotspotData = {
             title: 'Bộ phận phát triển dự án',
             text: 'Bộ phận Phát triển dự án là đầu mối kết nối, xây dựng và mở rộng các chương trình hợp tác giáo dục quốc tế của Trung tâm CIE, chịu trách nhiệm nghiên cứu các dự án liên kết đào tạo, trao đổi sinh viên và phát triển mạng lưới đối tác với các trường đại học, tổ chức uy tín trên toàn thế giới.',
             image: '/labs/cie/assets/infoports/project-development.jpg',
-            audio: '/labs/cie/audio/departments/project-development.mp3',
+            audio: '/labs/cie/audio/departments/bpptda.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -476,7 +476,7 @@ const hotspotData = {
             title: 'Bộ phận quản lý đào tạo',
             text: 'Bộ phận quản lý đào tạo chịu trách nhiệm tổ chức, vận hành và quản lý chất lượng các chương trình đào tạo liên kết quốc tế, bao gồm việc xây dựng thời khóa biểu, theo dõi tiến độ học tập, quy đổi tín chỉ và hỗ trợ giải đáp mọi thắc mắc về lộ trình học tập của sinh viên.',
             image: '/labs/cie/assets/infoports/training-management.jpg',
-            audio: '/labs/cie/audio/departments/training-management.mp3',
+            audio: '/labs/cie/audio/departments/bpqldt.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -488,7 +488,7 @@ const hotspotData = {
             title: 'Bộ phận quản lý lưu học sinh',
             text: 'Bộ phận quản lý lưu học sinh là đơn vị hỗ trợ toàn diện cho sinh viên quốc tế tại PTIT cũng như sinh viên Việt Nam tham gia các chương trình trao đổi, từ việc giải quyết các thủ tục hành chính, visa, lưu trú cho đến đồng hành trong đời sống và các hoạt động hòa nhập văn hóa.',
             image: '/labs/cie/assets/infoports/international-students.jpg',
-            audio: '/labs/cie/audio/departments/international-student-management.mp3',
+            audio: '/labs/cie/audio/departments/bpqllhs.mp3',
             tooltip: 'Xem thông tin'
         },
         {
@@ -498,7 +498,7 @@ const hotspotData = {
             title: 'Phòng giáo sư thỉnh giảng',
             text: 'Phòng giáo sư thỉnh giảng là không gian làm việc, nghiên cứu hiện đại và tiếp đón các giảng viên, chuyên gia quốc tế đến giảng dạy tại CIE, phục vụ công tác trao đổi chuyên môn, thảo luận nghiên cứu chuyên sâu nhằm mang lại nguồn tri thức toàn cầu cho Học viện.',
             image: '/labs/cie/assets/infoports/visiting-professor.jpg',
-            audio: '/labs/cie/audio/departments/visiting-professor.mp3',
+            audio: '/labs/cie/audio/departments/pgstg.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -508,9 +508,9 @@ const hotspotData = {
             ath: 57.0,
             atv: 10.0,
             title: 'Lãnh đạo trung tâm',
-            text: 'Lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
+            text: 'Phòng lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
             image: '/labs/cie/assets/infoports/center-leadership.jpg',
-            audio: '/labs/cie/audio/departments/center-leadership.mp3',
+            audio: '/labs/cie/audio/departments/pldtt.mp3',
             tooltip: 'Xem thông tin'
         }
     ],
@@ -1100,7 +1100,7 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
     }
 
     stopHotspotAudio();
-    if (hotspot && hotspot.audio) {
+    if (hotspot && hotspot.audio && window.ptitAudioAllowed?.()) {
         window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
         const infopostAudio = new Audio(hotspot.audio);
         infopostAudio.volume = 1;        
@@ -1467,7 +1467,7 @@ function getPreferredSpeechVoice() {
 
 async function speakPopupInfo() {
     const text = getPopupSpeechText();
-    if (!text) return;
+    if (!text || !window.ptitAudioAllowed?.()) return;
 
     stopPopupSpeech();
     popupSpeechActive = true;
@@ -1574,7 +1574,8 @@ function formatEdgeSceneTitle(sceneName) {
 
 let persistentHotspotLabels = [];
 let persistentHotspotLabelTimer = 0;
-let persistentHotspotLabelsRenderDelay = 0;
+let sceneVisualReady = false;
+let sceneVisualReadyTimer = 0;
 
 // Them chu phia tren hotspot
 const hotspotLabelMap = {
@@ -1648,6 +1649,10 @@ function disableLegacyNavigationTooltip() {
 
 function positionPersistentHotspotLabels() {
     if (!krpano || !persistentHotspotLabels.length) return;
+    if (!sceneVisualReady) {
+        persistentHotspotLabels.forEach((item) => { item.element.hidden = true; });
+        return;
+    }
     disableLegacyNavigationTooltip();
     const pano = document.getElementById('pano');
     const width = pano ? pano.clientWidth : 0;
@@ -1835,6 +1840,8 @@ function initEdgeSceneNavigation() {
 function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
+    sceneVisualReady = false;
+    window.clearTimeout(sceneVisualReadyTimer);
     // DARK CAMPUS UI: phat su kien de lop giao dien doc dung scene dang chay.
     // Khong thay doi logic tour; xoa dong nay neu xoa campus-dark-ui.js.
     window.dispatchEvent(new CustomEvent('ptit:scenechange', { detail: { sceneName } }));
@@ -1847,8 +1854,6 @@ function handleSceneChange(sceneName) {
     removeLegacyInfoSpot();
     renderSceneHotspots(sceneName);
     enforceStableNavigationHotspotTextures();
-    window.clearTimeout(persistentHotspotLabelsRenderDelay);
-    persistentHotspotLabelsRenderDelay = window.setTimeout(renderPersistentHotspotLabels, 120);
     document.querySelectorAll('.scene-item').forEach(el => el.classList.remove('active'));
     
     const activeItem = document.getElementById(`nav-${sceneName}`);
@@ -1888,6 +1893,25 @@ function handleSceneChange(sceneName) {
     const infoAllowed = isSceneInConfiguredGroups(sceneName);
     setInfoButtonEnabled(infoAllowed);
     if (!infoAllowed) closeInfo();
+}
+
+// Chỉ báo giao diện scene đã sẵn sàng: dùng chung cho chữ hotspot và popup lab.
+function handleSceneLoadComplete(sceneName) {
+    const loadedScene = sceneName || (krpano && krpano.get('xml.scene')) || '';
+    window.clearTimeout(sceneVisualReadyTimer);
+    sceneVisualReadyTimer = window.setTimeout(() => {
+        if (!krpano || loadedScene !== krpano.get('xml.scene')) return;
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                if (!krpano || loadedScene !== krpano.get('xml.scene')) return;
+                sceneVisualReady = true;
+                renderPersistentHotspotLabels();
+                window.dispatchEvent(new CustomEvent('ptit:sceneready', {
+                    detail: { sceneName: loadedScene }
+                }));
+            });
+        });
+    }, 80);
 }
 
 function openInfo() {
@@ -1955,6 +1979,14 @@ function toggleSound() {
     }
     window.dispatchEvent(new CustomEvent('ptit:audiochange', { detail: { enabled: !audioMuted } }));
 }
+
+// Nút loa là trạng thái âm thanh toàn cục, gồm infoport và giọng đọc popup.
+window.addEventListener('ptit:audiochange', (event) => {
+    if (event.detail?.enabled) return;
+    stopHotspotAudio();
+    stopPopupSpeech();
+    window.speechSynthesis?.cancel();
+});
 window.addEventListener('ptit:narrationstart', () => {
     if (audioStarted && !audioMuted && krpano) {
         krpano.call(`tween(sound[bgm].volume, ${BACKGROUND_MUSIC_DUCKED_VOLUME}, 0.25);`);
@@ -2040,5 +2072,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.handleSceneChange = handleSceneChange;
+window.handleSceneLoadComplete = handleSceneLoadComplete;
 window.onready = onready;
 window.openHotspotInfo = openHotspotInfo;

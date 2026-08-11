@@ -544,9 +544,10 @@ body.mini-game-active .app-sidebar {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -40%);
-    width: 850px;
-    max-width: 95vw;
-    max-height: 85vh;
+    width: min(840px, calc(100vw - 40px));
+    height: 344px;
+    max-width: none;
+    max-height: none;
     background: rgba(18, 20, 25, 0.88);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -562,6 +563,7 @@ body.mini-game-active .app-sidebar {
     display: flex;
     flex-direction: row; /* Side by side on desktop */
     overflow: hidden;
+    font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
 }
 
 #info-popup.active {
@@ -599,7 +601,7 @@ body.mini-game-active .app-sidebar {
 }
 
 .popup-content {
-    padding: 40px;
+    padding: 52px 38px 34px 30px;
     overflow-y: auto;
     flex: 1;
     display: flex;
@@ -609,7 +611,7 @@ body.mini-game-active .app-sidebar {
 .popup-actions {
     display: flex;
     gap: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 
 .popup-actions button {
@@ -618,7 +620,8 @@ body.mini-game-active .app-sidebar {
     background: rgba(255,255,255,0.05);
     color: #fff;
     padding: 6px 14px;
-    font-size: 13px;
+    font-family: inherit;
+    font-size: 12px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
@@ -638,22 +641,22 @@ body.mini-game-active .app-sidebar {
 }
 
 #info-popup h2 {
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 32px;
+    font-family: inherit;
+    font-size: 20px;
     font-weight: 700;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     color: #ffffff;
-    letter-spacing: -0.5px;
-    line-height: 1.2;
+    letter-spacing: -.02em;
+    line-height: 1.25;
 }
 
 .info-section {
-    margin-bottom: 28px;
+    margin-bottom: 18px;
 }
 
 .info-section h3 {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-family: inherit;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--primary-color);
@@ -662,9 +665,10 @@ body.mini-game-active .app-sidebar {
 }
 
 .info-section p {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #cbd5e1;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.68;
+    color: rgba(255,255,255,.72);
     font-weight: 400;
     white-space: pre-line;
 }
