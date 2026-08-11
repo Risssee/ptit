@@ -1,0 +1,12 @@
+/* DIEU KHIEN DUNG CHUNG: phan theme chi override mau/kich thuoc khi can. */
+.campus-intro-info {
+    position: fixed;
+    z-index: 100001;
+    left: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+}
+.campus-intro-info[hidden] { display: none !important; }
+@media (max-width: 680px) {
+    .campus-intro-info { left: 10px; bottom: 10px; }
+}

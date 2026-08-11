@@ -91,7 +91,7 @@ body.campus-ui-dark #sidebar-toggle svg { fill: #fff; stroke: none; }
 body.campus-ui-dark .header-actions {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 32px;
     display: flex;
     gap: 8px;
     pointer-events: none;
@@ -144,7 +144,8 @@ body.campus-ui-dark .app-sidebar {
     display: flex;
     width: 310px;
     max-width: calc(100vw - 40px);
-    height: min(630px, calc(100dvh - 96px));
+    height: auto;
+    max-height: calc(100dvh - 96px);
     border: 1px solid var(--dark-border);
     border-radius: 17px;
     background: var(--dark-panel-soft);
@@ -183,8 +184,12 @@ body.campus-ui-dark .sidebar-header h2 {
 
 body.campus-ui-dark .scene-list {
     min-width: 0;
+    height: auto;
+    max-height: calc(100dvh - 160px);
     padding: 4px 10px 14px;
 }
+
+body.campus-ui-dark .sidebar-content { flex: 0 1 auto; }
 
 body.campus-ui-dark .accordion-group {
     margin: 0 0 6px;
@@ -269,7 +274,9 @@ body.campus-ui-dark .campus-minimap__head {
     background: var(--dark-panel-soft);
 }
 body.campus-ui-dark .campus-minimap__scene { color: var(--dark-muted); }
-body.campus-ui-dark .campus-minimap__toggle { background: rgba(255,255,255,.08); color: #fff; }
+body.campus-ui-dark .campus-minimap__toggle { background: transparent; color: #fff; }
+body.campus-ui-dark .campus-minimap__toggle:hover,
+body.campus-ui-dark .campus-minimap__toggle:focus-visible { background: rgba(255,255,255,.10); }
 
 @media (max-width: 680px) {
     body.campus-ui-dark #sidebar-toggle { top: 10px; left: 10px; }

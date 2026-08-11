@@ -176,69 +176,6 @@
         locationCard.innerHTML = '<strong>Khuôn viên</strong><span><i></i>Cổng trường</span>';
         document.body.appendChild(locationCard);
 
-        // Tự ghi lại góc người dùng nhìn thấy sau mỗi lần chuyển scene.
-        let capturedSceneName = '';
-        let capturedInitialView = null;
-        let captureInitialViewTimer = 0;
-
-        function readCurrentView() {
-            if (typeof krpano === 'undefined' || !krpano) return null;
-            return {
-                hlookat: Number(krpano.get('view.hlookat')) || 0,
-                vlookat: Number(krpano.get('view.vlookat')) || 0,
-                fov: Number(krpano.get('view.fov')) || 100
-            };
-        }
-
-        function readXmlViewFallback(sceneName) {
-            if (typeof krpano === 'undefined' || !krpano) return null;
-            const content = String(krpano.get(`scene[${sceneName}].content`) || '');
-            const readNumber = function (attribute, fallback) {
-                const match = content.match(new RegExp(`<view\\b[^>]*\\b${attribute}="([^"]+)"`, 'i'));
-                const value = match ? Number(match[1]) : Number.NaN;
-                return Number.isFinite(value) ? value : fallback;
-            };
-            return {
-                hlookat: readNumber('hlookat', Number(krpano.get('view.hlookat')) || 0),
-                vlookat: readNumber('vlookat', Number(krpano.get('view.vlookat')) || 0),
-                fov: readNumber('fov', Number(krpano.get('view.fov')) || 100)
-            };
-        }
-
-        function scheduleInitialViewCapture(sceneName) {
-            window.clearTimeout(captureInitialViewTimer);
-            const currentScene = typeof krpano !== 'undefined' && krpano ? (krpano.get('xml.scene') || '') : '';
-            capturedSceneName = currentScene;
-            capturedInitialView = currentScene ? readCurrentView() : null;
-            captureInitialViewTimer = window.setTimeout(function () {
-                if (typeof krpano === 'undefined' || !krpano) return;
-                const actualScene = krpano.get('xml.scene') || '';
-                if (!actualScene || (sceneName && actualScene !== sceneName)) return;
-                capturedSceneName = actualScene;
-                capturedInitialView = readCurrentView();
-            }, 650);
-        }
-
-        function getSceneInitialView() {
-            if (typeof krpano === 'undefined' || !krpano) return null;
-            const sceneName = krpano.get('xml.scene') || '';
-            if (sceneName === capturedSceneName && capturedInitialView) return capturedInitialView;
-            return readXmlViewFallback(sceneName) || readCurrentView();
-        }
-
-        const resetButton = document.createElement('button');
-        resetButton.className = 'dark-campus-reset header-btn';
-        resetButton.type = 'button';
-        resetButton.title = 'Đặt lại góc nhìn';
-        resetButton.setAttribute('aria-label', 'Đặt lại góc nhìn');
-        resetButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 0-2.34 5.66M20 4v7h-7"/></svg>';
-        resetButton.addEventListener('click', function () {
-            const initialView = getSceneInitialView();
-            if (!initialView) return;
-            krpano.call(`lookto(${initialView.hlookat},${initialView.vlookat},${initialView.fov},smooth(300,300,300));`);
-        });
-        headerActions.appendChild(resetButton);
-
         function getDarkAreaTitle(sceneName) {
             // Ten o duoi la KHU VUC LON, khong doi theo tung scene/phong ben trong.
             if (DARK_CAMPUS_AREA_LABELS[sceneName]) return DARK_CAMPUS_AREA_LABELS[sceneName];
@@ -260,6 +197,48 @@
             const actualScene = sceneName || (typeof krpano !== 'undefined' && krpano ? krpano.get('xml.scene') : 'scene_1');
             locationCard.querySelector('strong').textContent = 'Khuôn viên';
             locationCard.querySelector('span').lastChild.textContent = getDarkAreaTitle(actualScene);
+            syncDarkActivePlace(actualScene);
+        }
+
+        // DIA DIEM DANG DUNG: moi scene con cung tro ve mot dong dai dien trong menu.
+        function getDarkActiveSidebarScene(sceneName) {
+            if (/^scene_cie_/i.test(sceneName)) return 'scene_cie_cuatruoc';
+            if (/^scene_game_/i.test(sceneName)) return 'scene_game_0l';
+            if (/^scene_fpt/i.test(sceneName)) return 'scene_fpt1';
+            if (/^scene_viettel_/i.test(sceneName)) return 'scene_stgjnh_taafg8a2_githva';
+            if (/^scene_ss_/i.test(sceneName)) return 'scene_ss_1';
+            if (/^scene_lib_/i.test(sceneName)) return 'scene_gpbk2201_1773130534438';
+            if (/^scene_vswthdn_nhtgtt_/i.test(sceneName)) return 'scene_vswthdn_nhtgtt_1';
+            if (/^scene_(?:gpbk2270|gpbk2271)_/i.test(sceneName)) return 'scene_gpbk2270_1773201080635';
+            if (/^scene_gpbk(?:2201|2202)_/i.test(sceneName)) return 'scene_gpbk2201_1773130534438';
+            if (/^scene_gpbk228[234]_/i.test(sceneName)) return 'scene_gpbk2282_1773201339253';
+            if (/^scene_gpbk226[01]_/i.test(sceneName)) return 'scene_gpbk2260_1773200808324';
+            if (/^scene_gpbk2286_/i.test(sceneName)) return 'scene_gpbk2286_1773201396711';
+
+            // Dung chung bang ten khu vuc thu cong, de scene ma hoa khong can chua chu A1/A2/A3.
+            const areaTitle = getDarkAreaTitle(sceneName);
+            if (/A2/i.test(areaTitle)) return 'scene_10';
+            if (/A3/i.test(areaTitle)) return 'scene_gpbk2195_1773130397237';
+            if (/A1/i.test(areaTitle)) return 'scene_gpbk2218_1773131077123';
+
+            if (sceneName === 'scene_10' || /a2|ttgnng2|ttgnng3a2|ttgnng8|gpbk006[456]/i.test(sceneName)) return 'scene_10';
+            if (/a3|ttgnng3_a3|ttgnng6|gpbk22(?:34|35|36|37|38)/i.test(sceneName)) return 'scene_gpbk2195_1773130397237';
+            if (/gpbk22(?:17|18|19|20|21|22|24|25|26)/i.test(sceneName)) return 'scene_gpbk2218_1773131077123';
+            if (/^scene_\d+$/i.test(sceneName)) return 'scene_1';
+            return '';
+        }
+
+        // Bo dieu khien chung goi lai dung mapping da duoc kiem thu cua ban den.
+        window.PTIT_getDarkActiveSidebarScene = getDarkActiveSidebarScene;
+
+        function syncDarkActivePlace(sceneName) {
+            const activeId = getDarkActiveSidebarScene(sceneName);
+            document.querySelectorAll('#scene-list .scene-item.active').forEach(function (item) {
+                if (item.id !== `nav-${activeId}`) item.classList.remove('active');
+            });
+            if (!activeId) return;
+            const activeItem = document.getElementById(`nav-${activeId}`);
+            if (activeItem && !activeItem.classList.contains('active')) activeItem.classList.add('active');
         }
 
         const sceneList = document.getElementById('scene-list');
@@ -275,13 +254,9 @@
             });
         }
         window.addEventListener('ptit:scenechange', function (event) {
-            syncLocationCard(event.detail && event.detail.sceneName);
+            const sceneName = event.detail && event.detail.sceneName;
+            syncLocationCard(sceneName);
         });
-        window.addEventListener('ptit:sceneready', function (event) {
-            scheduleInitialViewCapture(event.detail && event.detail.sceneName);
-        });
-        scheduleInitialViewCapture(typeof krpano !== 'undefined' && krpano ? krpano.get('xml.scene') : '');
-
         // Icon loa net mong giong bo icon Figma; su kien am thanh van do app.js xu ly.
         const soundButton = document.getElementById('sound-btn');
         const soundOnIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6L8 10H4Z"/><path d="M16 9a4 4 0 0 1 0 6"/><path d="M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg>';
