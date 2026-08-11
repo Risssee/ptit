@@ -67,7 +67,7 @@
       return;
     }
     stopSpeech(false);
-    window.dispatchEvent(new CustomEvent("ptit:stop-infopost-narration"));
+    window.dispatchEvent(new CustomEvent("ptit:audiofocus", { detail: { source: "scene-narration" } }));
     if (entry.audio) {
       narrationAudio = new Audio(entry.audio);
       narrationAudio.preload = "auto";
@@ -142,6 +142,10 @@
   replay.addEventListener("click", () => speak(currentEntry));
   card.querySelector(".scene-narration__close").addEventListener("click", () => stopSpeech(true));
   window.addEventListener("ptit:stop-scene-narration", () => stopSpeech(true));
+  // Moi nguon loi thuyet minh chiem quyen phat se dung loi dan scene dang chay.
+  window.addEventListener("ptit:audiofocus", (event) => {
+    if (event.detail?.source !== "scene-narration") stopSpeech(false);
+  });
   window.addEventListener("ptit:audiochange", (event) => {
     const enabled = Boolean(event.detail?.enabled);
     replay.disabled = !enabled;

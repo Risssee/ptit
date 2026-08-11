@@ -31,8 +31,11 @@
     },
     {
       id: "viettel",
-      scenes: ["scene_stgjnh_taafg8a2_githva"],
-      scenePrefixes: ["scene_viettel_"],
+      // Chi tu dong mo popup tai scene dung truoc cua Viettel Lab.
+      // Cac scene_viettel_* con lai chi la ngu canh ben trong de nut Info van hoat dong
+      // va de khi di tu trong ra cua, popup khong bi mo lai.
+      scenes: ["scene_viettel_cua1"],
+      internalScenePrefixes: ["scene_viettel_"],
       image: "/labs/Viettel/assets/Vt.jpg",
       audio: "/labs/Viettel/audio/guided/PopUp.mp3",
       title: "VIETTEL LAB",
@@ -58,6 +61,9 @@
     {
       id: "library",
       scenes: ["scene_gpbk2201_1773130534438"],
+      // Cac scene ben trong thu vien: dung de nhan biet chieu di tu trong ra ngoai,
+      // tranh mo lai popup khi nguoi dung quay ve scene cua thu vien.
+      internalScenePrefixes: ["scene_lib_"],
       image: "/labs/Library/assets/Lib.jpg",
       audio: "/labs/Library/audio/guided/PopUp.mp3",
       title: "THƯ VIỆN PTIT",
@@ -71,6 +77,7 @@
   let lastReadyScene = "";
   let introAudio = null;
   let introAudioIsDucking = false;
+  let cieInfoAudioIsDucking = false;
 
   const labIntro = document.createElement("div");
   labIntro.className = "integrated-lab-intro";
@@ -128,6 +135,7 @@
     labIntro.classList.add("is-open");
 
     if (intro.audio && (!window.ptitAudioAllowed || window.ptitAudioAllowed())) {
+      window.dispatchEvent(new CustomEvent("ptit:audiofocus", { detail: { source: "lab-intro" } }));
       const audio = new Audio(intro.audio);
       introAudio = audio;
       audio.addEventListener("ended", stopLabIntroAudio, { once: true });
@@ -202,32 +210,52 @@
   document.body.appendChild(cieInfo);
   const cieInfoAudio = new Audio("/labs/cie/audio/student-management.mp3");
 
-  function closeCieInfo() {
-    cieInfo.classList.remove("is-open");
+  function stopCieInfoAudio() {
     cieInfoAudio.pause();
     cieInfoAudio.currentTime = 0;
+    if (cieInfoAudioIsDucking) {
+      cieInfoAudioIsDucking = false;
+      window.dispatchEvent(new CustomEvent("ptit:narrationend"));
+    }
+  }
+
+  function closeCieInfo() {
+    cieInfo.classList.remove("is-open");
+    stopCieInfoAudio();
   }
 
   function showCieStudentInfo() {
     cieInfo.classList.add("is-open");
     if (window.ptitAudioAllowed && !window.ptitAudioAllowed()) return;
+    window.dispatchEvent(new CustomEvent("ptit:audiofocus", { detail: { source: "cie-info" } }));
     cieInfoAudio.currentTime = 0;
-    cieInfoAudio.play().catch(() => {});
+    cieInfoAudio.play().then(() => {
+      cieInfoAudioIsDucking = true;
+      window.dispatchEvent(new CustomEvent("ptit:narrationstart"));
+    }).catch(() => {});
   }
+
+  cieInfoAudio.addEventListener("ended", stopCieInfoAudio);
+
+  // Popup lab va audio phu tu dong nhuong quyen cho nguon thuyet minh moi.
+  window.addEventListener("ptit:audiofocus", (event) => {
+    if (event.detail?.source !== "lab-intro") stopLabIntroAudio();
+    if (event.detail?.source !== "cie-info") stopCieInfoAudio();
+  });
 
   // Đồng bộ popup lab và audio phụ với nút loa toàn cục.
   window.addEventListener("ptit:audiochange", (event) => {
     const enabled = Boolean(event.detail?.enabled);
     if (!enabled) {
       stopLabIntroAudio();
-      cieInfoAudio.pause();
+      stopCieInfoAudio();
       return;
     }
     if (labIntro.classList.contains("is-open") && visibleLabIntro?.audio) {
       showLabIntro(visibleLabIntro);
     }
     if (cieInfo.classList.contains("is-open")) {
-      cieInfoAudio.play().catch(() => {});
+      showCieStudentInfo();
     }
   });
 

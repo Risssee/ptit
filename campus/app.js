@@ -232,6 +232,7 @@ let popupSpeakBtn = null;
 let popupSpeechUtterance = null;
 let popupSpeechActive = false;
 let popupTtsAudio = null;
+let popupSpeechDucksMusic = false;
 
 const bookshelfHotspot = {
     id: 'library_books',
@@ -648,8 +649,11 @@ function stopHotspotAudio() {
     }
 }
 
-// Narration tự động và audio infoport không phát chồng nhau.
+// Moi nguon loi thuyet minh chiem quyen phat se dung audio infoport dang chay.
 window.addEventListener('ptit:stop-infopost-narration', stopHotspotAudio);
+window.addEventListener('ptit:audiofocus', (event) => {
+    if (event.detail?.source !== 'infopost') stopHotspotAudio();
+});
 
 function setInfopostMusicDucked(ducked) {
     if (!krpano || !audioStarted || audioMuted) return;
@@ -1113,7 +1117,7 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 
     stopHotspotAudio();
     if (hotspot && hotspot.audio && window.ptitAudioAllowed?.()) {
-        window.dispatchEvent(new CustomEvent('ptit:stop-scene-narration'));
+        window.dispatchEvent(new CustomEvent('ptit:audiofocus', { detail: { source: 'infopost' } }));
         const infopostAudio = new Audio(hotspot.audio);
         infopostAudio.volume = 1;        
         currentHotspotAudio = infopostAudio;
@@ -1442,6 +1446,10 @@ function stopPopupSpeech() {
     }
     popupSpeechUtterance = null;
     popupSpeechActive = false;
+    if (popupSpeechDucksMusic) {
+        popupSpeechDucksMusic = false;
+        window.dispatchEvent(new CustomEvent('ptit:narrationend'));
+    }
     updatePopupSpeakButtonUI();
 }
 
@@ -1481,13 +1489,7 @@ async function speakPopupInfo() {
     const text = getPopupSpeechText();
     if (!text || !window.ptitAudioAllowed?.()) return;
 
-    stopPopupSpeech();
-    popupSpeechActive = true;
-    updatePopupSpeakButtonUI();
-
     if (!('speechSynthesis' in window)) {
-        popupSpeechActive = false;
-        updatePopupSpeakButtonUI();
         window.alert('Trinh duyet khong ho tro doc van ban.');
         return;
     }
@@ -1500,6 +1502,13 @@ async function speakPopupInfo() {
         return;
     }
 
+    stopPopupSpeech();
+    window.dispatchEvent(new CustomEvent('ptit:audiofocus', { detail: { source: 'popup-tts' } }));
+    popupSpeechActive = true;
+    popupSpeechDucksMusic = true;
+    window.dispatchEvent(new CustomEvent('ptit:narrationstart'));
+    updatePopupSpeakButtonUI();
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = selectedVoice.lang || 'en-US';
     utterance.voice = selectedVoice;
@@ -1508,11 +1517,19 @@ async function speakPopupInfo() {
     utterance.onend = () => {
         popupSpeechUtterance = null;
         popupSpeechActive = false;
+        if (popupSpeechDucksMusic) {
+            popupSpeechDucksMusic = false;
+            window.dispatchEvent(new CustomEvent('ptit:narrationend'));
+        }
         updatePopupSpeakButtonUI();
     };
     utterance.onerror = () => {
         popupSpeechUtterance = null;
         popupSpeechActive = false;
+        if (popupSpeechDucksMusic) {
+            popupSpeechDucksMusic = false;
+            window.dispatchEvent(new CustomEvent('ptit:narrationend'));
+        }
         updatePopupSpeakButtonUI();
     };
 
@@ -1522,6 +1539,11 @@ async function speakPopupInfo() {
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
 }
+
+// Doc popup, infoport, popup lab va loi dan scene khong duoc phat chong nhau.
+window.addEventListener('ptit:audiofocus', (event) => {
+    if (event.detail?.source !== 'popup-tts') stopPopupSpeech();
+});
 
 function togglePopupSpeech() {
     if (popupSpeechActive) {

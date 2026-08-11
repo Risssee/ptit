@@ -55,6 +55,25 @@
   background: #f8efe2 url("campus-map-surroundings.png") center / contain no-repeat;
 }
 
+.campus-minimap.is-coordinate-editing .campus-minimap__map { cursor: crosshair; }
+
+.campus-minimap__editor-actions {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
+}
+.campus-minimap__editor-actions button {
+  padding: 5px 7px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 6px;
+  background: #343434;
+  color: #fff;
+  font: 600 9px/1 Montserrat, sans-serif;
+  cursor: pointer;
+}
+.campus-minimap__editor-actions button:hover { background: #a80023; }
+.campus-minimap.is-coordinate-editing .campus-minimap__toggle { margin-left: 4px; }
+
 .campus-minimap__map::after {
   position: absolute;
   inset: 0;

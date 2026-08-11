@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="campus-ui-controls.css?v=1" />
 	<!-- Nội dung riêng của Game Lab; CSS chỉ tác động lên bảng Falcon. -->
 	<link rel="stylesheet" href="../labs/game/game-flex-content.css?v=6" />
-	<link rel="stylesheet" href="../assets/campus-minimap.css?v=8" />
+	<link rel="stylesheet" href="../assets/campus-minimap.css?v=10" />
 	<link rel="stylesheet" href="../assets/campus-lab-integration.css?v=5" />
 	<link rel="stylesheet" href="../assets/scene-narration.css?v=1" />
 	
@@ -92,7 +92,7 @@
         <div id="pano">
             <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
             <script src="tour.js"></script>
-            <script src="app.js?v=184"></script>
+            <script src="app.js?v=185"></script>
             <script>
                 // Khi mở trực tiếp campus mà không chỉ định scene, luôn bắt đầu ở cổng chính.
                 if (!new URLSearchParams(window.location.search).has("startscene")) {
@@ -166,8 +166,8 @@
     </main>
 </div>
 
-<script src="../assets/campus-minimap.js?v=8"></script>
-<script src="../assets/campus-lab-integration.js?v=19"></script>
+<script src="../assets/campus-minimap.js?v=12"></script>
+<script src="../assets/campus-lab-integration.js?v=22"></script>
 <script src="campus-ui-controls.js?v=1"></script>
 <!-- Mỗi lab tự quản lý audio; bộ phát chung hợp nhất config rồi chỉ khởi tạo một lần. -->
 <script src="../labs/cie/scene-narration-config.js?v=8"></script>
@@ -176,7 +176,7 @@
 <script src="../labs/Viettel/scene-narration-config.js?v=2"></script>
 <script src="../labs/Library/scene-narration-config.js?v=3"></script>
 <script src="../labs/samsung/scene-narration-config.js?v=4"></script>
-<script src="../assets/scene-narration.js?v=7"></script>
+<script src="../assets/scene-narration.js?v=8"></script>
 <!-- Bảng Falcon chỉ được gắn vào hotspot trên tường của scene_game_1l. -->
 <script src="../labs/game/game-flex-content.js?v=5"></script>
 
