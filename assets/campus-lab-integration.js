@@ -78,6 +78,7 @@
   let introAudio = null;
   let introAudioIsDucking = false;
   let cieInfoAudioIsDucking = false;
+  let labIntroDelayTimer = null;
 
   const labIntro = document.createElement("div");
   labIntro.className = "integrated-lab-intro";
@@ -119,6 +120,8 @@
   }
 
   function closeLabIntro() {
+    clearTimeout(labIntroDelayTimer);
+    labIntroDelayTimer = null;
     labIntro.classList.remove("is-open");
     stopLabIntroAudio();
   }
@@ -174,6 +177,8 @@
   // Popup chỉ mở khi ảnh scene đích đã tải và render xong.
   window.addEventListener("ptit:sceneready", (event) => {
     const sceneName = event.detail?.sceneName || "";
+    clearTimeout(labIntroDelayTimer);
+    labIntroDelayTimer = null;
     const previousScene = lastReadyScene;
     lastReadyScene = sceneName;
     const intro = findLabIntro(sceneName);
@@ -193,7 +198,12 @@
     if (activeLabId === intro.id && pendingLabIntroId !== intro.id) return;
     activeLabId = intro.id;
     pendingLabIntroId = null;
-    showLabIntro(intro);
+    // Scene da hien xong; doi them 1 giay de nguoi dung thay ro khong gian lab.
+    labIntroDelayTimer = window.setTimeout(() => {
+      labIntroDelayTimer = null;
+      if (getKrpano()?.get("xml.scene") !== sceneName) return;
+      showLabIntro(intro);
+    }, 1000);
   });
 
   const cieInfo = document.createElement("div");

@@ -1,6 +1,20 @@
 (() => {
   const falcon = "https://www.falcongames.com";
-  const studioVisual = `${falcon}/wp-content/uploads/2022/05/Asset-1@4x-8-1.png`;
+  // Ảnh lưu cục bộ để bảng không phụ thuộc hotlink của website Falcon.
+  const showcaseAssets = "../labs/game/assets/falcon-showcase";
+  const studioVisual = "../labs/game/assets/gameLab.jpg";
+  const fallbackVisual = studioVisual;
+  const localImageByTitle = {
+    "Falcon in Numbers": `${showcaseAssets}/slide-01.jpeg`,
+    "1945 Air Force": `${showcaseAssets}/1945-air-force.jpg`,
+    "Galaxiga": `${showcaseAssets}/galaxiga.jpg`,
+    "Falcon Squad": `${showcaseAssets}/falcon-squad.jpg`,
+    "Goods Sorting: Match 3 Puzzle": `${showcaseAssets}/goods-sorting.jpg`,
+    "Hexa Stack: Sorting Puzzle": `${showcaseAssets}/hexa-stack.jpg`,
+    "Color Water Sort Wooden Puzzle": `${showcaseAssets}/water-sort.jpg`,
+    "Publishing at Scale": `${showcaseAssets}/slide-08.jpg`,
+    "Where Amazing Games Are Born and Raised": `${showcaseAssets}/slide-09.jpg`
+  };
   const slides = [
     { kind:"achievement", title:"Falcon in Numbers", eyebrow:"Thành tựu nổi bật", image:studioVisual, description:"Life is a game, we choose to create together.", stats:[["10+","Game titles"],["500+","Games launched"],["3B+","Downloads"],["150+","Staff"]], action:"Khám phá studio", href:`${falcon}/about/` },
     { kind:"game", title:"1945 Air Force", eyebrow:"Arcade air combat", image:`${falcon}/wp-content/uploads/2022/06/110522_Screenshot_1945_2048x1000.jpg`, action:"Xem game chính thức", href:`${falcon}/game/` },
@@ -51,9 +65,15 @@
     const slide = slides[slideIndex];
     panel.dataset.kind = slide.kind;
     image.style.opacity = "0";
-    image.src = slide.image;
+    image.onerror = () => {
+      image.onerror = null;
+      image.onload = () => { image.style.opacity = "1"; };
+      image.src = fallbackVisual;
+    };
     image.alt = `Hình ảnh ${slide.title} từ Falcon Game Studio`;
     image.onload = () => { image.style.opacity = "1"; };
+    image.src = localImageByTitle[slide.title] || slide.image;
+    if (image.complete && image.naturalWidth > 0) image.style.opacity = "1";
     eyebrow.textContent = slide.eyebrow;
     title.textContent = slide.title;
     description.textContent = slide.description || "";

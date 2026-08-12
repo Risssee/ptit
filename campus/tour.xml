@@ -755,7 +755,7 @@
 		</image>
 
 		<hotspot name="spot1955820970" style="skin_hotspotstyle" ath="8.615" atv="19.003" depth="1000.0" linkedscene="scene_20" linkedscene_spot="spot1955820547" linkedscene_hoffset="275.27" use3dtransition="true" />
-		<hotspot name="spot1955821036" style="skin_hotspotstyle" ath="-171.021" atv="17.613" depth="1000.0" linkedscene="scene_lib_1f" linkedscene_lookat="0.0,0.0,120.0" use3dtransition="false" onclick="loadscene(scene_lib_1f, null, MERGE, BLEND(0.8)); lookat(0.0,0.0,120.0);" ptit_label="Lối vào thư viện" tooltip="Lối vào thư viện" />
+		<hotspot name="spot1955821036" style="skin_hotspotstyle" ath="-171.021" atv="17.613" depth="1000.0" linkedscene="scene_lib_1f" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot_library_return_campus" linkedscene_hoffset="188.98" use3dtransition="true" ptit_label="Lối vào thư viện" tooltip="Lối vào thư viện" />
 		<hotspot name="spot1955821476" style="skin_hotspotstyle" ath="94.697" atv="11.183" depth="1000.0" linkedscene="scene_gpbk2200_1773130524459" linkedscene_spot="spot1955821594" linkedscene_hoffset="-89.47" use3dtransition="true" />
 
 
@@ -3385,7 +3385,7 @@
 
 		<hotspot name="spot2077062364" style="skin_hotspotstyle" ath="-0.388" atv="16.717" depth="1000.0" linkedscene="scene_lib_2f" linkedscene_lookat="1.24,0.62,120.0" linkedscene_spot="spot2077062582" linkedscene_hoffset="0.41" use3dtransition="true" />
 		<hotspot name="spot2077077292" style="skin_hotspotstyle" ath="134.352" atv="25.934" depth="1000.0" linkedscene="scene_lib_11f" linkedscene_lookat="-86.83,-1.41,120.0" linkedscene_spot="spot2077077672" linkedscene_hoffset="138.95" use3dtransition="true" />
-		<hotspot name="spot_library_return_campus" style="skin_hotspotstyle" ath="180.0" atv="25.0" depth="1000.0" linkedscene="scene_gpbk2201_1773130534438" linkedscene_lookat="0.0,0.0,120.0" use3dtransition="false" onclick="loadscene(scene_gpbk2201_1773130534438, null, MERGE, BLEND(0.8)); lookat(0.0,0.0,120.0);" />
+		<hotspot name="spot_library_return_campus" style="skin_hotspotstyle" ath="180.0" atv="25.0" depth="1000.0" linkedscene="scene_gpbk2201_1773130534438" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot1955821036" linkedscene_hoffset="171.02" use3dtransition="true" />
 
 
 	</scene>

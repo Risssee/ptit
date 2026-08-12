@@ -1,13 +1,6 @@
 (function () {
   "use strict";
 
-  // ================================================================
-  // CHINH THU CONG CHAM DO TAI DAY
-  // Moi scene co dang: scene_name: [X_PHAN_TRAM, Y_PHAN_TRAM].
-  // X tang tu trai sang phai, Y tang tu tren xuong duoi.
-  // Mo URL voi &mapedit=1, vao scene can sua va click len ban do;
-  // Console se in san mot dong toa do de copy vao MANUAL_SCENE_POSITIONS.
-  // ================================================================
   const MAP_COORDINATE_EDITOR = new URLSearchParams(window.location.search).get("mapedit") === "1";
   const MAP_COORDINATE_STORAGE_KEY = "ptit:minimap:scene-positions:v1";
 
@@ -37,7 +30,7 @@
   };
 
   const MANUAL_SCENE_POSITIONS = {
-    // TOA DO DA CAN THU CONG TREN MAP - du lieu nay duoc deploy, khong phu thuoc localStorage.
+    // TOA DO DA CAN THU CONG TREN MAP
     scene_1: [59.29, 94.65],
     scene_2: [59.42, 90.46],
     scene_4: [59.31, 88.62],
@@ -48,28 +41,30 @@
     scene_gpbk2220_1773131152191: [43.45, 78.63],
     scene_gpbk2221_1773131188097: [47.33, 78.72],
     scene_gpbk2222_1773131201563: [52.62, 78.72],
-    scene_7: [56.84, 78.72],
-    scene_8: [55.79, 71.82],
+    scene_7: [59.69, 78.32],
+    scene_8: [59.1, 72],
     scene_9: [58.96, 69.31],
     scene_10: [66.78, 69.58],
     scene_11: [81.5, 66.17],
-    scene_12: [87.13, 56.13],
+    scene_12: [82.15, 65.68],
+    scene_13: [82.15, 76.21],
+    scene_14: [81.56, 88.84],
+    scene_15: [67.38, 89.89],
+    scene_16: [67.08, 77.79],
     scene_17: [86.43, 51.74],
-    scene_18: [83.1, 31.68],
-    scene_19: [83.61, 26.65],
-    scene_20: [74.1, 26.65],
+    scene_18: [85.7, 37.26],
+    scene_19: [85.7, 27.26],
+    scene_20: [78.61, 26.74],
     scene_21: [75.86, 28.53],
     scene_22: [76.92, 30.41],
-    scene_23: [68.62, 27.47],
+    scene_23: [73.29, 27.26],
     scene_24: [65.01, 28],
-    scene_25: [57.03, 28.53],
-    scene_13: [86.64, 70.63],
-    scene_14: [85.17, 84.84],
-    scene_15: [79.85, 83.26],
-    scene_gpbk2201_1773130534438: [72.69, 24.77],
-    scene_gpbk2200_1773130524459: [70.58, 24.77],
-    scene_gpbk2199_1773130499270: [68.82, 24.14],
-    scene_gpbk2195_1773130397237: [64.59, 24.14],
+    scene_25: [58.81, 28.32],
+
+    scene_gpbk2201_1773130534438: [78.01, 24.11],
+    scene_gpbk2200_1773130524459: [75.65, 24.11],
+    scene_gpbk2199_1773130499270: [72.7, 23.58],
+    scene_gpbk2195_1773130397237: [66.19, 23.58],
     scene_gpbk2196_1773130435030: [65.65, 16.61],
     scene_gpbk2208_1773130810995: [64.94, 40.45],
     scene_gpbk2209_1773130847752: [59.31, 53],
@@ -87,17 +82,17 @@
     scene_gpbk2245_1773200385434: [54.96, 47.47],
     scene_gpbk2246_1773200419767: [60.58, 48.53],
     scene_gpbk2248_1773200462872: [58.51, 58],
-    scene_gpbk2249_1773200480632: [58.51, 61.68],
-    scene_gpbk2250_1773200504692: [53.25, 71.68],
-    scene_gpbk2251_1773200519286: [51.42, 70.11],
-    scene_gpbk2252_1773200546003: [46.39, 71.16],
-    scene_gpbk2253_1773200582544: [41.96, 71.68],
-    scene_gpbk2254_1773200608225: [37.23, 71.68],
+    scene_gpbk2249_1773200480632: [58.51, 61.47],
+    scene_gpbk2250_1773200504692: [58.22, 71.47],
+    scene_gpbk2251_1773200519286: [54.08, 71.47],
+    scene_gpbk2252_1773200546003: [50.83, 70.42],
+    scene_gpbk2253_1773200582544: [47.28, 70.95],
+    scene_gpbk2254_1773200608225: [39.3, 72],
     scene_gpbk2255_1773200617042: [38.42, 69.58],
-    scene_gpbk2256_1773200625993: [50.53, 65.37],
-    scene_gpbk2257_1773200668780: [50.53, 60.63],
-    scene_gpbk2258_1773200722125: [47.28, 54.84],
-    scene_gpbk2259_1773200765441: [43.5, 49.58],
+    scene_gpbk2256_1773200625993: [49.94, 65.16],
+    scene_gpbk2257_1773200668780: [49.94, 62.53],
+    scene_gpbk2258_1773200722125: [49.35, 57.26],
+    scene_gpbk2259_1773200765441: [49.05, 49.89],
     scene_gpbk2264_1773200877546: [41.96, 33.79],
     scene_gpbk2265_1773200896352: [42.26, 23.79],
     scene_gpbk2272_1773201146632: [41.37, 17.47],
@@ -118,12 +113,11 @@
     scene_gpbk2261_1773200833764: [31.09, 52.74],
     scene_gpbk2263_1773200851067: [26.95, 47.47],
     scene_gpbk2286_1773201396711: [48.82, 42.21],
-    scene_lib_1f: [75.12, 18],
+    scene_lib_1f: [78.31, 18.32],
     scene_gpbk2235_1773200094715: [65.37, 16.42],
     scene_ttgnng3_a3_nthri_qua_a2jpg: [64.18, 14.84],
     scene_gpbk0065_1773206564173: [81.62, 39.05],
 
-    // Cac scene chua do tay van dung moc dai dien cua khu vuc.
     scene_gpbk2226_1773131353550: anchors.a1,
     scene_gpbk2224_1773131289876: anchors.a1,
     scene_gpbk0066_1773206449967: anchors.a2,
@@ -133,7 +127,6 @@
   };
 
   function positionFor(scene) {
-    // Diem can bang cong cu developer duoc uu tien hon cau hinh trong code.
     if (savedScenePositions[scene]) return savedScenePositions[scene];
     // Toa do khai bao thu cong luon duoc uu tien cao nhat.
     if (MANUAL_SCENE_POSITIONS[scene]) return MANUAL_SCENE_POSITIONS[scene];

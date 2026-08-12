@@ -1610,6 +1610,7 @@ let persistentHotspotLabels = [];
 let persistentHotspotLabelTimer = 0;
 let sceneVisualReady = false;
 let sceneVisualReadyTimer = 0;
+let hotspotLabelsReadyAt = Number.POSITIVE_INFINITY;
 
 // Them chu phia tren hotspot
 const hotspotLabelMap = {
@@ -1683,7 +1684,9 @@ function disableLegacyNavigationTooltip() {
 
 function positionPersistentHotspotLabels() {
     if (!krpano || !persistentHotspotLabels.length) return;
-    if (!sceneVisualReady) {
+    // krpano co the bao hotspot "loaded" som hon vai frame so voi luc texture
+    // duoc ve that su. Giu toan bo nhan an den sau moc an toan de chu khong chay truoc icon.
+    if (!sceneVisualReady || performance.now() < hotspotLabelsReadyAt) {
         persistentHotspotLabels.forEach((item) => { item.element.hidden = true; });
         return;
     }
@@ -1875,6 +1878,7 @@ function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
     sceneVisualReady = false;
+    hotspotLabelsReadyAt = Number.POSITIVE_INFINITY;
     window.clearTimeout(sceneVisualReadyTimer);
     // DARK CAMPUS UI: phat su kien de lop giao dien doc dung scene dang chay.
     // Khong thay doi logic tour; xoa dong nay neu xoa campus-dark-ui.js.
@@ -1939,6 +1943,8 @@ function handleSceneLoadComplete(sceneName) {
             window.requestAnimationFrame(() => {
                 if (!krpano || loadedScene !== krpano.get('xml.scene')) return;
                 sceneVisualReady = true;
+                // Cho engine mot khoang ngan de ve texture hotspot len WebGL truoc khi hien chu.
+                hotspotLabelsReadyAt = performance.now() + 450;
                 renderPersistentHotspotLabels();
                 window.dispatchEvent(new CustomEvent('ptit:sceneready', {
                     detail: { sceneName: loadedScene }
