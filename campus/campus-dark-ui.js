@@ -1,14 +1,11 @@
 (function () {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('ui') === 'current') return;
-
-    // DiEu CHINH THU CONG TEN KHU VUC DAC THU
-    
+   if (params.get('ui') === 'current') return;
+    // DiEu CHINH THU CONG TEN KHU VUC DAC THU  
     const DARK_CAMPUS_AREA_LABELS = {
         scene_1: 'Cổng chính',
         scene_2: 'Cổng chính',
         scene_vswthdn_nhtgtt_1: 'Vườn Nhật',
-        scene_gpbk2226_1773131353550: 'Tòa A1',
         scene_gpbk2217_1773131018070: 'Sân trường',
         scene_gpbk2218_1773131077123: 'Sân trường',
         scene_gpbk2252_1773200546003: 'Sân trường',
@@ -45,9 +42,9 @@
         scene_phpyng_hthnc_ttgnng3a3_1: 'Tòa A3',
         scene_phpyng_hthnc_ttgnng3a3_2: 'Tòa A3',
         scene_gpbk2202_1773130555661: 'Thư viện',
-        scene_gpbk2282_1773201339253: 'Nhà ăn',
-        scene_gpbk2283_1773201346417: 'Nhà ăn',
-        scene_gpbk2284_1773201364343: 'Nhà ăn',
+        scene_gpbk2282_1773201339253: 'Canteen',
+        scene_gpbk2283_1773201346417: 'Canteen',
+        scene_gpbk2284_1773201364343: 'Canteen',
         scene_gpbk2255_1773200617042: 'Khu vực để xe',
         scene_gpbk2285_1773201384046: 'Phòng ăn cán bộ giảng viên',
         scene_gpbk2260_1773200808324: 'Sân bóng rổ',
@@ -71,6 +68,20 @@
         { label: 'Tòa A1', pattern: /scene_gpbk22(?:17|18|19|20|21|22|24|25|26)_/i },
         { label: 'Tòa A3', pattern: /scene_gpbk22(?:34|35|36|37|38)_/i },
         { label: 'Tòa A2', pattern: /scene_(?:gpbk22(?:39|4\d|5\d)|gpbk238[4-9]|.*a2|ttgnng2|ttgnng3a2|ttgnng8)/i }
+    ];
+
+    // CHỈNH THỦ CÔNG TÒA + TÊN LAB HIỂN THỊ TRÊN Ô VỊ TRÍ
+    // - primary: dòng trên (khu vực lớn).
+    // - secondary: dòng dưới (khu vuc nho).
+    const DARK_LAB_LOCATION_RULES = [
+        { primary: 'Tòa A1', secondary: 'CIE Lab', pattern: /^scene_cie_/i },
+        { primary: 'Tòa A2', secondary: 'FPT Lab', pattern: /^scene_fpt/i },
+        { primary: 'Tòa A2', secondary: 'Viettel Lab', pattern: /^scene_viettel_/i },
+        { primary: 'Tòa A2', secondary: 'Samsung Lab', pattern: /^scene_ss_/i },
+        { primary: 'Tòa A3', secondary: 'Game Lab', pattern: /^scene_game_/i },
+        { primary: 'Trung tâm & phòng lab', secondary: 'CTS Lab', pattern: /^scene_(?:gpbk2270|gpbk2271)_/i },
+        { primary: 'Canteen', secondary: 'Phòng ăn cán bộ giảng viên', pattern: /^scene_gpbk2285_1773201384046/i },
+        { primary: 'Tòa A2', secondary: 'Hội trường A2', pattern: /^scene_gpbk0066_1773206449967$/i}
     ];
 
     document.body.classList.add('campus-ui-dark');
@@ -109,10 +120,6 @@
             }, 0);
         });
 
-        // TU DONG THU DANH MUC DIA DIEM
-        // - Bam mot dia diem: thu menu ngay sau khi chon.
-        // - Click that su ra ngoai menu: thu menu.
-        // - Giu va keo panorama de xoay: KHONG thu menu.
         function closeDarkLocationMenu() {
             container.classList.add('sidebar-collapsed');
             sidebar.classList.remove('open');
@@ -121,7 +128,6 @@
             sidebarToggle.setAttribute('aria-label', 'Mở danh mục địa điểm');
         }
 
-        // Scene-item duoc app.js tao sau, nen dung event delegation de khong mat su kien.
         sidebar.addEventListener('click', function (event) {
             if (event.target.closest('.scene-item')) closeDarkLocationMenu();
         });
@@ -173,7 +179,7 @@
         const locationCard = document.createElement('section');
         locationCard.className = 'dark-campus-location';
         locationCard.setAttribute('aria-live', 'polite');
-        locationCard.innerHTML = '<strong>Khuôn viên</strong><span><i></i>Cổng trường</span>';
+        locationCard.innerHTML = '<strong>Cổng chính</strong><span class="dark-campus-location__detail"><i></i><span class="dark-campus-location__detail-text"></span></span>';
         document.body.appendChild(locationCard);
 
         function getDarkAreaTitle(sceneName) {
@@ -189,14 +195,20 @@
                 });
                 if (matchedGroup) return matchedGroup.title;
             }
-            // Mac dinh cuoi cung: scene ngoai troi/khong co ten rieng.
+            // Scene ngoai troi/khong co ten rieng.
             return 'Sân trường';
         }
 
         function syncLocationCard(sceneName) {
             const actualScene = sceneName || (typeof krpano !== 'undefined' && krpano ? krpano.get('xml.scene') : 'scene_1');
-            locationCard.querySelector('strong').textContent = 'Khuôn viên';
-            locationCard.querySelector('span').lastChild.textContent = getDarkAreaTitle(actualScene);
+            const labLocation = DARK_LAB_LOCATION_RULES.find(function (rule) {
+                return rule.pattern.test(actualScene);
+            });
+            const primary = labLocation ? labLocation.primary : getDarkAreaTitle(actualScene);
+            const secondary = labLocation ? labLocation.secondary : '';
+            locationCard.querySelector('strong').textContent = primary;
+            locationCard.querySelector('.dark-campus-location__detail-text').textContent = secondary;
+            locationCard.classList.toggle('dark-campus-location--single-line', !secondary);
             syncDarkActivePlace(actualScene);
         }
 
@@ -215,7 +227,7 @@
             if (/^scene_gpbk226[01]_/i.test(sceneName)) return 'scene_gpbk2260_1773200808324';
             if (/^scene_gpbk2286_/i.test(sceneName)) return 'scene_gpbk2286_1773201396711';
 
-            // Dung chung bang ten khu vuc thu cong, de scene ma hoa khong can chua chu A1/A2/A3.
+            // Dung chung bang ten khu vuc thu cong
             const areaTitle = getDarkAreaTitle(sceneName);
             if (/A2/i.test(areaTitle)) return 'scene_10';
             if (/A3/i.test(areaTitle)) return 'scene_gpbk2195_1773130397237';
@@ -228,7 +240,7 @@
             return '';
         }
 
-        // Bo dieu khien chung goi lai dung mapping da duoc kiem thu cua ban den.
+        // Bo dieu khien chung goi lai dung mapping
         window.PTIT_getDarkActiveSidebarScene = getDarkActiveSidebarScene;
 
         function syncDarkActivePlace(sceneName) {

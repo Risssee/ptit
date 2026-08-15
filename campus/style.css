@@ -21,7 +21,7 @@
     box-sizing: border-box;
 }
 
-/* Hide text caret globally while keeping copy/select working */
+
 *:not(input):not(textarea):not([contenteditable="true"]) {
     caret-color: transparent !important;
 }
@@ -35,7 +35,7 @@ body, html {
     color: var(--text-color);
 }
 
-/* Master Layout */
+
 .app-container {
     display: grid;
     grid-template-areas: 

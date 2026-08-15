@@ -2,7 +2,13 @@
   "use strict";
 
   const MAP_COORDINATE_EDITOR = new URLSearchParams(window.location.search).get("mapedit") === "1";
-  const MAP_COORDINATE_STORAGE_KEY = "ptit:minimap:scene-positions:v1";
+  const LEGACY_MAP_COORDINATE_STORAGE_KEY = "ptit:minimap:scene-positions:v1";
+  const MAP_COORDINATE_STORAGE_KEY = "ptit:minimap:scene-positions:v2";
+
+  // Xóa kho tọa độ cũ để nó không thể ghi đè bộ tọa độ hiện tại đã lưu trong file.
+  try {
+    window.localStorage.removeItem(LEGACY_MAP_COORDINATE_STORAGE_KEY);
+  } catch (_) {}
 
   function readSavedScenePositions() {
     try {
@@ -117,18 +123,16 @@
     scene_gpbk2235_1773200094715: [65.37, 16.42],
     scene_ttgnng3_a3_nthri_qua_a2jpg: [64.18, 14.84],
     scene_gpbk0065_1773206564173: [81.62, 39.05],
+    scene_gpbk2270_1773201080635: [29.55, 17.26],
 
-    scene_gpbk2226_1773131353550: anchors.a1,
     scene_gpbk2224_1773131289876: anchors.a1,
     scene_gpbk0066_1773206449967: anchors.a2,
     scene_gpbk2237_1773200161431: anchors.a3,
     scene_gpbk2202_1773130555661: anchors.library,
-    scene_gpbk2270_1773201080635: anchors.cts
   };
 
   function positionFor(scene) {
-    if (savedScenePositions[scene]) return savedScenePositions[scene];
-    // Toa do khai bao thu cong luon duoc uu tien cao nhat.
+    if (MAP_COORDINATE_EDITOR && savedScenePositions[scene]) return savedScenePositions[scene];
     if (MANUAL_SCENE_POSITIONS[scene]) return MANUAL_SCENE_POSITIONS[scene];
     if (scene.startsWith("scene_cie_")) return anchors.cts;
     if (scene.startsWith("scene_fpt") || scene.startsWith("scene_viettel_") || scene.startsWith("scene_ss_")) return anchors.a2;

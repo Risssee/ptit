@@ -16,8 +16,7 @@
     {
       id: "a1", mark: "A1", title: "Tòa A1", subtitle: "Khu hành chính và phòng học",
       places: [
-        { id: "a1-building", title: "Tòa A1", href: url("campus/tour.html?startscene=scene_gpbk2218_1773131077123") },
-        { id: "a1-classroom", title: "Phòng học A1", href: url("campus/tour.html?startscene=scene_gpbk2226_1773131353550") }
+        { id: "a1-building", title: "Tòa A1", href: url("campus/tour.html?startscene=scene_gpbk2218_1773131077123") }
       ]
     },
     {
@@ -157,7 +156,6 @@
     scene_1: "campus",
     scene_vswthdn_nhtgtt_1: "japanese-garden",
     scene_gpbk2218_1773131077123: "a1-building",
-    scene_gpbk2226_1773131353550: "a1-classroom",
     scene_gpbk2270_1773201080635: "cts",
     scene_10: "a2-building",
     scene_gpbk0065_1773206564173: "a2-classroom",

@@ -1,6 +1,6 @@
 (() => {
   const falcon = "https://www.falcongames.com";
-  // Ảnh lưu cục bộ để bảng không phụ thuộc hotlink của website Falcon.
+  // Ảnh lưu cục bộ
   const showcaseAssets = "../labs/game/assets/falcon-showcase";
   const studioVisual = "../labs/game/assets/gameLab.jpg";
   const fallbackVisual = studioVisual;

@@ -52,7 +52,6 @@ const sceneGroups = [
     "title": "Tòa A1",
     "scenes": [
       "scene_gpbk2218_1773131077123",
-      "scene_gpbk2226_1773131353550",
       "scene_cie_cuatruoc"
     ]
   },
@@ -67,7 +66,7 @@ const sceneGroups = [
     "scenes": [
       "scene_10",
       "scene_gpbk0065_1773206564173",
-      "scene_gpbk0066_1773206449967",
+      "scene_gpbk2244_1773200362117",
       "scene_stgjnh_taafg8a2_githva",
       "scene_fpt1",
       "scene_ss_1"
@@ -96,7 +95,6 @@ const sidebarSceneLabels = {
     scene_1: 'Cổng chính',
     scene_vswthdn_nhtgtt_1: 'Vườn Nhật',
     scene_gpbk2218_1773131077123: 'Tòa A1',
-    scene_gpbk2226_1773131353550: 'Phòng học A1',
     scene_gpbk2270_1773201080635: 'Lab CTS',
     scene_cie_cuatruoc: 'Trung tâm CIE',
     scene_game_0l: 'Game Lab',
@@ -105,7 +103,7 @@ const sidebarSceneLabels = {
     scene_ss_1: 'Samsung Lab',
     scene_10: 'Tòa A2',
     scene_gpbk0065_1773206564173: 'Phòng học A2',
-    scene_gpbk0066_1773206449967: 'Hội trường A2',
+    scene_gpbk2244_1773200362117: 'Hội trường A2',
     scene_gpbk2195_1773130397237: 'Tòa A3',
     scene_gpbk2237_1773200161431: 'Phòng học A3',
     scene_gpbk2202_1773130555661: 'Thư viện',
@@ -117,7 +115,6 @@ const sidebarSceneLabels = {
 };
 
 const sidebarSceneLaunchOverrides = {
-    // CIE trong danh muc: hlookat 0 la mat cua chinh cua panorama Cie_CuaTruoc.
     scene_cie_cuatruoc: {
         targetScene: 'scene_cie_cuatruoc',
         hlookat: 0.0,
@@ -152,8 +149,7 @@ const sidebarSceneLaunchOverrides = {
     }
 };
 
-// Hardcoded popup info overrides in source code.
-// Put per-scene description / purpose edits here to persist across environments.
+
 const sceneInfoOverridesInCode = {
   "scene_1": {
     "purpose": "Lối vào chính và đón tiếp khách tham quan",
@@ -162,10 +158,6 @@ const sceneInfoOverridesInCode = {
   "scene_gpbk2218_1773131077123": {
     "purpose": "Tòa nhà điều hành và hành chính",
     "description": "Nơi làm việc của Ban Giám hiệu, các phòng ban chức năng, phòng học, phòng nghiên cứu"
-  },
-  "scene_gpbk2226_1773131353550": {
-    "purpose": "Phòng học",
-    "description": "Hệ thống phòng học hiện đại phục vụ công tác giảng dạy và học tập cho sinh viên các khóa"
   },
   "scene_10": {
     "purpose": "Tòa nhà giảng đường và văn phòng khoa",
@@ -1663,6 +1655,7 @@ const hotspotLabelMap = {
     'spot1955799511': 'Hướng ra CTS lab',
     'spot1955799238': 'Hướng ra nhà ăn',
     'spot_samsung_entrance': 'Lối vào Samsung lab',
+    'spot1958163031': 'Lối vào hội trường A2',
     'spot1958161240': 'Hướng ra tòa A1'
 };
 

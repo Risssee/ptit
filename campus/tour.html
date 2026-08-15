@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" type="image/png" href="logo-PTIT-826x1024-removebg-preview.png" />
 	<link rel="apple-touch-icon" href="logo-PTIT-826x1024-removebg-preview.png" />
 	<link rel="stylesheet" href="../assets/typography.css?v=1" />
+	<link rel="stylesheet" href="../assets/campus-loading.css?v=3" />
 	<script src="../assets/reload-home.js?v=1" data-home="../index.html"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -22,7 +23,7 @@
 	Day la giao dien chinh; chi tat khi URL co ?ui=current. Xoa link va script DARK CAMPUS UI
 	o cuoi trang neu sau nay khong chon giao dien den.
 	-->
-	<link rel="stylesheet" href="campus-dark-ui.css?v=10" />
+	<link rel="stylesheet" href="campus-dark-ui.css?v=11" />
 	<link rel="stylesheet" href="campus-ui-controls.css?v=1" />
 	<!-- Nội dung riêng của Game Lab; CSS chỉ tác động lên bảng Falcon. -->
 	<link rel="stylesheet" href="../labs/game/game-flex-content.css?v=6" />
@@ -43,6 +44,34 @@
 			document.body.classList.add('campus-ui-dark');
 		}
 	</script>
+<div id="loading" class="campus-loading loading" data-wait-for-load="true" data-initial-only="true" data-minimum-duration="3000" role="progressbar" aria-label="Đang tải không gian tham quan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="campus-loading__inner">
+        <div class="campus-loading__brand" aria-label="PTIT Campus 360 và CTS Lab">
+            <img class="campus-loading__ptit" src="logo-PTIT-826x1024-removebg-preview.png" alt="" />
+            <div class="campus-loading__copy">
+                <strong>PTIT Campus 360</strong>
+                <span>Học viện Công nghệ Bưu chính Viễn thông</span>
+            </div>
+            <span class="campus-loading__divider" aria-hidden="true"></span>
+            <img class="campus-loading__cts" src="IMG_20260403_162544-removebg-preview.png" alt="CTS Lab" />
+        </div>
+        <div class="campus-loading__progress">
+            <p class="loading-title">Đang chuẩn bị không gian tham quan...</p>
+            <div class="campus-loading__progress-row">
+                <div class="loading-track"><div class="loading-bar"></div></div>
+                <span class="loading-percent">0%</span>
+            </div>
+        </div>
+        <aside class="campus-loading__fact">
+            <div class="campus-loading__fact-title">
+                <span class="campus-loading__fact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v17H6.5A2.5 2.5 0 0 0 4 22V5.5Zm16 0A2.5 2.5 0 0 0 17.5 3H13v17h4.5A2.5 2.5 0 0 1 20 22V5.5Z"/></svg></span>
+                <strong>Bạn có biết?</strong>
+            </div>
+            <p>Học viện Công nghệ Bưu chính Viễn thông là cơ sở giáo dục đại học trọng điểm quốc gia về kỹ thuật và công nghệ, với gần 75 năm kinh nghiệm đào tạo và nghiên cứu.</p>
+        </aside>
+    </div>
+</div>
+<script src="../assets/tour-loading.js?v=4"></script>
 <div class="app-container">
     <!-- Header -->
     <header class="app-header">
@@ -108,6 +137,7 @@
                     passQueryParameters: "startscene,startlookat",
                     onready: function (instance) {
                         onready(instance);
+                        window.ptitAttachTourLoader?.(instance);
                         const requestedScene = new URLSearchParams(window.location.search).get("startscene") || "";
                         if (!/^[a-zA-Z0-9_]+$/.test(requestedScene)) return;
                         window.setTimeout(function () {
@@ -152,7 +182,7 @@
     </main>
 </div>
 
-<script src="../assets/campus-minimap.js?v=14"></script>
+<script src="../assets/campus-minimap.js?v=16"></script>
 <script src="../assets/campus-lab-integration.js?v=23"></script>
 <script src="campus-ui-controls.js?v=1"></script>
 <!-- Mỗi lab tự quản lý audio; bộ phát chung hợp nhất config rồi chỉ khởi tạo một lần. -->
@@ -167,7 +197,7 @@
 <script src="../labs/game/game-flex-content.js?v=8"></script>
 
 <!--DARK CAMPUS UI -->
-<script src="campus-dark-ui.js?v=22"></script>
+<script src="campus-dark-ui.js?v=23"></script>
 <script src="campus-white-ui.js?v=1"></script>
 <script>
     window.PTIT_UNIFIED_UI = {

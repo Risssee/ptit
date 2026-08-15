@@ -631,7 +631,7 @@
 			<cube url="panos/GPBK0066_1773206449967.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
 		</image>
 
-		<hotspot name="spot1958163248" style="skin_hotspotstyle" ath="-22.195" atv="3.918" depth="1000.0" linkedscene="scene_gpbk2244_1773200362117" linkedscene_lookat="183.54,6.46,120.0" />
+		<hotspot name="spot1958163248" style="skin_hotspotstyle" ath="-22.195" atv="3.918" depth="1000.0" linkedscene="scene_gpbk2244_1773200362117" linkedscene_spot="spot1958163031" linkedscene_hoffset="180.0" use3dtransition="true" />
 
 	
 		<hotspot name="info_spot" style="skin_info_hotspot" ath="10.0" atv="0.0" />
@@ -1048,7 +1048,6 @@
 			<cube url="panos/GPBK2225_1773131308538.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
 		</image>
 			<hotspot name="spot1955817094" style="skin_hotspotstyle" ath="3.121" atv="10.368" depth="1000.0" linkedscene="scene_cie_cuatruoc" linkedscene_lookat="0.0,0.0,120.0" linkedscene_hoffset="180.0" use3dtransition="true" tooltip="Đi vào Trung tâm CIE" />
-		<hotspot name="spot1955817138" style="skin_hotspotstyle" ath="112.631" atv="20.865" depth="1000.0" linkedscene="scene_gpbk2226_1773131353550" linkedscene_spot="spot1955817323" linkedscene_hoffset="122.1" use3dtransition="true" />
 
 	</scene>
 
@@ -1339,7 +1338,7 @@
 		</image>
 
 		<hotspot name="spot1958162958" style="skin_hotspotstyle" ath="178.622" atv="21.278" depth="1000.0" linkedscene="scene_gpbk2248_1773200462872" linkedscene_spot="spot1958162833" linkedscene_hoffset="1.01" use3dtransition="true" />
-		<hotspot name="spot1958163031" style="skin_hotspotstyle" ath="41.204" atv="4.341" depth="1000.0" linkedscene="scene_gpbk0066_1773206449967" linkedscene_lookat="181.69,5.0,120.0" />
+		<hotspot name="spot1958163031" style="skin_hotspotstyle" ath="41.204" atv="4.341" depth="1000.0" linkedscene="scene_gpbk0066_1773206449967" linkedscene_spot="spot1958163248" linkedscene_hoffset="180.0" use3dtransition="true" />
 		<hotspot name="spot1958163471" style="skin_hotspotstyle" ath="-85.417" atv="15.345" depth="1000.0" linkedscene="scene_gpbk2245_1773200385434" linkedscene_spot="spot1958163652" linkedscene_hoffset="360.0" use3dtransition="true" />
 		
 		<hotspot name="spot1960168382" style="skin_hotspotstyle" ath="77.558" atv="10.763" depth="1000.0" linkedscene="scene_gpbk2387_1773819536686" linkedscene_spot="spot1960168031" linkedscene_hoffset="-75.11" use3dtransition="true" />
