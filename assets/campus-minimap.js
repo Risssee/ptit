@@ -129,6 +129,11 @@
     scene_gpbk0066_1773206449967: anchors.a2,
     scene_gpbk2237_1773200161431: anchors.a3,
     scene_gpbk2202_1773130555661: anchors.library,
+    scene_cts_c1: [28.66, 21.47],
+    scene_cts_1: [28.66, 15.16],
+    scene_cts_2: [28.66, 15.16],
+    scene_cts2_0: [23.94, 15.16],
+    scene_cts_c2: [23.94, 20.95],
   };
 
   function positionFor(scene) {
