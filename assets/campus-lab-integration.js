@@ -15,8 +15,9 @@
     },
     {
       id: "cts",
-      scenes: ["scene_gpbk2270_1773201080635", "scene_gpbk2271_1773201137016"],
-      image: "/campus/panos/GPBK2270_1773201080635.tiles/thumb.jpg",
+      scenes: ["scene_cts_c1"],
+      scenePrefixes: ["scene_cts_", "scene_cts2_"],
+      image: "/labs/cts/panos/cts_c1.tiles/thumb.jpg",
       audio: "",
       title: "CTS LAB",
       description: "CTS Lab là không gian nghiên cứu Công nghệ Sáng tạo, mô phỏng, đồ họa 3D, VR/AR và AI."

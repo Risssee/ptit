@@ -74,6 +74,7 @@
     // - primary: dòng trên (khu vực lớn).
     // - secondary: dòng dưới (khu vuc nho).
     const DARK_LAB_LOCATION_RULES = [
+        { primary: 'Trung tâm & phòng lab', secondary: 'CTS Lab', pattern: /^scene_cts(?:2)?_/i },
         { primary: 'Tòa A1', secondary: 'CIE Lab', pattern: /^scene_cie_/i },
         { primary: 'Tòa A2', secondary: 'FPT Lab', pattern: /^scene_fpt/i },
         { primary: 'Tòa A2', secondary: 'Viettel Lab', pattern: /^scene_viettel_/i },
@@ -214,6 +215,7 @@
 
         // DIA DIEM DANG DUNG: moi scene con cung tro ve mot dong dai dien trong menu.
         function getDarkActiveSidebarScene(sceneName) {
+            if (/^scene_cts(?:2)?_/i.test(sceneName)) return 'scene_cts_c1';
             if (/^scene_cie_/i.test(sceneName)) return 'scene_cie_cuatruoc';
             if (/^scene_game_/i.test(sceneName)) return 'scene_game_0l';
             if (/^scene_fpt/i.test(sceneName)) return 'scene_fpt1';

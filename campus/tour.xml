@@ -3,6 +3,8 @@
 	<include url="skin/vtourskin.xml?v=6" />
 	<include url="cie-scenes.xml?v=2" />
 	<include url="/labs/game/tour.xml?v=7" />
+	<!-- CTS MOI: nhung scene truc tiep de chuyen lab khong tai lai trang/loading. -->
+	<include url="../labs/cts/tour.xml?v=3" />
 	<style name="skin_infopoststyle"
 	       visible="false" enabled="false"
 	       url="/labs/cie/skin/infopost.svg"
@@ -1763,7 +1765,8 @@
 		</image>
 
 		<hotspot name="spot1955799825" style="skin_hotspotstyle" ath="-174.354" atv="12.779" depth="1000.0" linkedscene="scene_gpbk2268_1773200989212" linkedscene_spot="spot1955799714" linkedscene_hoffset="174.93" use3dtransition="true" />
-		<hotspot name="spot1955799842" style="skin_hotspotstyle" ath="5.773" atv="7.857" depth="1000.0" linkedscene="scene_gpbk2270_1773201080635" linkedscene_spot="spot1955799894" linkedscene_hoffset="360.0" use3dtransition="true" />
+		<!-- Cua vao CTS moi: cung runtime campus nen giu duoc transition 3D va khong hien loading. -->
+		<hotspot name="spot1955799842" style="skin_hotspotstyle" ath="5.773" atv="7.857" depth="1000.0" linkedscene="scene_cts_c1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot_cts_exit_to_campus" use3dtransition="true" />
 
 	</scene>
 

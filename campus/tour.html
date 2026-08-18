@@ -6,7 +6,7 @@
 	<link rel="shortcut icon" type="image/png" href="logo-PTIT-826x1024-removebg-preview.png" />
 	<link rel="apple-touch-icon" href="logo-PTIT-826x1024-removebg-preview.png" />
 	<link rel="stylesheet" href="../assets/typography.css?v=1" />
-	<link rel="stylesheet" href="../assets/campus-loading.css?v=3" />
+	<link rel="stylesheet" href="../assets/campus-loading.css?v=4" />
 	<script src="../assets/reload-home.js?v=1" data-home="../index.html"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -121,7 +121,7 @@
         <div id="pano">
             <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
             <script src="tour.js"></script>
-            <script src="app.js?v=186"></script>
+            <script src="app.js?v=190"></script>
             <script>
                 // Khi mở trực tiếp campus mà không chỉ định scene, luôn bắt đầu ở cổng chính.
                 if (!new URLSearchParams(window.location.search).has("startscene")) {
@@ -130,7 +130,7 @@
                     window.history.replaceState(null, "", campusUrl);
                 }
                 embedpano({
-				xml:"tour.xml?v=47",
+				xml: "tour.xml?v=48",
                     target: "pano",
                     html5: "always",
                     mobilescale: 1.0,
@@ -183,7 +183,7 @@
 </div>
 
 <script src="../assets/campus-minimap.js?v=16"></script>
-<script src="../assets/campus-lab-integration.js?v=23"></script>
+<script src="../assets/campus-lab-integration.js?v=25"></script>
 <script src="campus-ui-controls.js?v=1"></script>
 <!-- Mỗi lab tự quản lý audio; bộ phát chung hợp nhất config rồi chỉ khởi tạo một lần. -->
 <script src="../labs/cie/scene-narration-config.js?v=8"></script>
@@ -197,7 +197,7 @@
 <script src="../labs/game/game-flex-content.js?v=8"></script>
 
 <!--DARK CAMPUS UI -->
-<script src="campus-dark-ui.js?v=23"></script>
+<script src="campus-dark-ui.js?v=25"></script>
 <script src="campus-white-ui.js?v=1"></script>
 <script>
     window.PTIT_UNIFIED_UI = {

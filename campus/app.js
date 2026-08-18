@@ -58,7 +58,7 @@ const sceneGroups = [
   {
     "title": "Trung tâm & phòng lab",
     "scenes": [
-      "scene_gpbk2270_1773201080635"
+      "scene_cts_c1"
     ]
   },
   {
@@ -95,7 +95,7 @@ const sidebarSceneLabels = {
     scene_1: 'Cổng chính',
     scene_vswthdn_nhtgtt_1: 'Vườn Nhật',
     scene_gpbk2218_1773131077123: 'Tòa A1',
-    scene_gpbk2270_1773201080635: 'Lab CTS',
+    scene_cts_c1: 'Lab CTS',
     scene_cie_cuatruoc: 'Trung tâm CIE',
     scene_game_0l: 'Game Lab',
     scene_stgjnh_taafg8a2_githva: 'Viettel Lab',
@@ -148,7 +148,6 @@ const sidebarSceneLaunchOverrides = {
         fov: 120.0
     }
 };
-
 
 const sceneInfoOverridesInCode = {
   "scene_1": {
@@ -1656,6 +1655,9 @@ const hotspotLabelMap = {
     'spot1955799238': 'Hướng ra nhà ăn',
     'spot_samsung_entrance': 'Lối vào Samsung lab',
     'spot1958163031': 'Lối vào hội trường A2',
+    'spot2092315972'  : 'Lối vào CTS lab',
+    'spot2092320057'  : 'Hướng sang phòng thực hành',
+    'spot2092322586'  : 'Lối vào phòng thực hành',
     'spot1958161240': 'Hướng ra tòa A1'
 };
 
