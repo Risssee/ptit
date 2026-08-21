@@ -3,7 +3,13 @@
 
   // Hợp nhất config độc lập của Campus/CIE/Game. Vẫn hỗ trợ biến config cũ để
   // các tour độc lập như FPT không bị ảnh hưởng.
-  const registeredConfigs = window.PTIT_SCENE_NARRATION_CONFIGS || [];
+  const labConfigs = (window.PTIT_LAB_CONFIGS || [])
+    .map((lab) => lab && lab.narration)
+    .filter(Boolean);
+  const registeredConfigs = [
+    ...(window.PTIT_SCENE_NARRATION_CONFIGS || []),
+    ...labConfigs
+  ];
   const legacyConfig = window.PTIT_SCENE_NARRATION_CONFIG;
   const configParts = legacyConfig ? [legacyConfig, ...registeredConfigs] : registeredConfigs;
   const config = configParts.reduce((merged, part) => ({

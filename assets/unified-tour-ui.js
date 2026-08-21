@@ -24,8 +24,8 @@
       places: [
         { id: "cts", title: "Lab CTS", href: url("campus/tour.html?startscene=scene_cts_c1") },
         { id: "cie", title: "Trung tâm CIE", href: url("campus/tour.html?startscene=scene_cie_cuatruoc") },
-        { id: "fpt", title: "Phòng LAB FPT", href: url("labs/fpt/tour.html") },
-        { id: "game", title: "PTIT Game Lab", href: url("labs/game/tour.html") }
+        { id: "fpt", title: "Phòng LAB FPT", href: url("campus/tour.html?startscene=scene_fpt1") },
+        { id: "game", title: "PTIT Game Lab", href: url("campus/tour.html?startscene=scene_game_0l") }
       ]
     },
     {

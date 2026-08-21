@@ -1,0 +1,72 @@
+<krpano>
+	<!-- FPT LAB: file scene duy nhat; dung chung skin va runtime cua Campus. -->
+
+<scene name="scene_fpt1" title="fpt1" onstart="" thumburl="/labs/fpt/panos/fpt1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/labs/fpt/panos/fpt1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/labs/fpt/panos/fpt1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2061436336" style="skin_hotspotstyle" ath="-93.811" atv="21.957" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061435693" linkedscene_hoffset="189.26" use3dtransition="true" />
+		<hotspot name="spot2061436517" style="skin_hotspotstyle" ath="62.22" atv="21.44" depth="1000.0" linkedscene="scene_fpt2a" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061437017" linkedscene_hoffset="-13.29" use3dtransition="true" />
+		<hotspot name="spot2061440167" style="skin_hotspotstyle" ath="-68.588" atv="30.207" depth="1000.0" linkedscene="scene_fpt4a" linkedscene_lookat="-3.09,-0.82,120.0" linkedscene_spot="spot2061439774" linkedscene_hoffset="211.09" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_fpt2a" title="fpt2a" onstart="" thumburl="/labs/fpt/panos/fpt2a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/labs/fpt/panos/fpt2a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/labs/fpt/panos/fpt2a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2061437017" style="skin_hotspotstyle" ath="-130.78" atv="16.66" depth="1000.0" linkedscene="scene_fpt1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061436517" linkedscene_hoffset="373.29" use3dtransition="true" />
+		<hotspot name="spot2061438046" style="skin_hotspotstyle" ath="-1.02" atv="15.881" depth="1000.0" linkedscene="scene_fpt3a" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061438867" linkedscene_hoffset="358.3" use3dtransition="true" />
+	</scene>
+
+<scene name="scene_fpt3a" title="fpt3a" onstart="" thumburl="/labs/fpt/panos/fpt3a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/labs/fpt/panos/fpt3a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/labs/fpt/panos/fpt3a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2061438867" style="skin_hotspotstyle" ath="177.281" atv="33.705" depth="1000.0" linkedscene="scene_fpt2a" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061438046" linkedscene_hoffset="1.7" use3dtransition="true" />
+		<hotspot name="spot2061439064" style="skin_hotspotstyle" ath="-7.714" atv="23.161" depth="1000.0" linkedscene="scene_fpt4a" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061439296" linkedscene_hoffset="15.57" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_fpt4a" title="fpt4a" onstart="" thumburl="/labs/fpt/panos/fpt4a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/labs/fpt/panos/fpt4a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/labs/fpt/panos/fpt4a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2061439296" style="skin_hotspotstyle" ath="-172.147" atv="17.711" depth="1000.0" linkedscene="scene_fpt3a" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2061439064" linkedscene_hoffset="344.43" use3dtransition="true" />
+		<hotspot name="spot2061439774" style="skin_hotspotstyle" ath="-37.501" atv="30.594" depth="1000.0" linkedscene="scene_fpt1" linkedscene_lookat="-3.09,-0.82,120.0" linkedscene_spot="spot2061440167" linkedscene_hoffset="148.91" use3dtransition="true" />
+
+	</scene>
+
+</krpano>

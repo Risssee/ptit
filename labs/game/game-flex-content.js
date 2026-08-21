@@ -28,7 +28,7 @@
     { kind:"career", title:"Submit Your Game", eyebrow:"Kết nối nhà phát triển", image:studioVisual, description:"Gửi sản phẩm tới hệ sinh thái publishing của Falcon qua biểu mẫu chính thức.", action:"Submit Game", href:`${falcon}/formpublishing/` }
   ];
   // ===== VỊ TRÍ BẢNG FALCON SHOWCASE =====
-  // Sửa tọa độ tại /labs/game/tour.xml
+  // Sửa tọa độ bảng Falcon tại /campus/scenes/game.xml.
   const SHOWCASE_SCENE = "scene_game_1l";
   const SHOWCASE_HOTSPOT = "game_showcase_wall";
 
