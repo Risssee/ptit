@@ -1,69 +1,46 @@
 # PTIT VR360
 
-Khung co ban cho web tham quan 360 cua cac phong lab:
+Website tham quan PTIT dùng một runtime Krpano chung tại `campus/`. Tên scene và hotspot do dữ liệu tour quyết định; không đổi tên khi chỉ tổ chức lại mã nguồn.
 
-- Lab CTS
-- Trung tam CIE
-- Thu vien
-- Lab Naver
-- Lab Samsung
-- Lab Viettel
-- Lab Game
+## Cấu trúc chính
 
-## Cach chay nhanh
+- `index.html`: trang chủ.
+- `assets/`: ảnh, icon, audio và tiện ích dùng chung.
+- `campus/tour.html`: trang chạy tour duy nhất.
+- `campus/tour.xml`: cấu hình Krpano chung và include các file scene.
+- `campus/scenes/`: scene khuôn viên và từng lab.
+- `campus/config/`: dữ liệu khu vực, sidebar và tọa độ minimap.
+- `campus/modules/`: các chức năng độc lập dùng chung trong tour.
+- `campus/themes/`: mã giao diện đen và trắng.
+- `campus/styles/`: CSS thành phần của trang tour.
+- `labs/<lab>/lab-config.js`: popup, voice, narration và infopost riêng của lab.
+- `labs/<lab>/assets`, `audio`, `panos`: tài nguyên riêng của lab.
 
-Neu co Python:
+## Chạy local
+
+Mở thư mục dự án bằng Live Server hoặc chạy:
 
 ```powershell
-cd B:\Ptit_vr360
 python -m http.server 8080
 ```
 
-Mo:
+Sau đó mở `http://localhost:8080`.
 
-```text
-http://localhost:8080
-```
-
-Neu co Docker:
+## Kiểm tra cấu hình
 
 ```powershell
-cd B:\Ptit_vr360
-docker compose up
+node scripts/validate-config.js
+node scripts/validate-scenes.js
+node scripts/validate-assets.js
 ```
 
-## Them Krpano
+Các script kiểm tra cấu hình khu vực, `linkedscene` và đường dẫn tài nguyên trước khi commit.
 
-Dat file Krpano vao:
+## Chỉnh sửa thường dùng
 
-```text
-vendor/krpano/tour.js
-vendor/krpano/tour.swf
-vendor/krpano/skin/
-```
-
-## Them anh 360
-
-Sau khi dung Krpano cat anh, dat tile vao:
-
-```text
-panos/lab_cts/
-panos/cie_center/
-panos/library/
-panos/lab_naver/
-panos/lab_samsung/
-panos/lab_viettel/
-panos/lab_game/
-```
-
-Neu duong dan tile Krpano sinh ra khac mau hien tai, sua trong `tour.xml`.
-
-## Sua noi dung popup
-
-Mo file:
-
-```text
-js/app.js
-```
-
-Sua `title`, `description`, `image` trong tung scene.
+- Khu vực, scene mở đầu, góc nhìn: `campus/config/locations.js`.
+- Thứ tự danh mục: `campus/config/sidebar-groups.js`.
+- Tọa độ chấm đỏ: `campus/config/minimap-positions.js`.
+- Popup/voice/infopost lab: `labs/<lab>/lab-config.js`.
+- Scene và hotspot: `campus/scenes/*.xml`.
+- Giao diện: `campus/themes/` và `campus/styles/`.

@@ -1,6 +1,8 @@
 (function () {
   "use strict";
-  // CẤU HÌNH SAMSUNG LAB: popup và voice.
+
+  // CAU HINH SAMSUNG LAB: popup mo dau, voice theo scene va infoport.
+  // Giu nguyen ten scene goc; du lieu khong dung se duoc don o buoc rieng sau.
   window.PTIT_LAB_CONFIGS = window.PTIT_LAB_CONFIGS || [];
   window.PTIT_LAB_CONFIGS.push({
     id: "samsung",
@@ -18,8 +20,37 @@
       delay: 700,
       visitedKey: "ptit-samsung-scene-narration-visited",
       scenes: {
-        scene_ss_1: { title: "Giới thiệu Samsung Lab", audio: "/labs/samsung/audio/guided/01-samsung-welcome.mp3?v=3" }
+        scene_ss_1: {
+          title: "Giới thiệu Samsung Lab",
+          audio: "/labs/samsung/audio/guided/01-samsung-welcome.mp3?v=3"
+        }
       }
+    },
+    infoports: {
+      scene_ss_1: [
+        {
+          id: "samsung_computer_system",
+          ath: 0,
+          atv: 5,
+          title: "Hệ thống máy tính thực hành Samsung",
+          text: "Phòng lab được trang bị dàn máy tính để bàn đồng bộ Samsung bố trí thành nhiều dãy song song. Mỗi máy trạm được kết nối mạng nội bộ tốc độ cao, phục vụ các buổi thực hành lập trình, xử lý dữ liệu và phát triển ứng dụng di động. Hệ thống máy có cấu hình đủ mạnh để vận hành mượt mà các công cụ phát triển nặng như Android Studio, giúp sinh viên trải nghiệm môi trường phát triển phần mềm chuyên nghiệp ngay tại trường.",
+          image: "/labs/samsung/assets/infoports/samsung-computer-lab.jpg",
+          audio: "/labs/samsung/audio/infoports/01-computer-system.mp3?v=1",
+          tooltip: "Xem hệ thống máy tính"
+        }
+      ],
+      scene_ss_2: [
+        {
+          id: "samsung_computer_system",
+          ath: 39,
+          atv: 8,
+          title: "Hệ thống máy tính thực hành Samsung",
+          text: "Phòng lab được trang bị dàn máy tính để bàn đồng bộ Samsung bố trí thành nhiều dãy song song. Mỗi máy trạm được kết nối mạng nội bộ tốc độ cao, phục vụ các buổi thực hành lập trình, xử lý dữ liệu và phát triển ứng dụng di động. Hệ thống máy có cấu hình đủ mạnh để vận hành mượt mà các công cụ phát triển nặng như Android Studio, giúp sinh viên trải nghiệm môi trường phát triển phần mềm chuyên nghiệp ngay tại trường.",
+          image: "/labs/samsung/assets/infoports/samsung-computer-lab.jpg",
+          audio: "/labs/samsung/audio/infoports/01-computer-system.mp3?v=1",
+          tooltip: "Xem hệ thống máy tính",
+        }
+      ]
     }
   });
 })();

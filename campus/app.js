@@ -40,115 +40,7 @@ const sceneData = {
     },
 };
 
-const sceneGroups = [
-  {
-    "title": "Khuôn viên",
-    "scenes": [
-      "scene_1",
-      "scene_vswthdn_nhtgtt_1"
-    ]
-  },
-  {
-    "title": "Tòa A1",
-    "scenes": [
-      "scene_gpbk2218_1773131077123",
-      "scene_cie_cuatruoc"
-    ]
-  },
-  {
-    "title": "Trung tâm & phòng lab",
-    "scenes": [
-      "scene_cts_c1"
-    ]
-  },
-  {
-    "title": "Tòa A2",
-    "scenes": [
-      "scene_10",
-      "scene_gpbk0065_1773206564173",
-      "scene_gpbk2244_1773200362117",
-      "scene_stgjnh_taafg8a2_githva",
-      "scene_fpt1",
-      "scene_ss_1"
-    ]
-  },
-  {
-    "title": "Tòa A3",
-    "scenes": [
-      "scene_gpbk2195_1773130397237",
-      "scene_gpbk2237_1773200161431",
-      "scene_game_0l"
-    ]
-  },
-  {
-    "title": "Tiện ích sinh viên",
-    "scenes": [
-      "scene_gpbk2201_1773130534438",
-      "scene_gpbk2282_1773201339253",
-      "scene_gpbk2260_1773200808324",
-      "scene_gpbk2286_1773201396711"
-    ]
-  }
-];
-
-const sidebarSceneLabels = {
-    scene_1: 'Cổng chính',
-    scene_vswthdn_nhtgtt_1: 'Vườn Nhật',
-    scene_gpbk2218_1773131077123: 'Tòa A1',
-    scene_cts_c1: 'Lab CTS',
-    scene_cie_cuatruoc: 'Trung tâm CIE',
-    scene_game_0l: 'Game Lab',
-    scene_stgjnh_taafg8a2_githva: 'Viettel Lab',
-    scene_fpt1: 'FPT Telecom Lab',
-    scene_ss_1: 'Samsung Lab',
-    scene_10: 'Tòa A2',
-    scene_gpbk0065_1773206564173: 'Phòng học A2',
-    scene_gpbk2244_1773200362117: 'Hội trường A2',
-    scene_gpbk2195_1773130397237: 'Tòa A3',
-    scene_gpbk2237_1773200161431: 'Phòng học A3',
-    scene_gpbk2202_1773130555661: 'Thư viện',
-    scene_gpbk2201_1773130534438: 'Thư viện',
-    scene_lib_1f: 'Thư viện',
-    scene_gpbk2282_1773201339253: 'Canteen',
-    scene_gpbk2260_1773200808324: 'Sân bóng rổ',
-    scene_gpbk2286_1773201396711: 'Sân bóng chuyền'
-};
-
-const sidebarSceneLaunchOverrides = {
-    scene_cie_cuatruoc: {
-        targetScene: 'scene_cie_cuatruoc',
-        hlookat: 0.0,
-        vlookat: 0.0,
-        fov: 120.0
-    },
-    scene_gpbk2201_1773130534438: {
-        targetScene: 'scene_gpbk2201_1773130534438',
-        hlookat: 180.0,
-        vlookat: 0.0,
-        fov: 120.0
-    },
-    scene_stgjnh_taafg8a2_githva: {
-        targetScene: 'scene_viettel_cua1',
-        hlookat: 0.0,
-        vlookat: 0.0,
-        fov: 120.0
-    },
-    scene_fpt1: {
-        // Thẻ FPT mở thẳng không gian tổng quan của FPT.
-        targetScene: 'scene_fpt1',
-        hlookat: 0.0,
-        vlookat: 0.0,
-        fov: 120.0
-    },
-    scene_ss_1: {
-        // Thẻ Samsung mở scene hành lang ngoài cửa; popup sẽ hiện tại scene này.
-        targetScene: 'scene_gpbk2388_1773819661170',
-        hlookat: 120.0,
-        vlookat: 5.0,
-        fov: 120.0
-    }
-};
-
+// KHU VUC VA DIEM MO DA CHUYEN SANG campus/config/*.js.
 const sceneInfoOverridesInCode = {
   "scene_1": {
     "purpose": "Lối vào chính và đón tiếp khách tham quan",
@@ -212,9 +104,6 @@ let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
 let hotspotInfoFollowRaf = null;
-let coordTrackerRaf = null;
-let coordTrackerEl = null;
-let hotspotBuilder = null;
 let runtimePlacedHotspots = {};
 const CAMPUS_INFO_HOTSPOTS_ENABLED = false;
 let sceneInfoOverrides = { ...sceneInfoOverridesInCode };
@@ -246,267 +135,6 @@ const computerHotspot = {
 };
 const hotspotData = {
     scene_1: [],
-    // ========================================================================
-    // INFOPORT SAMSUNG LAB 
-    // ========================================================================
-    scene_ss_1: [
-        {
-            // Hệ thống máy tính thực hành Samsung.
-            id: 'samsung_computer_system',
-            ath: 0.0,
-            atv: 5.0,
-            title: 'Hệ thống máy tính thực hành Samsung',
-            text: 'Phòng lab được trang bị dàn máy tính để bàn đồng bộ Samsung bố trí thành nhiều dãy song song. Mỗi máy trạm được kết nối mạng nội bộ tốc độ cao, phục vụ các buổi thực hành lập trình, xử lý dữ liệu và phát triển ứng dụng di động. Hệ thống máy có cấu hình đủ mạnh để vận hành mượt mà các công cụ phát triển nặng như Android Studio, giúp sinh viên trải nghiệm môi trường phát triển phần mềm chuyên nghiệp ngay tại trường.',
-            image: '/labs/samsung/assets/infoports/samsung-computer-lab.jpg',
-            audio: '/labs/samsung/audio/infoports/01-computer-system.mp3?v=1',
-            tooltip: 'Xem hệ thống máy tính'
-        }
-    ],
-
-    // ========================================================================
-    // INFOPORT VIETTEL LAB 
-    // ========================================================================
-    scene_viettel_9h: [
-        {
-            // ----------------------------------------------------------------
-            // INFOPORT 1: HỆ THỐNG CORE 4G
-            // ----------------------------------------------------------------
-            id: 'viettel_core_4g',
-            ath: -35.0,
-            atv: 4.0,
-            title: 'Hệ thống Core 4G (EPC - IMS - HSS)',
-            text: 'Đây là mạng lõi chịu trách nhiệm xác thực, quản lý kết nối và điều hướng toàn bộ lưu lượng dữ liệu/thoại của người dùng.\n\nEPC (Evolved Packet Core): Mạng lõi gói của 4G, gồm các thành phần như MME (quản lý di động), SGW/PGW (điều hướng và định tuyến dữ liệu Internet), giúp thiết bị di động kết nối mượt mà vào mạng IP.\n\nHSS (Home Subscriber Server): Cơ sở dữ liệu trung tâm chứa toàn bộ thông tin thuê bao như số điện thoại, gói cước, quyền truy cập và vị trí hiện tại.\n\nIMS (IP Multimedia Subsystem): Nền tảng cung cấp dịch vụ đa phương tiện trên nền IP, cốt lõi để triển khai dịch vụ thoại chất lượng cao VoLTE trên mạng 4G.',
-            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
-
-            audio: '/labs/Viettel/audio/infoports/01-core-4g.mp3?v=1',
-  
-            tooltip: 'Xem hệ thống Core 4G'
-        },
-        {
-            // ----------------------------------------------------------------
-            // INFOPORT 2: HỆ THỐNG OCS 4G
-            // ----------------------------------------------------------------
-            id: 'viettel_ocs_4g',
-          
-            ath: 0.0,
-            atv: 4.0,
-         
-            title: 'Hệ thống OCS 4G ',
-           
-            text: 'Hệ thống OCS được coi là bộ não kinh doanh của nhà mạng di động.\n\nChức năng chính: Tính cước và kiểm soát tài khoản theo thời gian thực (Real-time charging) cho cả thuê bao trả trước lẫn trả sau.\n\nCơ chế hoạt động: Khi bạn gọi điện, nhắn tin hay truy cập Data 4G, OCS sẽ kiểm tra số dư/gói cước ngay lập tức, trừ tiền/dung lượng theo từng giây/MB và ngắt kết nối tự động ngay khi tài khoản hết hạn hoặc hết tiền.',
-           
-            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
-         
-            audio: '/labs/Viettel/audio/infoports/02-ocs-4g.mp3?v=1',
-          
-            tooltip: 'Xem hệ thống OCS 4G'
-        },
-        {
-            // ----------------------------------------------------------------
-            // INFOPORT 3: TỦ NGUỒN DC
-            // ----------------------------------------------------------------
-            id: 'viettel_dc_power',
-            
-            ath: 35.0,
-            atv: 4.0,
-          
-            title: 'Tủ nguồn DC ',
-            
-            text: 'Đây là hạ tầng cung cấp năng lượng chuyên dụng cho toàn bộ thiết bị viễn thông trong phòng lab.\n\nCác thiết bị viễn thông và máy chủ chuyên dụng hoạt động chủ yếu bằng nguồn điện một chiều DC (thường là -48V DC) để đảm bảo độ ổn định cao, chống nhiễu và dễ kết nối với hệ thống ắc quy dự phòng (UPS).\n\nThiết bị có vai trò chuyển đổi điện lưới AC thành điện DC ổn định, duy trì hoạt động liên tục 24/7 cho hệ thống Core và OCS mà không bị gián đoạn khi có sự cố điện.',
-           
-            image: '/labs/Viettel/assets/infoports/viettel-server-systems.jpg',
-           
-            audio: '/labs/Viettel/audio/infoports/03-dc-power.mp3?v=1',
-           
-            tooltip: 'Xem tủ nguồn DC'
-        }
-    ],
-
-    // ========================================================================
-    // INFOPORT THƯ VIỆN 
-    // ========================================================================
-    scene_lib_1f: [
-        {
-            // Tủ gửi đồ cá nhân.
-            id: 'library_lockers',
-            ath: 110.0,
-            atv: 5.0,
-            title: 'Tủ gửi đồ cá nhân',
-            text: 'Hệ thống tủ locker thông minh được chia thành nhiều ô nhỏ có đánh số cẩn thận, giúp sinh viên yên tâm lưu trữ cặp sách, đồ dùng cá nhân trước khi vào thư viện.',
-            image: '/labs/Library/assets/infoports/tu.jpg',
-            audio: '/labs/Library/audio/infoports/01-lockers.mp3?v=1',
-            tooltip: 'Xem tủ gửi đồ'
-        },
-        {
-            // Hệ thống cửa tự động.
-            id: 'library_automatic_gate',
-            ath: 183.0,
-            atv: 35.0,
-            title: 'Hệ thống cửa tự động',
-            text: 'Để đảm bảo an ninh và quản lý lưu lượng người ra vào hiệu quả, thư viện được trang bị cổng kiểm soát tự động dạng tay quay hiện đại. Sinh viên và cán bộ chỉ cần quét khuôn mặt tại màn hình gắn trên trụ inox là cửa quay sẽ mở tự động. Ngay bên cạnh cổng vào là lối ra riêng biệt có biển chỉ dẫn rõ ràng, giúp luồng di chuyển của bạn đọc luôn thông suốt và trật tự.',
-            image: '/labs/Library/assets/infoports/cua.jpg',
-            audio: '/labs/Library/audio/infoports/02-automatic-gate.mp3?v=1',
-            tooltip: 'Xem hệ thống cửa'
-        }
-    ],
-    scene_lib_2f: [
-        {
-            // Trung tâm Thông tin Thư viện.
-            id: 'library_information_center',
-            ath: 0.0,
-            atv: 5.0,
-            title: 'Trung tâm Thông tin Thư viện',
-            text: 'Đây là khu vực bàn giao dịch được thiết kế tối giản, tinh tế với tone màu gỗ sáng và vách kính giao tiếp trong suốt. Phía trước quầy trang bị dãy ghế cao tạo chỗ ngồi thoải mái cho sinh viên trong lúc chờ làm thủ tục mượn - trả sách hoặc nhờ cán bộ thư viện hỗ trợ tra cứu thông tin. Không gian bên trong quầy được kết nối trực tiếp với kho sách chuyên ngành, đảm bảo quá trình cung cấp tài liệu diễn ra nhanh chóng và chính xác.',
-            image: '/labs/Library/assets/infoports/tttv.jpg',
-            audio: '/labs/Library/audio/infoports/03-information-center.mp3?v=1',
-            tooltip: 'Xem trung tâm thông tin'
-        }
-    ],
-    scene_lib_9f: [
-        {
-            // Kho sách mở.
-            id: 'library_open_shelves',
-            ath: 30.0,
-            atv: 5.0,
-            title: 'Kho sách mở và các dãy kệ tài liệu chuyên ngành',
-            text: 'Kho sách của thư viện được sắp xếp khoa học theo các dãy kệ cao tầng phân loại chuẩn nghiệp vụ, với lối đi giữa các kệ rộng rãi và đầy đủ ánh sáng. Mọi đầu sách từ giáo trình chuyên ngành Công nghệ thông tin, Bưu chính Viễn thông, Kinh tế cho đến sách tham khảo ngoại văn đều được dán nhãn phân loại rõ ràng trên từng ngăn kệ. Thiết kế kho mở giúp sinh viên tự do di chuyển, chủ động tìm kiếm và đọc thử tài liệu trực tiếp tại chỗ một cách dễ dàng.',
-            image: '/labs/Library/assets/infoports/sach.jpg',
-            audio: '/labs/Library/audio/infoports/04-open-shelves.mp3?v=1',
-            tooltip: 'Xem kho sách mở'
-        }
-    ],
-    scene_lib_8_1e: [
-        {
-            // Bàn học cá nhân.
-            id: 'library_individual_desks',
-            ath: -60.0,
-            atv: 5.0,
-            title: 'Khu vực bàn học cá nhân',
-            text: 'Dành riêng cho những sinh viên cần sự riêng tư và tập trung tối đa, khu vực này được trang bị các bàn học đơn có vách ngăn cao hai bên. Mỗi vị trí học đều được tích hợp sẵn ổ cắm điện, đèn học và cửa sổ lấy sáng tự nhiên có rèm cuốn điều chỉnh linh hoạt. Thiết kế này giúp loại bỏ tối đa các tác nhân gây xao nhãng xung quanh, mang đến không gian tự học chuẩn mực và hiệu quả nhất.',
-            image: '/labs/Library/assets/infoports/tuHoc.jpg',
-            audio: '/labs/Library/audio/infoports/05-individual-desks.mp3?v=1',
-            tooltip: 'Xem khu vực bàn học'
-        }
-    ],
-    scene_lib_6e: [
-        {
-            // Máy tính thực hành.
-            id: 'library_computer_area',
-            ath: 0.0,
-            atv: 5.0,
-            title: 'Khu vực máy tính thực hành',
-            text: 'Nhằm hỗ trợ tối đa việc khai thác tài nguyên số và thực hành lập trình, phòng máy tính thư viện được đầu tư trang thiết bị rất đồng bộ. Các bàn máy tính được chia theo từng dãy ngăn cách bởi vách lửng, trang bị màn hình chất lượng cao, tai nghe chuyên dụng và kết nối Internet tốc độ cao. Đây là không gian lý tưởng để sinh viên tra cứu thư viện số dlib, làm bài tập lớn, luyện tập kỹ năng CNTT hoặc tham gia các buổi học trực tuyến ngay tại thư viện.',
-            image: '/labs/Library/assets/infoports/mt.jpg',
-            audio: '/labs/Library/audio/infoports/06-computer-area.mp3?v=1',
-            tooltip: 'Xem khu vực máy tính'
-        }
-    ],
-
-    // ========================================================================
-    // INFOPORT FPT TELECOM LAB
-    // ========================================================================
-    scene_fpt2a: [
-        {
-            id: 'fpt_odn_equipment',
-            ath: 77.0,
-            atv: 1.0,
-            title: 'Mô hình thiết bị mạng ODN',
-            text: 'Mô hình giới thiệu các phần tử thụ động trên mạng phân phối quang như hộp cáp, bộ chia quang, cáp thuê bao và thiết bị đầu cuối. Sinh viên sử dụng mô hình để nhận diện thiết bị, tìm hiểu cấu trúc ODN và thực hành đấu nối tuyến thuê bao.',
-            image: '/labs/fpt/assets/fpt-odn-equipment.jpeg',
-            audio: '/labs/fpt/audio/fpt-odn-equipment.mp3?v=2',
-            tooltip: 'Mô hình thiết bị mạng ODN'
-        },
-        {
-            id: 'fpt_external_cabling',
-            ath: 112.0,
-            atv: 0.0,
-            title: 'Sơ đồ phối cáp ngoại vi',
-            text: 'Mô hình minh họa cách tổ chức và phân phối tuyến cáp từ mạng chính đến các hộp cáp nhánh và điểm thuê bao. Qua đó, sinh viên thực hành đọc sơ đồ, xác định tuyến cáp và kiểm tra mối liên kết giữa các điểm phối cáp.',
-            image: '/labs/fpt/assets/fpt-external-cabling.jpeg',
-            audio: '/labs/fpt/audio/fpt-external-cabling.mp3?v=2',
-            tooltip: 'Sơ đồ phối cáp ngoại vi'
-        }
-    ],
-
-    // ========================================================================
-    // INFOPORT GAME LAB
-    // ========================================================================
-    scene_game_3: [
-        {
-            id: 'game_computer_practice_area',
-            ath: 45.0,
-            atv: 25.0,
-            title: 'Khu vực máy tính thực hành',
-            text: 'Khu vực thực hành được thiết kế rộng rãi với các trang thiết bị hiện đại nhằm phục vụ các buổi học, nghiên cứu chuyên sâu về game. Dàn máy tính có cấu hình cao, giúp sinh viên sử dụng mượt mà các công cụ phát triển game nặng (như Unity, Unreal Engine) cũng như thử nghiệm các tựa game đòi hỏi đồ họa cao. Đồng thời đây cũng là nơi kiểm thử và đánh giá các dự án do chính các đội ngũ tại Game Lab phát triển.',
-            image: '/labs/game/assets/computer-practice-area.jpg',
-            audio: '/labs/game/audio/guided/03-game-practice-area.mp3?v=2',
-            tooltip: 'Khu vực máy tính thực hành'
-        }
-    ],
-
-    // ========================================================================
-    // INFOPORT TRUNG TÂM CIE
-    // ========================================================================
-    scene_cie_sanhchinh1h: [
-        {
-            id: 'sanhchinh1_1',
-            // Cửa Bộ phận Phát triển dự án
-            ath: -119.0,
-            atv: 12.0,
-            title: 'Bộ phận phát triển dự án',
-            text: 'Bộ phận Phát triển dự án là đầu mối kết nối, xây dựng và mở rộng các chương trình hợp tác giáo dục quốc tế của Trung tâm CIE, chịu trách nhiệm nghiên cứu các dự án liên kết đào tạo, trao đổi sinh viên và phát triển mạng lưới đối tác với các trường đại học, tổ chức uy tín trên toàn thế giới.',
-            image: '/labs/cie/assets/infoports/project-development.jpg',
-            audio: '/labs/cie/audio/departments/bpptda.mp3',
-            tooltip: 'Xem thông tin'
-        }
-    ],
-    scene_cie_sanhchinh3f: [
-        {
-            id: 'sanhchinh3_1',
-            ath: -8.0,
-            atv: 10.0,
-            title: 'Bộ phận quản lý đào tạo',
-            text: 'Bộ phận quản lý đào tạo chịu trách nhiệm tổ chức, vận hành và quản lý chất lượng các chương trình đào tạo liên kết quốc tế, bao gồm việc xây dựng thời khóa biểu, theo dõi tiến độ học tập, quy đổi tín chỉ và hỗ trợ giải đáp mọi thắc mắc về lộ trình học tập của sinh viên.',
-            image: '/labs/cie/assets/infoports/training-management.jpg',
-            audio: '/labs/cie/audio/departments/bpqldt.mp3',
-            tooltip: 'Xem thông tin'
-        }
-    ],
-    scene_cie_sanhchinh4f: [
-        {
-            id: 'sanhchinh4_1',
-            ath: 66.0,
-            atv: 10.0,
-            title: 'Bộ phận quản lý lưu học sinh',
-            text: 'Bộ phận quản lý lưu học sinh là đơn vị hỗ trợ toàn diện cho sinh viên quốc tế tại PTIT cũng như sinh viên Việt Nam tham gia các chương trình trao đổi, từ việc giải quyết các thủ tục hành chính, visa, lưu trú cho đến đồng hành trong đời sống và các hoạt động hòa nhập văn hóa.',
-            image: '/labs/cie/assets/infoports/international-students.jpg',
-            audio: '/labs/cie/audio/departments/bpqllhs.mp3',
-            tooltip: 'Xem thông tin'
-        },
-        {
-            id: 'sanhchinh4_2',
-            ath: 146.0,
-            atv: 10.0,
-            title: 'Phòng giáo sư thỉnh giảng',
-            text: 'Phòng giáo sư thỉnh giảng là không gian làm việc, nghiên cứu hiện đại và tiếp đón các giảng viên, chuyên gia quốc tế đến giảng dạy tại CIE, phục vụ công tác trao đổi chuyên môn, thảo luận nghiên cứu chuyên sâu nhằm mang lại nguồn tri thức toàn cầu cho Học viện.',
-            image: '/labs/cie/assets/infoports/visiting-professor.jpg',
-            audio: '/labs/cie/audio/departments/pgstg.mp3',
-            tooltip: 'Xem thông tin'
-        }
-    ],
-    scene_cie_sanhchinh5: [
-        {
-            id: 'sanhchinh5_1',
-            ath: 57.0,
-            atv: 10.0,
-            title: 'Lãnh đạo trung tâm',
-            text: 'Phòng lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.',
-            image: '/labs/cie/assets/infoports/center-leadership.jpg',
-            audio: '/labs/cie/audio/departments/pldtt.mp3',
-            tooltip: 'Xem thông tin'
-        }
-    ],
-
     // ========================================================================
     // INFOPORT Thu vien
     // ========================================================================
@@ -617,17 +245,6 @@ const hotspotData = {
     ]
 };
 
-// SAMSUNG: cung mot infoport o scene gan hon, dat tren man hinh may tinh phia truoc.
-// Chi can sua noi dung/anh/audio tai scene_ss_1; scene_ss_2 tu dong dung chung du lieu.
-hotspotData.scene_ss_2 = [
-    {
-        ...hotspotData.scene_ss_1[0],
-        ath: 39.0,
-        atv: 8.0,
-        scale: 0.42
-    }
-];
-
 function stopHotspotAudio() {
     if (currentHotspotAudio) {
         currentHotspotAudio.pause();
@@ -663,130 +280,19 @@ function stopHotspotInfoFollow() {
     }
 }
 
-function ensureCoordTrackerUI() {
-    if (coordTrackerEl) return coordTrackerEl;
-    const el = document.createElement('div');
-    el.id = 'coord-tracker';
-    el.style.position = 'absolute';
-    el.style.left = '14px';
-    el.style.bottom = '14px';
-    el.style.zIndex = '260';
-    el.style.background = 'rgba(0,0,0,0.62)';
-    el.style.color = '#fff';
-    el.style.border = '1px solid rgba(255,255,255,0.2)';
-    el.style.borderRadius = '8px';
-    el.style.padding = '8px 10px';
-    el.style.fontSize = '12px';
-    el.style.fontFamily = 'monospace';
-    el.style.pointerEvents = 'none';
-    el.innerText = 'ATH: --  ATV: --';
-    const main = document.querySelector('.app-main');
-    if (main) {
-        main.appendChild(el);
-        coordTrackerEl = el;
-    }
-    return coordTrackerEl;
-}
-
-function stopCoordinateTracker() {
-    if (coordTrackerRaf) {
-        cancelAnimationFrame(coordTrackerRaf);
-        coordTrackerRaf = null;
-    }
-}
-
-function startCoordinateTracker() {
-    stopCoordinateTracker();
-    ensureCoordTrackerUI();
-
-    const tick = () => {
-        if (!krpano) {
-            coordTrackerRaf = requestAnimationFrame(tick);
-            return;
-        }
-
-        try {
-            const mx = Number(krpano.get('mouse.x'));
-            const my = Number(krpano.get('mouse.y'));
-            krpano.call('screentosphere(mouse.x,mouse.y,tmp_ath,tmp_atv);');
-            const ath = Number(krpano.get('tmp_ath'));
-            const atv = Number(krpano.get('tmp_atv'));
-            const scene = krpano.get('xml.scene') || '-';
-            if (coordTrackerEl) {
-                coordTrackerEl.innerText = `SCENE: ${scene}\nATH: ${ath.toFixed(3)}  ATV: ${atv.toFixed(3)}\nX: ${Math.round(mx)}  Y: ${Math.round(my)}`;
-            }
-        } catch (error) {
-            if (coordTrackerEl) {
-                coordTrackerEl.innerText = 'ATH: --  ATV: --';
-            }
-        }
-
-        coordTrackerRaf = requestAnimationFrame(tick);
-    };
-
-    coordTrackerRaf = requestAnimationFrame(tick);
-}
-
-function copyTextToClipboard(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        return navigator.clipboard.writeText(text);
-    }
-    return new Promise((resolve, reject) => {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-            document.execCommand('copy');
-            resolve();
-        } catch (error) {
-            reject(error);
-        } finally {
-            document.body.removeChild(ta);
-        }
-    });
-}
-
-function getBuilderSnippetXML() {
-    if (!hotspotBuilder) return '';
-    const name = hotspotBuilder.nameInput.value.trim() || 'info_new_hotspot';
-    const title = (hotspotBuilder.titleInput.value.trim() || 'Thông tin').replace(/"/g, '&quot;');
-    const text = (hotspotBuilder.textInput.value.trim() || 'Đang cập nhật...').replace(/"/g, '&quot;');
-    const scene = hotspotBuilder.sceneInput.value.trim() || 'scene_name';
-    const ath = hotspotBuilder.athInput.value.trim() || '0';
-    const atv = hotspotBuilder.atvInput.value.trim() || '0';
-    return `<hotspot name="${name}"
-         style="skin_info_hotspot"
-         ath="${ath}"
-         atv="${atv}"
-         infotitle="${title}"
-         infotext="${text}"
-         onclick="info_show_from_hotspot(get(name));" />`;
-}
-
-function getBuilderSnippetJS() {
-    if (!hotspotBuilder) return '';
-    const scene = hotspotBuilder.sceneInput.value.trim() || 'scene_name';
-    const id = (hotspotBuilder.nameInput.value.trim() || 'new_hotspot').replace(/^info_/, '');
-    const title = (hotspotBuilder.titleInput.value.trim() || 'Thông tin').replace(/'/g, "\\'");
-    const text = (hotspotBuilder.textInput.value.trim() || 'Đang cập nhật...').replace(/'/g, "\\'");
-    const ath = hotspotBuilder.athInput.value.trim() || '0';
-    const atv = hotspotBuilder.atvInput.value.trim() || '0';
-    return `${scene}: [
-    {
-        id: '${id}',
-        ath: ${ath},
-        atv: ${atv},
-        title: '${title}',
-        text: '${text}',
-        audio: '',
-        tooltip: 'Thông tin'
-    }
-]`;
-}
-
 function getRuntimeSceneHotspots(sceneName) {
     return runtimePlacedHotspots[sceneName] || [];
+}
+
+// Infoport của từng lab được khai báo trong labs/<lab>/lab-config.js.
+// Đọc config lúc render vì các lab-config được tải sau app.js.
+function getConfiguredSceneHotspots(sceneName) {
+    const labConfigs = window.PTIT_LAB_CONFIGS || [];
+    for (const labConfig of labConfigs) {
+        const sceneHotspots = labConfig?.infoports?.[sceneName];
+        if (Array.isArray(sceneHotspots)) return sceneHotspots;
+    }
+    return hotspotData[sceneName] || [];
 }
 
 function upsertRuntimeHotspot(sceneName, hotspot) {
@@ -801,13 +307,17 @@ function upsertRuntimeHotspot(sceneName, hotspot) {
     }
 }
 
+// INFOport dùng chung: mọi lab .
+const INFO_PORT_BASE_SCALE = 0.4;
+const INFO_PORT_PULSE_SCALE = 0.45;
+
 function buildAndRenderSingleInfoHotspot(sceneName, item) {
     if (!krpano) return;
     const hotspotName = `info_${sceneName}_${item.id}`.replace(/[^a-zA-Z0-9_]/g, '_');
     const safeTooltip = (item.tooltip || '').replace(/'/g, "\\'");
     const resolvedAth = Number.isFinite(item.ath) ? item.ath : (Number(krpano.get('view.hlookat')) || 0);
     const resolvedAtv = Number.isFinite(item.atv) ? item.atv : (Number(krpano.get('view.vlookat')) || 0);
-    const hotspotScale = Number.isFinite(item.scale) ? item.scale : 0.3;
+    const hotspotScale = INFO_PORT_BASE_SCALE;
     try {
         if (krpano.get(`hotspot[${hotspotName}]`)) {
             krpano.call(`removehotspot(${hotspotName});`);
@@ -830,10 +340,9 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     krpano.call(`set(hotspot[${hotspotName}].distorted, false);`);
     krpano.call(`set(hotspot[${hotspotName}].zorder, 999);`);
     krpano.call(`set(hotspot[${hotspotName}].handcursor, true);`);
-    krpano.call(`set(hotspot[${hotspotName}].onover, tween(scale,${hotspotScale}));`);
-    krpano.call(`set(hotspot[${hotspotName}].onout, tween(scale,${hotspotScale}));`);
-    krpano.call(`set(hotspot[${hotspotName}].ondown, tween(scale,${hotspotScale}));`);
-    krpano.call(`set(hotspot[${hotspotName}].onup, tween(scale,${hotspotScale}));`);
+    krpano.call(`set(hotspot[${hotspotName}].onloaded, null);`);
+    krpano.call(`set(hotspot[${hotspotName}].onover, tween(alpha,1.0,0.18));`);
+    krpano.call(`set(hotspot[${hotspotName}].onout, tween(alpha,0.94,0.22));`);
     krpano.call(`set(hotspot[${hotspotName}].ath, ${resolvedAth});`);
     krpano.call(`set(hotspot[${hotspotName}].atv, ${resolvedAtv});`);
     if (safeTooltip) {
@@ -841,153 +350,21 @@ function buildAndRenderSingleInfoHotspot(sceneName, item) {
     }
     const safeId = String(item.id).replace(/'/g, "\\'");
     krpano.call(`set(hotspot[${hotspotName}].onclick, js(window.openHotspotInfo('${sceneName}','${safeId}','${hotspotName}')));`);
+    krpano.call(`infoport_pulse(${hotspotName},${INFO_PORT_BASE_SCALE},${INFO_PORT_PULSE_SCALE});`);
 }
+
+// DEV BRIDGE: hotspot-editor.js chỉ dùng cầu nối này khi bật ?hotspotedit=1.
+window.PTITHotspotEditorAPI = {
+    getKrpano: () => krpano || window.ptitKrpano,
+    createHotspot(sceneName, item) {
+        upsertRuntimeHotspot(sceneName, item);
+        buildAndRenderSingleInfoHotspot(sceneName, item);
+    }
+};
 
 function renderRuntimeHotspots(sceneName) {
     const runtimeList = getRuntimeSceneHotspots(sceneName);
     runtimeList.forEach(item => buildAndRenderSingleInfoHotspot(sceneName, item));
-}
-
-function captureHotspotCoordinatesFromClick(event) {
-    if (!hotspotBuilder || !hotspotBuilder.pendingPlacement || !krpano) return;
-    event.preventDefault();
-    event.stopPropagation();
-    const scene = krpano.get('xml.scene') || '';
-    krpano.call('screentosphere(mouse.x,mouse.y,tmp_ath,tmp_atv);');
-    const ath = Number(krpano.get('tmp_ath'));
-    const atv = Number(krpano.get('tmp_atv'));
-    hotspotBuilder.sceneInput.value = scene;
-    hotspotBuilder.athInput.value = ath.toFixed(3);
-    hotspotBuilder.atvInput.value = atv.toFixed(3);
-    hotspotBuilder.pendingPlacement = false;
-    hotspotBuilder.pickBtn.innerText = 'Dat diem';
-    hotspotBuilder.statusEl.innerText = `Da dat diem: ${ath.toFixed(3)}, ${atv.toFixed(3)}. Nhap thong tin va copy.`;
-}
-
-function syncBuilderCurrentScene() {
-    if (!hotspotBuilder || !krpano) return;
-    hotspotBuilder.sceneInput.value = krpano.get('xml.scene') || '';
-}
-
-function ensureHotspotBuilderUI() {
-    if (hotspotBuilder) return;
-    const main = document.querySelector('.app-main');
-    const panoEl = document.getElementById('pano');
-    if (!main || !panoEl) return;
-
-    const wrap = document.createElement('div');
-    wrap.style.position = 'absolute';
-    wrap.style.right = '14px';
-    wrap.style.bottom = '14px';
-    wrap.style.zIndex = '280';
-    wrap.style.width = '280px';
-    wrap.style.background = 'rgba(12,14,20,0.9)';
-    wrap.style.border = '1px solid rgba(255,255,255,0.2)';
-    wrap.style.borderRadius = '10px';
-    wrap.style.padding = '10px';
-    wrap.style.color = '#fff';
-    wrap.style.fontSize = '12px';
-
-    wrap.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <strong>Dat hotspot</strong>
-            <button id="hsb-pick" type="button" style="border:1px solid #666;background:#222;color:#fff;border-radius:6px;padding:3px 8px;cursor:pointer;">Dat diem</button>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
-            <input id="hsb-scene" placeholder="scene" readonly style="grid-column:1/3;padding:5px;border-radius:6px;border:1px solid #555;background:#0f0f0f;color:#9ec2ff;">
-            <input id="hsb-name" placeholder="name (info_xxx)" style="grid-column:1/3;padding:5px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;">
-            <input id="hsb-ath" placeholder="ath" style="padding:5px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;">
-            <input id="hsb-atv" placeholder="atv" style="padding:5px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;">
-            <input id="hsb-title" placeholder="title" style="grid-column:1/3;padding:5px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;">
-            <textarea id="hsb-text" placeholder="text" rows="2" style="grid-column:1/3;padding:5px;border-radius:6px;border:1px solid #555;background:#111;color:#fff;resize:vertical;"></textarea>
-        </div>
-        <div style="display:flex;gap:6px;margin-top:8px;">
-            <button id="hsb-create-live" type="button" style="flex:1;border:1px solid #666;background:#7a2d1f;color:#fff;border-radius:6px;padding:5px;cursor:pointer;">Tao ngay</button>
-            <button id="hsb-copy-xml" type="button" style="flex:1;border:1px solid #666;background:#1d3a2d;color:#fff;border-radius:6px;padding:5px;cursor:pointer;">Copy XML</button>
-            <button id="hsb-copy-js" type="button" style="flex:1;border:1px solid #666;background:#2a2a56;color:#fff;border-radius:6px;padding:5px;cursor:pointer;">Copy JS</button>
-        </div>
-        <div id="hsb-status" style="margin-top:8px;color:#b8c4ff;">Scene tu dong theo canh hien tai</div>
-    `;
-
-    main.appendChild(wrap);
-    hotspotBuilder = {
-        wrap,
-        pendingPlacement: false,
-        panoEl,
-        pickBtn: wrap.querySelector('#hsb-pick'),
-        sceneInput: wrap.querySelector('#hsb-scene'),
-        nameInput: wrap.querySelector('#hsb-name'),
-        athInput: wrap.querySelector('#hsb-ath'),
-        atvInput: wrap.querySelector('#hsb-atv'),
-        titleInput: wrap.querySelector('#hsb-title'),
-        textInput: wrap.querySelector('#hsb-text'),
-        createLiveBtn: wrap.querySelector('#hsb-create-live'),
-        copyXmlBtn: wrap.querySelector('#hsb-copy-xml'),
-        copyJsBtn: wrap.querySelector('#hsb-copy-js'),
-        statusEl: wrap.querySelector('#hsb-status')
-    };
-
-    hotspotBuilder.sceneInput.value = (krpano && krpano.get('xml.scene')) || '';
-    hotspotBuilder.nameInput.value = 'info_new_hotspot';
-    hotspotBuilder.titleInput.value = 'Thong tin';
-    hotspotBuilder.textInput.value = 'Dang cap nhat...';
-
-    hotspotBuilder.pickBtn.addEventListener('click', () => {
-        hotspotBuilder.pendingPlacement = true;
-        hotspotBuilder.pickBtn.innerText = 'Dang cho click...';
-        hotspotBuilder.statusEl.innerText = 'Click vao pano tai vi tri muon dat hotspot';
-    });
-
-    hotspotBuilder.createLiveBtn.addEventListener('click', () => {
-        if (!krpano) {
-            hotspotBuilder.statusEl.innerText = 'Krpano chua san sang';
-            return;
-        }
-        const sceneFromPano = (krpano.get('xml.scene') || '').trim();
-        const scene = sceneFromPano || hotspotBuilder.sceneInput.value.trim();
-        hotspotBuilder.sceneInput.value = scene;
-        const name = hotspotBuilder.nameInput.value.trim() || 'info_new_hotspot';
-        const idRaw = name.replace(/^info_/, '').trim() || 'new_hotspot';
-        const id = idRaw.replace(/[^a-zA-Z0-9_]/g, '_');
-        const athStr = hotspotBuilder.athInput.value.trim();
-        const atvStr = hotspotBuilder.atvInput.value.trim();
-        const ath = Number(athStr);
-        const atv = Number(atvStr);
-        if (!scene) {
-            hotspotBuilder.statusEl.innerText = 'Khong doc duoc scene hien tai';
-            return;
-        }
-        if (athStr === '' || atvStr === '' || !Number.isFinite(ath) || !Number.isFinite(atv)) {
-            hotspotBuilder.statusEl.innerText = 'Hay bam Dat diem roi click len pano truoc';
-            return;
-        }
-        const runtimeItem = {
-            id,
-            ath,
-            atv,
-            title: hotspotBuilder.titleInput.value.trim() || 'Thong tin',
-            text: hotspotBuilder.textInput.value.trim() || 'Dang cap nhat...',
-            audio: '',
-            tooltip: 'Thong tin'
-        };
-        upsertRuntimeHotspot(scene, runtimeItem);
-        buildAndRenderSingleInfoHotspot(scene, runtimeItem);
-        hotspotBuilder.statusEl.innerText = `Da tao hotspot tren scene ${scene} (ath ${ath}, atv ${atv})`;
-    });
-
-    hotspotBuilder.copyXmlBtn.addEventListener('click', () => {
-        copyTextToClipboard(getBuilderSnippetXML())
-            .then(() => { hotspotBuilder.statusEl.innerText = 'Da copy XML'; })
-            .catch(() => { hotspotBuilder.statusEl.innerText = 'Copy XML that bai'; });
-    });
-
-    hotspotBuilder.copyJsBtn.addEventListener('click', () => {
-        copyTextToClipboard(getBuilderSnippetJS())
-            .then(() => { hotspotBuilder.statusEl.innerText = 'Da copy JS block'; })
-            .catch(() => { hotspotBuilder.statusEl.innerText = 'Copy JS that bai'; });
-    });
-
-    panoEl.addEventListener('click', captureHotspotCoordinatesFromClick, true);
 }
 
 function positionHotspotInfoPanel() {
@@ -1047,7 +424,7 @@ function startHotspotInfoFollow() {
 }
 
 function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
-    const staticList = hotspotData[sceneName] || [];
+    const staticList = getConfiguredSceneHotspots(sceneName);
     const runtimeList = getRuntimeSceneHotspots(sceneName);
     let hotspot = staticList.find(item => item.id === hotspotId)
         || runtimeList.find(item => item.id === hotspotId);
@@ -1181,9 +558,12 @@ function renderSceneHotspots(sceneName) {
     if (!krpano) return;
     clearSceneHotspots();
     removeAllInfoHotspotsInScene();
-    const isManagedLabScene = sceneName.startsWith('scene_cie_') || sceneName.startsWith('scene_game_') || sceneName.startsWith('scene_fpt') || sceneName.startsWith('scene_viettel_') || sceneName.startsWith('scene_lib_') || sceneName.startsWith('scene_ss_');
+    // Lab nào có infoport cho scene hiện tại sẽ tự được nhận diện, không cần hard-code tên lab.
+    const isManagedLabScene = (window.PTIT_LAB_CONFIGS || []).some(
+        labConfig => Array.isArray(labConfig?.infoports?.[sceneName])
+    );
     if (!CAMPUS_INFO_HOTSPOTS_ENABLED && !isManagedLabScene) return;
-    const sceneHotspots = hotspotData[sceneName] || [];
+    const sceneHotspots = getConfiguredSceneHotspots(sceneName);
     console.log(`[Hotspot Diagnostic] scene=${sceneName}, dataCount=${sceneHotspots.length}, isGarden=${sceneName.includes('2201')}`);
     sceneHotspots.forEach((item) => {
         buildAndRenderSingleInfoHotspot(sceneName, item);
@@ -1268,27 +648,35 @@ function getSceneMeta(sceneName) {
     return meta;
 }
 
-function getSidebarGroups() {
+// DANH MUC DIA DIEM: du lieu duy nhat tu config tap trung.
+function getConfiguredSidebarGroups() {
+    const configuredGroups = window.PTIT_SIDEBAR_GROUPS;
+    const configuredLocations = window.PTIT_LOCATIONS;
+    if (!Array.isArray(configuredGroups) || !Array.isArray(configuredLocations)) return null;
+
     const groups = {};
-    const sourceGroups = sceneGroups;
-
-    if (Array.isArray(sourceGroups) && sourceGroups.length > 0) {
-        sourceGroups.forEach((group) => {
-            if (!group || !group.title || !Array.isArray(group.scenes)) return;
-            let mapped = group.scenes
-                .map((sceneName) => ({ sceneName, ...getSceneMeta(sceneName) }))
-                .filter((scene) => scene.sceneName && scene.thumb);
-            if (mapped.length === 0) {
-                mapped = Object.keys(sceneData)
-                    .filter((sceneName) => (sceneData[sceneName]?.title || '').trim() === group.title)
-                    .map((sceneName) => ({ sceneName, ...getSceneMeta(sceneName) }))
-                    .filter((scene) => scene.sceneName && scene.thumb);
-            }
-            groups[group.title] = mapped;
+    configuredGroups
+        .slice()
+        .sort((left, right) => (left.order || 0) - (right.order || 0))
+        .forEach((group) => {
+            groups[group.label] = configuredLocations
+                .filter((location) => location.group === group.id)
+                .map((location) => ({
+                    ...getSceneMeta(location.entryScene),
+                    sceneName: location.entryScene,
+                    title: location.label,
+                    location
+                }));
         });
-        return groups;
-    }
 
+    return groups;
+}
+
+function getSidebarGroups() {
+    const configuredGroups = getConfiguredSidebarGroups();
+    if (configuredGroups) return configuredGroups;
+
+    const groups = {};
     Object.keys(sceneData).forEach((sceneName) => {
         const data = getSceneMeta(sceneName);
         if (!groups[data.title]) {
@@ -1300,19 +688,8 @@ function getSidebarGroups() {
 }
 
 function getGroupTitleForScene(sceneName) {
-    if (sidebarSceneLabels[sceneName]) return sidebarSceneLabels[sceneName];
-    const sourceGroups = sceneGroups;
-
-    if (Array.isArray(sourceGroups) && sourceGroups.length > 0) {
-        for (const group of sourceGroups) {
-            if (!group || !group.title || !Array.isArray(group.scenes)) continue;
-            if (group.scenes.includes(sceneName)) return group.title;
-            if (group.scenes.length === 0) {
-                const fallbackTitle = (sceneData[sceneName]?.title || '').trim();
-                if (fallbackTitle && fallbackTitle === group.title) return group.title;
-            }
-        }
-    }
+    const configuredLocation = window.PTIT_FIND_LOCATION?.(sceneName);
+    if (configuredLocation) return configuredLocation.label;
 
     const fallbackMeta = getSceneMeta(sceneName);
     return fallbackMeta.title || sceneName;
@@ -1369,7 +746,7 @@ function initSidebar() {
              item.type = 'button';
              item.id = `nav-${scene.sceneName}`;
              
-             const label = sidebarSceneLabels[scene.sceneName] || scene.title || `Điểm ${index + 1}`;
+             const label = scene.location?.label || scene.title || `Điểm ${index + 1}`;
              item.setAttribute('aria-label', `Chuyển đến ${label}`);
              
              item.innerHTML = `
@@ -1381,11 +758,16 @@ function initSidebar() {
              
              item.onclick = () => {
                  const navigateToScene = () => {
-                     const launch = sidebarSceneLaunchOverrides[scene.sceneName];
-                     if (launch) {
-                         krpano.call(`loadscene(${launch.targetScene}, null, MERGE, BLEND(1.0)); lookat(${launch.hlookat},${launch.vlookat},${launch.fov});`);
+                     const configuredLookAt = scene.location?.entryLookAt;
+                     if (scene.location) {
+                         const targetScene = scene.location.entryScene;
+                         const lookAtCommand = configuredLookAt
+                             ? `; lookat(${configuredLookAt.h},${configuredLookAt.v},${configuredLookAt.fov})`
+                             : '';
+                         krpano.call(`loadscene(${targetScene}, null, MERGE, BLEND(1.0))${lookAtCommand}`);
                          return;
                      }
+
                      krpano.call(`loadscene(${scene.sceneName}, null, MERGE, BLEND(1.0))`);
                  };
 

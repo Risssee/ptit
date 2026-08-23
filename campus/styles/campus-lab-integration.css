@@ -1,0 +1,131 @@
+.integrated-cie-info { position:fixed; z-index:100000; inset:0; display:none; place-items:center; padding:20px; background:rgba(10,12,15,.58); backdrop-filter:blur(8px); }
+.integrated-cie-info.is-open { display:grid; }
+.integrated-cie-info__card { position:relative; width:min(620px,100%); overflow:hidden; border-radius:20px; background:#fff; color:#252a31; box-shadow:0 26px 80px rgba(0,0,0,.38); font-family:Inter,"Segoe UI",Arial,sans-serif; }
+.integrated-cie-info__card img { display:block; width:100%; max-height:300px; object-fit:cover; }
+.integrated-cie-info__copy { padding:22px 24px 25px; }
+.integrated-cie-info__copy h2 { margin:0 0 9px; font-size:22px; }
+.integrated-cie-info__copy p { margin:0; color:#69717c; font-size:13px; line-height:1.6; }
+.integrated-cie-info__close { position:absolute; top:12px; right:12px; width:36px; height:36px; border:0; border-radius:50%; background:rgba(20,23,25,.88); color:#fff; font-size:22px; cursor:pointer; }
+
+/* Popup giới thiệu */
+.integrated-lab-intro {
+  position: fixed;
+  z-index: 100001;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(5,6,8,.18);
+  backdrop-filter: blur(2px);
+}
+.integrated-lab-intro.is-open {
+  display: grid;
+  animation: lab-intro-backdrop-in .3s ease-out both;
+}
+.integrated-lab-intro__card {
+  width: min(840px, calc(100vw - 40px));
+  height: 344px;
+  display: grid;
+  grid-template-columns: 53% 47%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: #1c1b1b;
+  color: #fff;
+  box-shadow: 0 26px 80px rgba(0,0,0,.46);
+  font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
+}
+.integrated-lab-intro.is-open .integrated-lab-intro__card {
+  animation: lab-intro-card-in .42s cubic-bezier(.2,.78,.24,1) both;
+}
+
+/* Hiệu ứng mở popup*/
+@keyframes lab-intro-backdrop-in {
+  from { opacity: 0; backdrop-filter: blur(0); }
+  to { opacity: 1; backdrop-filter: blur(2px); }
+}
+@keyframes lab-intro-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.integrated-lab-intro__image {
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
+  min-height: 0;
+  display: block;
+  margin: 12px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.integrated-lab-intro__copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 58px 38px 34px 24px;
+  min-height: 0;
+}
+.integrated-lab-intro__copy h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+}
+
+/* Vùng nội dung dài: cuộn gọn trong thẻ, không dùng thanh cuộn trắng mặc định. */
+.integrated-lab-intro__copy p {
+  margin: 0;
+  max-height: 218px;
+  padding-right: 13px;
+  overflow-y: auto;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+  line-height: 1.68;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.25) transparent;
+}
+.integrated-lab-intro__copy p::-webkit-scrollbar { width: 5px; }
+.integrated-lab-intro__copy p::-webkit-scrollbar-track { background: transparent; }
+.integrated-lab-intro__copy p::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255,255,255,.25);
+}
+.integrated-lab-intro__copy p::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.42); }
+.integrated-lab-intro__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+.integrated-lab-intro__close:hover { background: rgba(255,255,255,.11); }
+
+@media (max-width: 640px) {
+  .integrated-lab-intro__card { height: auto; grid-template-columns: 1fr; }
+  .integrated-lab-intro__image { height: 190px; min-height: 190px; }
+  .integrated-lab-intro__copy { padding: 28px 24px 26px; }
+  .integrated-lab-intro__copy p { max-height: 210px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .integrated-lab-intro.is-open,
+  .integrated-lab-intro.is-open .integrated-lab-intro__card {
+    animation: none;
+  }
+}

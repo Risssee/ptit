@@ -1,7 +1,5 @@
 ﻿<krpano version="1.23" title="Virtual Tour">
 
-	<!-- GAME LAB: file scene duy nhat; dung chung skin va runtime cua Campus. -->
-
 	<scene name="scene_game_0l" title="Game_0l" onstart="" thumburl="/labs/game/panos/Game_0l.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />

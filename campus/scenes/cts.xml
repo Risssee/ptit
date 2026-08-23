@@ -1,6 +1,4 @@
 ﻿<krpano version="1.23" title="Virtual Tour">
-
-	<!-- CTS LAB: file scene duy nhat. Tai nguyen anh/am thanh van duoc giu trong /labs/cts/. -->
 	
 	<scene name="scene_cts_c1" title="cts_c1" onstart="" thumburl="/labs/cts/panos/cts_c1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
@@ -198,4 +196,3 @@
 
 
 </krpano>
-

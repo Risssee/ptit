@@ -1,5 +1,4 @@
 <krpano>
-	<!-- SAMSUNG LAB: file scene duy nhat; dung chung skin va runtime cua Campus. -->
 
 	<scene name="scene_ss_1" title="SS_1" onstart="" thumburl="/labs/samsung/panos/SS_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		<control bouncinglimits="calc:image.cube ? true : false" />

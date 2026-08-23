@@ -1,6 +1,8 @@
 (function () {
   "use strict";
-  // CẤU HÌNH GAME LAB: popup và voice.
+
+  // CAU HINH GAME LAB: popup mo dau, voice theo scene va infoport.
+  // Giu nguyen ten scene goc; du lieu khong dung se duoc don o buoc rieng sau.
   window.PTIT_LAB_CONFIGS = window.PTIT_LAB_CONFIGS || [];
   window.PTIT_LAB_CONFIGS.push({
     id: "game",
@@ -14,8 +16,25 @@
     },
     narration: {
       scenes: {
-        scene_game_1l: { title: "Lối vào Game Lab", audio: "/labs/game/audio/guided/02-game-entrance.mp3?v=2" }
+        scene_game_1l: {
+          title: "Lối vào Game Lab",
+          audio: "/labs/game/audio/guided/02-game-entrance.mp3?v=2"
+        }
       }
+    },
+    infoports: {
+      scene_game_3: [
+        {
+          id: "game_computer_practice_area",
+          ath: 45,
+          atv: 25,
+          title: "Khu vực máy tính thực hành",
+          text: "Khu vực thực hành được thiết kế rộng rãi với các trang thiết bị hiện đại nhằm phục vụ các buổi học, nghiên cứu chuyên sâu về game. Dàn máy tính có cấu hình cao, giúp sinh viên sử dụng mượt mà các công cụ phát triển game nặng (như Unity, Unreal Engine) cũng như thử nghiệm các tựa game đòi hỏi đồ họa cao. Đồng thời đây cũng là nơi kiểm thử và đánh giá các dự án do chính các đội ngũ tại Game Lab phát triển.",
+          image: "/labs/game/assets/computer-practice-area.jpg",
+          audio: "/labs/game/audio/guided/03-game-practice-area.mp3?v=2",
+          tooltip: "Khu vực máy tính thực hành"
+        }
+      ]
     }
   });
 })();

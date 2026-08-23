@@ -1,6 +1,4 @@
 <krpano>
-	<!-- CIE LAB: file scene duy nhat; dung chung skin va runtime cua Campus. -->
-	
 	<scene name="scene_cie_cuatruoc" title="Cie_CuaTruoc" onstart="" thumburl="/labs/cie/panos/Cie_CuaTruoc_e.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />

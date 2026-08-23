@@ -1,6 +1,8 @@
 (function () {
   "use strict";
-  // CẤU HÌNH FPT LAB: popup và voice
+
+  // CAU HINH FPT LAB: popup mo dau, voice theo scene va infoport.
+  // Giu nguyen ten scene goc; du lieu khong dung se duoc don o buoc rieng sau.
   window.PTIT_LAB_CONFIGS = window.PTIT_LAB_CONFIGS || [];
   window.PTIT_LAB_CONFIGS.push({
     id: "fpt",
@@ -17,9 +19,39 @@
       delay: 700,
       visitedKey: "ptit-fpt-scene-narration-visited",
       scenes: {
-        scene_fpt2a: { title: "Mô hình thiết bị mạng ODN", audio: "/labs/fpt/audio/guided/05-odn.mp3?v=2" },
-        scene_fpt4a: { title: "Kết thúc chuyến tham quan", audio: "/labs/fpt/audio/guided/08-closing.mp3?v=2" }
+        scene_fpt2a: {
+          title: "Mô hình thiết bị mạng ODN",
+          audio: "/labs/fpt/audio/guided/05-odn.mp3?v=2"
+        },
+        scene_fpt4a: {
+          title: "Kết thúc chuyến tham quan",
+          audio: "/labs/fpt/audio/guided/08-closing.mp3?v=2"
+        }
       }
+    },
+    infoports: {
+      scene_fpt2a: [
+        {
+          id: "fpt_odn_equipment",
+          ath: 77,
+          atv: 1,
+          title: "Mô hình thiết bị mạng ODN",
+          text: "Mô hình giới thiệu các phần tử thụ động trên mạng phân phối quang như hộp cáp, bộ chia quang, cáp thuê bao và thiết bị đầu cuối. Sinh viên sử dụng mô hình để nhận diện thiết bị, tìm hiểu cấu trúc ODN và thực hành đấu nối tuyến thuê bao.",
+          image: "/labs/fpt/assets/fpt-odn-equipment.jpeg",
+          audio: "/labs/fpt/audio/fpt-odn-equipment.mp3?v=2",
+          tooltip: "Mô hình thiết bị mạng ODN"
+        },
+        {
+          id: "fpt_external_cabling",
+          ath: 112,
+          atv: 0,
+          title: "Sơ đồ phối cáp ngoại vi",
+          text: "Mô hình minh họa cách tổ chức và phân phối tuyến cáp từ mạng chính đến các hộp cáp nhánh và điểm thuê bao. Qua đó, sinh viên thực hành đọc sơ đồ, xác định tuyến cáp và kiểm tra mối liên kết giữa các điểm phối cáp.",
+          image: "/labs/fpt/assets/fpt-external-cabling.jpeg",
+          audio: "/labs/fpt/audio/fpt-external-cabling.mp3?v=2",
+          tooltip: "Sơ đồ phối cáp ngoại vi"
+        }
+      ]
     }
   });
 })();

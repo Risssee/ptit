@@ -2,11 +2,11 @@
 <html>
 <head>
 	<title>PTIT CAMPUS 360</title>
-	<link rel="icon" type="image/png" href="logo-PTIT-826x1024-removebg-preview.png" />
-	<link rel="shortcut icon" type="image/png" href="logo-PTIT-826x1024-removebg-preview.png" />
-	<link rel="apple-touch-icon" href="logo-PTIT-826x1024-removebg-preview.png" />
+	<link rel="icon" type="image/png" href="../assets/images/logo-PTIT-826x1024-removebg-preview.png" />
+	<link rel="shortcut icon" type="image/png" href="../assets/images/logo-PTIT-826x1024-removebg-preview.png" />
+	<link rel="apple-touch-icon" href="../assets/images/logo-PTIT-826x1024-removebg-preview.png" />
 	<link rel="stylesheet" href="../assets/typography.css?v=1" />
-	<link rel="stylesheet" href="../assets/campus-loading.css?v=4" />
+	<link rel="stylesheet" href="styles/campus-loading.css?v=4" />
 	<script src="../assets/reload-home.js?v=1" data-home="../index.html"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -17,19 +17,19 @@
 		html { height:100%; }
 		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
 	</style>
-	<link rel="stylesheet" href="style.css?v=46" />
+	<link rel="stylesheet" href="styles/style.css?v=46" />
 	<!--
 	DARK CAMPUS UI - FILE GIAO DIEN DEN RIENG.
 	Day la giao dien chinh; chi tat khi URL co ?ui=current. Xoa link va script DARK CAMPUS UI
 	o cuoi trang neu sau nay khong chon giao dien den.
 	-->
-	<link rel="stylesheet" href="campus-dark-ui.css?v=11" />
-	<link rel="stylesheet" href="campus-ui-controls.css?v=1" />
+	<link rel="stylesheet" href="themes/campus-dark-ui.css?v=11" />
+	<link rel="stylesheet" href="styles/campus-ui-controls.css?v=1" />
 	<!-- Nội dung riêng của Game Lab; CSS chỉ tác động lên bảng Falcon. -->
 	<link rel="stylesheet" href="../labs/game/game-flex-content.css?v=6" />
-	<link rel="stylesheet" href="../assets/campus-minimap.css?v=10" />
-	<link rel="stylesheet" href="../assets/campus-lab-integration.css?v=6" />
-	<link rel="stylesheet" href="../assets/scene-narration.css?v=1" />
+	<link rel="stylesheet" href="styles/campus-minimap.css?v=10" />
+	<link rel="stylesheet" href="styles/campus-lab-integration.css?v=6" />
+	<link rel="stylesheet" href="styles/scene-narration.css?v=1" />
 	
 </head>
 <body>
@@ -47,13 +47,13 @@
 <div id="loading" class="campus-loading loading" data-wait-for-load="true" data-initial-only="true" data-minimum-duration="3000" role="progressbar" aria-label="Đang tải không gian tham quan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <div class="campus-loading__inner">
         <div class="campus-loading__brand" aria-label="PTIT Campus 360 và CTS Lab">
-            <img class="campus-loading__ptit" src="logo-PTIT-826x1024-removebg-preview.png" alt="" />
+            <img class="campus-loading__ptit" src="../assets/images/logo-PTIT-826x1024-removebg-preview.png" alt="" />
             <div class="campus-loading__copy">
                 <strong>PTIT Campus 360</strong>
                 <span>Học viện Công nghệ Bưu chính Viễn thông</span>
             </div>
             <span class="campus-loading__divider" aria-hidden="true"></span>
-            <img class="campus-loading__cts" src="IMG_20260403_162544-removebg-preview.png" alt="CTS Lab" />
+            <img class="campus-loading__cts" src="../assets/images/IMG_20260403_162544-removebg-preview.png" alt="CTS Lab" />
         </div>
         <div class="campus-loading__progress">
             <p class="loading-title">Đang chuẩn bị không gian tham quan...</p>
@@ -80,7 +80,7 @@
                 <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
             <div class="brand">
-                <img class="brand-left-logo" src="logo-PTIT-826x1024-removebg-preview.png" alt="PTIT Logo">
+                <img class="brand-left-logo" src="../assets/images/logo-PTIT-826x1024-removebg-preview.png" alt="PTIT Logo">
                 <div class="brand-info">
                     <h1>PTIT CAMPUS 360</h1>
                     <span>Học viện Công nghệ Bưu chính Viễn thông</span>
@@ -88,14 +88,7 @@
             </div>
         </div>
 		<div class="header-actions">
-			<img class="header-right-logo" src="IMG_20260403_162544-removebg-preview.png" alt="CTS Lab Logo">
-			<!--
-			NÚT "ĐIỂM HIỆN TẠI" TẠM ẨN VÌ ĐANG TRÙNG CHỨC NĂNG VỚI INFOPORT.
-			<button class="header-btn header-btn--labeled" id="info-btn" title="Thông tin điểm hiện tại" aria-label="Thông tin điểm hiện tại">
-				<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-				<span>Điểm hiện tại</span>
-			</button>
-			-->
+			<img class="header-right-logo" src="../assets/images/IMG_20260403_162544-removebg-preview.png" alt="CTS Lab Logo">
             <button class="header-btn" id="sound-btn" title="Âm thanh">
                 <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
             </button>
@@ -121,7 +114,7 @@
         <div id="pano">
             <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
             <script src="tour.js"></script>
-            <script src="app.js?v=190"></script>
+            <script src="app.js?v=194"></script>
             <script>
                 // Khi mở trực tiếp campus mà không chỉ định scene, luôn bắt đầu ở cổng chính.
                 if (!new URLSearchParams(window.location.search).has("startscene")) {
@@ -152,7 +145,7 @@
             </script>
         </div>
 
-        <!-- Info Popup Modal (Centered & Expanded) -->
+        <!-- Info Popup -->
         <div id="info-popup">
             <button class="close-btn" title="Đóng">
                 <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
@@ -165,7 +158,7 @@
                 <div class="popup-actions"></div>
                 
                 <div class="info-section">
-                    <h3>Mục đích sử dụng</h3>
+                    <h3>Chức năng/ nhiệm vụ</h3>
                     <p id="popup-desc">Thông tin chi tiết đang được cập nhật...</p>
                 </div>
             </div>
@@ -182,31 +175,29 @@
     </main>
 </div>
 
-<script src="../assets/campus-minimap.js?v=16"></script>
+<!-- DU LIEU KHU VUC DUNG CHUNG: sidebar, the vi tri, nut quay ve va minimap. -->
+<script src="config/sidebar-groups.js?v=1"></script>
+<script src="config/locations.js?v=2"></script>
+<script src="config/minimap-positions.js?v=1"></script>
+<script src="dev/minimap-editor.js?v=1"></script>
+<script src="modules/campus-minimap.js?v=19"></script>
+<script src="dev/hotspot-editor.js?v=1"></script>
 <!-- Mỗi lab tự quản lý popup + voice trong đúng một file lab-config.js. -->
-<script src="../labs/cie/lab-config.js?v=2"></script>
-<script src="../labs/cts/lab-config.js?v=2"></script>
-<script src="../labs/game/lab-config.js?v=2"></script>
-<script src="../labs/fpt/lab-config.js?v=2"></script>
-<script src="../labs/Viettel/lab-config.js?v=2"></script>
-<script src="../labs/Library/lab-config.js?v=2"></script>
-<script src="../labs/samsung/lab-config.js?v=2"></script>
-<script src="../assets/campus-lab-integration.js?v=26"></script>
-<script src="campus-ui-controls.js?v=1"></script>
-<script src="../assets/scene-narration.js?v=9"></script>
+<script src="../labs/cie/lab-config.js?v=3"></script>
+<script src="../labs/cts/lab-config.js?v=3"></script>
+<script src="../labs/game/lab-config.js?v=3"></script>
+<script src="../labs/fpt/lab-config.js?v=3"></script>
+<script src="../labs/Viettel/lab-config.js?v=3"></script>
+<script src="../labs/Library/lab-config.js?v=3"></script>
+<script src="../labs/samsung/lab-config.js?v=3"></script>
+<script src="modules/campus-lab-integration.js?v=27"></script>
+<script src="modules/campus-ui-controls.js?v=4"></script>
+<script src="modules/scene-narration.js?v=10"></script>
 <!-- Bảng Falcon gắn vào hotspot trên tường của scene_game_1l. -->
 <script src="../labs/game/game-flex-content.js?v=8"></script>
 
 <!--DARK CAMPUS UI -->
-<script src="campus-dark-ui.js?v=25"></script>
-<script src="campus-white-ui.js?v=1"></script>
-<script>
-    window.PTIT_UNIFIED_UI = {
-        place: "campus",
-        title: "Khuôn viên PTIT"
-    };
-</script>
-
-
+<script src="themes/campus-dark-ui.js?v=29"></script>
+<script src="themes/campus-white-ui.js?v=2"></script>
 </body>
 </html>

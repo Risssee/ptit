@@ -1,6 +1,4 @@
 <krpano>
-	<!-- FPT LAB: file scene duy nhat; dung chung skin va runtime cua Campus. -->
-
 <scene name="scene_fpt1" title="fpt1" onstart="" thumburl="/labs/fpt/panos/fpt1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
 		<control bouncinglimits="calc:image.cube ? true : false" />

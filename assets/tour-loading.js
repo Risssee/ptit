@@ -7,7 +7,7 @@
   const title = root.querySelector(".loading-title");
   const factText = root.querySelector(".campus-loading__fact p");
 
-  // FACT PTIT TRÊN LOADING SCREEN: chỉnh nội dung hoặc thêm/bớt fact tại mảng này.
+  // FACT PTIT TRÊN LOADING SCREEN.
   const ptitFacts = [
     "Học viện Công nghệ Bưu chính Viễn thông là trường đại học trực thuộc Bộ Thông tin và Truyền thông, đóng vai trò chủ chốt trong việc cung cấp nguồn nhân lực chất lượng cao cho ngành ICT của nước nhà.",
     "Học viện Công nghệ Bưu chính Viễn thông được chính thức thành lập vào năm 1997 trên cơ sở hợp nhất 4 đơn vị cốt lõi: Viện Khoa học Kỹ thuật Bưu điện, Viện Kinh tế Bưu điện, Trung tâm Đào tạo Bưu điện I và Trung tâm Đào tạo Bưu điện II.",
@@ -66,7 +66,6 @@
     }, 100);
     previewTimer = setTimeout(previewReady, 1200);
     // Campus yêu cầu giữ màn hình tải đến đúng sự kiện onloadcomplete của krpano.
-    // Các tour cũ vẫn có timeout dự phòng nếu không bật data-wait-for-load.
     if (!waitForRealLoad) completionTimer = setTimeout(sceneLoaded, 8000);
   }
 
