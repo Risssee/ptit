@@ -1,9 +1,7 @@
 /*  LOADING SCREEN CAMPUS */
 .campus-loading {
-  /* =====================================================================
-     CẤU HÌNH BẢNG "BẠN CÓ BIẾT?" - chỉ cần chỉnh các giá trị trong cụm này.
-     translate-y: số âm đưa bảng lên; số dương đưa bảng xuống.
-     ===================================================================== */
+  /* CẤU HÌNH BẢNG "BẠN CÓ BIẾT?"*/
+
   --fact-translate-y: -40px;
   --fact-font: "Montserrat", Arial, sans-serif;
   --fact-title-size: 14px;
@@ -53,7 +51,6 @@
 }
 
 .campus-loading__inner {
-  /* Khóa toàn bộ cụm loading vào đúng tâm viewport, không phụ thuộc CSS bên ngoài. */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -103,7 +100,11 @@
   font-weight: 400;
 }
 
-.campus-loading__progress-row { display: flex; align-items: center; gap: 9px; }
+.campus-loading__progress-row { 
+  position: relative;
+  display: flex;
+  align-items: center; 
+}
 .campus-loading .loading-track {
   height: 7px;
   flex: 1;
@@ -121,6 +122,8 @@
   transition: width .22s ease;
 }
 .campus-loading .loading-percent {
+  position: absolute;
+  left: calc(100% + 9px);
   min-width: 34px;
   color: rgba(255,255,255,.82);
   font-size: 11px;

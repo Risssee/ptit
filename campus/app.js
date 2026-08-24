@@ -1038,7 +1038,9 @@ const hotspotLabelMap = {
     'spot_samsung_entrance': 'Lối vào Samsung lab',
     'spot1958163031': 'Lối vào hội trường A2',
     'spot2092315972'  : 'Lối vào CTS lab',
-    'spot2092320057'  : 'Hướng sang phòng thực hành',
+    'spot2092320057'  : 'Phòng nghiên cứu chung',
+    'spot2092320702'  : 'Lối vào phòng nghiên cứu chung',
+    'spot2092320565'  : 'Trung tâm vận hành',
     'spot2092322586'  : 'Lối vào phòng thực hành',
     'spot1958161240': 'Hướng ra tòa A1'
 };

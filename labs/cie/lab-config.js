@@ -1,8 +1,6 @@
 (function (root) {
   "use strict";
-
-  // CẤU HÌNH CIE
-  // Chỉnh popup mở đầu, lời dẫn từng scene và infoport của CIE tại file này.
+  // Chỉnh popup mở đầu, lời dẫn từng scene và infoport 
   const config = {
     id: "cie",
     intro: {
@@ -45,23 +43,8 @@
           title: "Cửa sau Trung tâm CIE",
           audio: "/labs/cie/audio/scenes/scene_cie_cuasau.mp3"
         },       
-        scene_cie_hl4: {
-          title: "Hành lang 4",
-          text: "Từ vị trí này, bạn có thể tiếp tục đến các không gian học tập ở hai phía hành lang.",
-          audio: "/labs/cie/audio/scenes/scene_cie_hl4.mp3"
-        },
-        scene_cie_hl5: {
-          title: "Hành lang 5",
-          text: "Bạn đang ở khu vực trung tâm của hành lang, nơi kết nối nhanh đến các phòng năm không hai, năm không ba, năm không bốn và năm không năm.",
-          audio: "/labs/cie/audio/scenes/scene_cie_hl5.mp3"
-        },
         scene_cie_hl6_b: {
           audio: "/labs/cie/audio/scenes/scene_cie_hl6_b.mp3"
-        },
-        scene_cie_hl7: {
-          title: "Hành lang tầng 5",
-          text: "Chào mừng bạn đến hành lang tầng năm. Phía trước là hệ thống phòng học và phòng chức năng của Trung tâm C I E.",
-          audio: "/labs/cie/audio/scenes/scene_cie_hl7.mp3"
         },
         scene_cie_p501_b: {
           title: "Phòng 501",
@@ -161,7 +144,7 @@
           id: "sanhchinh5_1",
           ath: 57,
           atv: 10,
-          title: "Lãnh đạo trung tâm",
+          title: "Phòng lãnh đạo trung tâm",
           text: "Phòng lãnh đạo trung tâm là cơ quan điều hành cao nhất của CIE, đảm nhiệm vai trò chỉ đạo, quản lý, giám sát toàn bộ hoạt động đào tạo, đối ngoại, đồng thời hoạch định chiến lược phát triển và đại diện Trung tâm trong việc hợp tác quốc tế.",
           image: "/labs/cie/assets/infoports/center-leadership.jpg",
           audio: "/labs/cie/audio/departments/pldtt.mp3",

@@ -1,8 +1,5 @@
 (function () {
   "use strict";
-
-  // CAU HINH GAME LAB: popup mo dau, voice theo scene va infoport.
-  // Giu nguyen ten scene goc; du lieu khong dung se duoc don o buoc rieng sau.
   window.PTIT_LAB_CONFIGS = window.PTIT_LAB_CONFIGS || [];
   window.PTIT_LAB_CONFIGS.push({
     id: "game",

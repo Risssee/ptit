@@ -11,7 +11,6 @@
   const anchors = minimapConfig.anchors || {};
   const MANUAL_SCENE_POSITIONS = minimapConfig.manualScenePositions || {};
 
-  // LOCATION CONFIG FALLBACK: explicit per-scene coordinates above always win.
   function findConfiguredLocation(sceneName) {
     return window.PTIT_FIND_LOCATION?.(sceneName) || null;
   }

@@ -3,7 +3,7 @@
 
   const state = { mode: "campus", lastCampusScene: "scene_1" };
 
-  /* Popup chỉ đọc dữ liệu do từng labs/<lab>/lab-config.js đăng ký. */
+  /* Popup đọc dữ liệu do từng labs/<lab>/lab-config.js đăng ký. */
   const LAB_INTROS = (window.PTIT_LAB_CONFIGS || [])
     .map((lab) => lab && lab.intro)
     .filter(Boolean);

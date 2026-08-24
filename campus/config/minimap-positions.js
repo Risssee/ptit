@@ -1,5 +1,5 @@
 // TOA DO MINIMAP: chi chua du lieu; logic hien thi nam trong modules/campus-minimap.js.
-// Giu nguyen ten scene. Chinh toa do thu cong tai MANUAL_SCENE_POSITIONS.
+// Chinh toa do thu cong tai MANUAL_SCENE_POSITIONS.
 (function (root) {
   "use strict";
 
