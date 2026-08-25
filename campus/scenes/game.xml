@@ -13,8 +13,9 @@
 		</image>
 
 		<hotspot name="spot2067815808" style="skin_hotspotstyle" ath="-0.388" atv="29.611" depth="1000.0" linkedscene="scene_game_1l" linkedscene_lookat="1.44,-1.24,120.0" linkedscene_spot="spot2067816284" linkedscene_hoffset="3.65" use3dtransition="true" />
-		<!-- Game và Campus dùng cùng runtime, nên quay lại bằng linkedscene để BGM không bị khởi động lại. -->
-		<hotspot name="spot_return_campus_a3" style="skin_hotspotstyle" ath="179.0" atv="24.0" depth="1000.0" linkedscene="scene_ttgnng_3_qri_lpqn_ttgnng_6" tooltip="Quay lại cầu thang A3" />
+		<!-- Hai hotspot quay lai A3, lay dung toa do va cap lien ket tu XML A3 moi. -->
+		<hotspot name="spot2098491796" style="skin_hotspotstyle" ath="116.302" atv="22.672" depth="1000.0" linkedscene="scene_a3_t5_2g" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2098491447" linkedscene_hoffset="126.64" use3dtransition="true" />
+		<hotspot name="spot2098492388" style="skin_hotspotstyle" ath="-143.437" atv="38.73" depth="1000.0" linkedscene="scene_a3_t5_2g" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2098491904" linkedscene_hoffset="261.82" use3dtransition="true" />
 
 	</scene>
 

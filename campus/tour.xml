@@ -3,6 +3,8 @@
 	<include url="skin/vtourskin.xml?v=6" />
 	<!-- CIE: scene XML tap trung tai campus; tai nguyen van nam trong labs/cie. -->
 	<include url="scenes/cie.xml?v=1" />
+	<!-- TOA A3 MOI: 12 scene; tai nguyen panorama nam trong campus/panos. -->
+	<include url="scenes/a3.xml?v=1" />
 	<!-- GAME LAB: scene XML tap trung tai campus; bang Falcon va tai nguyen van nam trong labs/game. -->
 	<include url="scenes/game.xml?v=1" />
 	<!-- CTS LAB: scene XML tap trung tai campus; anh panorama van nam trong labs/cts/panos. -->

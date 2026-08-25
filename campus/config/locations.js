@@ -114,6 +114,7 @@
       scenePatterns: [
         '^scene_gpbk22(?:34|35|36|37|38)_',
         '^scene_gpbk219[5-8]_',
+        '^scene_a3_',
         '^scene_(?:ttgnng_3|hpgnh_lang_ttgnng3|ttgnng3_a3|ctgnu_thang_bpqn_a[23]|cau_thang_len_tang3_a3|stgjnh_ttgnng3_a3|phpyng_hthnc_ttgnng3a3)'
       ]
     },

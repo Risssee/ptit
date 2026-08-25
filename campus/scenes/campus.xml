@@ -486,7 +486,7 @@
 		</image>
 
 		<hotspot name="spot1955809468" style="skin_hotspotstyle" ath="9.263" atv="37.889" depth="1000.0" linkedscene="scene_24" linkedscene_lookat="186.08,11.15,120.0" linkedscene_spot="spot1955808918" linkedscene_hoffset="174.24" use3dtransition="true" />
-		<hotspot name="spot1955809495" style="skin_hotspotstyle" ath="-172.391" atv="13.921" depth="1000.0" linkedscene="scene_gpbk2196_1773130435030" linkedscene_lookat="195.24,-2.51,120.0" linkedscene_spot="spot1955809598" linkedscene_hoffset="356.43" use3dtransition="true" />
+		<hotspot name="spot1955809495" style="skin_hotspotstyle" ath="-172.391" atv="13.921" depth="1000.0" linkedscene="scene_a3_t1_1a" linkedscene_lookat="155.018,21.52,120.0" linkedscene_spot="spot_a3_return_gpbk2195" linkedscene_hoffset="356.43" use3dtransition="true" />
 		<hotspot name="spot1955821867" style="skin_hotspotstyle" ath="-80.258" atv="16.394" depth="1000.0" linkedscene="scene_gpbk2199_1773130499270" linkedscene_spot="spot1955821721" linkedscene_hoffset="270.64" use3dtransition="true" />
 		<hotspot name="spot1955821904" style="skin_hotspotstyle" ath="77.496" atv="8.26" depth="1000.0" linkedscene="scene_25" linkedscene_hoffset="-12.75" use3dtransition="true" />
 
