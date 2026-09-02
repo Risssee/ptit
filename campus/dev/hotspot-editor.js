@@ -3,15 +3,112 @@
 
   if (new URLSearchParams(root.location.search).get("hotspotedit") !== "1") return;
 
-  function copy(text) {
-    if (navigator.clipboard?.writeText) return navigator.clipboard.writeText(text);
+  async function copy(text) {
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      } catch (_) {
+        // Trinh duyet co the chan Clipboard API; dung textarea tam lam du phong.
+      }
+    }
     const textarea = document.createElement("textarea");
     textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
     document.body.appendChild(textarea);
+    textarea.focus();
     textarea.select();
     document.execCommand("copy");
     textarea.remove();
-    return Promise.resolve();
+  }
+
+  // DEV ONLY: hover a hotspot to see its name; click the badge to copy it.
+  function createHotspotInspector(api) {
+    const badge = document.createElement("button");
+    badge.type = "button";
+    badge.id = "hotspot-name-inspector";
+    badge.title = "Click để copy tên hotspot";
+    badge.style.cssText = [
+      "position:fixed", "display:none", "z-index:10000", "max-width:360px",
+      "padding:8px 10px", "border:1px solid rgba(255,255,255,.35)",
+      "border-radius:8px", "background:rgba(10,12,16,.94)",
+      "box-shadow:0 6px 24px rgba(0,0,0,.35)", "color:#fff",
+      "font:600 12px/1.35 monospace", "text-align:left", "cursor:copy",
+      "pointer-events:auto"
+    ].join(";");
+    document.body.appendChild(badge);
+
+    let pointerX = 0;
+    let pointerY = 0;
+    let activeName = "";
+    let hideTimer = 0;
+    const installed = new Set();
+
+    document.addEventListener("pointermove", (event) => {
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+    }, { passive: true });
+
+    function positionBadge() {
+      const gap = 14;
+      const width = badge.offsetWidth || 240;
+      const height = badge.offsetHeight || 42;
+      badge.style.left = `${Math.min(pointerX + gap, innerWidth - width - 8)}px`;
+      badge.style.top = `${Math.min(pointerY + gap, innerHeight - height - 8)}px`;
+    }
+
+    function show(name) {
+      clearTimeout(hideTimer);
+      const krpano = api.getKrpano();
+      activeName = String(name || "");
+      const linkedScene = krpano?.get(`hotspot[${activeName}].linkedscene`) || "";
+      badge.textContent = linkedScene ? `${activeName}  →  ${linkedScene}` : activeName;
+      badge.style.display = "block";
+      positionBadge();
+    }
+
+    function hide() {
+      hideTimer = root.setTimeout(() => {
+        if (!badge.matches(":hover")) badge.style.display = "none";
+      }, 650);
+    }
+
+    badge.addEventListener("pointerenter", () => clearTimeout(hideTimer));
+    badge.addEventListener("pointerleave", hide);
+    badge.addEventListener("click", () => {
+      if (!activeName) return;
+      copy(activeName).then(() => {
+        const oldText = badge.textContent;
+        badge.textContent = `Đã copy: ${activeName}`;
+        root.setTimeout(() => { badge.textContent = oldText; }, 900);
+      });
+    });
+
+    root.PTITDevHotspotInspector = { show, hide };
+
+    function attachToCurrentHotspots() {
+      const krpano = api.getKrpano();
+      if (!krpano) return;
+      const scene = krpano.get("xml.scene") || "";
+      const count = Number(krpano.get("hotspot.count")) || 0;
+
+      for (let index = 0; index < count; index += 1) {
+        const name = krpano.get(`hotspot[${index}].name`);
+        if (!name) continue;
+        const key = `${scene}:${name}`;
+        if (installed.has(key)) continue;
+        const oldOver = krpano.get(`hotspot[${name}].onover`) || "";
+        const oldOut = krpano.get(`hotspot[${name}].onout`) || "";
+        const safeName = String(name).replace(/'/g, "\\'");
+        krpano.set(`hotspot[${name}].onover`, `${oldOver};js(window.PTITDevHotspotInspector.show('${safeName}'));`);
+        krpano.set(`hotspot[${name}].onout`, `${oldOut};js(window.PTITDevHotspotInspector.hide());`);
+        installed.add(key);
+      }
+    }
+
+    root.setInterval(attachToCurrentHotspots, 500);
+    attachToCurrentHotspots();
   }
 
   function initialize() {
@@ -19,6 +116,8 @@
     const main = document.querySelector(".app-main");
     const pano = document.getElementById("pano");
     if (!api || !main || !pano) return root.setTimeout(initialize, 200);
+
+    createHotspotInspector(api);
 
     const panel = document.createElement("div");
     panel.id = "hotspot-editor";

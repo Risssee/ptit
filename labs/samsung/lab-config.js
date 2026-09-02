@@ -5,7 +5,7 @@
     id: "samsung",
     intro: {
       id: "samsung",
-      scenes: ["scene_gpbk2388_1773819661170"],
+      scenes: ["scene_a2_t1_5"],
       internalScenePrefixes: ["scene_ss_"],
       image: "/labs/samsung/assets/ss.png",
       audio: "/labs/samsung/audio/guided/PopUp.mp3",

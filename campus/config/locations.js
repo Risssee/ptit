@@ -8,23 +8,25 @@
       id: 'cong_chinh',
       group: 'khuon_vien',
       label: 'Cổng chính',
-      entryScene: 'scene_1',
-      scenes: ['scene_1', 'scene_2'],
-      scenePatterns: ['^scene_\\d+$']
+      entryScene: 'scene_ct',
+      scenes: ['scene_ct'],
+      //scenePrefixes: ['scene_ct_']
     },
     {
       id: 'vuon_nhat',
-      group: 'khuon_vien',
+      group: 'toa_A2',
       label: 'Vườn Nhật',
-      entryScene: 'scene_vswthdn_nhtgtt_1',
-      scenePrefixes: ['scene_vswthdn_nhtgtt_']
+      primary: 'Tòa A2',
+      secondary: 'Vườn Nhật',
+      entryScene: 'scene_a2_t3_2',
+      scenePrefixes: ['scene_a2_vn_']
     },
     {
       id: 'toa_A1',
       group: 'toa_A1',
       label: 'Tòa A1',
-      entryScene: 'scene_gpbk2218_1773131077123',
-      scenePatterns: ['^scene_gpbk22(?:17|18|19|20|21|22|24|25|26)_']
+      entryScene: 'scene_st_a1_6',
+      scenePrefixes: ['scene_a1_', 'scene_st_a1_']
     },
     {
       id: 'cie',
@@ -40,10 +42,11 @@
     {
       id: 'cts',
       group: 'phong_lab',
-      label: 'Lab CTS',
+      label: 'CTS Lab',
       primary: 'Trung tâm & phòng lab',
       secondary: 'CTS Lab',
-      entryScene: 'scene_cts_c1',
+      entryScene: 'scene_st_cts_3',
+      scenes: ['scene_st_cts_3'],
       scenePrefixes: ['scene_cts_', 'scene_cts2_'],
       scenePatterns: ['^scene_gpbk227[01]_'],
       labId: 'cts'
@@ -52,16 +55,18 @@
       id: 'toa_A2',
       group: 'toa_A2',
       label: 'Tòa A2',
-      entryScene: 'scene_10',
-      scenes: ['scene_10'],
-      scenePatterns: ['^scene_(?:gpbk22(?:39|4\\d|5\\d)|gpbk238[4-9]|.*a2|ttgnng2|ttgnng3a2|ttgnng8)']
+      entryScene: 'scene_a2_t1_0',
+      // Loại trừ thư viện, vườn Nhật và hội trường vì các khu này có hồ sơ riêng bên dưới.
+      scenePatterns: ['^scene_(?:a2_(?!vn_|ht_)|st_a2_)']
     },
     {
       id: 'phong_hoc_A2',
       group: 'toa_A2',
-      label: 'Phòng học A2',
-      entryScene: 'scene_gpbk0065_1773206564173',
-      scenes: ['scene_gpbk0065_1773206564173']
+      label: 'Phòng tự học',
+      primary: 'Tòa A2',
+      secondary: 'Phòng tự học',
+      entryScene: 'scene_a2_t2_3',
+      scenes: ['scene_a2_lib_']
     },
     {
       id: 'hoi_truong_A2',
@@ -69,8 +74,9 @@
       label: 'Hội trường A2',
       primary: 'Tòa A2',
       secondary: 'Hội trường A2',
-      entryScene: 'scene_gpbk2244_1773200362117',
-      scenes: ['scene_gpbk2244_1773200362117', 'scene_gpbk0066_1773206449967']
+      entryScene: 'scene_gpbk0066_1773206449967',
+      //scenes: ['scene_a2_ht_1', 'scene_a2_ht_2'],
+      //scenePrefixes: ['scene_st_ht_']
     },
     {
       id: 'viettel',
@@ -100,9 +106,9 @@
       label: 'Samsung Lab',
       primary: 'Tòa A2',
       secondary: 'Samsung Lab',
-      entryScene: 'scene_gpbk2388_1773819661170',
-      entryLookAt: { h: 120, v: 5, fov: 120 },
-      scenes: ['scene_gpbk2388_1773819661170'],
+      entryScene: 'scene_a2_t1_5',
+      entryLookAt: { h: -180, v: 5, fov: 120 },
+      scenes: ['scene_a2_t1_5'],
       scenePrefixes: ['scene_ss_'],
       labId: 'samsung'
     },
@@ -110,20 +116,18 @@
       id: 'toa_A3',
       group: 'toa_A3',
       label: 'Tòa A3',
-      entryScene: 'scene_gpbk2195_1773130397237',
+      entryScene: 'scene_st_a3_2',
       scenePatterns: [
-        '^scene_gpbk22(?:34|35|36|37|38)_',
-        '^scene_gpbk219[5-8]_',
-        '^scene_a3_',
-        '^scene_(?:ttgnng_3|hpgnh_lang_ttgnng3|ttgnng3_a3|ctgnu_thang_bpqn_a[23]|cau_thang_len_tang3_a3|stgjnh_ttgnng3_a3|phpyng_hthnc_ttgnng3a3)'
+        '^scene_st_a3_',
+        '^scene_a3_'
       ]
     },
     {
       id: 'phong_hoc_A3',
       group: 'toa_A3',
       label: 'Phòng học A3',
-      entryScene: 'scene_gpbk2237_1773200161431',
-      scenes: ['scene_gpbk2237_1773200161431']
+      entryScene: 'scene_st_a3_3',
+      scenes: ['scene_st_a3_3']
     },
     {
       id: 'game',
@@ -141,31 +145,30 @@
       label: 'Thư viện',
       entryScene: 'scene_gpbk2201_1773130534438',
       entryLookAt: { h: 180, v: 0, fov: 120 },
-      scenes: ['scene_gpbk2201_1773130534438', 'scene_gpbk2202_1773130555661'],
+      scenes: ['scene_gpbk2201_1773130534438'],
       scenePrefixes: ['scene_lib_'],
-      scenePatterns: ['^scene_gpbk22(?:0[2-9]|1[0-6])_'],
       labId: 'library'
     },
     {
       id: 'canteen',
       group: 'tien_ich',
       label: 'Canteen',
-      entryScene: 'scene_gpbk2282_1773201339253',
-      scenePatterns: ['^scene_gpbk228[2-5]_']
+      entryScene: 'scene_st_bc_5',
+      scenePrefixes: ['scene_ct_1','scene_ct_2','scene_ct_3']
     },
     {
       id: 'san_bong_ro',
       group: 'tien_ich',
       label: 'Sân bóng rổ',
-      entryScene: 'scene_gpbk2260_1773200808324',
-      scenePatterns: ['^scene_gpbk226[01]_']
+      entryScene: 'scene_br_1',
+      scenePrefixes: ['scene_br_']
     },
     {
       id: 'san_bong_chuyen',
       group: 'tien_ich',
       label: 'Sân bóng chuyền',
-      entryScene: 'scene_gpbk2286_1773201396711',
-      scenes: ['scene_gpbk2286_1773201396711']
+      entryScene: 'scene_bc_1',
+      scenePrefixes: ['scene_bc_',]
     }
   ];
 

@@ -169,15 +169,27 @@
             return window.PTIT_FIND_LOCATION?.(sceneName) || null;
         }
 
+        // QUY TAC TEN LOCATION NGOAI TROI (chi anh huong o ten phia tren):
+        // scene_st_* luon la San truong; scene_ktx_* luon la Ky tuc xa.
+        // Dat truoc locations.js de cac ten nhu st_a2 khong bi nhan thanh Toa A2.
+        function getScenePrefixLocationLabel(sceneName) {
+            const normalizedName = String(sceneName || '').toLowerCase();
+            if (normalizedName.includes('_st_')) return 'S\u00e2n tr\u01b0\u1eddng';
+            if (normalizedName.includes('_ktx_')) return 'K\u00fd t\u00fac x\u00e1';
+            return '';
+        }
+
+
         function syncLocationCard(sceneName) {
             const actualScene = sceneName || (typeof krpano !== 'undefined' && krpano ? krpano.get('xml.scene') : 'scene_1');
+            const prefixLabel = getScenePrefixLocationLabel(actualScene);
             const configuredLocation = findConfiguredLocation(actualScene);
-            const primary = configuredLocation
+            const primary = prefixLabel || (configuredLocation
                 ? (configuredLocation.primary || configuredLocation.label)
-                : getDarkAreaTitle(actualScene);
-            const secondary = configuredLocation
+                : getDarkAreaTitle(actualScene));
+            const secondary = prefixLabel ? '' : (configuredLocation
                 ? (configuredLocation.secondary || '')
-                : '';
+                : '');
             locationCard.querySelector('strong').textContent = primary;
             locationCard.querySelector('.dark-campus-location__detail-text').textContent = secondary;
             locationCard.classList.toggle('dark-campus-location--single-line', !secondary);

@@ -5,7 +5,7 @@
     id: "cts",
     intro: {
       id: "cts",
-      scenes: ["scene_cts_c1"],
+      scenes: ["scene_st_cts_3"],
       scenePrefixes: ["scene_cts_", "scene_cts2_"],
       image: "/labs/cts/assets/cts_lab.jpg",
       audio: "/labs/cts/audio/guided/cts_popup.mp3",

@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  const state = { mode: "campus", lastCampusScene: "scene_1" };
+  const state = { mode: "campus", lastCampusScene: "scene_ct" };
 
   /* Popup đọc dữ liệu do từng labs/<lab>/lab-config.js đăng ký. */
   const LAB_INTROS = (window.PTIT_LAB_CONFIGS || [])
@@ -213,7 +213,7 @@
   function enterCie() {
     const instance = getKrpano();
     if (!instance || state.mode === "cie") return;
-    const current = instance.get("xml.scene") || "scene_1";
+    const current = instance.get("xml.scene") || "scene_ct";
     if (!current.startsWith("scene_cie_")) state.lastCampusScene = current;
     sessionStorage.setItem("ptit-campus-return-scene", state.lastCampusScene);
     state.mode = "cie";
@@ -224,7 +224,7 @@
   function returnToCampus() {
     const instance = getKrpano();
     if (!instance) return;
-    const returnScene = sessionStorage.getItem("ptit-campus-return-scene") || state.lastCampusScene || "scene_1";
+    const returnScene = sessionStorage.getItem("ptit-campus-return-scene") || state.lastCampusScene || "scene_ct";
     state.mode = "campus";
     document.body.classList.remove("ptit-cie-mode");
     instance.call(`skin_loadscene(${returnScene},get(skin_settings.loadscene_blend));`);

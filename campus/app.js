@@ -987,14 +987,14 @@ let hotspotLabelsReadyAt = Number.POSITIVE_INFINITY;
 
 // Them chu phia tren hotspot
 const hotspotLabelMap = {
-    'spot1955789621': 'Lối vào cổng chính',
-    'spot1955790331': 'Lối ra cổng chính',
-    'spot1958162037': 'Lối vào tòa A1',
-    'spot1955816296': 'Lối ra',
+    'spot2104163383': 'Hướng ra tòa A1',
+    'spot2104254550': 'Lối vào tòa A1',
+    'spot2104253190': 'Lối ra',
     'spot1955816383': 'Hướng vào Cie',
+    'spot1955791467': 'Hướng ra tòa A2',
     'spot1955817620': 'Hướng vào Naver',
     'spot1955790715': 'Hướng ra tòa A2',
-    'spot1955818317': 'Lối vào tòa A1',
+    
     'spot1955795935': 'Hướng ra kí túc xá',
     'spot1955791467': 'Hướng ra tòa A2',
     'spot1955814281': 'Lối vào tòa A2',
@@ -1043,6 +1043,7 @@ const hotspotLabelMap = {
     'spot2092320565'  : 'Trung tâm vận hành',
     'spot2092322586'  : 'Lối vào phòng thực hành',
     'spot1958161240': 'Hướng ra tòa A1'
+    
 };
 
 function getNavigationHotspotLabel(hotspotName) {

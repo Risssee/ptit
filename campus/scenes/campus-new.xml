@@ -1,0 +1,2531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.23" title="Campus mới">
+	<!-- Campus mới: scene trích từ file Krpano xuất; giao diện/skin dùng chung nằm ở campus/tour.xml. -->
+<scene name="scene_ct" title="ct" onstart="" thumburl="/campus/panos_moi/ct.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/ct.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/ct.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104088054" style="skin_hotspotstyle" ath="179.955" atv="15.647" depth="1000.0" linkedscene="scene_st_1" linkedscene_lookat="194.51,12.52,120.0" linkedscene_spot="spot2104089112" linkedscene_hoffset="7.66" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_23" title="23" onstart="" thumburl="/campus/panos_moi/23.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/23.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/23.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104195778" style="skin_hotspotstyle" ath="91.27" atv="8.378" depth="1000.0" linkedscene="scene_st_a2_11" linkedscene_lookat="-78.31,-0.37,120.0" linkedscene_spot="spot2104195408" linkedscene_hoffset="-87.14" use3dtransition="true" />
+		<hotspot name="spot2104196463" style="skin_hotspotstyle" ath="5.277" atv="11.79" depth="1000.0" linkedscene="scene_st_a2_0" linkedscene_lookat="-176.99,0.41,120.0" linkedscene_spot="spot2104196151" linkedscene_hoffset="353.27" use3dtransition="true" />
+		<hotspot name="spot2104197008" style="skin_hotspotstyle" ath="-85.217" atv="8.294" depth="1000.0" linkedscene="scene_st_a2_4" linkedscene_spot="spot2104196752" linkedscene_hoffset="349.39" use3dtransition="true" />
+		<hotspot name="spot2104197311" style="skin_hotspotstyle" ath="-174.1" atv="2.205" depth="1000.0" linkedscene="scene_a2_t1_0" linkedscene_lookat="-180.0,1.05,120.0" linkedscene_spot="spot2104197876" linkedscene_hoffset="353.33" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a1_0" title="A1_0" onstart="" thumburl="/campus/panos_moi/A1_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A1_0.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A1_0.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104253862" style="skin_hotspotstyle" ath="-175.907" atv="32.485" depth="1000.0" linkedscene="scene_a1_t1" linkedscene_lookat="5.77,1.24,120.0" linkedscene_spot="spot2104253527" linkedscene_hoffset="353.62" use3dtransition="true" />
+		<hotspot name="spot2104253992" style="skin_hotspotstyle" ath="6.286" atv="30.879" depth="1000.0" linkedscene="scene_st_a1_6" linkedscene_lookat="-2.65,-0.52,120.0" linkedscene_spot="spot2104254550" linkedscene_hoffset="348.92" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a1_t1" title="A1_t1" onstart="" thumburl="/campus/panos_moi/A1_t1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A1_t1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A1_t1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104253190" style="skin_hotspotstyle" ath="-155.331" atv="7.825" depth="1000.0" linkedscene="scene_st_a2_15" linkedscene_lookat="-1.24,-0.21,120.0" linkedscene_spot="spot2104252818" linkedscene_hoffset="153.2" use3dtransition="true" />
+		<hotspot name="spot2104253527" style="skin_hotspotstyle" ath="-2.087" atv="19.324" depth="1000.0" linkedscene="scene_a1_0" linkedscene_lookat="5.77,1.24,120.0" linkedscene_spot="spot2104253862" linkedscene_hoffset="6.38" use3dtransition="true" />
+		<!-- Diem noi campus moi -> CIE; giu nguyen hotspot va transition cua campus cu. -->
+		<hotspot name="spot1955816383" style="skin_hotspotstyle" ath="-182" atv="-4.931" depth="1000.0" linkedscene="scene_cie_cuatruoc" linkedscene_lookat="0.0,0.0,120.0" linkedscene_hoffset="180.0" use3dtransition="true" tooltip="Đi vào Trung tâm CIE" />
+
+	</scene>
+
+<scene name="scene_a2_g_1" title="A2_G_1" onstart="" thumburl="/campus/panos_moi/A2_G_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_G_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_G_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104210621" style="skin_hotspotstyle" ath="174.741" atv="17.602" depth="1000.0" linkedscene="scene_a2_g_2" linkedscene_lookat="-5.98,0.62,120.0" linkedscene_spot="spot2104210354" linkedscene_hoffset="-9.07" use3dtransition="true" />
+		<hotspot name="spot2104256064" style="skin_hotspotstyle" ath="-7.056" atv="22.382" depth="1000.0" linkedscene="scene_st_a3_g" linkedscene_lookat="173.68,-0.57,120.0" linkedscene_spot="spot2104255455" linkedscene_hoffset="366.14" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_g_2" title="A2_G_2" onstart="" thumburl="/campus/panos_moi/A2_G_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_G_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_G_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104210104" style="skin_hotspotstyle" ath="-63.956" atv="21.824" depth="1000.0" linkedscene="scene_a2_t1_10" linkedscene_lookat="-13.81,-0.21,120.0" linkedscene_spot="spot2104209543" linkedscene_hoffset="294.49" use3dtransition="true" />
+		<hotspot name="spot2104210354" style="skin_hotspotstyle" ath="-14.333" atv="11.03" depth="1000.0" linkedscene="scene_a2_g_1" linkedscene_lookat="-5.98,0.62,120.0" linkedscene_spot="spot2104210621" linkedscene_hoffset="369.07" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_ht_1" title="A2_ht_1" onstart="" thumburl="/campus/panos_moi/A2_ht_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_ht_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_ht_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104153875" style="skin_hotspotstyle" ath="1.071" atv="42.091" depth="1000.0" linkedscene="scene_st_a2_13" linkedscene_lookat="-179.45,-2.72,120.0" linkedscene_spot="spot2104153427" linkedscene_hoffset="8.52" use3dtransition="true" />
+		<hotspot name="spot2104154656" style="skin_hotspotstyle" ath="-179.505" atv="-1.198" depth="1000.0" linkedscene="scene_a2_ht_2" linkedscene_lookat="175.82,0.52,120.0" linkedscene_spot="spot2104154856" linkedscene_hoffset="355.25" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_ht_2" title="A2_ht_2" onstart="" thumburl="/campus/panos_moi/A2_ht_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_ht_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_ht_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104154856" style="skin_hotspotstyle" ath="-4.253" atv="39.328" depth="1000.0" linkedscene="scene_a2_ht_1" linkedscene_lookat="175.82,0.52,120.0" linkedscene_spot="spot2104154656" linkedscene_hoffset="4.75" use3dtransition="true" />
+		<hotspot name="spot2104218438" style="skin_hotspotstyle" ath="177.404" atv="47.395" depth="1000.0" linkedscene="scene_a2_lib_9" linkedscene_lookat="-3.92,-3.71,120.0" linkedscene_spot="spot2104217918" linkedscene_hoffset="-89.26" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_1" title="A2_lib_1" onstart="" thumburl="/campus/panos_moi/A2_lib_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104213308" style="skin_hotspotstyle" ath="1.203" atv="9.721" depth="1000.0" linkedscene="scene_a2_t2_3" linkedscene_lookat="-173.69,0.82,120.0" linkedscene_spot="spot2104212844" linkedscene_hoffset="358.79" use3dtransition="true" />
+		<hotspot name="spot2104213360" style="skin_hotspotstyle" ath="63.891" atv="19.227" depth="1000.0" linkedscene="scene_a2_lib_2" linkedscene_lookat="-205.68,1.6,120.0" linkedscene_spot="spot2104213636" linkedscene_hoffset="78.31" use3dtransition="true" />
+		<hotspot name="spot2104213806" style="skin_hotspotstyle" ath="-176.977" atv="11.309" depth="1000.0" linkedscene="scene_a2_lib_3" linkedscene_lookat="-184.29,0.05,120.0" linkedscene_spot="spot2104214021" linkedscene_hoffset="355.22" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_2" title="A2_lib_2" onstart="" thumburl="/campus/panos_moi/A2_lib_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104213636" style="skin_hotspotstyle" ath="-37.798" atv="24.19" depth="1000.0" linkedscene="scene_a2_lib_1" linkedscene_lookat="-205.68,1.6,120.0" linkedscene_spot="spot2104213360" linkedscene_hoffset="281.69" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_3" title="A2_lib_3" onstart="" thumburl="/campus/panos_moi/A2_lib_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104214021" style="skin_hotspotstyle" ath="-1.755" atv="13.091" depth="1000.0" linkedscene="scene_a2_lib_1" linkedscene_lookat="-184.29,0.05,120.0" linkedscene_spot="spot2104213806" linkedscene_hoffset="4.78" use3dtransition="true" />
+		<hotspot name="spot2104214150" style="skin_hotspotstyle" ath="175.103" atv="13.389" depth="1000.0" linkedscene="scene_a2_lib_4" linkedscene_lookat="-182.47,0.33,120.0" linkedscene_spot="spot2104214404" linkedscene_hoffset="1.89" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_4" title="A2_lib_4" onstart="" thumburl="/campus/panos_moi/A2_lib_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104214404" style="skin_hotspotstyle" ath="-3.007" atv="19.198" depth="1000.0" linkedscene="scene_a2_lib_3" linkedscene_lookat="-182.47,0.33,120.0" linkedscene_spot="spot2104214150" linkedscene_hoffset="358.11" use3dtransition="true" />
+		<hotspot name="spot2104214502" style="skin_hotspotstyle" ath="131.058" atv="18.252" depth="1000.0" linkedscene="scene_a2_lib_5" linkedscene_lookat="-127.0,0.3,120.0" linkedscene_spot="spot2104214726" linkedscene_hoffset="84.3" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_5" title="A2_lib_5" onstart="" thumburl="/campus/panos_moi/A2_lib_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104214726" style="skin_hotspotstyle" ath="35.354" atv="22.45" depth="1000.0" linkedscene="scene_a2_lib_4" linkedscene_lookat="-127.0,0.3,120.0" linkedscene_spot="spot2104214502" linkedscene_hoffset="275.7" use3dtransition="true" />
+		<hotspot name="spot2104215494" style="skin_hotspotstyle" ath="-138.77" atv="15.979" depth="1000.0" linkedscene="scene_a2_lib_6" linkedscene_lookat="182.11,1.28,120.0" linkedscene_spot="spot2104215720" linkedscene_hoffset="233.35" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_a2_lib_6" title="A2_lib_6" onstart="" thumburl="/campus/panos_moi/A2_lib_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104215720" style="skin_hotspotstyle" ath="-85.419" atv="11.511" depth="1000.0" linkedscene="scene_a2_lib_5" linkedscene_lookat="182.11,1.28,120.0" linkedscene_spot="spot2104215494" linkedscene_hoffset="126.65" use3dtransition="true" />
+		<hotspot name="spot2104215846" style="skin_hotspotstyle" ath="-173.927" atv="39.514" depth="1000.0" linkedscene="scene_a2_lib_7" linkedscene_lookat="90.37,-1.16,120.0" linkedscene_spot="spot2104216083" linkedscene_hoffset="263.71" use3dtransition="true" />
+
+		
+
+	</scene>
+
+<scene name="scene_a2_lib_7" title="A2_lib_7" onstart="" thumburl="/campus/panos_moi/A2_lib_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104216083" style="skin_hotspotstyle" ath="-90.22" atv="-3.383" depth="1000.0" linkedscene="scene_a2_lib_6" linkedscene_lookat="90.37,-1.16,120.0" linkedscene_spot="spot2104215846" linkedscene_hoffset="96.29" use3dtransition="true" />
+		<hotspot name="spot2104216634" style="skin_hotspotstyle" ath="178.623" atv="24.701" depth="1000.0" linkedscene="scene_a2_lib_8" linkedscene_lookat="178.34,2.06,120.0" linkedscene_spot="spot2104216951" linkedscene_hoffset="-0.86" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_a2_lib_8" title="A2_lib_8" onstart="" thumburl="/campus/panos_moi/A2_lib_8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104216951" style="skin_hotspotstyle" ath="28.474" atv="14.815" depth="1000.0" linkedscene="scene_a2_lib_7" linkedscene_lookat="178.34,2.06,120.0" linkedscene_spot="spot2104216634" linkedscene_hoffset="360.86" use3dtransition="true" />
+		<hotspot name="spot2104217158" style="skin_hotspotstyle" ath="176.92" atv="9.513" depth="1000.0" linkedscene="scene_a2_lib_9" linkedscene_lookat="-181.83,2.32,120.0" linkedscene_spot="spot2104217360" linkedscene_hoffset="1.45" use3dtransition="true" />
+
+		
+
+	</scene>
+
+<scene name="scene_a2_lib_9" title="A2_lib_9" onstart="" thumburl="/campus/panos_moi/A2_lib_9.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_9.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_9.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104217360" style="skin_hotspotstyle" ath="-1.632" atv="16.959" depth="1000.0" linkedscene="scene_a2_lib_8" linkedscene_lookat="-181.83,2.32,120.0" linkedscene_spot="spot2104217158" linkedscene_hoffset="358.55" use3dtransition="true" />
+		<hotspot name="spot2104217491" style="skin_hotspotstyle" ath="165.246" atv="8.379" depth="1000.0" linkedscene="scene_a2_lib_10" linkedscene_lookat="-82.15,0.66,120.0" linkedscene_spot="spot2104217818" linkedscene_hoffset="113.23" use3dtransition="true" />
+		<hotspot name="spot2104217917" style="skin_hotspotstyle" ath="130" atv="5" depth="1000.0" linkedscene="scene_gpbk0066_1773206449967" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot1958163248" linkedscene_hoffset="90" use3dtransition="true" />
+		<hotspot name="spot2104217918" style="skin_hotspotstyle" ath="-91.853" atv="21.0" depth="1000.0" linkedscene="scene_a2_ht_2" linkedscene_lookat="-3.92,-3.71,120.0" linkedscene_spot="spot2104218438" linkedscene_hoffset="449.26" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_10" title="A2_lib_10" onstart="" thumburl="/campus/panos_moi/A2_lib_10.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_10.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_10.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104217818" style="skin_hotspotstyle" ath="98.475" atv="18.02" depth="1000.0" linkedscene="scene_a2_lib_9" linkedscene_lookat="-82.15,0.66,120.0" linkedscene_spot="spot2104217491" linkedscene_hoffset="246.77" use3dtransition="true" />
+		<hotspot name="spot2104218662" style="skin_hotspotstyle" ath="-127.526" atv="12.592" depth="1000.0" linkedscene="scene_a2_lib_11" linkedscene_lookat="142.54,2.9,120.0" linkedscene_spot="spot2104218936" linkedscene_hoffset="263.33" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_lib_11" title="A2_lib_11" onstart="" thumburl="/campus/panos_moi/A2_lib_11.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_lib_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_lib_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104218936" style="skin_hotspotstyle" ath="-44.2" atv="18.186" depth="1000.0" linkedscene="scene_a2_lib_10" linkedscene_lookat="142.54,2.9,120.0" linkedscene_spot="spot2104218662" linkedscene_hoffset="96.67" use3dtransition="true" />
+		<hotspot name="spot2104219052" style="skin_hotspotstyle" ath="178.314" atv="19.925" depth="1000.0" linkedscene="scene_a2_t1_1" linkedscene_lookat="-2.07,-3.09,120.0" linkedscene_spot="spot2104219812" linkedscene_hoffset="181.11" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_0" title="A2_t1_0" onstart="" thumburl="/campus/panos_moi/A2_t1_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_0.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_0.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104197876" style="skin_hotspotstyle" ath="-0.769" atv="40.515" depth="1000.0" linkedscene="scene_23" linkedscene_lookat="-180.0,1.05,120.0" linkedscene_spot="spot2104197311" linkedscene_hoffset="6.67" use3dtransition="true" />
+		<hotspot name="spot2104198103" style="skin_hotspotstyle" ath="-178.678" atv="-3.05" depth="1000.0" linkedscene="scene_a2_t1_01" linkedscene_lookat="-183.98,1.53,120.0" linkedscene_spot="spot2104198353" linkedscene_hoffset="355.3" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_01" title="A2_t1_01" onstart="" thumburl="/campus/panos_moi/A2_t1_01.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_01.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_01.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104198353" style="skin_hotspotstyle" ath="-3.381" atv="39.207" depth="1000.0" linkedscene="scene_a2_t1_0" linkedscene_lookat="-183.98,1.53,120.0" linkedscene_spot="spot2104198103" linkedscene_hoffset="4.7" use3dtransition="true" />
+		<hotspot name="spot2104198495" style="skin_hotspotstyle" ath="176.227" atv="22.46" depth="1000.0" linkedscene="scene_a2_t1_01a" linkedscene_lookat="-180.36,-0.55,120.0" linkedscene_spot="spot2104198761" linkedscene_hoffset="5.32" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_01a" title="A2_t1_01a" onstart="" thumburl="/campus/panos_moi/A2_t1_01a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_01a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_01a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104198761" style="skin_hotspotstyle" ath="1.543" atv="24.825" depth="1000.0" linkedscene="scene_a2_t1_01" linkedscene_lookat="-180.36,-0.55,120.0" linkedscene_spot="spot2104198495" linkedscene_hoffset="354.68" use3dtransition="true" />
+		
+		<hotspot name="spot2104200312" style="skin_hotspotstyle" ath="-92.368" atv="16.903" depth="1000.0" linkedscene="scene_a2_t1_4" linkedscene_lookat="-177.75,1.03,120.0" linkedscene_spot="spot2104200636" linkedscene_hoffset="269.16" use3dtransition="true" />
+		
+		<hotspot name="spot2104207861" style="skin_hotspotstyle" ath="91.3" atv="16.888" depth="1000.0" linkedscene="scene_a2_t1_2a" linkedscene_lookat="-90.32,-2.27,120.0" linkedscene_spot="spot2104207486" linkedscene_hoffset="86.86" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_1" title="A2_t1_1" onstart="" thumburl="/campus/panos_moi/A2_t1_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		
+		<hotspot name="spot2104207154" style="skin_hotspotstyle" ath="61.044" atv="18.871" depth="1000.0" linkedscene="scene_a2_t1_2a" linkedscene_lookat="-122.49,0.45,120.0" linkedscene_spot="spot2104206716" linkedscene_hoffset="-28.47" use3dtransition="true" />
+		<hotspot name="spot2104219812" style="skin_hotspotstyle" ath="179.424" atv="20.036" depth="1000.0" linkedscene="scene_a2_lib_11" linkedscene_lookat="-2.07,-3.09,120.0" linkedscene_spot="spot2104219052" linkedscene_hoffset="178.89" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_1a" title="A2_t1_1a" onstart="" thumburl="/campus/panos_moi/A2_t1_1a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_1a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_1a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+<scene name="scene_a2_t1_2" title="A2_t1_2" onstart="" thumburl="/campus/panos_moi/A2_t1_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104199245" style="skin_hotspotstyle" ath="6.752" atv="16.098" depth="1000.0" linkedscene="scene_a2_t1_01a" linkedscene_lookat="-175.27,0.19,120.0" linkedscene_spot="spot2104198892" linkedscene_hoffset="272.11" use3dtransition="true" />
+		<hotspot name="spot2104199354" style="skin_hotspotstyle" ath="-105.194" atv="20.048" depth="1000.0" linkedscene="scene_a2_t1_1" linkedscene_lookat="-133.34,-0.47,120.0" linkedscene_spot="spot2104199794" linkedscene_hoffset="355.88" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_2a" title="A2_t1_2a" onstart="" thumburl="/campus/panos_moi/A2_t1_2a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_2a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_2a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104206363" style="skin_hotspotstyle" ath="-38.888" atv="16.925" depth="1000.0" linkedscene="scene_a2_t1_10" linkedscene_lookat="180.94,0.09,120.0" linkedscene_spot="spot2104205972" linkedscene_hoffset="251.19" use3dtransition="true" />
+		<hotspot name="spot2104206716" style="skin_hotspotstyle" ath="-147.395" atv="11.943" depth="1000.0" linkedscene="scene_a2_t1_1" linkedscene_lookat="-122.49,0.45,120.0" linkedscene_spot="spot2104207154" linkedscene_hoffset="388.47" use3dtransition="true" />
+		<hotspot name="spot2104207486" style="skin_hotspotstyle" ath="-1.383" atv="12.603" depth="1000.0" linkedscene="scene_a2_t1_01a" linkedscene_lookat="-90.32,-2.27,120.0" linkedscene_spot="spot2104207861" linkedscene_hoffset="273.14" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_3" title="A2_t1_3" onstart="" thumburl="/campus/panos_moi/A2_t1_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+<scene name="scene_a2_t1_4" title="A2_t1_4" onstart="" thumburl="/campus/panos_moi/A2_t1_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104200636" style="skin_hotspotstyle" ath="-4.019" atv="14.918" depth="1000.0" linkedscene="scene_a2_t1_01a" linkedscene_lookat="-177.75,1.03,120.0" linkedscene_spot="spot2104200312" linkedscene_hoffset="90.84" use3dtransition="true" />
+		<hotspot name="spot2104200762" style="skin_hotspotstyle" ath="-150.187" atv="15.138" depth="1000.0" linkedscene="scene_a2_t1_5" linkedscene_lookat="-158.21,0.24,120.0" linkedscene_spot="spot2104201095" linkedscene_hoffset="357.86" use3dtransition="true" />
+		<hotspot name="spot2104201678" style="skin_hotspotstyle" ath="138.848" atv="18.282" depth="1000.0" linkedscene="scene_a2_t1_6" linkedscene_lookat="128.66,-0.41,120.0" linkedscene_spot="spot2104201998" linkedscene_hoffset="23.95" use3dtransition="true" />
+		<hotspot name="spot2104208535" style="skin_hotspotstyle" ath="52.918" atv="17.872" depth="1000.0" linkedscene="scene_a2_t1_10" linkedscene_lookat="135.36,0.0,120.0" linkedscene_spot="spot2104209151" linkedscene_hoffset="95.17" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_5" title="A2_t1_5" onstart="" thumburl="/campus/panos_moi/A2_t1_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="-90.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104201095" style="skin_hotspotstyle" ath="27.674" atv="21.705" depth="1000.0" linkedscene="scene_a2_t1_4" linkedscene_lookat="-158.21,0.24,120.0" linkedscene_spot="spot2104200762" linkedscene_hoffset="2.14" use3dtransition="true" />
+		<hotspot name="spot2104201307" style="skin_hotspotstyle" ath="93.522" atv="17.292" depth="1000.0" linkedscene="scene_a2_t1_6" linkedscene_lookat="83.58,-0.0,120.0" linkedscene_spot="spot2104201562" linkedscene_hoffset="-8.05" use3dtransition="true" />
+		<!-- Vào Samsung Lab qua scene cửa cũ để giữ popup và transition. -->
+		<hotspot name="spot_samsung_entrance" style="skin_hotspotstyle" ath="-180" atv="45" depth="1000.0" linkedscene="scene_ss_1" linkedscene_lookat="180.0,0.0,120.0" linkedscene_spot="spot_samsung_exit" use3dtransition="true" ptit_label="L&#x1ED1;i v&#x00E0;o Samsung Lab" tooltip="L&#x1ED1;i v&#x00E0;o Samsung Lab" />
+
+	</scene>
+
+<scene name="scene_a2_t1_6" title="A2_t1_6" onstart="" thumburl="/campus/panos_moi/A2_t1_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104201562" style="skin_hotspotstyle" ath="-94.524" atv="20.494" depth="1000.0" linkedscene="scene_a2_t1_5" linkedscene_lookat="83.58,-0.0,120.0" linkedscene_spot="spot2104201307" linkedscene_hoffset="368.05" use3dtransition="true" />
+		<hotspot name="spot2104201998" style="skin_hotspotstyle" ath="-18.404" atv="25.619" depth="1000.0" linkedscene="scene_a2_t1_4" linkedscene_lookat="128.66,-0.41,120.0" linkedscene_spot="spot2104201678" linkedscene_hoffset="336.05" use3dtransition="true" />
+		<hotspot name="spot2104202572" style="skin_hotspotstyle" ath="84.174" atv="11.99" depth="1000.0" linkedscene="scene_a2_t1_7" linkedscene_lookat="-183.67,1.08,120.0" linkedscene_spot="spot2104202875" linkedscene_hoffset="94.55" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_7" title="A2_t1_7" onstart="" thumburl="/campus/panos_moi/A2_t1_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104202875" style="skin_hotspotstyle" ath="-1.273" atv="15.161" depth="1000.0" linkedscene="scene_a2_t1_6" linkedscene_lookat="-183.67,1.08,120.0" linkedscene_spot="spot2104202572" linkedscene_hoffset="265.45" use3dtransition="true" />
+		<hotspot name="spot2104203081" style="skin_hotspotstyle" ath="88.205" atv="12.143" depth="1000.0" linkedscene="scene_a2_t1_8" linkedscene_lookat="90.58,-2.16,120.0" linkedscene_spot="spot2104203346" linkedscene_hoffset="1.86" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_8" title="A2_t1_8" onstart="" thumburl="/campus/panos_moi/A2_t1_8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104203346" style="skin_hotspotstyle" ath="-89.939" atv="23.066" depth="1000.0" linkedscene="scene_a2_t1_7" linkedscene_lookat="90.58,-2.16,120.0" linkedscene_spot="spot2104203081" linkedscene_hoffset="358.14" use3dtransition="true" />
+		<hotspot name="spot2104203477" style="skin_hotspotstyle" ath="90.127" atv="14.943" depth="1000.0" linkedscene="scene_a2_t1_9" linkedscene_lookat="185.66,1.27,120.0" linkedscene_spot="spot2104204028" linkedscene_hoffset="95.93" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_9" title="A2_t1_9" onstart="" thumburl="/campus/panos_moi/A2_t1_9.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_9.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_9.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104204028" style="skin_hotspotstyle" ath="6.062" atv="18.225" depth="1000.0" linkedscene="scene_a2_t1_8" linkedscene_lookat="185.66,1.27,120.0" linkedscene_spot="spot2104203477" linkedscene_hoffset="264.07" use3dtransition="true" />
+		<hotspot name="spot2104204181" style="skin_hotspotstyle" ath="101.291" atv="23.35" depth="1000.0" linkedscene="scene_a2_t1_10" linkedscene_lookat="-0.41,-0.82,120.0" linkedscene_spot="spot2104204432" linkedscene_hoffset="-96.8" use3dtransition="true" />
+		<hotspot name="spot2104204503" style="skin_hotspotstyle" ath="-175.338" atv="10.582" depth="1000.0" linkedscene="scene_a2_t1_11" linkedscene_lookat="180.04,1.46,120.0" linkedscene_spot="spot2104204748" linkedscene_hoffset="356.16" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_10" title="A2_t1_10" onstart="" thumburl="/campus/panos_moi/A2_t1_10.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_10.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_10.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104204432" style="skin_hotspotstyle" ath="-175.514" atv="23.529" depth="1000.0" linkedscene="scene_a2_t1_9" linkedscene_lookat="-0.41,-0.82,120.0" linkedscene_spot="spot2104204181" linkedscene_hoffset="456.8" use3dtransition="true" />
+		
+		<hotspot name="spot2104205972" style="skin_hotspotstyle" ath="32.298" atv="14.142" depth="1000.0" linkedscene="scene_a2_t1_2a" linkedscene_lookat="180.94,0.09,120.0" linkedscene_spot="spot2104206363" linkedscene_hoffset="108.81" use3dtransition="true" />
+		<hotspot name="spot2104209151" style="skin_hotspotstyle" ath="-31.913" atv="14.961" depth="1000.0" linkedscene="scene_a2_t1_4" linkedscene_lookat="135.36,0.0,120.0" linkedscene_spot="spot2104208535" linkedscene_hoffset="264.83" use3dtransition="true" />
+		<hotspot name="spot2104209543" style="skin_hotspotstyle" ath="50.531" atv="16.507" depth="1000.0" linkedscene="scene_a2_g_2" linkedscene_lookat="-13.81,-0.21,120.0" linkedscene_spot="spot2104210104" linkedscene_hoffset="65.51" use3dtransition="true" />
+		<hotspot name="spot2104210846" style="skin_hotspotstyle" ath="129.71" atv="16.299" depth="1000.0" linkedscene="scene_a2_t2_1" linkedscene_lookat="88.74,1.24,120.0" linkedscene_spot="spot2104211393" linkedscene_hoffset="-80.09" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t1_11" title="A2_t1_11" onstart="" thumburl="/campus/panos_moi/A2_t1_11.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t1_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t1_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104204748" style="skin_hotspotstyle" ath="0.822" atv="13.77" depth="1000.0" linkedscene="scene_a2_t1_9" linkedscene_lookat="180.04,1.46,120.0" linkedscene_spot="spot2104204503" linkedscene_hoffset="3.84" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t2_1" title="A2_t2_1" onstart="" thumburl="/campus/panos_moi/A2_t2_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104211393" style="skin_hotspotstyle" ath="-130.38" atv="16.767" depth="1000.0" linkedscene="scene_a2_t1_10" linkedscene_lookat="88.74,1.24,120.0" linkedscene_spot="spot2104210846" linkedscene_hoffset="440.09" use3dtransition="true" />
+		<hotspot name="spot2104211744" style="skin_hotspotstyle" ath="178.938" atv="16.551" depth="1000.0" linkedscene="scene_a2_t2_2" linkedscene_lookat="-182.75,-1.2,120.0" linkedscene_spot="spot2104212011" linkedscene_hoffset="-1.19" use3dtransition="true" />
+		<hotspot name="spot2104222936" style="skin_hotspotstyle" ath="-1.123" atv="15.602" depth="1000.0" linkedscene="scene_a2_t2_11" linkedscene_lookat="-2.47,0.41,120.0" linkedscene_spot="spot2104223222" linkedscene_hoffset="358.75" use3dtransition="true" />
+		<hotspot name="spot2104226477" style="skin_hotspotstyle" ath="-51.267" atv="16.994" depth="1000.0" linkedscene="scene_a2_t3" linkedscene_lookat="-82.64,-0.4,120.0" linkedscene_spot="spot2104226903" linkedscene_hoffset="287.81" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t2_2" title="A2_t2_2" onstart="" thumburl="/campus/panos_moi/A2_t2_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104212011" style="skin_hotspotstyle" ath="-2.256" atv="27.918" depth="1000.0" linkedscene="scene_a2_t2_1" linkedscene_lookat="-182.75,-1.2,120.0" linkedscene_spot="spot2104211744" linkedscene_hoffset="361.19" use3dtransition="true" />
+		<hotspot name="spot2104212137" style="skin_hotspotstyle" ath="-94.627" atv="12.018" depth="1000.0" linkedscene="scene_a2_t2_3" linkedscene_lookat="-180.66,1.24,120.0" linkedscene_spot="spot2104212606" linkedscene_hoffset="275.22" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t2_3" title="A2_t2_3" onstart="" thumburl="/campus/panos_moi/A2_t2_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104212606" style="skin_hotspotstyle" ath="0.588" atv="16.126" depth="1000.0" linkedscene="scene_a2_t2_2" linkedscene_lookat="-180.66,1.24,120.0" linkedscene_spot="spot2104212137" linkedscene_hoffset="84.78" use3dtransition="true" />
+		<hotspot name="spot2104212844" style="skin_hotspotstyle" ath="179.995" atv="16.673" depth="1000.0" linkedscene="scene_a2_lib_1" linkedscene_lookat="-173.69,0.82,120.0" linkedscene_spot="spot2104213308" linkedscene_hoffset="1.21" use3dtransition="true" />
+		<hotspot name="spot2104222338" style="skin_hotspotstyle" ath="104.839" atv="15.845" depth="1000.0" linkedscene="scene_a2_t2_4" linkedscene_lookat="-181.36,-0.4,120.0" linkedscene_spot="spot2104222557" linkedscene_hoffset="105.38" use3dtransition="true" />
+		
+		
+		
+
+	</scene>
+
+<scene name="scene_a2_t2_4" title="A2_t2_4" onstart="" thumburl="/campus/panos_moi/A2_t2_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104222557" style="skin_hotspotstyle" ath="30.216" atv="20.021" depth="1000.0" linkedscene="scene_a2_t2_3" linkedscene_lookat="-181.36,-0.4,120.0" linkedscene_spot="spot2104222338" linkedscene_hoffset="254.62" use3dtransition="true" />
+
+		
+
+		
+		
+
+	</scene>
+
+<scene name="scene_a2_t2_11" title="A2_t2_11" onstart="" thumburl="/campus/panos_moi/A2_t2_11.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104223222" style="skin_hotspotstyle" ath="178.288" atv="20.12" depth="1000.0" linkedscene="scene_a2_t2_1" linkedscene_lookat="-2.47,0.41,120.0" linkedscene_spot="spot2104222936" linkedscene_hoffset="1.25" use3dtransition="true" />
+		<hotspot name="spot2104223551" style="skin_hotspotstyle" ath="-92.185" atv="9.76" depth="1000.0" linkedscene="scene_a2_t2_12" linkedscene_lookat="-272.47,0.24,120.0" linkedscene_spot="spot2104223877" linkedscene_hoffset="179.93" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t2_12" title="A2_t2_12" onstart="" thumburl="/campus/panos_moi/A2_t2_12.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t2_12.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t2_12.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104223877" style="skin_hotspotstyle" ath="-92.254" atv="13.959" depth="1000.0" linkedscene="scene_a2_t2_11" linkedscene_lookat="-272.47,0.24,120.0" linkedscene_spot="spot2104223551" linkedscene_hoffset="180.07" use3dtransition="true" />
+		<hotspot name="spot2104224022" style="skin_hotspotstyle" ath="179.546" atv="7.026" depth="1000.0" linkedscene="scene_cau_1" linkedscene_lookat="-184.49,-0.05,120.0" linkedscene_spot="spot2104224404" linkedscene_hoffset="-3.09" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t3" title="A2_t3" onstart="" thumburl="/campus/panos_moi/A2_t3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104226903" style="skin_hotspotstyle" ath="56.56" atv="17.095" depth="1000.0" linkedscene="scene_a2_t2_1" linkedscene_lookat="-82.64,-0.4,120.0" linkedscene_spot="spot2104226477" linkedscene_hoffset="72.19" use3dtransition="true" />
+		<hotspot name="spot2104227105" style="skin_hotspotstyle" ath="8.257" atv="16.604" depth="1000.0" linkedscene="scene_a2_t3_1" linkedscene_lookat="85.85,0.2,120.0" linkedscene_spot="spot2104227443" linkedscene_hoffset="79.32" use3dtransition="true" />
+		<hotspot name="spot2104231076" style="skin_hotspotstyle" ath="137.086" atv="17.7" depth="1000.0" linkedscene="scene_a2_t4" linkedscene_lookat="-95.29,-0.76,120.0" linkedscene_spot="spot2104231465" linkedscene_hoffset="88.88" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t3_1" title="A2_t3_1" onstart="" thumburl="/campus/panos_moi/A2_t3_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t3_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t3_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104227443" style="skin_hotspotstyle" ath="-92.687" atv="23.352" depth="1000.0" linkedscene="scene_a2_t3" linkedscene_lookat="85.85,0.2,120.0" linkedscene_spot="spot2104227105" linkedscene_hoffset="280.68" use3dtransition="true" />
+		<hotspot name="spot2104227594" style="skin_hotspotstyle" ath="177.048" atv="8.943" depth="1000.0" linkedscene="scene_a2_t3_2" linkedscene_lookat="-186.07,1.03,120.0" linkedscene_spot="spot2104227808" linkedscene_hoffset="-0.63" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t3_2" title="A2_t3_2" onstart="" thumburl="/campus/panos_moi/A2_t3_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t3_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t3_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104227808" style="skin_hotspotstyle" ath="-3.578" atv="17.286" depth="1000.0" linkedscene="scene_a2_t3_1" linkedscene_lookat="-186.07,1.03,120.0" linkedscene_spot="spot2104227594" linkedscene_hoffset="360.63" use3dtransition="true" />
+		<hotspot name="spot2104227882" style="skin_hotspotstyle" ath="173.592" atv="18.049" depth="1000.0" linkedscene="scene_a2_vn_1" linkedscene_lookat="180.02,2.41,120.0" linkedscene_spot="spot2104228140" linkedscene_hoffset="-0.62" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t4" title="A2_t4" onstart="" thumburl="/campus/panos_moi/A2_t4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104231465" style="skin_hotspotstyle" ath="45.966" atv="17.267" depth="1000.0" linkedscene="scene_a2_t3" linkedscene_lookat="-95.29,-0.76,120.0" linkedscene_spot="spot2104231076" linkedscene_hoffset="271.12" use3dtransition="true" />
+		<hotspot name="spot2104231607" style="skin_hotspotstyle" ath="124.961" atv="17.216" depth="1000.0" linkedscene="scene_a2_t5" linkedscene_lookat="-89.0,-1.46,120.0" linkedscene_spot="spot2104231996" linkedscene_hoffset="105.17" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t5" title="A2_t5" onstart="" thumburl="/campus/panos_moi/A2_t5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104231996" style="skin_hotspotstyle" ath="50.13" atv="16.998" depth="1000.0" linkedscene="scene_a2_t4" linkedscene_lookat="-89.0,-1.46,120.0" linkedscene_spot="spot2104231607" linkedscene_hoffset="254.83" use3dtransition="true" />
+		<hotspot name="spot2104232058" style="skin_hotspotstyle" ath="129.473" atv="17.188" depth="1000.0" linkedscene="scene_a2_t6" linkedscene_lookat="-267.4,0.44,120.0" linkedscene_spot="spot2104232350" linkedscene_hoffset="-76.88" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t6" title="A2_t6" onstart="" thumburl="/campus/panos_moi/A2_t6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104232350" style="skin_hotspotstyle" ath="-127.407" atv="17.057" depth="1000.0" linkedscene="scene_a2_t5" linkedscene_lookat="-267.4,0.44,120.0" linkedscene_spot="spot2104232058" linkedscene_hoffset="436.88" use3dtransition="true" />
+		<hotspot name="spot2104232433" style="skin_hotspotstyle" ath="-48.376" atv="16.602" depth="1000.0" linkedscene="scene_a2_t7" linkedscene_lookat="-277.97,-0.07,120.0" linkedscene_spot="spot2104232880" linkedscene_hoffset="90.21" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t7" title="A2_t7" onstart="" thumburl="/campus/panos_moi/A2_t7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104232880" style="skin_hotspotstyle" ath="-138.163" atv="16.447" depth="1000.0" linkedscene="scene_a2_t6" linkedscene_lookat="-277.97,-0.07,120.0" linkedscene_spot="spot2104232433" linkedscene_hoffset="269.79" use3dtransition="true" />
+		<hotspot name="spot2104249685" style="skin_hotspotstyle" ath="-59.035" atv="16.915" depth="1000.0" linkedscene="scene_a2_t8" linkedscene_lookat="-87.75,0.59,120.0" linkedscene_spot="spot2104249991" linkedscene_hoffset="291.53" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_t8" title="A2_t8" onstart="" thumburl="/campus/panos_moi/A2_t8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_t8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_t8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
+		</image>
+
+		<hotspot name="spot2104249991" style="skin_hotspotstyle" ath="52.497" atv="16.373" depth="1000.0" linkedscene="scene_a2_t7" linkedscene_lookat="-87.75,0.59,120.0" linkedscene_spot="spot2104249685" linkedscene_hoffset="68.47" use3dtransition="true" />
+		<!-- Diem noi campus moi -> Viettel; giu duong noi bo A2_t8 de tour khong bi dut. -->
+		<hotspot name="spot1960149780" style="skin_hotspotstyle" ath="0.956" atv="17.312" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_spot="spot2076860187" linkedscene_hoffset="0.0" use3dtransition="true" ptit_label="Vào Viettel Lab" tooltip="Vào Viettel Lab" />
+
+	</scene>
+
+<scene name="scene_a2_vn_1" title="A2_vn_1" onstart="" thumburl="/campus/panos_moi/A2_vn_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104228140" style="skin_hotspotstyle" ath="-7.031" atv="16.716" depth="1000.0" linkedscene="scene_a2_t3_2" linkedscene_lookat="180.02,2.41,120.0" linkedscene_spot="spot2104227882" linkedscene_hoffset="360.62" use3dtransition="true" />
+		<hotspot name="spot2104228222" style="skin_hotspotstyle" ath="89.197" atv="14.293" depth="1000.0" linkedscene="scene_a2_vn_2" linkedscene_lookat="96.49,-1.4,120.0" linkedscene_spot="spot2104228424" linkedscene_hoffset="0.41" use3dtransition="true" />
+		<hotspot name="spot2104228536" style="skin_hotspotstyle" ath="157.226" atv="16.011" depth="1000.0" linkedscene="scene_a2_vn_3" linkedscene_lookat="180.55,1.78,120.0" linkedscene_spot="spot2104228797" linkedscene_hoffset="7.41" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_2" title="A2_vn_2" onstart="" thumburl="/campus/panos_moi/A2_vn_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104228424" style="skin_hotspotstyle" ath="-90.39" atv="17.733" depth="1000.0" linkedscene="scene_a2_vn_1" linkedscene_lookat="96.49,-1.4,120.0" linkedscene_spot="spot2104228222" linkedscene_hoffset="359.59" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_3" title="A2_vn_3" onstart="" thumburl="/campus/panos_moi/A2_vn_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104228797" style="skin_hotspotstyle" ath="-15.361" atv="17.676" depth="1000.0" linkedscene="scene_a2_vn_1" linkedscene_lookat="180.55,1.78,120.0" linkedscene_spot="spot2104228536" linkedscene_hoffset="352.59" use3dtransition="true" />
+		<hotspot name="spot2104228887" style="skin_hotspotstyle" ath="179.739" atv="14.602" depth="1000.0" linkedscene="scene_a2_vn_4" linkedscene_lookat="-84.87,-0.11,120.0" linkedscene_spot="spot2104229196" linkedscene_hoffset="95.34" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_4" title="A2_vn_4" onstart="" thumburl="/campus/panos_moi/A2_vn_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104229196" style="skin_hotspotstyle" ath="95.077" atv="15.704" depth="1000.0" linkedscene="scene_a2_vn_3" linkedscene_lookat="-84.87,-0.11,120.0" linkedscene_spot="spot2104228887" linkedscene_hoffset="264.66" use3dtransition="true" />
+		<hotspot name="spot2104229314" style="skin_hotspotstyle" ath="-84.189" atv="10.289" depth="1000.0" linkedscene="scene_a2_vn_5" linkedscene_lookat="-173.91,2.4,120.0" linkedscene_spot="spot2104229668" linkedscene_hoffset="269.55" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_5" title="A2_vn_5" onstart="" thumburl="/campus/panos_moi/A2_vn_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104229668" style="skin_hotspotstyle" ath="5.359" atv="17.369" depth="1000.0" linkedscene="scene_a2_vn_4" linkedscene_lookat="-173.91,2.4,120.0" linkedscene_spot="spot2104229314" linkedscene_hoffset="90.45" use3dtransition="true" />
+		<hotspot name="spot2104229793" style="skin_hotspotstyle" ath="-165.306" atv="12.869" depth="1000.0" linkedscene="scene_a2_vn_6" linkedscene_lookat="-90.85,-1.52,120.0" linkedscene_spot="spot2104230093" linkedscene_hoffset="432.69" use3dtransition="true" />
+		<hotspot name="spot2104230165" style="skin_hotspotstyle" ath="139.369" atv="9.419" depth="1000.0" linkedscene="scene_a2_vn_7" linkedscene_lookat="-168.12,2.06,120.0" linkedscene_spot="spot2104230416" linkedscene_hoffset="45.66" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_6" title="A2_vn_6" onstart="" thumburl="/campus/panos_moi/A2_vn_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104230093" style="skin_hotspotstyle" ath="87.388" atv="18.459" depth="1000.0" linkedscene="scene_a2_vn_5" linkedscene_lookat="-90.85,-1.52,120.0" linkedscene_spot="spot2104229793" linkedscene_hoffset="-72.69" use3dtransition="true" />
+		<hotspot name="spot2104230787" style="skin_hotspotstyle" ath="-179.854" atv="15.522" depth="1000.0" linkedscene="scene_a2_vn_7" linkedscene_lookat="-2.59,0.19,120.0" linkedscene_spot="spot2104230462" linkedscene_hoffset="316.63" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_a2_vn_7" title="A2_vn_7" onstart="" thumburl="/campus/panos_moi/A2_vn_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/A2_vn_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/A2_vn_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104230416" style="skin_hotspotstyle" ath="5.025" atv="11.361" depth="1000.0" linkedscene="scene_a2_vn_5" linkedscene_lookat="-168.12,2.06,120.0" linkedscene_spot="spot2104230165" linkedscene_hoffset="314.34" use3dtransition="true" />
+		<hotspot name="spot2104230462" style="skin_hotspotstyle" ath="-43.226" atv="11.56" depth="1000.0" linkedscene="scene_a2_vn_6" linkedscene_lookat="-2.59,0.19,120.0" linkedscene_spot="spot2104230787" linkedscene_hoffset="43.37" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_bc_1" title="bc_1" onstart="" thumburl="/campus/panos_moi/bc_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/bc_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/bc_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104116242" style="skin_hotspotstyle" ath="91.067" atv="15.288" depth="1000.0" linkedscene="scene_bc_2" linkedscene_lookat="-90.5,-0.62,120.0" linkedscene_spot="spot2104115943" linkedscene_hoffset="4.96" use3dtransition="true" />
+		<hotspot name="spot2104116446" style="skin_hotspotstyle" ath="-52.702" atv="14.545" depth="1000.0" linkedscene="scene_st_bc_2" linkedscene_lookat="80.01,4.28,120.0" linkedscene_spot="spot2104117614" linkedscene_hoffset="369.29" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_bc_2" title="bc_2" onstart="" thumburl="/campus/panos_moi/bc_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/bc_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/bc_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104113070" style="skin_hotspotstyle" ath="43.862" atv="5.842" depth="1000.0" linkedscene="scene_st_bc_4" linkedscene_lookat="-133.51,0.82,120.0" linkedscene_spot="spot2104112698" linkedscene_hoffset="-12.15" use3dtransition="true" />
+		<hotspot name="spot2104114928" style="skin_hotspotstyle" ath="-173.799" atv="10.799" depth="1000.0" linkedscene="scene_st_bc_5" linkedscene_lookat="-178.61,1.24,120.0" linkedscene_spot="spot2104115676" linkedscene_hoffset="355.59" use3dtransition="true" />
+		<hotspot name="spot2104115943" style="skin_hotspotstyle" ath="-83.974" atv="12.997" depth="1000.0" linkedscene="scene_bc_1" linkedscene_lookat="-90.5,-0.62,120.0" linkedscene_spot="spot2104116242" linkedscene_hoffset="355.04" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_br_1" title="br_1" onstart="" thumburl="/campus/panos_moi/br_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/br_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/br_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104137056" style="skin_hotspotstyle" ath="3.049" atv="7.426" depth="1000.0" linkedscene="scene_st_ktx_6_2" linkedscene_lookat="-156.44,4.59,120.0" linkedscene_spot="spot2104136644" linkedscene_hoffset="353.38" use3dtransition="true" />
+		<hotspot name="spot2104137354" style="skin_hotspotstyle" ath="-155.05" atv="10.607" depth="1000.0" linkedscene="scene_br_2" linkedscene_lookat="-176.32,-2.53,120.0" linkedscene_spot="spot2104137655" linkedscene_hoffset="345.64" use3dtransition="true" />
+		<hotspot name="spot2104139455" style="skin_hotspotstyle" ath="-71.554" atv="8.013" depth="1000.0" linkedscene="scene_ktx_0" linkedscene_lookat="-179.99,0.68,120.0" linkedscene_spot="spot2104141194" linkedscene_hoffset="263.29" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_br_2" title="br_2" onstart="" thumburl="/campus/panos_moi/br_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/br_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/br_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104137655" style="skin_hotspotstyle" ath="10.586" atv="13.236" depth="1000.0" linkedscene="scene_br_1" linkedscene_lookat="-176.32,-2.53,120.0" linkedscene_spot="spot2104137354" linkedscene_hoffset="14.36" use3dtransition="true" />
+		<hotspot name="spot2104137741" style="skin_hotspotstyle" ath="178.736" atv="13.593" depth="1000.0" linkedscene="scene_br_3" linkedscene_lookat="176.53,1.89,120.0" linkedscene_spot="spot2104137980" linkedscene_hoffset="-4.51" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_br_3" title="br_3" onstart="" thumburl="/campus/panos_moi/br_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/br_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/br_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104137980" style="skin_hotspotstyle" ath="-5.77" atv="22.629" depth="1000.0" linkedscene="scene_br_2" linkedscene_lookat="176.53,1.89,120.0" linkedscene_spot="spot2104137741" linkedscene_hoffset="364.51" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_cau_1" title="cau_1" onstart="" thumburl="/campus/panos_moi/cau_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/cau_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/cau_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104224404" style="skin_hotspotstyle" ath="-3.541" atv="10.23" depth="1000.0" linkedscene="scene_a2_t2_12" linkedscene_lookat="-184.49,-0.05,120.0" linkedscene_spot="spot2104224022" linkedscene_hoffset="363.09" use3dtransition="true" />
+		<hotspot name="spot2104224523" style="skin_hotspotstyle" ath="177.458" atv="17.098" depth="1000.0" linkedscene="scene_cau_2" linkedscene_lookat="-189.33,-4.75,120.0" linkedscene_spot="spot2104225150" linkedscene_hoffset="-5.02" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_cau_2" title="cau_2" onstart="" thumburl="/campus/panos_moi/cau_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/cau_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/cau_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104225150" style="skin_hotspotstyle" ath="-7.564" atv="16.804" depth="1000.0" linkedscene="scene_cau_1" linkedscene_lookat="-189.33,-4.75,120.0" linkedscene_spot="spot2104224523" linkedscene_hoffset="365.02" use3dtransition="true" />
+		<hotspot name="spot2104225542" style="skin_hotspotstyle" ath="173.545" atv="12.244" depth="1000.0" linkedscene="scene_cau_3" linkedscene_lookat="-175.5,-0.25,120.0" linkedscene_spot="spot2104225856" linkedscene_hoffset="13.53" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_cau_3" title="cau_3" onstart="" thumburl="/campus/panos_moi/cau_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/cau_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/cau_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104225856" style="skin_hotspotstyle" ath="6.554" atv="23.978" depth="1000.0" linkedscene="scene_cau_2" linkedscene_lookat="-175.5,-0.25,120.0" linkedscene_spot="spot2104225542" linkedscene_hoffset="346.47" use3dtransition="true" />
+		<hotspot name="spot_cau3_to_a3_t3_1i" style="skin_hotspotstyle" ath="187.0" atv="15.0" depth="1000.0" linkedscene="scene_a3_t3_1i" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot_a3_t3_1i_to_cau3" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_ct_1" title="ct_1" onstart="" thumburl="/campus/panos_moi/ct_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/ct_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/ct_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104124458" style="skin_hotspotstyle" ath="-177.079" atv="15.126" depth="1000.0" linkedscene="scene_ct_2" linkedscene_lookat="2.89,-0.0,120.0" linkedscene_spot="spot2104124100" linkedscene_hoffset="353.48" use3dtransition="true" />
+		<hotspot name="spot2104134770" style="skin_hotspotstyle" ath="-0.227" atv="10.246" depth="1000.0" linkedscene="scene_st_bc_5" linkedscene_lookat="-177.03,0.21,120.0" linkedscene_spot="spot2104134486" linkedscene_hoffset="360.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_ct_2" title="ct_2" onstart="" thumburl="/campus/panos_moi/ct_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/ct_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/ct_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104123814" style="skin_hotspotstyle" ath="67.651" atv="8.726" depth="1000.0" linkedscene="scene_st_ktx_3" linkedscene_lookat="-90.9,0.21,120.0" linkedscene_spot="spot2104123084" linkedscene_hoffset="207.88" use3dtransition="true" />
+		<hotspot name="spot2104124100" style="skin_hotspotstyle" ath="-3.599" atv="14.3" depth="1000.0" linkedscene="scene_ct_1" linkedscene_lookat="2.89,-0.0,120.0" linkedscene_spot="spot2104124458" linkedscene_hoffset="6.52" use3dtransition="true" />
+		<hotspot name="spot2104124633" style="skin_hotspotstyle" ath="-95.638" atv="17.706" depth="1000.0" linkedscene="scene_ct_3" linkedscene_lookat="-181.19,-2.17,120.0" linkedscene_spot="spot2104124947" linkedscene_hoffset="270.49" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_ct_3" title="ct_3" onstart="" thumburl="/campus/panos_moi/ct_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/ct_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/ct_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104124947" style="skin_hotspotstyle" ath="-5.147" atv="20.016" depth="1000.0" linkedscene="scene_ct_2" linkedscene_lookat="-181.19,-2.17,120.0" linkedscene_spot="spot2104124633" linkedscene_hoffset="89.51" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_fpt_cua" title="Fpt_cua" onstart="" thumburl="/campus/panos_moi/Fpt_cua.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/Fpt_cua.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/Fpt_cua.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104095905" style="skin_hotspotstyle" ath="-90.159" atv="27.359" depth="1000.0" linkedscene="scene_st_a2_11" linkedscene_lookat="-265.5,5.23,120.0" linkedscene_spot="spot2104092831" linkedscene_hoffset="95.23" use3dtransition="true" />
+		<hotspot name="spot2104095987" style="skin_hotspotstyle" ath="-177.601" atv="9.716" depth="1000.0" linkedscene="scene_st_a2_0" linkedscene_lookat="-61.48,-1.44,120.0" linkedscene_spot="spot2104096812" linkedscene_hoffset="528.27" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_kgx_1" title="kgx_1" onstart="" thumburl="/campus/panos_moi/kgx_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/kgx_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/kgx_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104146778" style="skin_hotspotstyle" ath="-179.021" atv="16.023" depth="1000.0" linkedscene="scene_kgx_2" linkedscene_lookat="1.24,-0.62,120.0" linkedscene_spot="spot2104146521" linkedscene_hoffset="358.91" use3dtransition="true" />
+		<hotspot name="spot2104147090" style="skin_hotspotstyle" ath="2.384" atv="15.393" depth="1000.0" linkedscene="scene_st_a2_15" linkedscene_lookat="92.91,-0.55,120.0" linkedscene_spot="spot2104148102" linkedscene_hoffset="89.15" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_kgx_2" title="kgx_2" onstart="" thumburl="/campus/panos_moi/kgx_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/kgx_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/kgx_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104145806" style="skin_hotspotstyle" ath="-87.149" atv="27.129" depth="1000.0" linkedscene="scene_st_ht_2_2" linkedscene_lookat="89.34,-0.84,120.0" linkedscene_spot="spot2104145185" linkedscene_hoffset="108.8" use3dtransition="true" />
+		<hotspot name="spot2104146118" style="skin_hotspotstyle" ath="-179.456" atv="11.488" depth="1000.0" linkedscene="scene_kgx_3" linkedscene_lookat="185.72,0.37,120.0" linkedscene_spot="spot2104146343" linkedscene_hoffset="364.45" use3dtransition="true" />
+		<hotspot name="spot2104146521" style="skin_hotspotstyle" ath="-0.109" atv="13.692" depth="1000.0" linkedscene="scene_kgx_1" linkedscene_lookat="1.24,-0.62,120.0" linkedscene_spot="spot2104146778" linkedscene_hoffset="1.09" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_kgx_3" title="kgx_3" onstart="" thumburl="/campus/panos_moi/kgx_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/kgx_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/kgx_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104146343" style="skin_hotspotstyle" ath="4.989" atv="12.446" depth="1000.0" linkedscene="scene_kgx_2" linkedscene_lookat="185.72,0.37,120.0" linkedscene_spot="spot2104146118" linkedscene_hoffset="-4.45" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_ktx_0" title="ktx_0" onstart="" thumburl="/campus/panos_moi/ktx_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/ktx_0.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/ktx_0.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104141194" style="skin_hotspotstyle" ath="11.732" atv="11.334" depth="1000.0" linkedscene="scene_br_1" linkedscene_lookat="-179.99,0.68,120.0" linkedscene_spot="spot2104139455" linkedscene_hoffset="96.71" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_0" title="st_0" onstart="" thumburl="/campus/panos_moi/st_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_0.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_0.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+<scene name="scene_st_1" title="st_1" onstart="" thumburl="/campus/panos_moi/st_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104089112" style="skin_hotspotstyle" ath="7.618" atv="13.015" depth="1000.0" linkedscene="scene_ct" linkedscene_lookat="194.51,12.52,120.0" linkedscene_spot="spot2104088054" linkedscene_hoffset="352.34" use3dtransition="true" />
+		<hotspot name="spot2104089386" style="skin_hotspotstyle" ath="-174.466" atv="8.618" depth="1000.0" linkedscene="scene_st_2" linkedscene_lookat="182.51,5.31,120.0" linkedscene_spot="spot2104089717" linkedscene_hoffset="352.24" use3dtransition="true" />
+		<hotspot name="spot2104169443" style="skin_hotspotstyle" ath="98.282" atv="9.352" depth="1000.0" linkedscene="scene_st_a1_2" linkedscene_lookat="-10.05,3.75,120.0" linkedscene_spot="spot2104169191" linkedscene_hoffset="261.05" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_2" title="st_2" onstart="" thumburl="/campus/panos_moi/st_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104089717" style="skin_hotspotstyle" ath="-0.615" atv="8.182" depth="1000.0" linkedscene="scene_st_1" linkedscene_lookat="182.51,5.31,120.0" linkedscene_spot="spot2104089386" linkedscene_hoffset="7.76" use3dtransition="true" />
+		<hotspot name="spot2104089942" style="skin_hotspotstyle" ath="175.696" atv="10.471" depth="1000.0" linkedscene="scene_st_3" linkedscene_lookat="178.69,5.4,120.0" linkedscene_spot="spot2104090260" linkedscene_hoffset="5.47" use3dtransition="true" />
+		<hotspot name="spot2104097768" style="skin_hotspotstyle" ath="-92.142" atv="15.577" depth="1000.0" linkedscene="scene_st_a2_1" linkedscene_lookat="94.95,-0.78,120.0" linkedscene_spot="spot2104097431" linkedscene_hoffset="358.29" use3dtransition="true" />
+		<hotspot name="spot2104163383" style="skin_hotspotstyle" ath="86.547" atv="5.727" depth="1000.0" linkedscene="scene_st_a1_7" linkedscene_lookat="-169.19,-1.78,120.0" linkedscene_spot="spot2104163758" linkedscene_hoffset="102.16" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_3" title="st_3" onstart="" thumburl="/campus/panos_moi/st_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104090260" style="skin_hotspotstyle" ath="0.646" atv="24.211" depth="1000.0" linkedscene="scene_st_2" linkedscene_lookat="178.69,5.4,120.0" linkedscene_spot="spot2104089942" linkedscene_hoffset="354.53" use3dtransition="true" />
+		<hotspot name="spot2104091233" style="skin_hotspotstyle" ath="173.35" atv="9.453" depth="1000.0" linkedscene="scene_st_a2_12" linkedscene_hoffset="-75.4" use3dtransition="true" />
+		<hotspot name="spot2104151891" style="skin_hotspotstyle" ath="-95.714" atv="8.09" depth="1000.0" linkedscene="scene_st_a2_0" linkedscene_lookat="-89.37,-2.54,120.0" linkedscene_spot="spot2104152268" linkedscene_hoffset="360.0" use3dtransition="true" />
+
+		
+
+	</scene>
+
+<scene name="scene_st_a1_1" title="st_A1_1" onstart="" thumburl="/campus/panos_moi/st_A1_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104169092" style="skin_hotspotstyle" ath="22.746" atv="14.377" depth="1000.0" linkedscene="scene_st_a1_2" linkedscene_lookat="-158.85,1.08,120.0" linkedscene_spot="spot2104168804" linkedscene_hoffset="336.87" use3dtransition="true" />
+		<hotspot name="spot2104169191" style="skin_hotspotstyle" ath="-155.513" atv="12.101" depth="1000.0" linkedscene="scene_st_1" linkedscene_lookat="-87.11,-1.11,120.0" linkedscene_spot="spot2104169443" linkedscene_hoffset="433.79" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_2" title="st_A1_2" onstart="" thumburl="/campus/panos_moi/st_A1_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104168712" style="skin_hotspotstyle" ath="0.391" atv="10.617" depth="1000.0" linkedscene="scene_st_a1_3" linkedscene_lookat="-175.31,0.53,120.0" linkedscene_spot="spot2104168373" linkedscene_hoffset="2.0" use3dtransition="true" />
+		
+		<hotspot name="spot2104169191" style="skin_hotspotstyle" ath="179.222" atv="8.42" depth="1000.0" linkedscene="scene_st_1" linkedscene_lookat="-10.05,3.75,120.0" linkedscene_spot="spot2104169443" linkedscene_hoffset="98.95" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_3" title="st_A1_3" onstart="" thumburl="/campus/panos_moi/st_A1_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104167751" style="skin_hotspotstyle" ath="-0.337" atv="6.386" depth="1000.0" linkedscene="scene_st_a1_4" linkedscene_lookat="-170.27,1.24,120.0" linkedscene_spot="spot2104167354" linkedscene_hoffset="2.07" use3dtransition="true" />
+		<hotspot name="spot2104167868" style="skin_hotspotstyle" ath="92.741" atv="10.885" depth="1000.0" linkedscene="scene_st_a1_6" linkedscene_lookat="-185.04,0.82,120.0" linkedscene_spot="spot2104168240" linkedscene_hoffset="80.56" use3dtransition="true" />
+		<hotspot name="spot2104168373" style="skin_hotspotstyle" ath="-177.606" atv="9.678" depth="1000.0" linkedscene="scene_st_a1_2" linkedscene_lookat="-175.31,0.53,120.0" linkedscene_spot="spot2104168712" linkedscene_hoffset="358.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_4" title="st_A1_4" onstart="" thumburl="/campus/panos_moi/st_A1_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		
+		<hotspot name="spot2104167071" style="skin_hotspotstyle" ath="90.642" atv="11.901" depth="1000.0" linkedscene="scene_st_a1_5" linkedscene_lookat="-96.08,3.42,120.0" linkedscene_spot="spot2104166432" linkedscene_hoffset="-88.79" use3dtransition="true" />
+		<hotspot name="spot2104167354" style="skin_hotspotstyle" ath="-178.271" atv="7.615" depth="1000.0" linkedscene="scene_st_a1_3" linkedscene_lookat="-170.27,1.24,120.0" linkedscene_spot="spot2104167751" linkedscene_hoffset="357.93" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_5" title="st_A1_5" onstart="" thumburl="/campus/panos_moi/st_A1_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104165815" style="skin_hotspotstyle" ath="92.165" atv="9.77" depth="1000.0" linkedscene="scene_st_a1_6" linkedscene_lookat="-92.91,-3.92,120.0" linkedscene_spot="spot2104165414" linkedscene_hoffset="174.99" use3dtransition="true" />
+		<hotspot name="spot2104166432" style="skin_hotspotstyle" ath="-179.004" atv="12.898" depth="1000.0" linkedscene="scene_st_a1_4" linkedscene_lookat="-96.08,3.42,120.0" linkedscene_spot="spot2104167071" linkedscene_hoffset="448.79" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_6" title="st_A1_6" onstart="" thumburl="/campus/panos_moi/st_A1_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104165057" style="skin_hotspotstyle" ath="-95.333" atv="9.006" depth="1000.0" linkedscene="scene_st_a1_7" linkedscene_lookat="82.13,-2.73,120.0" linkedscene_spot="spot2104164633" linkedscene_hoffset="104.0" use3dtransition="true" />
+		<hotspot name="spot2104165414" style="skin_hotspotstyle" ath="87.156" atv="5.677" depth="1000.0" linkedscene="scene_st_a1_5" linkedscene_lookat="-92.91,-3.92,120.0" linkedscene_spot="spot2104165815" linkedscene_hoffset="185.01" use3dtransition="true" />
+		<hotspot name="spot2104168240" style="skin_hotspotstyle" ath="-5.937" atv="12.4" depth="1000.0" linkedscene="scene_st_a1_3" linkedscene_lookat="-185.04,0.82,120.0" linkedscene_spot="spot2104167868" linkedscene_hoffset="279.44" use3dtransition="true" />
+		<hotspot name="spot2104254550" style="skin_hotspotstyle" ath="175.206" atv="20.594" depth="1000.0" linkedscene="scene_a1_0" linkedscene_lookat="-2.65,-0.52,120.0" linkedscene_spot="spot2104253992" linkedscene_hoffset="11.08" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_7" title="st_A1_7" onstart="" thumburl="/campus/panos_moi/st_A1_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		
+		<hotspot name="spot2104164633" style="skin_hotspotstyle" ath="-171.377" atv="6.516" depth="1000.0" linkedscene="scene_st_a1_6" linkedscene_lookat="82.13,-2.73,120.0" linkedscene_spot="spot2104165057" linkedscene_hoffset="256.0" use3dtransition="true" />
+		<hotspot name="spot2104163758" style="skin_hotspotstyle" ath="8.311" atv="8.584" depth="1000.0" linkedscene="scene_st_2" linkedscene_lookat="-169.19,-1.78,120.0" linkedscene_spot="spot2104163383" linkedscene_hoffset="257.84" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a1_8" title="st_A1_8" onstart="" thumburl="/campus/panos_moi/st_A1_8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A1_8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A1_8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104163758" style="skin_hotspotstyle" ath="2.498" atv="25.821" depth="1000.0" linkedscene="scene_st_2" linkedscene_lookat="-173.11,-5.7,120.0" linkedscene_spot="spot2104163383" linkedscene_hoffset="261.76" use3dtransition="true" />
+		<hotspot name="spot2104164064" style="skin_hotspotstyle" ath="-178.22" atv="8.801" depth="1000.0" linkedscene="scene_st_a1_7" linkedscene_lookat="-178.84,1.0,120.0" linkedscene_spot="spot2104164467" linkedscene_hoffset="366.54" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_0" title="st_A2_0" onstart="" thumburl="/campus/panos_moi/st_A2_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_0.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_0.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		
+		<hotspot name="spot2104097147" style="skin_hotspotstyle" ath="-3.98" atv="11.8" depth="1000.0" linkedscene="scene_st_a2_1" linkedscene_lookat="-4.33,-0.62,120.0" linkedscene_spot="spot2104097331" linkedscene_hoffset="360.22" use3dtransition="true" />
+		<hotspot name="spot2104152268" style="skin_hotspotstyle" ath="85.432" atv="5.76" depth="1000.0" linkedscene="scene_st_3" linkedscene_lookat="-89.37,-2.54,120.0" linkedscene_spot="spot2104151891" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2104152975" style="skin_hotspotstyle" ath="-91.039" atv="20.138" depth="1000.0" linkedscene="scene_st_a2_3" linkedscene_lookat="-272.76,-2.39,120.0" linkedscene_spot="spot2104152696" linkedscene_hoffset="371.78" use3dtransition="true" />
+		<hotspot name="spot2104196151" style="skin_hotspotstyle" ath="178.551" atv="9.694" depth="1000.0" linkedscene="scene_23" linkedscene_lookat="-176.99,0.41,120.0" linkedscene_spot="spot2104196463" linkedscene_hoffset="6.73" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_1" title="st_A2_1" onstart="" thumburl="/campus/panos_moi/st_A2_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104097331" style="skin_hotspotstyle" ath="176.237" atv="20.42" depth="1000.0" linkedscene="scene_st_a2_0" linkedscene_lookat="-4.33,-0.62,120.0" linkedscene_spot="spot2104097147" linkedscene_hoffset="-0.22" use3dtransition="true" />
+		<hotspot name="spot2104097431" style="skin_hotspotstyle" ath="86.146" atv="7.6" depth="1000.0" linkedscene="scene_st_2" linkedscene_lookat="94.95,-0.78,120.0" linkedscene_spot="spot2104097768" linkedscene_hoffset="1.71" use3dtransition="true" />
+		<hotspot name="spot2104097851" style="skin_hotspotstyle" ath="-92.49" atv="12.854" depth="1000.0" linkedscene="scene_st_a2_2" linkedscene_lookat="-77.63,-0.62,120.0" linkedscene_spot="spot2104098138" linkedscene_hoffset="360.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_2" title="st_A2_2" onstart="" thumburl="/campus/panos_moi/st_A2_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104098138" style="skin_hotspotstyle" ath="87.51" atv="12.854" depth="1000.0" linkedscene="scene_st_a2_1" linkedscene_lookat="-77.63,-0.62,120.0" linkedscene_spot="spot2104097851" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2104098228" style="skin_hotspotstyle" ath="-172.665" atv="14.391" depth="1000.0" linkedscene="scene_st_a2_3" linkedscene_lookat="-171.3,1.88,120.0" linkedscene_spot="spot2104098474" linkedscene_hoffset="357.86" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_3" title="st_A2_3" onstart="" thumburl="/campus/panos_moi/st_A2_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104098474" style="skin_hotspotstyle" ath="4.932" atv="12.785" depth="1000.0" linkedscene="scene_st_a2_2" linkedscene_lookat="-171.3,1.88,120.0" linkedscene_spot="spot2104098228" linkedscene_hoffset="2.14" use3dtransition="true" />
+		<hotspot name="spot2104098792" style="skin_hotspotstyle" ath="-164.563" atv="9.268" depth="1000.0" linkedscene="scene_st_a2_4" linkedscene_lookat="195.54,0.95,120.0" linkedscene_spot="spot2104099140" linkedscene_hoffset="343.81" use3dtransition="true" />
+		<hotspot name="spot2104152696" style="skin_hotspotstyle" ath="100.742" atv="22.265" depth="1000.0" linkedscene="scene_st_a2_0" linkedscene_lookat="-272.76,-2.39,120.0" linkedscene_spot="spot2104152975" linkedscene_hoffset="-11.78" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_4" title="st_A2_4" onstart="" thumburl="/campus/panos_moi/st_A2_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104099140" style="skin_hotspotstyle" ath="-0.585" atv="13.675" depth="1000.0" linkedscene="scene_st_a2_3" linkedscene_lookat="195.54,0.95,120.0" linkedscene_spot="spot2104098792" linkedscene_hoffset="16.19" use3dtransition="true" />
+		<hotspot name="spot2104099377" style="skin_hotspotstyle" ath="-156.309" atv="9.022" depth="1000.0" linkedscene="scene_st_a2_5" linkedscene_lookat="165.59,6.92,120.0" linkedscene_spot="spot2104099620" linkedscene_hoffset="358.55" use3dtransition="true" />
+		<hotspot name="spot2104196752" style="skin_hotspotstyle" ath="84.175" atv="7.396" depth="1000.0" linkedscene="scene_23" linkedscene_spot="spot2104197008" linkedscene_hoffset="10.61" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_5" title="st_A2_5" onstart="" thumburl="/campus/panos_moi/st_A2_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104099620" style="skin_hotspotstyle" ath="22.243" atv="13.797" depth="1000.0" linkedscene="scene_st_a2_4" linkedscene_lookat="165.59,6.92,120.0" linkedscene_spot="spot2104099377" linkedscene_hoffset="1.45" use3dtransition="true" />
+		<hotspot name="spot2104099732" style="skin_hotspotstyle" ath="177.955" atv="11.888" depth="1000.0" linkedscene="scene_st_a2_6" linkedscene_lookat="173.93,0.3,120.0" linkedscene_spot="spot2104100010" linkedscene_hoffset="1.45" use3dtransition="true"/>
+
+	</scene>
+
+<scene name="scene_st_a2_6" title="st_A2_6" onstart="" thumburl="/campus/panos_moi/st_A2_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104100010" style="skin_hotspotstyle" ath="6.184" atv="12.164" depth="1000.0" linkedscene="scene_st_a2_5" linkedscene_lookat="173.93,0.3,120.0" linkedscene_spot="spot2104099732" linkedscene_hoffset="351.77" use3dtransition="true" />
+		<hotspot name="spot2104101957" style="skin_hotspotstyle" ath="178.804" atv="20.829" depth="1000.0" linkedscene="scene_st_a2_7" linkedscene_lookat="173.96,0.09,120.0" linkedscene_spot="spot2104102182" linkedscene_hoffset="-2.55" use3dtransition="true" />
+		<hotspot name="spot2104102665" style="skin_hotspotstyle" ath="135.835" atv="19.008" depth="1000.0" linkedscene="scene_st_a2_7a" linkedscene_lookat="252.05,-0.66,120.0" linkedscene_spot="spot2104103000" linkedscene_hoffset="106.06" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_7" title="st_A2_7" onstart="" thumburl="/campus/panos_moi/st_A2_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104102182" style="skin_hotspotstyle" ath="-3.748" atv="27.154" depth="1000.0" linkedscene="scene_st_a2_6" linkedscene_lookat="173.96,0.09,120.0" linkedscene_spot="spot2104101957" linkedscene_hoffset="362.55" use3dtransition="true" />
+		<hotspot name="spot2104102272" style="skin_hotspotstyle" ath="168.184" atv="17.558" depth="1000.0" linkedscene="scene_st_a2_8" linkedscene_lookat="184.0,3.77,120.0" linkedscene_spot="spot2104102561" linkedscene_hoffset="8.21" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_7a" title="st_A2_7a" onstart="" thumburl="/campus/panos_moi/st_A2_7a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_7a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_7a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104103000" style="skin_hotspotstyle" ath="61.891" atv="34.367" depth="1000.0" linkedscene="scene_st_a2_6" linkedscene_lookat="252.05,-0.66,120.0" linkedscene_spot="spot2104102665" linkedscene_hoffset="253.94" use3dtransition="true" />
+		<hotspot name="spot2104103250" style="skin_hotspotstyle" ath="166.896" atv="20.438" depth="1000.0" linkedscene="scene_st_a2_7b" linkedscene_lookat="88.17,0.32,120.0" linkedscene_spot="spot2104103511" linkedscene_hoffset="-71.55" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_7b" title="st_A2_7b" onstart="" thumburl="/campus/panos_moi/st_A2_7b.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_7b.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_7b.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104103511" style="skin_hotspotstyle" ath="-84.658" atv="25.565" depth="1000.0" linkedscene="scene_st_a2_7a" linkedscene_lookat="88.17,0.32,120.0" linkedscene_spot="spot2104103250" linkedscene_hoffset="431.55" use3dtransition="true" />
+		<hotspot name="spot2104105482" style="skin_hotspotstyle" ath="-145.252" atv="16.239" depth="1000.0" linkedscene="scene_st_a2_9" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104104321" linkedscene_hoffset="410.63" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_8" title="st_A2_8" onstart="" thumburl="/campus/panos_moi/st_A2_8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_8.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104102561" style="skin_hotspotstyle" ath="-3.602" atv="24.201" depth="1000.0" linkedscene="scene_st_a2_7" linkedscene_lookat="184.0,3.77,120.0" linkedscene_spot="spot2104102272" linkedscene_hoffset="351.79" use3dtransition="true" />
+		<hotspot name="spot2104103731" style="skin_hotspotstyle" ath="94.64" atv="15.989" depth="1000.0" linkedscene="scene_st_a2_9" linkedscene_lookat="181.05,1.27,120.0" linkedscene_spot="spot2104103991" linkedscene_hoffset="88.7" use3dtransition="true" />
+		<hotspot name="spot2104110124" style="skin_hotspotstyle" ath="-172.316" atv="25.569" depth="1000.0" linkedscene="scene_st_a3_co1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104109741" linkedscene_hoffset="356.29" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_9" title="st_A2_9" onstart="" thumburl="/campus/panos_moi/st_A2_9.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_9.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_9.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104103991" style="skin_hotspotstyle" ath="3.343" atv="14.683" depth="1000.0" linkedscene="scene_st_a2_8" linkedscene_lookat="181.05,1.27,120.0" linkedscene_spot="spot2104103731" linkedscene_hoffset="271.3" use3dtransition="true" />
+		<hotspot name="spot2104104321" style="skin_hotspotstyle" ath="85.38" atv="17.986" depth="1000.0" linkedscene="scene_st_a2_7b" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104105482" linkedscene_hoffset="-50.63" use3dtransition="true" />
+		<hotspot name="spot2104105565" style="skin_hotspotstyle" ath="177.171" atv="9.676" depth="1000.0" linkedscene="scene_st_a3_g" linkedscene_lookat="-451.74,-1.02,120.0" linkedscene_spot="spot2104106454" linkedscene_hoffset="91.04" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_11" title="st_A2_11" onstart="" thumburl="/campus/panos_moi/st_A2_11.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104092702" style="skin_hotspotstyle" ath="5.232" atv="21.382" depth="1000.0" linkedscene="scene_st_a2_12" linkedscene_lookat="176.51,3.32,120.0" linkedscene_spot="spot2104092318" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2104195408" style="skin_hotspotstyle" ath="-176.629" atv="12.243" depth="1000.0" linkedscene="scene_23" linkedscene_lookat="-78.31,-0.37,120.0" linkedscene_spot="spot2104195778" linkedscene_hoffset="447.14" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_st_a2_12" title="st_A2_12" onstart="" thumburl="/campus/panos_moi/st_A2_12.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_12.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_12.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104092143" style="skin_hotspotstyle" ath="-82.048" atv="13.451" depth="1000.0" linkedscene="scene_st_3" linkedscene_lookat="91.74,2.33,120.0" linkedscene_spot="spot2104091233" linkedscene_hoffset="435.4" use3dtransition="true" />
+		<hotspot name="spot2104092318" style="skin_hotspotstyle" ath="-174.768" atv="21.382" depth="1000.0" linkedscene="scene_st_a2_11" linkedscene_hoffset="360.0" use3dtransition="true" />
+		<hotspot name="spot2104151655" style="skin_hotspotstyle" ath="4.803" atv="18.885" depth="1000.0" linkedscene="scene_st_a2_13" linkedscene_lookat="180.91,0.93,120.0" linkedscene_spot="spot2104151320" linkedscene_hoffset="91.97" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_13" title="st_A2_13" onstart="" thumburl="/campus/panos_moi/st_A2_13.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_13.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_13.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104151074" style="skin_hotspotstyle" ath="92.593" atv="12.634" depth="1000.0" linkedscene="scene_st_a2_14" linkedscene_lookat="-78.97,2.15,120.0" linkedscene_spot="spot2104150735" linkedscene_hoffset="88.44" use3dtransition="true" />
+		<hotspot name="spot2104151320" style="skin_hotspotstyle" ath="-83.223" atv="14.886" depth="1000.0" linkedscene="scene_st_a2_12" linkedscene_lookat="180.91,0.93,120.0" linkedscene_spot="spot2104151655" linkedscene_hoffset="268.03" use3dtransition="true" />
+		<hotspot name="spot2104153427" style="skin_hotspotstyle" ath="-174.284" atv="10.206" depth="1000.0" linkedscene="scene_a2_ht_1" linkedscene_lookat="-179.21,-0.66,120.0" linkedscene_spot="spot2104153875" linkedscene_hoffset="351.48" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_14" title="st_A2_14" onstart="" thumburl="/campus/panos_moi/st_A2_14.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_14.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_14.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104150600" style="skin_hotspotstyle" ath="-175.858" atv="13.847" depth="1000.0" linkedscene="scene_st_a2_15" linkedscene_lookat="0.95,-1.0,120.0" linkedscene_spot="spot2104149890" linkedscene_hoffset="448.6" use3dtransition="true" />
+		<hotspot name="spot2104150735" style="skin_hotspotstyle" ath="0.652" atv="12.182" depth="1000.0" linkedscene="scene_st_a2_13" linkedscene_lookat="-78.97,2.15,120.0" linkedscene_spot="spot2104151074" linkedscene_hoffset="271.56" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a2_15" title="st_A2_15" onstart="" thumburl="/campus/panos_moi/st_A2_15.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A2_15.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A2_15.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104148102" style="skin_hotspotstyle" ath="-88.466" atv="14.513" depth="1000.0" linkedscene="scene_kgx_1" linkedscene_lookat="92.91,-0.55,120.0" linkedscene_spot="spot2104147090" linkedscene_hoffset="270.85" use3dtransition="true" />
+		<hotspot name="spot2104149485" style="skin_hotspotstyle" ath="-4.994" atv="6.621" depth="1000.0" linkedscene="scene_st_ht_2" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104149718" linkedscene_hoffset="359.59" use3dtransition="true" />
+		<hotspot name="spot2104149890" style="skin_hotspotstyle" ath="92.739" atv="12.778" depth="1000.0" linkedscene="scene_st_a2_14" linkedscene_lookat="0.95,-1.0,120.0" linkedscene_spot="spot2104150600" linkedscene_hoffset="-88.6" use3dtransition="true" />
+		<hotspot name="spot2104252818" style="skin_hotspotstyle" ath="-179.878" atv="14.015" depth="1000.0" linkedscene="scene_a1_t1" linkedscene_lookat="-1.24,-0.21,120.0" linkedscene_spot="spot2104253190" linkedscene_hoffset="206.8" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_st_a3_1" title="st_A3_1" onstart="" thumburl="/campus/panos_moi/st_A3_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+	</scene>
+
+<scene name="scene_st_a3_2" title="st_A3_2" onstart="" thumburl="/campus/panos_moi/st_A3_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104108786" style="skin_hotspotstyle" ath="83.806" atv="19.117" depth="1000.0" linkedscene="scene_st_a3_3" linkedscene_spot="spot2104108475" linkedscene_hoffset="94.85" use3dtransition="true" />
+		<hotspot name="spot2104108905" style="skin_hotspotstyle" ath="-84.814" atv="17.765" depth="1000.0" linkedscene="scene_st_a3_co2" linkedscene_lookat="-91.05,-0.37,120.0" linkedscene_spot="spot2104109182" linkedscene_hoffset="350.29" use3dtransition="true" />
+		<hotspot name="spot2104285055" style="skin_hotspotstyle" ath="4.648" atv="49.665" depth="1000.0" linkedscene="scene_st_a3_g" linkedscene_lookat="-178.53,1.24,120.0" linkedscene_spot="spot2104284361" linkedscene_hoffset="182.49" use3dtransition="true" />
+		<!-- Diem noi campus moi -> tour A3 doc lap. -->
+		<hotspot name="spot1955809495" style="skin_hotspotstyle" ath="-180.391" atv="25" depth="1000.0" linkedscene="scene_a3_t1_1a" linkedscene_lookat="155.018,21.52,120.0" linkedscene_spot="spot_a3_return_gpbk2195" linkedscene_hoffset="356.43" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a3_3" title="st_A3_3" onstart="" thumburl="/campus/panos_moi/st_A3_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104108386" style="skin_hotspotstyle" ath="178.431" atv="19.212" depth="1000.0" linkedscene="scene_st_bc_1" linkedscene_lookat="0.0,0.41,120.0" linkedscene_spot="spot2104108103" linkedscene_hoffset="-40.37" use3dtransition="true" />
+		<hotspot name="spot2104108475" style="skin_hotspotstyle" ath="-1.342" atv="15.653" depth="1000.0" linkedscene="scene_st_a3_2" linkedscene_hoffset="265.15" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a3_co1" title="st_A3_co1" onstart="" thumburl="/campus/panos_moi/st_A3_co1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_co1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_co1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104109686" style="skin_hotspotstyle" ath="90.05" atv="20.852" depth="1000.0" linkedscene="scene_gpbk2201_1773130534438" linkedscene_lookat="94.697,0.0,120.0" linkedscene_spot="spot1955820970" linkedscene_hoffset="0.42" use3dtransition="true" />
+		<hotspot name="spot2104109741" style="skin_hotspotstyle" ath="3.971" atv="15.472" depth="1000.0" linkedscene="scene_st_a2_8" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104110124" linkedscene_hoffset="3.71" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a3_co2" title="st_A3_co2" onstart="" thumburl="/campus/panos_moi/st_A3_co2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_co2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_co2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104109182" style="skin_hotspotstyle" ath="85.478" atv="13.655" depth="1000.0" linkedscene="scene_st_a3_2" linkedscene_lookat="-91.05,-0.37,120.0" linkedscene_spot="spot2104108905" linkedscene_hoffset="9.71" use3dtransition="true" />
+		<hotspot name="spot2104109281" style="skin_hotspotstyle" ath="-94.76" atv="18.173" depth="1000.0" linkedscene="scene_gpbk2201_1773130534438" linkedscene_lookat="-171.021,0.0,120.0" linkedscene_spot="spot1955821476" linkedscene_hoffset="359.58" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a3_g" title="st_A3_G" onstart="" thumburl="/campus/panos_moi/st_A3_G.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_G.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_G.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104106454" style="skin_hotspotstyle" ath="88.212" atv="9.466" depth="1000.0" linkedscene="scene_st_a2_9" linkedscene_lookat="-451.74,-1.02,120.0" linkedscene_spot="spot2104105565" linkedscene_hoffset="268.96" use3dtransition="true" />
+		<hotspot name="spot2104106597" style="skin_hotspotstyle" ath="-86.831" atv="15.769" depth="1000.0" linkedscene="scene_st_a3_g1" linkedscene_lookat="184.99,0.29,120.0" linkedscene_spot="spot2104106968" linkedscene_hoffset="269.02" use3dtransition="true" />
+		<hotspot name="spot2104255455" style="skin_hotspotstyle" ath="179.085" atv="12.155" depth="1000.0" linkedscene="scene_a2_g_1" linkedscene_lookat="173.68,-0.57,120.0" linkedscene_spot="spot2104256064" linkedscene_hoffset="-6.14" use3dtransition="true" />
+		<hotspot name="spot2104284361" style="skin_hotspotstyle" ath="7.133" atv="25.175" depth="1000.0" linkedscene="scene_st_a3_2" linkedscene_lookat="-178.53,1.24,120.0" linkedscene_spot="spot2104285055" linkedscene_hoffset="177.51" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_a3_g1" title="st_A3_G1" onstart="" thumburl="/campus/panos_moi/st_A3_G1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_A3_G1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_A3_G1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104106968" style="skin_hotspotstyle" ath="2.188" atv="13.592" depth="1000.0" linkedscene="scene_st_a3_g" linkedscene_lookat="184.99,0.29,120.0" linkedscene_spot="spot2104106597" linkedscene_hoffset="90.98" use3dtransition="true" />
+		<hotspot name="spot2104107068" style="skin_hotspotstyle" ath="-135.511" atv="16.934" depth="1000.0" linkedscene="scene_st_bc_1" linkedscene_lookat="-163.02,1.24,120.0" linkedscene_spot="spot2104107288" linkedscene_hoffset="322.14" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_1" title="st_bc_1" onstart="" thumburl="/campus/panos_moi/st_bc_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104107288" style="skin_hotspotstyle" ath="6.629" atv="24.968" depth="1000.0" linkedscene="scene_st_a3_g1" linkedscene_lookat="-163.02,1.24,120.0" linkedscene_spot="spot2104107068" linkedscene_hoffset="37.86" use3dtransition="true" />
+		<hotspot name="spot2104107400" style="skin_hotspotstyle" ath="175.67" atv="13.524" depth="1000.0" linkedscene="scene_st_bc_2" linkedscene_lookat="480.36,-0.57,120.0" linkedscene_spot="spot2104107945" linkedscene_hoffset="-67.78" use3dtransition="true" />
+		<hotspot name="spot2104108103" style="skin_hotspotstyle" ath="-41.944" atv="10.677" depth="1000.0" linkedscene="scene_st_a3_3" linkedscene_lookat="0.0,0.41,120.0" linkedscene_spot="spot2104108386" linkedscene_hoffset="400.37" use3dtransition="true" />
+		<hotspot name="spot2104117942" style="skin_hotspotstyle" ath="-134.577" atv="19.64" depth="1000.0" linkedscene="scene_st_bc_12" linkedscene_lookat="48.98,-0.8,120.0" linkedscene_spot="spot2104118928" linkedscene_hoffset="404.19" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_2" title="st_bc_2" onstart="" thumburl="/campus/panos_moi/st_bc_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104107945" style="skin_hotspotstyle" ath="-71.457" atv="12.808" depth="1000.0" linkedscene="scene_st_bc_1" linkedscene_lookat="480.36,-0.57,120.0" linkedscene_spot="spot2104107400" linkedscene_hoffset="427.78" use3dtransition="true" />
+		<hotspot name="spot2104110295" style="skin_hotspotstyle" ath="84.939" atv="14.343" depth="1000.0" linkedscene="scene_st_bc_3" linkedscene_lookat="-174.29,1.52,120.0" linkedscene_spot="spot2104110594" linkedscene_hoffset="90.28" use3dtransition="true" />
+		<hotspot name="spot2104117614" style="skin_hotspotstyle" ath="139.088" atv="16.651" depth="1000.0" linkedscene="scene_bc_1" linkedscene_lookat="80.01,4.28,120.0" linkedscene_spot="spot2104116446" linkedscene_hoffset="-9.29" use3dtransition="true" />
+		
+		<hotspot name="spot2104119045" style="skin_hotspotstyle" ath="176.252" atv="12.433" depth="1000.0" linkedscene="scene_st_bc_11" linkedscene_lookat="-173.24,1.1,120.0" linkedscene_spot="spot2104119346" linkedscene_hoffset="-4.57" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_3" title="st_bc_3" onstart="" thumburl="/campus/panos_moi/st_bc_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104110594" style="skin_hotspotstyle" ath="-4.779" atv="15.769" depth="1000.0" linkedscene="scene_st_bc_2" linkedscene_lookat="-174.29,1.52,120.0" linkedscene_spot="spot2104110295" linkedscene_hoffset="269.72" use3dtransition="true" />
+		<hotspot name="spot2104110710" style="skin_hotspotstyle" ath="-173.572" atv="13.951" depth="1000.0" linkedscene="scene_st_bc_4" linkedscene_lookat="97.25,0.21,120.0" linkedscene_spot="spot2104110945" linkedscene_hoffset="267.14" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_4" title="st_bc_4" onstart="" thumburl="/campus/panos_moi/st_bc_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104110945" style="skin_hotspotstyle" ath="-90.674" atv="16.269" depth="1000.0" linkedscene="scene_st_bc_3" linkedscene_lookat="97.25,0.21,120.0" linkedscene_spot="spot2104110710" linkedscene_hoffset="92.86" use3dtransition="true" />
+		<hotspot name="spot2104111460" style="skin_hotspotstyle" ath="31.875" atv="11.392" depth="1000.0" linkedscene="scene_st_bc_4_a" linkedscene_lookat="33.81,-1.03,120.0" linkedscene_spot="spot2104111795" linkedscene_hoffset="-2.01" use3dtransition="true" />
+		<hotspot name="spot2104112698" style="skin_hotspotstyle" ath="-148.746" atv="13.065" depth="1000.0" linkedscene="scene_bc_2" linkedscene_lookat="-133.51,0.82,120.0" linkedscene_spot="spot2104113070" linkedscene_hoffset="372.15" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_4_a" title="st_bc_4_a" onstart="" thumburl="/campus/panos_moi/st_bc_4_a.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_4_a.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_4_a.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104111795" style="skin_hotspotstyle" ath="-149.183" atv="20.185" depth="1000.0" linkedscene="scene_st_bc_4" linkedscene_lookat="33.81,-1.03,120.0" linkedscene_spot="spot2104111460" linkedscene_hoffset="362.01" use3dtransition="true" />
+		<hotspot name="spot2104142568" style="skin_hotspotstyle" ath="42.568" atv="17.601" depth="1000.0" linkedscene="scene_st_ktx_7" linkedscene_lookat="-136.58,1.86,120.0" linkedscene_spot="spot2104141926" linkedscene_hoffset="185.27" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_5" title="st_bc_5" onstart="" thumburl="/campus/panos_moi/st_bc_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104115676" style="skin_hotspotstyle" ath="1.786" atv="28.408" depth="1000.0" linkedscene="scene_bc_2" linkedscene_lookat="-178.61,1.24,120.0" linkedscene_spot="spot2104114928" linkedscene_hoffset="4.41" use3dtransition="true" />
+		<hotspot name="spot2104133918" style="skin_hotspotstyle" ath="88.873" atv="9.074" depth="1000.0" linkedscene="scene_st_ktx_5" linkedscene_lookat="-87.67,1.65,120.0" linkedscene_spot="spot2104133473" linkedscene_hoffset="182.46" use3dtransition="true" />
+		<hotspot name="spot2104134035" style="skin_hotspotstyle" ath="-90.753" atv="9.588" depth="1000.0" linkedscene="scene_st_bc_11" linkedscene_lookat="-87.91,-0.62,120.0" linkedscene_spot="spot2104134225" linkedscene_hoffset="358.35" use3dtransition="true" />
+		<hotspot name="spot2104134486" style="skin_hotspotstyle" ath="179.773" atv="11.049" depth="1000.0" linkedscene="scene_ct_1" linkedscene_lookat="-177.03,0.21,120.0" linkedscene_spot="spot2104134770" linkedscene_hoffset="-0.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_11" title="st_bc_11" onstart="" thumburl="/campus/panos_moi/st_bc_11.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_11.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104119346" style="skin_hotspotstyle" ath="-8.314" atv="13.323" depth="1000.0" linkedscene="scene_st_bc_2" linkedscene_lookat="-173.24,1.1,120.0" linkedscene_spot="spot2104119045" linkedscene_hoffset="364.57" use3dtransition="true" />
+		<hotspot name="spot2104119595" style="skin_hotspotstyle" ath="-59.652" atv="19.248" depth="1000.0" linkedscene="scene_st_bc_12" linkedscene_lookat="-1.86,0.82,120.0" linkedscene_spot="spot2104119893" linkedscene_hoffset="59.91" use3dtransition="true" />
+		<hotspot name="spot2104120242" style="skin_hotspotstyle" ath="179.546" atv="9.096" depth="1000.0" linkedscene="scene_st_kn_1" linkedscene_lookat="-182.84,3.2,120.0" linkedscene_spot="spot2104120524" linkedscene_hoffset="-6.16" use3dtransition="true" />
+		<hotspot name="spot2104134225" style="skin_hotspotstyle" ath="87.727" atv="8.625" depth="1000.0" linkedscene="scene_st_bc_5" linkedscene_lookat="-87.91,-0.62,120.0" linkedscene_spot="spot2104134035" linkedscene_hoffset="1.65" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_bc_12" title="st_bc_12" onstart="" thumburl="/campus/panos_moi/st_bc_12.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_bc_12.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_bc_12.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104118928" style="skin_hotspotstyle" ath="89.609" atv="10.381" depth="1000.0" linkedscene="scene_st_bc_1" linkedscene_lookat="48.98,-0.8,120.0" linkedscene_spot="spot2104117942" linkedscene_hoffset="-44.19" use3dtransition="true" />
+		<hotspot name="spot2104119893" style="skin_hotspotstyle" ath="-176.239" atv="31.034" depth="1000.0" linkedscene="scene_st_bc_11" linkedscene_lookat="-1.86,0.82,120.0" linkedscene_spot="spot2104119595" linkedscene_hoffset="300.09" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_cts_1" title="st_cts_1" onstart="" thumburl="/campus/panos_moi/st_cts_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_cts_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_cts_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104126974" style="skin_hotspotstyle" ath="0.472" atv="14.882" depth="1000.0" linkedscene="scene_st_ktx_4_1" linkedscene_lookat="-176.45,2.07,120.0" linkedscene_spot="spot2104126578" linkedscene_hoffset="93.08" use3dtransition="true" />
+		<hotspot name="spot2104127071" style="skin_hotspotstyle" ath="-178.52" atv="10.269" depth="1000.0" linkedscene="scene_st_cts_2" linkedscene_lookat="-183.37,1.32,120.0" linkedscene_spot="spot2104127324" linkedscene_hoffset="363.62" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_cts_2" title="st_cts_2" onstart="" thumburl="/campus/panos_moi/st_cts_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_cts_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_cts_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104127324" style="skin_hotspotstyle" ath="5.095" atv="11.523" depth="1000.0" linkedscene="scene_st_cts_1" linkedscene_lookat="-183.37,1.32,120.0" linkedscene_spot="spot2104127071" linkedscene_hoffset="-3.62" use3dtransition="true" />
+		<hotspot name="spot2104127454" style="skin_hotspotstyle" ath="175.235" atv="17.898" depth="1000.0" linkedscene="scene_st_cts_3" linkedscene_lookat="-181.61,0.66,120.0" linkedscene_spot="spot2104127691" linkedscene_hoffset="1.32" use3dtransition="true" />
+		<!-- Diem noi campus moi -> CTS; hai hotspot noi bo van giu nguyen. -->
+
+	</scene>
+
+<scene name="scene_st_cts_3" title="st_cts_3" onstart="" thumburl="/campus/panos_moi/st_cts_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_cts_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_cts_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104127691" style="skin_hotspotstyle" ath="-3.444" atv="18.795" depth="1000.0" linkedscene="scene_st_cts_2" linkedscene_lookat="-181.61,0.66,120.0" linkedscene_spot="spot2104127454" linkedscene_hoffset="358.68" use3dtransition="true" />
+		<hotspot name="spot2092315972" style="skin_hotspotstyle" ath="180" atv="40" depth="1000.0" linkedscene="scene_cts_1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2092316400" linkedscene_hoffset="180" use3dtransition="true" />
+		<hotspot name="spot2092323167" style="skin_hotspotstyle" ath="90" atv="20" depth="1000.0" linkedscene="scene_cts_c2" linkedscene_lookat="0,0,120.0" linkedscene_spot="spot2092322777" linkedscene_hoffset="180" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ht_1" title="st_ht_1" onstart="" thumburl="/campus/panos_moi/st_ht_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ht_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ht_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104143387" style="skin_hotspotstyle" ath="1.462" atv="16.765" depth="1000.0" linkedscene="scene_st_ktx_7" linkedscene_lookat="-180.68,1.49,120.0" linkedscene_spot="spot2104142806" linkedscene_hoffset="355.18" use3dtransition="true" />
+		<hotspot name="spot2104143536" style="skin_hotspotstyle" ath="-176.516" atv="15.044" depth="1000.0" linkedscene="scene_st_ht_2" linkedscene_lookat="-191.2,1.63,120.0" linkedscene_spot="spot2104143804" linkedscene_hoffset="349.21" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ht_2" title="st_ht_2" onstart="" thumburl="/campus/panos_moi/st_ht_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ht_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ht_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104143804" style="skin_hotspotstyle" ath="-7.303" atv="15.325" depth="1000.0" linkedscene="scene_st_ht_1" linkedscene_lookat="-191.2,1.63,120.0" linkedscene_spot="spot2104143536" linkedscene_hoffset="10.79" use3dtransition="true" />
+		<hotspot name="spot2104143917" style="skin_hotspotstyle" ath="-95.156" atv="8.216" depth="1000.0" linkedscene="scene_st_ht_2_1" linkedscene_lookat="89.56,-3.3,120.0" linkedscene_spot="spot2104144246" linkedscene_hoffset="183.21" use3dtransition="true" />
+		
+		<hotspot name="spot2104149718" style="skin_hotspotstyle" ath="173.708" atv="7.655" depth="1000.0" linkedscene="scene_st_a2_15" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2104149485" linkedscene_hoffset="0.41" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ht_2_1" title="st_ht_2_1" onstart="" thumburl="/campus/panos_moi/st_ht_2_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ht_2_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ht_2_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104144246" style="skin_hotspotstyle" ath="-92.346" atv="9.486" depth="1000.0" linkedscene="scene_st_ht_2" linkedscene_lookat="89.56,-3.3,120.0" linkedscene_spot="spot2104143917" linkedscene_hoffset="176.79" use3dtransition="true" />
+		<hotspot name="spot2104144633" style="skin_hotspotstyle" ath="-0.517" atv="14.512" depth="1000.0" linkedscene="scene_st_ht_2_2" linkedscene_lookat="-178.45,1.74,120.0" linkedscene_spot="spot2104145004" linkedscene_hoffset="182.8" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ht_2_2" title="st_ht_2_2" onstart="" thumburl="/campus/panos_moi/st_ht_2_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ht_2_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ht_2_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104145004" style="skin_hotspotstyle" ath="2.285" atv="11.101" depth="1000.0" linkedscene="scene_st_ht_2_1" linkedscene_lookat="-178.45,1.74,120.0" linkedscene_spot="spot2104144633" linkedscene_hoffset="177.2" use3dtransition="true" />
+		<hotspot name="spot2104145185" style="skin_hotspotstyle" ath="-158.354" atv="9.271" depth="1000.0" linkedscene="scene_kgx_2" linkedscene_lookat="89.34,-0.84,120.0" linkedscene_spot="spot2104145806" linkedscene_hoffset="251.2" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_kn_1" title="st_kn_1" onstart="" thumburl="/campus/panos_moi/st_kn_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_kn_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_kn_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104120524" style="skin_hotspotstyle" ath="-6.619" atv="12.471" depth="1000.0" linkedscene="scene_st_bc_11" linkedscene_lookat="-182.84,3.2,120.0" linkedscene_spot="spot2104120242" linkedscene_hoffset="366.16" use3dtransition="true" />
+		<hotspot name="spot2104120633" style="skin_hotspotstyle" ath="174.717" atv="8.298" depth="1000.0" linkedscene="scene_st_kn_2" linkedscene_lookat="183.38,0.31,120.0" linkedscene_spot="spot2104120904" linkedscene_hoffset="8.75" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_kn_2" title="st_kn_2" onstart="" thumburl="/campus/panos_moi/st_kn_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_kn_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_kn_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104120904" style="skin_hotspotstyle" ath="3.465" atv="11.952" depth="1000.0" linkedscene="scene_st_kn_1" linkedscene_lookat="183.38,0.31,120.0" linkedscene_spot="spot2104120633" linkedscene_hoffset="351.25" use3dtransition="true" />
+		<hotspot name="spot2104121004" style="skin_hotspotstyle" ath="91.532" atv="15.679" depth="1000.0" linkedscene="scene_st_kn_3" linkedscene_lookat="97.84,-1.19,120.0" linkedscene_spot="spot2104121221" linkedscene_hoffset="360.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_kn_3" title="st_kn_3" onstart="" thumburl="/campus/panos_moi/st_kn_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_kn_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_kn_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104121221" style="skin_hotspotstyle" ath="271.532" atv="15.679" depth="1000.0" linkedscene="scene_st_kn_2" linkedscene_lookat="97.84,-1.19,120.0" linkedscene_spot="spot2104121004" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2104121352" style="skin_hotspotstyle" ath="93.99" atv="8.916" depth="1000.0" linkedscene="scene_st_ktx_1" linkedscene_lookat="-101.46,1.86,120.0" linkedscene_spot="spot2104121755" linkedscene_hoffset="162.2" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_1" title="st_ktx_1" onstart="" thumburl="/campus/panos_moi/st_ktx_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104121755" style="skin_hotspotstyle" ath="77.037" atv="16.993" depth="1000.0" linkedscene="scene_st_kn_3" linkedscene_lookat="-101.46,1.86,120.0" linkedscene_spot="spot2104121352" linkedscene_hoffset="197.8" use3dtransition="true" />
+		<hotspot name="spot2104122014" style="skin_hotspotstyle" ath="170.093" atv="14.67" depth="1000.0" linkedscene="scene_st_ktx_2" linkedscene_lookat="-173.82,1.52,120.0" linkedscene_spot="spot2104122414" linkedscene_hoffset="7.72" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_2" title="st_ktx_2" onstart="" thumburl="/campus/panos_moi/st_ktx_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104122414" style="skin_hotspotstyle" ath="-2.185" atv="15.136" depth="1000.0" linkedscene="scene_st_ktx_1" linkedscene_lookat="-173.82,1.52,120.0" linkedscene_spot="spot2104122014" linkedscene_hoffset="352.28" use3dtransition="true" />
+		<hotspot name="spot2104122555" style="skin_hotspotstyle" ath="175.906" atv="18.546" depth="1000.0" linkedscene="scene_st_ktx_3" linkedscene_lookat="175.95,2.3,120.0" linkedscene_spot="spot2104122810" linkedscene_hoffset="4.92" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_3" title="st_ktx_3" onstart="" thumburl="/campus/panos_moi/st_ktx_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104122810" style="skin_hotspotstyle" ath="0.899" atv="28.812" depth="1000.0" linkedscene="scene_st_ktx_2" linkedscene_lookat="175.95,2.3,120.0" linkedscene_spot="spot2104122555" linkedscene_hoffset="355.08" use3dtransition="true" />
+		<hotspot name="spot2104123084" style="skin_hotspotstyle" ath="89.76" atv="14.641" depth="1000.0" linkedscene="scene_ct_2" linkedscene_lookat="-90.9,0.21,120.0" linkedscene_spot="spot2104123814" linkedscene_hoffset="152.12" use3dtransition="true" />
+		<hotspot name="spot2104125100" style="skin_hotspotstyle" ath="-176.23" atv="18.445" depth="1000.0" linkedscene="scene_st_ktx_4" linkedscene_lookat="185.29,1.87,120.0" linkedscene_spot="spot2104125385" linkedscene_hoffset="364.25" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4" title="st_ktx_4" onstart="" thumburl="/campus/panos_moi/st_ktx_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104125385" style="skin_hotspotstyle" ath="8.026" atv="17.818" depth="1000.0" linkedscene="scene_st_ktx_3" linkedscene_lookat="185.29,1.87,120.0" linkedscene_spot="spot2104125100" linkedscene_hoffset="-4.25" use3dtransition="true" />
+		<hotspot name="spot2104125673" style="skin_hotspotstyle" ath="-82.684" atv="17.837" depth="1000.0" linkedscene="scene_st_ktx_4_1" linkedscene_lookat="-175.24,-0.31,120.0" linkedscene_spot="spot2104126032" linkedscene_hoffset="270.16" use3dtransition="true" />
+		<hotspot name="spot2104133032" style="skin_hotspotstyle" ath="-172.949" atv="10.144" depth="1000.0" linkedscene="scene_st_ktx_5" linkedscene_lookat="184.16,1.36,120.0" linkedscene_spot="spot2104133333" linkedscene_hoffset="354.41" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4_1" title="st_ktx_4_1" onstart="" thumburl="/campus/panos_moi/st_ktx_4_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104126032" style="skin_hotspotstyle" ath="7.48" atv="17.517" depth="1000.0" linkedscene="scene_st_ktx_4" linkedscene_lookat="-175.24,-0.31,120.0" linkedscene_spot="spot2104125673" linkedscene_hoffset="89.84" use3dtransition="true" />
+		<hotspot name="spot2104126187" style="skin_hotspotstyle" ath="-133.241" atv="11.694" depth="1000.0" linkedscene="scene_st_ktx_4_2" linkedscene_lookat="-177.74,-4.37,120.0" linkedscene_spot="spot2104126400" linkedscene_hoffset="354.46" use3dtransition="true" />
+		<hotspot name="spot2104126578" style="skin_hotspotstyle" ath="-86.453" atv="8.424" depth="1000.0" linkedscene="scene_st_cts_1" linkedscene_lookat="-176.45,2.07,120.0" linkedscene_spot="spot2104126974" linkedscene_hoffset="266.92" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4_2" title="st_ktx_4_2" onstart="" thumburl="/campus/panos_moi/st_ktx_4_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104126400" style="skin_hotspotstyle" ath="36.799" atv="19.897" depth="1000.0" linkedscene="scene_st_ktx_4_1" linkedscene_lookat="-177.74,-4.37,120.0" linkedscene_spot="spot2104126187" linkedscene_hoffset="5.54" use3dtransition="true" />
+		<hotspot name="spot2104128016" style="skin_hotspotstyle" ath="179.933" atv="12.097" depth="1000.0" linkedscene="scene_st_ktx_4_3" linkedscene_lookat="188.45,3.21,120.0" linkedscene_spot="spot2104128332" linkedscene_hoffset="2.1" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4_3" title="st_ktx_4_3" onstart="" thumburl="/campus/panos_moi/st_ktx_4_3.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_3.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104128332" style="skin_hotspotstyle" ath="2.036" atv="16.008" depth="1000.0" linkedscene="scene_st_ktx_4_2" linkedscene_lookat="188.45,3.21,120.0" linkedscene_spot="spot2104128016" linkedscene_hoffset="357.9" use3dtransition="true" />
+		<hotspot name="spot2104130672" style="skin_hotspotstyle" ath="-177.089" atv="15.056" depth="1000.0" linkedscene="scene_st_ktx_4_4" linkedscene_lookat="-88.92,-0.13,120.0" linkedscene_spot="spot2104130964" linkedscene_hoffset="266.06" use3dtransition="true" />
+		
+
+	</scene>
+
+<scene name="scene_st_ktx_4_4" title="st_ktx_4_4" onstart="" thumburl="/campus/panos_moi/st_ktx_4_4.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_4.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104130964" style="skin_hotspotstyle" ath="-91.027" atv="14.206" depth="1000.0" linkedscene="scene_st_ktx_4_3" linkedscene_lookat="-88.92,-0.13,120.0" linkedscene_spot="spot2104130672" linkedscene_hoffset="93.94" use3dtransition="true" />
+		<hotspot name="spot2104131061" style="skin_hotspotstyle" ath="88.794" atv="15.463" depth="1000.0" linkedscene="scene_st_ktx_4_5" linkedscene_lookat="-174.22,1.44,120.0" linkedscene_spot="spot2104131432" linkedscene_hoffset="95.75" use3dtransition="true" />
+		<hotspot name="spot2104131502" style="skin_hotspotstyle" ath="178.856" atv="14.218" depth="1000.0" linkedscene="scene_st_ktx_4_6" linkedscene_lookat="-174.79,3.0,120.0" linkedscene_spot="spot2104131816" linkedscene_hoffset="2.26" use3dtransition="true" />
+		<hotspot name="spot2104131993" style="skin_hotspotstyle" ath="-13.601" atv="13.346" depth="1000.0" linkedscene="scene_st_ktx_4_7" linkedscene_lookat="180.96,1.73,120.0" linkedscene_spot="spot2104132344" linkedscene_hoffset="177.41" use3dtransition="true" />
+
+		
+
+	</scene>
+
+<scene name="scene_st_ktx_4_5" title="st_ktx_4_5" onstart="" thumburl="/campus/panos_moi/st_ktx_4_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104131432" style="skin_hotspotstyle" ath="4.544" atv="16.139" depth="1000.0" linkedscene="scene_st_ktx_4_4" linkedscene_lookat="-174.22,1.44,120.0" linkedscene_spot="spot2104131061" linkedscene_hoffset="264.25" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4_6" title="st_ktx_4_6" onstart="" thumburl="/campus/panos_moi/st_ktx_4_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104131816" style="skin_hotspotstyle" ath="1.117" atv="21.677" depth="1000.0" linkedscene="scene_st_ktx_4_4" linkedscene_lookat="-174.79,3.0,120.0" linkedscene_spot="spot2104131502" linkedscene_hoffset="357.74" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_4_7" title="st_ktx_4_7" onstart="" thumburl="/campus/panos_moi/st_ktx_4_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_4_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_4_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104132344" style="skin_hotspotstyle" ath="-14.666" atv="20.411" depth="1000.0" linkedscene="scene_st_ktx_4_4" linkedscene_lookat="180.96,1.73,120.0" linkedscene_spot="spot2104131993" linkedscene_hoffset="182.59" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_5" title="st_ktx_5" onstart="" thumburl="/campus/panos_moi/st_ktx_5.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_5.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104133333" style="skin_hotspotstyle" ath="1.457" atv="13.092" depth="1000.0" linkedscene="scene_st_ktx_4" linkedscene_lookat="184.16,1.36,120.0" linkedscene_spot="spot2104133032" linkedscene_hoffset="5.59" use3dtransition="true" />
+		<hotspot name="spot2104133473" style="skin_hotspotstyle" ath="91.331" atv="6.615" depth="1000.0" linkedscene="scene_st_bc_5" linkedscene_lookat="-87.67,1.65,120.0" linkedscene_spot="spot2104133918" linkedscene_hoffset="177.54" use3dtransition="true" />
+		<hotspot name="spot2104134937" style="skin_hotspotstyle" ath="-178.68" atv="17.879" depth="1000.0" linkedscene="scene_st_ktx_6" linkedscene_lookat="-180.75,-0.33,120.0" linkedscene_spot="spot2104135146" linkedscene_hoffset="360.0" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_6" title="st_ktx_6" onstart="" thumburl="/campus/panos_moi/st_ktx_6.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_6.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104135146" style="skin_hotspotstyle" ath="1.687" atv="17.734" depth="1000.0" linkedscene="scene_st_ktx_5" linkedscene_lookat="-180.75,-0.33,120.0" linkedscene_spot="spot2104134937" linkedscene_hoffset="0.0" use3dtransition="true" />
+		<hotspot name="spot2104135282" style="skin_hotspotstyle" ath="-90.299" atv="23.406" depth="1000.0" linkedscene="scene_st_ktx_6_1" linkedscene_lookat="-163.22,-1.21,120.0" linkedscene_spot="spot2104135686" linkedscene_hoffset="264.84" use3dtransition="true" />
+		<hotspot name="spot2104141558" style="skin_hotspotstyle" ath="-179.531" atv="9.192" depth="1000.0" linkedscene="scene_st_ktx_7" linkedscene_lookat="177.39,2.66,120.0" linkedscene_spot="spot2104141852" linkedscene_hoffset="355.88" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_6_1" title="st_ktx_6_1" onstart="" thumburl="/campus/panos_moi/st_ktx_6_1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_6_1.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_6_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104135686" style="skin_hotspotstyle" ath="7.263" atv="24.234" depth="1000.0" linkedscene="scene_st_ktx_6" linkedscene_lookat="-163.22,-1.21,120.0" linkedscene_spot="spot2104135282" linkedscene_hoffset="95.16" use3dtransition="true" />
+		<hotspot name="spot2104136051" style="skin_hotspotstyle" ath="153.352" atv="16.61" depth="1000.0" linkedscene="scene_st_ktx_6_2" linkedscene_lookat="178.77,0.95,120.0" linkedscene_spot="spot2104136282" linkedscene_hoffset="-13.03" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_6_2" title="st_ktx_6_2" onstart="" thumburl="/campus/panos_moi/st_ktx_6_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_6_2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_6_2.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104136282" style="skin_hotspotstyle" ath="-25.506" atv="22.596" depth="1000.0" linkedscene="scene_st_ktx_6_1" linkedscene_lookat="178.77,0.95,120.0" linkedscene_spot="spot2104136051" linkedscene_hoffset="373.03" use3dtransition="true" />
+		<hotspot name="spot2104136644" style="skin_hotspotstyle" ath="170.459" atv="14.302" depth="1000.0" linkedscene="scene_br_1" linkedscene_lookat="-156.44,4.59,120.0" linkedscene_spot="spot2104137056" linkedscene_hoffset="6.62" use3dtransition="true" />
+
+	</scene>
+
+<scene name="scene_st_ktx_7" title="st_ktx_7" onstart="" thumburl="/campus/panos_moi/st_ktx_7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/st_ktx_7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/st_ktx_7.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048,3840" />
+		</image>
+
+		<hotspot name="spot2104141852" style="skin_hotspotstyle" ath="-3.655" atv="7.819" depth="1000.0" linkedscene="scene_st_ktx_6" linkedscene_lookat="177.39,2.66,120.0" linkedscene_spot="spot2104141558" linkedscene_hoffset="4.12" use3dtransition="true" />
+		<hotspot name="spot2104141926" style="skin_hotspotstyle" ath="48.691" atv="14.781" depth="1000.0" linkedscene="scene_st_bc_4_a" linkedscene_lookat="-136.58,1.86,120.0" linkedscene_spot="spot2104142568" linkedscene_hoffset="174.73" use3dtransition="true" />
+		<hotspot name="spot2104142806" style="skin_hotspotstyle" ath="176.64" atv="9.832" depth="1000.0" linkedscene="scene_st_ht_1" linkedscene_lookat="-180.68,1.49,120.0" linkedscene_spot="spot2104143387" linkedscene_hoffset="4.82" use3dtransition="true" />
+
+	</scene>
+
+
+	<!-- CAC SCENE CUA CU DUOC GIU LAI DE BAO TOAN POPUP/HOTSPOT THU VIEN VA SAMSUNG. -->
+<scene name="scene_gpbk2201_1773130534438" title="GPBK2201_1773130534438" onstart="" thumburl="/campus/panos_moi/GPBK2201_1773130534438.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/campus/panos_moi/GPBK2201_1773130534438.tiles/preview.jpg" />
+
+		<image>
+			<cube url="/campus/panos_moi/GPBK2201_1773130534438.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
+		</image>
+
+		<hotspot name="spot1955820970" style="skin_hotspotstyle" ath="-90" atv="19.003" depth="1000.0" linkedscene="scene_st_a3_co1" linkedscene_spot="spot2104109686" linkedscene_hoffset="360" use3dtransition="true" />
+		<hotspot name="spot1955821036" style="skin_hotspotstyle" ath="-171.021" atv="17.613" depth="1000.0" linkedscene="scene_lib_1f" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot_library_return_campus" linkedscene_hoffset="188.98" use3dtransition="true" ptit_label="Lối vào thư viện" tooltip="Lối vào thư viện" />
+		<hotspot name="spot1955821476" style="skin_hotspotstyle" ath="94.697" atv="11.183" depth="1000.0" linkedscene="scene_st_a3_co2" linkedscene_spot="spot2104109281" linkedscene_hoffset="0" use3dtransition="true" />
+
+
+	</scene>
+
+	<!-- Hội trường A2 cũ: được giữ làm đích từ scene_a2_lib_9. -->
+	<scene name="scene_gpbk0066_1773206449967" title="GPBK0066_1773206449967" onstart="" thumburl="/campus/panos_moi/GPBK0066_1773206449967.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		<control bouncinglimits="calc:image.cube ? true : false" />
+		<view hlookat="180.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+		<preview url="/campus/panos_moi/GPBK0066_1773206449967.tiles/preview.jpg" />
+		<image>
+			<cube url="/campus/panos_moi/GPBK0066_1773206449967.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,1792" />
+		</image>
+		<hotspot name="spot1958163248" style="skin_hotspotstyle" ath="-22.195" atv="3.918" depth="1000.0" linkedscene="scene_a2_lib_9" linkedscene_lookat="-91.853,0.0,120.0" linkedscene_spot="spot2104217917" linkedscene_hoffset="270" use3dtransition="true" />
+		<hotspot name="info_spot" style="skin_info_hotspot" ath="10.0" atv="0.0" />
+	</scene>
+</krpano>

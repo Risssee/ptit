@@ -10,7 +10,7 @@
 		<hotspot name="spot2080351245" style="skin_hotspotstyle" ath="-9.726" atv="15.528" depth="1000.0" linkedscene="scene_ss_2" linkedscene_lookat="-8.66,2.68,120.0" linkedscene_spot="spot2080351440" linkedscene_hoffset="364.94" use3dtransition="true" />
 		<hotspot name="spot2080352030" style="skin_hotspotstyle" ath="81.572" atv="26.132" depth="1000.0" linkedscene="scene_ss_3" linkedscene_lookat="-184.9,0.34,120.0" linkedscene_spot="spot2080352497" linkedscene_hoffset="91.02" use3dtransition="true" />
 		<!-- Ra hành lang A2; góc nhìn sau khi ra hướng dọc hành lang. -->
-		<hotspot name="spot_samsung_exit" style="skin_hotspotstyle" ath="260.0" atv="18.0" depth="1100.0" linkedscene="scene_gpbk2388_1773819661170" linkedscene_lookat="90.0,0.0,120.0" linkedscene_spot="spot_samsung_entrance" use3dtransition="true" />
+		<hotspot name="spot_samsung_exit" style="skin_hotspotstyle" ath="260.0" atv="18.0" depth="1100.0" linkedscene="scene_a2_t1_5" linkedscene_lookat="-83.6,0.0,120.0" linkedscene_spot="spot_samsung_entrance" use3dtransition="true" />
 	</scene>
 
 <scene name="scene_ss_2" title="SS_2" onstart="" thumburl="/labs/samsung/panos/SS_2.tiles/thumb.jpg" lat="" lng="" alt="" heading="">

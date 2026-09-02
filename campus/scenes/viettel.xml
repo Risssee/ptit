@@ -170,7 +170,7 @@
 			<cube url="/labs/Viettel/panos/viettel_Cua1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
-		<hotspot name="spot2076860187" style="skin_hotspotstyle" ath="-177.044" atv="55.339" depth="1000.0" linkedscene="scene_stgjnh_taafg8a2_githva" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot1960149780" linkedscene_hoffset="358.59" use3dtransition="true" />
+		<hotspot name="spot2076860187" style="skin_hotspotstyle" ath="-177.044" atv="55.339" depth="1000.0" linkedscene="scene_a2_t8" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot1960149780" linkedscene_hoffset="358.59" use3dtransition="true" />
 		<hotspot name="spot2061435693" style="skin_hotspotstyle" ath="-84.544" atv="19.6" depth="1000.0" linkedscene="scene_fpt1" linkedscene_lookat="-5.73,-0.56,120.0" linkedscene_spot="spot2061436336" linkedscene_hoffset="170.74" use3dtransition="true" ptit_label="Lối vào FPT Telecom Lab" tooltip="Vào FPT Telecom Lab" />
 		<hotspot name="spot2076860853" style="skin_hotspotstyle" ath="1.288" atv="57.468" depth="1000.0" linkedscene="scene_viettel_2c" linkedscene_lookat="183.54,-0.35,120.0" linkedscene_spot="spot2076861211" linkedscene_hoffset="175.47" use3dtransition="true" />
 		<hotspot name="spot2076877253" style="skin_hotspotstyle" ath="93.53" atv="20.026" depth="1000.0" linkedscene="scene_viettel_cua2b" linkedscene_lookat="91.47,0.62,120.0" linkedscene_spot="spot2076877604" linkedscene_hoffset="360.0" use3dtransition="true" />

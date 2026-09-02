@@ -172,6 +172,7 @@
 			preload="true" />
 
 	<!-- KHUON VIEN: scene campus duoc tach rieng de de bao tri. -->
-	<include url="scenes/campus.xml?v=1" />
+	<!-- Campus moi dang chay; campus.xml cu van duoc giu de rollback. -->
+	<include url="scenes/campus-new.xml?v=1" />
 
 </krpano>

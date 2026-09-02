@@ -13,7 +13,7 @@
 
 		<hotspot name="spot2064644334" style="skin_hotspotstyle" ath="-1.851" atv="30.362" depth="1000.0" linkedscene="scene_cie_sanhchinh1h" linkedscene_lookat="3.09,-0.21,120.0" linkedscene_spot="spot2064644934" linkedscene_hoffset="6.96" use3dtransition="true" />
         <hotspot name="spot1955820001" style="skin_hotspotstyle" ath="70" atv="30.0" depth="900.0"
-    linkedscene="scene_gpbk2220_1773131152191"
+    linkedscene="scene_a1_t1"
     linkedscene_lookat="0.0,0.0,100.0"
     linkedscene_spot="spot1955816383"
     linkedscene_hoffset="0.0"

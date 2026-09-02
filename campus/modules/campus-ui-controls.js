@@ -7,7 +7,7 @@
     function getRepresentativeScene(sceneName) {
         const configuredLocation = findConfiguredLocation(sceneName);
         if (configuredLocation && configuredLocation.entryScene) return configuredLocation.entryScene;
-        return 'scene_1';
+        return 'scene_ct';
     }
 
     function loadConfiguredEntry(location) {

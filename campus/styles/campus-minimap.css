@@ -28,6 +28,48 @@
 }
 
 .campus-minimap__head strong { font-size: 12px; }
+
+/* Tay nam di chuyen: nho, mo va chi noi ro khi re chuot/keo. */
+.campus-minimap__drag {
+  position: absolute;
+  z-index: 8;
+  top: 2px;
+  left: 50%;
+  width: 34px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  transform: translateX(-50%);
+}
+.campus-minimap__drag::after {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 22px;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor;
+  color: #7d838a;
+  content: "";
+  opacity: .22;
+  transform: translateX(-50%);
+  transition: opacity 150ms ease, width 150ms ease;
+}
+.campus-minimap__drag:hover::after,
+.campus-minimap__drag:focus-visible::after,
+.campus-minimap.is-dragging .campus-minimap__drag::after {
+  width: 28px;
+  opacity: .72;
+}
+.campus-minimap.is-dragging,
+.campus-minimap.is-dragging * {
+  cursor: grabbing !important;
+  user-select: none;
+}
+.campus-minimap.is-dragging { transition: none; }
 /* Khong hien scene/so thu tu ben canh chu "Ban do PTIT". */
 .campus-minimap__scene { display: none; }
 .campus-minimap__toggle { width: 30px; height: 30px; display: grid; place-items: center; margin-left: auto; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #4b535d; cursor: pointer; transition: background-color 160ms ease; }

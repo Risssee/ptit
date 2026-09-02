@@ -1,23 +1,4 @@
-﻿<krpano version="1.23" title="Virtual Tour">
-	
-	<scene name="scene_cts_c1" title="cts_c1" onstart="" thumburl="/labs/cts/panos/cts_c1.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="/labs/cts/panos/cts_c1.tiles/preview.jpg" />
-
-		<image>
-			<cube url="/labs/cts/panos/cts_c1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
-		</image>
-
-		<hotspot name="spot2092315972" style="skin_hotspotstyle" ath="-1.11" atv="33.888" depth="1000.0" linkedscene="scene_cts_1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2092316400" linkedscene_hoffset="355.76" use3dtransition="true" />
-		<hotspot name="spot2092323167" style="skin_hotspotstyle" ath="-85.264" atv="13.392" depth="1000.0" linkedscene="scene_cts_c2" linkedscene_lookat="89.33,-0.16,120.0" linkedscene_spot="spot2092322777" linkedscene_hoffset="360.3" use3dtransition="true" />
-		<!-- Loi ra CTS moi ve san truong, doi ung voi hotspot cua scene campus. -->
-		<hotspot name="spot_cts_exit_to_campus" style="skin_hotspotstyle" ath="178.89" atv="18.0" depth="1000.0" linkedscene="scene_gpbk2269_1773201067744" linkedscene_lookat="-174.0,0.0,120.0" linkedscene_spot="spot1955799842" use3dtransition="true" />
-
-	</scene>
+<krpano version="1.23" title="Virtual Tour">
 
 	<scene name="scene_cts2_0" title="cts2_0" onstart="" thumburl="/labs/cts/panos/cts2_0.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 		
@@ -99,7 +80,7 @@
 			<cube url="/labs/cts/panos/cts_1.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,1024,2048" />
 		</image>
 
-		<hotspot name="spot2092316400" style="skin_hotspotstyle" ath="-178.973" atv="59.013" depth="1000.0" linkedscene="scene_cts_c1" linkedscene_lookat="0.0,0.0,120.0" linkedscene_spot="spot2092315972" linkedscene_hoffset="4.24" use3dtransition="true" />
+		<hotspot name="spot2092316400" style="skin_hotspotstyle" ath="-178.973" atv="59.013" depth="1000.0" linkedscene="scene_st_cts_3" linkedscene_lookat="-1.11,0.0,120.0" linkedscene_spot="spot2092315972" linkedscene_hoffset="180" use3dtransition="true" />
 		<hotspot name="spot2092316752" style="skin_hotspotstyle" ath="90.596" atv="40.186" depth="1000.0" linkedscene="scene_cts_4" linkedscene_lookat="89.08,3.56,120.0" linkedscene_spot="spot2092317231" linkedscene_hoffset="-3.76" use3dtransition="true" />
 		<hotspot name="spot2092318112" style="skin_hotspotstyle" ath="-92.967" atv="32.321" depth="1000.0" linkedscene="scene_cts_2" linkedscene_lookat="-87.38,3.5,120.0" linkedscene_spot="spot2092318596" linkedscene_hoffset="365.4" use3dtransition="true" />
 
@@ -190,7 +171,7 @@
 		</image>
 
 		<hotspot name="spot2092322586" style="skin_hotspotstyle" ath="3.593" atv="45.93" depth="1000.0" linkedscene="scene_cts2_0" linkedscene_lookat="185.56,0.9,120.0" linkedscene_spot="spot2092322144" linkedscene_hoffset="2.38" use3dtransition="true" />
-		<hotspot name="spot2092322777" style="skin_hotspotstyle" ath="96.787" atv="20.836" depth="1000.0" linkedscene="scene_cts_c1" linkedscene_lookat="89.33,-0.16,120.0" linkedscene_spot="spot2092323167" linkedscene_hoffset="-0.3" use3dtransition="true" />
+		<hotspot name="spot2092322777" style="skin_hotspotstyle" ath="96.787" atv="20.836" depth="1000.0" linkedscene="scene_st_cts_3" linkedscene_lookat="-85.264,0.0,120.0" linkedscene_spot="spot2092323167" linkedscene_hoffset="180" use3dtransition="true" />
 
 	</scene>
 

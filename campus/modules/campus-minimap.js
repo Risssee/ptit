@@ -24,6 +24,17 @@
 
   function positionFor(scene) {
     if (MAP_COORDINATE_EDITOR && savedScenePositions[scene]) return savedScenePositions[scene];
+
+    // TOA A3: hai scene dac biet dung toa do do thu cong; moi scene_a3_* con lai dung chung anchors.a3.
+    if (scene === "scene_a3_t3_2e" || scene === "scene_a3_t3_1i") {
+      return MANUAL_SCENE_POSITIONS[scene] || anchors.a3;
+    }
+    if (scene.startsWith("scene_a3_")) return anchors.a3;
+
+    // THU VIEN: tat ca scene_lib_* dung chung anchors.library.
+    // Scene cua ngoai scene_gpbk2201_1773130534438 khong nam trong nhom nay nen van giu toa do rieng.
+    if (scene.startsWith("scene_lib_")) return anchors.library;
+
     if (MANUAL_SCENE_POSITIONS[scene]) return MANUAL_SCENE_POSITIONS[scene];
     const configuredPosition = configuredLocationPosition(scene);
     if (configuredPosition) return configuredPosition;
@@ -46,6 +57,7 @@
   minimap.className = "campus-minimap";
   minimap.setAttribute("aria-label", "Bản đồ thu nhỏ khuôn viên PTIT");
   minimap.innerHTML = `
+    <button class="campus-minimap__drag" type="button" aria-label="Kéo để di chuyển bản đồ" title="Kéo để di chuyển bản đồ"></button>
     <div class="campus-minimap__head">
       <strong>Bản đồ</strong>
       <span class="campus-minimap__scene">Đang xác định vị trí…</span>
@@ -60,6 +72,7 @@
   const dot = minimap.querySelector(".campus-minimap__position");
   const sceneLabel = minimap.querySelector(".campus-minimap__scene");
   const toggle = minimap.querySelector(".campus-minimap__toggle");
+  const dragHandle = minimap.querySelector(".campus-minimap__drag");
   const resizeHandle = minimap.querySelector(".campus-minimap__resize");
   // ICON BAN DO: dang mo thi hien "thu nho", dang dong thi hien "phong to".
   const collapseIcon = `
@@ -99,6 +112,41 @@
     const collapsed = minimap.classList.toggle("is-collapsed");
     toggle.innerHTML = collapsed ? expandIcon : collapseIcon;
     toggle.setAttribute("aria-label", collapsed ? "Mở bản đồ" : "Thu gọn bản đồ");
+  });
+
+  // DI CHUYEN MINIMAP: giu va keo tay nam mo o giua mep tren; khong cho khung ra ngoai man hinh.
+  dragHandle.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    event.preventDefault();
+    event.stopPropagation();
+    dragHandle.setPointerCapture(event.pointerId);
+    minimap.classList.add("is-dragging");
+
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const startRect = minimap.getBoundingClientRect();
+    const edgeGap = 6;
+
+    const onMove = (moveEvent) => {
+      const maxLeft = Math.max(edgeGap, window.innerWidth - startRect.width - edgeGap);
+      const maxTop = Math.max(edgeGap, window.innerHeight - startRect.height - edgeGap);
+      const nextLeft = Math.min(maxLeft, Math.max(edgeGap, startRect.left + moveEvent.clientX - startX));
+      const nextTop = Math.min(maxTop, Math.max(edgeGap, startRect.top + moveEvent.clientY - startY));
+
+      minimap.style.right = `${Math.max(edgeGap, window.innerWidth - nextLeft - startRect.width)}px`;
+      minimap.style.bottom = `${Math.max(edgeGap, window.innerHeight - nextTop - startRect.height)}px`;
+    };
+
+    const onEnd = () => {
+      minimap.classList.remove("is-dragging");
+      dragHandle.removeEventListener("pointermove", onMove);
+      dragHandle.removeEventListener("pointerup", onEnd);
+      dragHandle.removeEventListener("pointercancel", onEnd);
+    };
+
+    dragHandle.addEventListener("pointermove", onMove);
+    dragHandle.addEventListener("pointerup", onEnd);
+    dragHandle.addEventListener("pointercancel", onEnd);
   });
 
   // KEO GOC TREN BEN TRAI: SCALE TOAN BO KHUNG, CHIEU DAI/CHIỀU RONG LUON CUNG TY LE.
