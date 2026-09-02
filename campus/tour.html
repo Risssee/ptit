@@ -122,26 +122,49 @@
                     campusUrl.searchParams.set("startscene", "scene_ct");
                     window.history.replaceState(null, "", campusUrl);
                 }
-                embedpano({
-				xml: "tour.xml?v=48",
-                    target: "pano",
-                    html5: "always",
-                    mobilescale: 1.0,
-                    passQueryParameters: "startscene,startlookat",
-                    onready: function (instance) {
-                        onready(instance);
-                        window.ptitAttachTourLoader?.(instance);
-                        const requestedScene = new URLSearchParams(window.location.search).get("startscene") || "";
-                        if (!/^[a-zA-Z0-9_]+$/.test(requestedScene)) return;
-                        window.setTimeout(function () {
-                            const sceneExists = instance.get(`scene[${requestedScene}].name`);
-                            const currentScene = instance.get("xml.scene") || "";
-                            if (sceneExists && currentScene !== requestedScene) {
-                                instance.call(`loadscene(${requestedScene},null,MERGE,BLEND(0.35));`);
-                            }
-                        }, 120);
-                    }
-                });
+// Local dùng ảnh trên máy - Vercel dùng ảnh trên R2
+const isLocal =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+// Dùng URL tuyệt đối để tránh krpano resolve sai đường dẫn từ XML con
+const panosBase = isLocal
+    ? `${window.location.origin}/campus/panos/`
+    : "https://pub-78622738149c4116b8f28b8c8f4fd5b2.r2.dev/panos/";
+
+embedpano({
+    xml: "tour.xml?v=48",
+    target: "pano",
+    html5: "always",
+    mobilescale: 1.0,
+
+    initvars: {
+        panosbase: panosBase
+    },
+
+    passQueryParameters: "startscene,startlookat",
+
+    onready: function (instance) {
+        onready(instance);
+        window.ptitAttachTourLoader?.(instance);
+
+        const requestedScene =
+            new URLSearchParams(window.location.search).get("startscene") || "";
+
+        if (!/^[a-zA-Z0-9_]+$/.test(requestedScene)) return;
+
+        window.setTimeout(function () {
+            const sceneExists = instance.get(`scene[${requestedScene}].name`);
+            const currentScene = instance.get("xml.scene") || "";
+
+            if (sceneExists && currentScene !== requestedScene) {
+                instance.call(
+                    `loadscene(${requestedScene},null,MERGE,BLEND(0.35));`
+                );
+            }
+        }, 120);
+    }
+});
             </script>
         </div>
 

@@ -4,7 +4,6 @@
 	<!-- CIE: scene XML tap trung tai campus; tai nguyen van nam trong labs/cie. -->
 	<include url="scenes/cie.xml?v=1" />
 	<!-- TOA A3 MOI: 12 scene; tai nguyen panorama nam trong campus/panos. -->
-	<include url="scenes/a3.xml?v=1" />
 	<!-- GAME LAB: scene XML tap trung tai campus; bang Falcon va tai nguyen van nam trong labs/game. -->
 	<include url="scenes/game.xml?v=1" />
 	<!-- CTS LAB: scene XML tap trung tai campus; anh panorama van nam trong labs/cts/panos. -->
@@ -173,6 +172,6 @@
 
 	<!-- KHUON VIEN: scene campus duoc tach rieng de de bao tri. -->
 	<!-- Campus moi dang chay; campus.xml cu van duoc giu de rollback. -->
-	<include url="scenes/campus-new.xml?v=1" />
+	<include url="scenes/campus-new.xml?v=2" />
 
 </krpano>

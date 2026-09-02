@@ -31,3 +31,5 @@ build/
 # Local deployment/upload utilities.
 /cloudflared.exe
 /tools/
+.tmp_panorama_tool/
+

@@ -1,5 +1,4 @@
-// BƯỚC 1: Danh sách nhóm dùng chung cho danh mục địa điểm.
-// File này mới chỉ chuẩn hóa dữ liệu; chưa được nạp vào giao diện hiện tại.
+
 (function (root) {
   'use strict';
 
