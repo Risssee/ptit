@@ -16,7 +16,7 @@
       id: 'khong_gian_xanh',
       group: 'khuon_vien',
       label: 'Không gian xanh',
-      entryScene: 'scene_kgx_1',
+      entryScene: 'scene_st_a2_15',
       scenePrefixes: ['scene_kgx_']
     },
     {
@@ -128,13 +128,6 @@
         '^scene_st_a3_',
         '^scene_a3_'
       ]
-    },
-    {
-      id: 'phong_hoc_A3',
-      group: 'toa_A3',
-      label: 'Phòng học A3',
-      entryScene: 'scene_st_a3_3',
-      scenes: ['scene_st_a3_3']
     },
     {
       id: 'game',

@@ -246,12 +246,6 @@
     <script>
       (function () {
         const cta = document.querySelector('.hero__cta');
-        const requestedUI = new URLSearchParams(window.location.search).get('ui');
-        // GIAO DIEN CHINH: dark. Chi dung ban trang khi URL ghi ro ?ui=current.
-        const campusUI = requestedUI === 'current' ? 'current' : 'dark';
-        const target = new URL(cta.href);
-        target.searchParams.set('ui', campusUI);
-        cta.href = target.href;
 
         cta.addEventListener('click', function (event) {
           if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;

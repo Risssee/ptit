@@ -25,14 +25,14 @@
   function positionFor(scene) {
     if (MAP_COORDINATE_EDITOR && savedScenePositions[scene]) return savedScenePositions[scene];
 
-    // TOA A3: hai scene dac biet dung toa do do thu cong; moi scene_a3_* con lai dung chung anchors.a3.
+    // TOA A3: hai scene dac biet dung toa do do thu cong; moi scene_a3_* con lai dung anchors.a3.
     if (scene === "scene_a3_t3_2e" || scene === "scene_a3_t3_1i") {
       return MANUAL_SCENE_POSITIONS[scene] || anchors.a3;
     }
     if (scene.startsWith("scene_a3_")) return anchors.a3;
 
-    // THU VIEN: tat ca scene_lib_* dung chung anchors.library.
-    // Scene cua ngoai scene_gpbk2201_1773130534438 khong nam trong nhom nay nen van giu toa do rieng.
+    // THU VIEN: tat ca scene_lib_* dung anchors.library.
+   
     if (scene.startsWith("scene_lib_")) return anchors.library;
 
     if (MANUAL_SCENE_POSITIONS[scene]) return MANUAL_SCENE_POSITIONS[scene];
@@ -49,7 +49,7 @@
     if (/gpbk22(0[2-9]|1[0-6])/.test(scene)) return anchors.library;
     if (/gpbk22(17|18|19|20|21|22|24|25|26)/.test(scene)) return anchors.a1;
     if (/gpbk22(34|35|36|37|38|39|4|5)/.test(scene)) return anchors.a3;
-    // Scene chua co toa do: giu nguyen cham do, khong tu nhay ve cong.
+   
     return currentPosition;
   }
 
@@ -88,7 +88,6 @@
   let currentPosition = anchors.tranPhuRoad;
   let minimapScale = 1;
 
-  // TOA DO CHAM DO: cap nhat truc tiep theo scene, khong chay qua duong mo phong.
   function setDotPosition(target) {
     if (!target) return;
     currentPosition = target;
@@ -96,7 +95,6 @@
     dot.style.top = `${target[1]}%`;
   }
 
-  // DEV ONLY: phần chỉnh tọa độ nằm riêng tại campus/dev/minimap-editor.js.
   if (MAP_COORDINATE_EDITOR) {
     window.PTITMinimapEditor?.attach({
       minimap,
@@ -114,7 +112,7 @@
     toggle.setAttribute("aria-label", collapsed ? "Mở bản đồ" : "Thu gọn bản đồ");
   });
 
-  // DI CHUYEN MINIMAP: giu va keo tay nam mo o giua mep tren; khong cho khung ra ngoai man hinh.
+  // DI CHUYEN MINIMAP
   dragHandle.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return;
     event.preventDefault();

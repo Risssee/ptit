@@ -3,7 +3,6 @@
 
   const state = { mode: "campus", lastCampusScene: "scene_ct" };
 
-  /* Popup đọc dữ liệu do từng labs/<lab>/lab-config.js đăng ký. */
   const LAB_INTROS = (window.PTIT_LAB_CONFIGS || [])
     .map((lab) => lab && lab.intro)
     .filter(Boolean);
@@ -135,7 +134,6 @@
     if (activeLabId === intro.id && pendingLabIntroId !== intro.id) return;
     activeLabId = intro.id;
     pendingLabIntroId = null;
-    // Scene da hien xong; doi them 1 giay de nguoi dung thay ro khong gian lab.
     labIntroDelayTimer = window.setTimeout(() => {
       labIntroDelayTimer = null;
       if (getKrpano()?.get("xml.scene") !== sceneName) return;
@@ -155,9 +153,10 @@
       </div>
     </section>`;
   document.body.appendChild(cieInfo);
-  const cieInfoAudio = new Audio("/labs/cie/audio/student-management.mp3");
+  const cieInfoAudio = null;
 
   function stopCieInfoAudio() {
+    if (!cieInfoAudio) return;
     cieInfoAudio.pause();
     cieInfoAudio.currentTime = 0;
     if (cieInfoAudioIsDucking) {
@@ -173,6 +172,7 @@
 
   function showCieStudentInfo() {
     cieInfo.classList.add("is-open");
+    if (!cieInfoAudio) return;
     if (window.ptitAudioAllowed && !window.ptitAudioAllowed()) return;
     window.dispatchEvent(new CustomEvent("ptit:audiofocus", { detail: { source: "cie-info" } }));
     cieInfoAudio.currentTime = 0;
@@ -182,15 +182,13 @@
     }).catch(() => {});
   }
 
-  cieInfoAudio.addEventListener("ended", stopCieInfoAudio);
+  cieInfoAudio?.addEventListener("ended", stopCieInfoAudio);
 
-  // Popup lab va audio phu tu dong nhuong quyen cho nguon thuyet minh moi.
   window.addEventListener("ptit:audiofocus", (event) => {
     if (event.detail?.source !== "lab-intro") stopLabIntroAudio();
     if (event.detail?.source !== "cie-info") stopCieInfoAudio();
   });
 
-  // Đồng bộ popup lab và audio phụ với nút loa toàn cục.
   window.addEventListener("ptit:audiochange", (event) => {
     const enabled = Boolean(event.detail?.enabled);
     if (!enabled) {

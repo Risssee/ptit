@@ -9,7 +9,6 @@
         await navigator.clipboard.writeText(text);
         return;
       } catch (_) {
-        // Trinh duyet co the chan Clipboard API; dung textarea tam lam du phong.
       }
     }
     const textarea = document.createElement("textarea");

@@ -1,8 +1,6 @@
 (function () {
   "use strict";
 
-  // Hợp nhất config độc lập của Campus/CIE/Game. Vẫn hỗ trợ biến config cũ để
-  // các tour độc lập như FPT không bị ảnh hưởng.
   const labConfigs = (window.PTIT_LAB_CONFIGS || [])
     .map((lab) => lab && lab.narration)
     .filter(Boolean);

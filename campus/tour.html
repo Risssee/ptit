@@ -20,8 +20,7 @@
 	<link rel="stylesheet" href="styles/style.css?v=46" />
 	<!--
 	DARK CAMPUS UI - FILE GIAO DIEN DEN RIENG.
-	Day la giao dien chinh; chi tat khi URL co ?ui=current. Xoa link va script DARK CAMPUS UI
-	o cuoi trang neu sau nay khong chon giao dien den.
+	Day la giao dien chinh cua tour.
 	-->
 	<link rel="stylesheet" href="themes/campus-dark-ui.css?v=11" />
 	<link rel="stylesheet" href="styles/campus-ui-controls.css?v=1" />
@@ -37,12 +36,9 @@
 	DARK CAMPUS FIRST PAINT:
 	Gan class ngay khi BODY vua duoc tao, truoc header/sidebar ben duoi.
 	Cach nay ngan chop giao dien trang ma KHONG an trang hay tao man den cho.
-	Ban doi chieu ?ui=current se bo qua class nay.
 	-->
 	<script>
-		if (new URLSearchParams(window.location.search).get('ui') !== 'current') {
-			document.body.classList.add('campus-ui-dark');
-		}
+		document.body.classList.add('campus-ui-dark');
 	</script>
 <div id="loading" class="campus-loading loading" data-wait-for-load="true" data-initial-only="true" data-minimum-duration="3000" role="progressbar" aria-label="Đang tải không gian tham quan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <div class="campus-loading__inner">
@@ -186,7 +182,7 @@ embedpano({
 
 <!-- DU LIEU KHU VUC DUNG CHUNG: sidebar, the vi tri, nut quay ve va minimap. -->
 <script src="config/sidebar-groups.js?v=1"></script>
-<script src="config/locations.js?v=3"></script>
+<script src="config/locations.js?v=4"></script>
 <script src="config/minimap-positions.js?v=1"></script>
 <script src="dev/minimap-editor.js?v=1"></script>
 <script src="modules/campus-minimap.js?v=21"></script>
@@ -200,13 +196,12 @@ embedpano({
 <script src="../labs/Library/lab-config.js?v=3"></script>
 <script src="../labs/samsung/lab-config.js?v=3"></script>
 <script src="modules/campus-lab-integration.js?v=27"></script>
-<script src="modules/campus-ui-controls.js?v=4"></script>
+<script src="modules/campus-ui-controls.js?v=5"></script>
 <script src="modules/scene-narration.js?v=10"></script>
 <!-- Bảng Falcon gắn vào hotspot trên tường của scene_game_1l. -->
 <script src="../labs/game/game-flex-content.js?v=8"></script>
 
 <!--DARK CAMPUS UI -->
 <script src="themes/campus-dark-ui.js?v=30"></script>
-<script src="themes/campus-white-ui.js?v=2"></script>
 </body>
 </html>

@@ -65,7 +65,6 @@
       if (Number.isFinite(progress)) render(5 + progress * 94);
     }, 100);
     previewTimer = setTimeout(previewReady, 1200);
-    // Campus yêu cầu giữ màn hình tải đến đúng sự kiện onloadcomplete của krpano.
     if (!waitForRealLoad) completionTimer = setTimeout(sceneLoaded, 8000);
   }
 

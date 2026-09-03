@@ -10,7 +10,6 @@
   // Mỗi trang truyền đường dẫn về trang chủ qua thuộc tính data-home.
   const homeUrl = new URL(document.currentScript?.dataset.home || "/", window.location.href);
 
-  // Giu dung version khi F5.
   const selectedUI = new URLSearchParams(window.location.search).get("ui");
   if (selectedUI === "dark" || selectedUI === "current") {
     homeUrl.searchParams.set("ui", selectedUI);

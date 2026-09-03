@@ -1,6 +1,4 @@
 (function () {
-    const params = new URLSearchParams(window.location.search);
-   if (params.get('ui') === 'current') return;
     // DiEu CHINH THU CONG TEN KHU VUC DAC THU  
     const DARK_CAMPUS_AREA_LABELS = {
         scene_1: 'Cổng chính',

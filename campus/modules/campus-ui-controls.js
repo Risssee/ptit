@@ -1,5 +1,4 @@
 (function () {
-    // DIEU KHIEN DUNG CHUNG CHO CA GIAO DIEN DEN VA TRANG.
     function findConfiguredLocation(sceneName) {
         return window.PTIT_FIND_LOCATION?.(sceneName) || null;
     }
@@ -19,6 +18,12 @@
         return true;
     }
 
+    function isCampusCourtyardScene(sceneName) {
+        const normalized = String(sceneName || '').toLowerCase();
+        if (normalized === 'scene_st_cts_3' || normalized === 'scene_st_ht_2_1') return false;
+        return normalized.includes('_st_');
+    }
+
     function initSharedCampusControls() {
         const headerActions = document.querySelector('.header-actions');
         if (!headerActions || document.querySelector('.campus-return')) return;
@@ -32,6 +37,10 @@
         returnButton.addEventListener('click', function () {
             if (typeof krpano === 'undefined' || !krpano) return;
             const currentScene = krpano.get('xml.scene') || '';
+            if (isCampusCourtyardScene(currentScene)) {
+                krpano.call('loadscene(scene_ct, null, MERGE, BLEND(1.0));');
+                return;
+            }
             const configuredLocation = findConfiguredLocation(currentScene);
             if (loadConfiguredEntry(configuredLocation)) return;
 
@@ -48,8 +57,6 @@
         homeButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M9.5 20v-6h5v6"/></svg>';
         homeButton.addEventListener('click', function () {
             const homeUrl = new URL('../index.html', window.location.href);
-            const isWhite = new URLSearchParams(window.location.search).get('ui') === 'current';
-            homeUrl.searchParams.set('ui', isWhite ? 'current' : 'dark');
             window.location.href = homeUrl.href;
         });
         headerActions.appendChild(homeButton);

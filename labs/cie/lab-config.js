@@ -23,22 +23,6 @@
           title: "Sảnh chính",
           audio: "/labs/cie/audio/scenes/scene_cie_sanhchinh1h.mp3"
         },
-        scene_cie_sanhchinh2f: {
-          audio: "/labs/cie/audio/scenes/scene_cie_sanhchinh2f.mp3"
-        },
-        scene_cie_sanhchinh3f: {
-          audio: "/labs/cie/audio/scenes/scene_cie_sanhchinh3f.mp3"
-        },
-        scene_cie_sanhchinh4f: {
-          audio: "/labs/cie/audio/scenes/scene_cie_sanhchinh4f.mp3"
-        },
-        scene_cie_sanh5: {
-          audio: "/labs/cie/audio/scenes/scene_cie_sanh5.mp3"
-        },
-        scene_cie_sanhsau1: {
-          title: "Sảnh sau",
-          audio: "/labs/cie/audio/scenes/scene_cie_sanhsau1.mp3"
-        },
         scene_cie_cuasau: {
           title: "Cửa sau Trung tâm CIE",
           audio: "/labs/cie/audio/scenes/scene_cie_cuasau.mp3"

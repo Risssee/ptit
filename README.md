@@ -1,46 +1,51 @@
-# PTIT VR360
+# PTIT Campus 360
 
-Website tham quan PTIT dùng một runtime Krpano chung tại `campus/`. Tên scene và hotspot do dữ liệu tour quyết định; không đổi tên khi chỉ tổ chức lại mã nguồn.
+Website tham quan thực tế ảo Học viện Công nghệ Bưu chính Viễn thông, xây dựng trên krpano. Dự án gồm tour khuôn viên, các phòng lab, bản đồ định vị, thuyết minh âm thanh và công cụ hỗ trợ chỉnh sửa hotspot/minimap.
 
-## Cấu trúc chính
+## Demo
 
-- `index.html`: trang chủ.
-- `assets/`: ảnh, icon, audio và tiện ích dùng chung.
-- `campus/tour.html`: trang chạy tour duy nhất.
-- `campus/tour.xml`: cấu hình Krpano chung và include các file scene.
-- `campus/scenes/`: scene khuôn viên và từng lab.
-- `campus/config/`: dữ liệu khu vực, sidebar và tọa độ minimap.
-- `campus/modules/`: các chức năng độc lập dùng chung trong tour.
-- `campus/themes/`: mã giao diện đen và trắng.
-- `campus/styles/`: CSS thành phần của trang tour.
-- `labs/<lab>/lab-config.js`: popup, voice, narration và infopost riêng của lab.
-- `labs/<lab>/assets`, `audio`, `panos`: tài nguyên riêng của lab.
+- Website: https://ptitcampus360.vercel.app
+- Tour trực tiếp: https://ptitcampus360.vercel.app/campus/tour.html
 
-## Chạy local
+## Chức năng chính
 
-Mở thư mục dự án bằng Live Server hoặc chạy:
+- Xem panorama 360° theo nhiều mức phân giải.
+- Di chuyển giữa các địa điểm bằng hotspot.
+- Hiển thị bản đồ và vị trí hiện tại trong khuôn viên.
+- Phát thuyết minh theo khu vực và nội dung giới thiệu tại các phòng lab.
+- Hỗ trợ chỉnh hotspot bằng tham số `?hotspotedit=1` khi chạy local.
 
-```powershell
-python -m http.server 8080
+## Cấu trúc dự án
+
+```text
+ptit/
+├── index.html                 # Trang giới thiệu
+├── assets/                    # Tài nguyên dùng chung
+├── campus/
+│   ├── tour.html              # Trang chạy tour
+│   ├── tour.xml               # Cấu hình krpano và danh sách scene include
+│   ├── app.js                 # Logic chính của tour
+│   ├── config/                # Khu vực, sidebar và tọa độ minimap
+│   ├── dev/                   # Công cụ chỉnh hotspot/minimap khi phát triển
+│   ├── modules/               # Các module chức năng
+│   ├── panos/                 # Ảnh panorama khuôn viên
+│   ├── scenes/                # Khai báo scene và hotspot
+│   ├── styles/                # CSS thành phần
+│   └── themes/                # Giao diện sáng/tối
+├── labs/                      # Cấu hình và tài nguyên riêng của từng lab
+└── scripts/                   # Script kiểm tra cấu hình trước khi deploy
+
+
+## Chỉnh sửa nội dung
+
+- Danh sách khu vực và scene mặc định: campus/config/locations.js.
+- Nhóm và thứ tự sidebar: campus/config/sidebar-groups.js.
+- Tọa độ trên minimap: campus/config/minimap-positions.js.
+- Scene và hotspot: campus/scenes/*.xml.
+- Nội dung riêng của lab: labs/<ten-lab>/lab-config.js.
+- Giao diện: campus/styles/ và campus/themes/.
+
+Mở trình chỉnh hotspot local bằng URL:
+
+http://localhost:8080/campus/tour.html?startscene=<scene_name>&hotspotedit=1
 ```
-
-Sau đó mở `http://localhost:8080`.
-
-## Kiểm tra cấu hình
-
-```powershell
-node scripts/validate-config.js
-node scripts/validate-scenes.js
-node scripts/validate-assets.js
-```
-
-Các script kiểm tra cấu hình khu vực, `linkedscene` và đường dẫn tài nguyên trước khi commit.
-
-## Chỉnh sửa thường dùng
-
-- Khu vực, scene mở đầu, góc nhìn: `campus/config/locations.js`.
-- Thứ tự danh mục: `campus/config/sidebar-groups.js`.
-- Tọa độ chấm đỏ: `campus/config/minimap-positions.js`.
-- Popup/voice/infopost lab: `labs/<lab>/lab-config.js`.
-- Scene và hotspot: `campus/scenes/*.xml`.
-- Giao diện: `campus/themes/` và `campus/styles/`.
