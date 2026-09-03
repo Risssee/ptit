@@ -1257,6 +1257,9 @@ function initEdgeSceneNavigation() {
 function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
+    window.dispatchEvent(new CustomEvent('ptit:scenechange', {
+        detail: { sceneName }
+    }));
     sceneVisualReady = false;
     hotspotLabelsReadyAt = Number.POSITIVE_INFINITY;
     window.clearTimeout(sceneVisualReadyTimer);

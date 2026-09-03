@@ -122,25 +122,11 @@
                     campusUrl.searchParams.set("startscene", "scene_ct");
                     window.history.replaceState(null, "", campusUrl);
                 }
-// Local dùng ảnh trên máy - Vercel dùng ảnh trên R2
-const isLocal =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1";
-
-// Dùng URL tuyệt đối để tránh krpano resolve sai đường dẫn từ XML con
-const panosBase = isLocal
-    ? `${window.location.origin}/campus/panos/`
-    : "https://pub-78622738149c4116b8f28b8c8f4fd5b2.r2.dev/panos/";
-
 embedpano({
-    xml: "tour.xml?v=48",
+    xml: "tour.xml?v=49",
     target: "pano",
     html5: "always",
     mobilescale: 1.0,
-
-    initvars: {
-        panosbase: panosBase
-    },
 
     passQueryParameters: "startscene,startlookat",
 
@@ -204,7 +190,7 @@ embedpano({
 <script src="config/minimap-positions.js?v=1"></script>
 <script src="dev/minimap-editor.js?v=1"></script>
 <script src="modules/campus-minimap.js?v=21"></script>
-<script src="dev/hotspot-editor.js?v=3"></script>
+<script src="dev/hotspot-editor.js?v=4"></script>
 <!-- Mỗi lab tự quản lý popup + voice trong đúng một file lab-config.js. -->
 <script src="../labs/cie/lab-config.js?v=3"></script>
 <script src="../labs/cts/lab-config.js?v=3"></script>

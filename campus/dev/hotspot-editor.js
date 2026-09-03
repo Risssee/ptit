@@ -107,15 +107,32 @@
       }
     }
 
-    root.setInterval(attachToCurrentHotspots, 500);
-    attachToCurrentHotspots();
+    let attachTimer = 0;
+    function scheduleAttach(delay = 0) {
+      root.clearTimeout(attachTimer);
+      attachTimer = root.setTimeout(attachToCurrentHotspots, delay);
+    }
+
+    // Hotspot chỉ thay đổi khi scene đổi hoặc editor vừa tạo điểm mới.
+    // Tránh quét toàn bộ danh sách 2 lần/giây trong suốt thời gian mở trang.
+    root.addEventListener("ptit:scenechange", () => {
+      scheduleAttach(100);
+      root.setTimeout(attachToCurrentHotspots, 700);
+    });
+    root.PTITDevHotspotInspector.refresh = () => scheduleAttach(0);
+    scheduleAttach(0);
   }
 
+  let initializeAttempts = 0;
   function initialize() {
     const api = root.PTITHotspotEditorAPI;
     const main = document.querySelector(".app-main");
     const pano = document.getElementById("pano");
-    if (!api || !main || !pano) return root.setTimeout(initialize, 200);
+    if (!api || !main || !pano) {
+      initializeAttempts += 1;
+      if (initializeAttempts < 120) root.setTimeout(initialize, 500);
+      return;
+    }
 
     createHotspotInspector(api);
 
@@ -177,6 +194,7 @@
       const value = item();
       if (!valid(value)) return status.textContent = "Hãy đặt điểm hợp lệ trước";
       api.createHotspot(field("scene").value, value);
+      root.PTITDevHotspotInspector?.refresh();
       status.textContent = "Đã tạo hotspot tạm trên scene hiện tại";
     });
     panel.querySelector('[data-action="xml"]').addEventListener("click", () => {
@@ -189,7 +207,9 @@
       copy(`${field("scene").value}: [${JSON.stringify(value, null, 2)}]`).then(() => status.textContent = "Đã copy JS");
     });
 
-    root.setInterval(() => { field("scene").value = currentScene(); }, 300);
+    const syncSceneField = () => { field("scene").value = currentScene(); };
+    root.addEventListener("ptit:scenechange", syncSceneField);
+    syncSceneField();
   }
 
   initialize();

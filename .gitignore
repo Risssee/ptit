@@ -25,8 +25,6 @@ build/
 .vercel
 
 # Large panorama tiles are hosted outside Git (for example Cloudflare R2).
-/campus/panos/
-/campus/panos_moi/
 
 # Local deployment/upload utilities.
 /cloudflared.exe
