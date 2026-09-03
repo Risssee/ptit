@@ -174,6 +174,7 @@
         // Dat truoc locations.js de cac ten nhu st_a2 khong bi nhan thanh Toa A2.
         function getScenePrefixLocationLabel(sceneName) {
             const normalizedName = String(sceneName || '').toLowerCase();
+            if (normalizedName === 'scene_st_ht_2_1') return 'Hội trường 100';
             if (normalizedName.includes('_st_')) return 'S\u00e2n tr\u01b0\u1eddng';
             if (normalizedName.includes('_ktx_')) return 'K\u00fd t\u00fac x\u00e1';
             return '';

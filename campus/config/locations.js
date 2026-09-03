@@ -13,13 +13,11 @@
       //scenePrefixes: ['scene_ct_']
     },
     {
-      id: 'vuon_nhat',
-      group: 'toa_A2',
-      label: 'Vườn Nhật',
-      primary: 'Tòa A2',
-      secondary: 'Vườn Nhật',
-      entryScene: 'scene_a2_t3_2',
-      scenePrefixes: ['scene_a2_vn_']
+      id: 'khong_gian_xanh',
+      group: 'khuon_vien',
+      label: 'Không gian xanh',
+      entryScene: 'scene_kgx_1',
+      scenePrefixes: ['scene_kgx_']
     },
     {
       id: 'toa_A1',
@@ -58,6 +56,15 @@
       entryScene: 'scene_a2_t1_0',
       // Loại trừ thư viện, vườn Nhật và hội trường vì các khu này có hồ sơ riêng bên dưới.
       scenePatterns: ['^scene_(?:a2_(?!vn_|ht_)|st_a2_)']
+    },
+    {
+      id: 'vuon_nhat',
+      group: 'toa_A2',
+      label: 'Vườn Nhật',
+      primary: 'Tòa A2',
+      secondary: 'Vườn Nhật',
+      entryScene: 'scene_a2_t3_2',
+      scenePrefixes: ['scene_a2_vn_']
     },
     {
       id: 'phong_hoc_A2',
