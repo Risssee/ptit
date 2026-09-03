@@ -32,4 +32,5 @@ build/
 /cloudflared.exe
 /tools/
 .tmp_panorama_tool/
+/rclone
 
