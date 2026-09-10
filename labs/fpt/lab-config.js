@@ -22,7 +22,7 @@
         },
         scene_fpt4a: {
           title: "Kết thúc chuyến tham quan",
-          audio: "/labs/fpt/audio/guided/08-closing.mp3?v=2"
+          //audio: "/labs/fpt/audio/guided/08-closing.mp3?v=2"
         }
       }
     },

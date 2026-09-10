@@ -99,7 +99,7 @@ let currentHotspotDucksMusic = false;
 // - BACKGROUND_MUSIC_VOLUME: am luong BGM khi phat binh thuong.
 // - BACKGROUND_MUSIC_DUCKED_VOLUME: am luong BGM khi narration hoac infopost dang phat.
 const BACKGROUND_MUSIC_VOLUME = 0.5;
-const BACKGROUND_MUSIC_DUCKED_VOLUME = 0.2;
+const BACKGROUND_MUSIC_DUCKED_VOLUME = 0;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
 let activeInfoAnchor = null;
@@ -660,7 +660,7 @@ function getConfiguredSidebarGroups() {
         .sort((left, right) => (left.order || 0) - (right.order || 0))
         .forEach((group) => {
             groups[group.label] = configuredLocations
-                .filter((location) => location.group === group.id)
+                .filter((location) => location.group === group.id && location.showInSidebar !== false)
                 .map((location) => ({
                     ...getSceneMeta(location.entryScene),
                     sceneName: location.entryScene,

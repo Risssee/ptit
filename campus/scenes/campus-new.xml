@@ -503,8 +503,8 @@
 
 		<hotspot name="spot2104201095" style="skin_hotspotstyle" ath="27.674" atv="21.705" depth="1000.0" linkedscene="scene_a2_t1_4" linkedscene_lookat="-158.21,0.24,120.0" linkedscene_spot="spot2104200762" linkedscene_hoffset="2.14" use3dtransition="true" />
 		<hotspot name="spot2104201307" style="skin_hotspotstyle" ath="93.522" atv="17.292" depth="1000.0" linkedscene="scene_a2_t1_6" linkedscene_lookat="83.58,-0.0,120.0" linkedscene_spot="spot2104201562" linkedscene_hoffset="-8.05" use3dtransition="true" />
-		<!-- Vào Samsung Lab qua scene cửa cũ để giữ popup và transition. -->
-		<hotspot name="spot_samsung_entrance" style="skin_hotspotstyle" ath="-180" atv="45" depth="1000.0" linkedscene="scene_ss_1" linkedscene_lookat="180.0,0.0,120.0" linkedscene_spot="spot_samsung_exit" use3dtransition="true" ptit_label="L&#x1ED1;i v&#x00E0;o Samsung Lab" tooltip="L&#x1ED1;i v&#x00E0;o Samsung Lab" />
+		<!-- Vào Samsung Lab  -->
+		<hotspot name="spot_samsung_entrance" style="skin_hotspotstyle" ath="-180" atv="45" depth="1000.0" linkedscene="scene_ss_1" linkedscene_lookat="180.0,0.0,120.0" linkedscene_spot="spot_samsung_exit" linkedscene_hoffset="-90" use3dtransition="true"  />
 
 	</scene>
 

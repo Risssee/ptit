@@ -1,5 +1,5 @@
 // CONFIG VI TRI DUNG CHUNG: scene, diem mo dau, goc nhin va nhom sidebar.
-// Sidebar, the vi tri, nut quay ve va minimap deu tra cuu tu file nay.
+// Sidebar, the vi tri, nut quay ve va minimap.
 (function (root) {
   'use strict';
 
@@ -54,8 +54,15 @@
       group: 'toa_A2',
       label: 'Tòa A2',
       entryScene: 'scene_a2_t1_0',
-      // Loại trừ thư viện, vườn Nhật và hội trường vì các khu này có hồ sơ riêng bên dưới.
       scenePatterns: ['^scene_(?:a2_(?!vn_|ht_)|st_a2_)']
+    },
+    {
+      id: 'cau',
+      group: 'toa_A2',
+      label: 'Cầu đi bộ',
+      entryScene: 'scene_cau_1',
+      scenePrefixes: ['scene_cau_'],
+      showInSidebar: false,
     },
     {
       id: 'vuon_nhat',
@@ -69,11 +76,17 @@
     {
       id: 'phong_hoc_A2',
       group: 'toa_A2',
-      label: 'Phòng tự học',
+      label: 'Khu vực tự học',
       primary: 'Tòa A2',
-      secondary: 'Phòng tự học',
+      secondary: 'Khu vực tự học',
       entryScene: 'scene_a2_t2_3',
-      scenes: ['scene_a2_lib_']
+      scenes: [
+        'scene_a2_lib_1',
+        'scene_a2_lib_2',
+        'scene_a2_lib_3',
+        'scene_a2_lib_4',
+        'scene_a2_lib_5'
+      ]
     },
     {
       id: 'hoi_truong_A2',
