@@ -149,20 +149,41 @@
     }
   }
 
+  function parseSceneManifest(xml, sourceUrl) {
+    return [...xml.querySelectorAll("scene")].map((scene) => {
+      const links = [...scene.querySelectorAll("hotspot[linkedscene]")];
+      const resolveAsset = (value) => value ? new URL(value, sourceUrl).href : "";
+      return {
+        name: scene.getAttribute("name"),
+        preview: resolveAsset(scene.querySelector("preview")?.getAttribute("url") || ""),
+        cube: resolveAsset(scene.querySelector("cube")?.getAttribute("url") || ""),
+        links: links.map((hotspot) => hotspot.getAttribute("linkedscene")),
+        lookats: new Map(links.map((hotspot) => [
+          hotspot.getAttribute("linkedscene"),
+          Number((hotspot.getAttribute("linkedscene_lookat") || "0").split(",")[0])
+        ]))
+      };
+    });
+  }
+
   async function loadManifest() {
     try {
       const response = await fetch("tour.xml", { cache: "force-cache" });
+      if (!response.ok) throw new Error(`Unable to load tour.xml: ${response.status}`);
       const xml = new DOMParser().parseFromString(await response.text(), "application/xml");
-      manifest = [...xml.querySelectorAll("scene")].map((scene) => {
-        const links = [...scene.querySelectorAll("hotspot[linkedscene]")];
-        return {
-          name: scene.getAttribute("name"),
-          preview: scene.querySelector("preview")?.getAttribute("url") || "",
-          cube: scene.querySelector("cube")?.getAttribute("url") || "",
-          links: links.map((hotspot) => hotspot.getAttribute("linkedscene")),
-          lookats: new Map(links.map((hotspot) => [hotspot.getAttribute("linkedscene"), Number((hotspot.getAttribute("linkedscene_lookat") || "0").split(",")[0])]))
-        };
-      });
+      const sceneIncludes = [...xml.querySelectorAll("include[url]")]
+        .map((include) => new URL(include.getAttribute("url"), response.url))
+        .filter((url) => url.pathname.includes("/scenes/"));
+      const includedManifests = await Promise.all(sceneIncludes.map(async (url) => {
+        const includedResponse = await fetch(url.href, { cache: "force-cache" });
+        if (!includedResponse.ok) throw new Error(`Unable to load ${url.pathname}: ${includedResponse.status}`);
+        const includedXml = new DOMParser().parseFromString(await includedResponse.text(), "application/xml");
+        return parseSceneManifest(includedXml, includedResponse.url);
+      }));
+      manifest = [
+        ...parseSceneManifest(xml, response.url),
+        ...includedManifests.flat()
+      ];
       render(18);
     } catch (_) {
       manifest = [];

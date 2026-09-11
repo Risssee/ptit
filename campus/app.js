@@ -1311,9 +1311,6 @@ function handleSceneChange(sceneName) {
     sceneVisualReady = false;
     hotspotLabelsReadyAt = Number.POSITIVE_INFINITY;
     window.clearTimeout(sceneVisualReadyTimer);
-    // DARK CAMPUS UI: phat su kien de lop giao dien doc dung scene dang chay.
-    // Khong thay doi logic tour; xoa dong nay neu xoa campus-dark-ui.js.
-    window.dispatchEvent(new CustomEvent('ptit:scenechange', { detail: { sceneName } }));
     const oldOverlay = document.getElementById('persistent-hotspot-labels');
     if (oldOverlay) oldOverlay.replaceChildren();
     persistentHotspotLabels = [];
