@@ -3,38 +3,30 @@ const sceneData = {
     'scene_1': { 
         title: 'Cổng trường', 
         description: 'Cổng chính Học viện Công nghệ Bưu chính Viễn thông. Nơi đây là bộ mặt của Học viện, mang vẻ đẹp hiện đại và uy nghiêm.', 
-        roomType: 'Khu vực ngoài trời',
         purpose: 'Lối vào chính và đón tiếp khách tham quan, sinh viên.',
-        lessons: ['Giới thiệu lịch sử Học viện', 'Hướng dẫn tham quan'],
         thumb: 'panos/1.tiles/thumb.jpg' 
     },
     'scene_gpbk2270_1773201080635': { 
         title: 'Phòng Lab CTS', 
         description: 'Phòng nghiên cứu và thực hành chuyên sâu của Lab CTS (Creative Technology Space). Nơi đây tập trung các dự án nghiên cứu về VR/AR/AI.', 
-        roomType: 'Phòng thực hành (Lab)',
         purpose: 'Nghiên cứu khoa học, thực hành các công nghệ mới và phát triển các ứng dụng sáng tạo.',
-        lessons: ['Thực tế ảo và Thực tế tăng cường (VR/AR)', 'Lập trình ứng dụng 3D'],
         thumb: 'panos/GPBK2270_1773201080635.tiles/thumb.jpg' 
     },
     'scene_gpbk2202_1773130555661': { 
         title: 'Thư viện PTIT', 
         description: 'Không gian học tập và nghiên cứu hiện đại với kho tài liệu phong phú, hệ thống tra cứu thông minh và các khu vực tự học tiện nghi.', 
-        roomType: 'Thư viện',
         purpose: 'Tra cứu tài liệu, mượn trả sách, học tập tập trung và hội thảo khoa học.',
-        lessons: ['Kỹ năng tra cứu thông tin', 'Quản trị tri thức số'],
         thumb: 'panos/GPBK2202_1773130555661.tiles/thumb.jpg' 
     },
     'scene_gpbk2218_1773131077123': { 
         title: 'Tòa A1', 
         description: 'Tòa nhà điều hành và hành chính trung tâm của Học viện.', 
-        roomType: 'Hành chính',
         purpose: 'Nơi làm việc của Ban Giám hiệu và các phòng ban chức năng.',
         thumb: 'panos/GPBK2218_1773131077123.tiles/thumb.jpg'
     },
     'scene_10': { 
         title: 'Tòa A2', 
         description: 'Tòa nhà giảng đường chính với quy mô lớn, nơi diễn ra các buổi học quan trọng.', 
-        roomType: 'Giảng đường',
         purpose: 'Giảng dạy và học tập các môn lý thuyết.',
         thumb: 'panos/10.tiles/thumb.jpg'
     },
@@ -608,22 +600,10 @@ function onready(krpano_interface) {
     enforceStableNavigationHotspotTextures();
     disableNativeTitleTooltips();
     initSidebar();
-    initEdgeSceneNavigation();
     const initialScene = krpano.get('xml.scene');
     if (initialScene) {
         handleSceneChange(initialScene);
     }
-}
-
-function getAllSceneNamesFromTour() {
-    if (!krpano) return Object.keys(sceneData);
-    const names = [];
-    const count = Number(krpano.get('scene.count')) || 0;
-    for (let i = 0; i < count; i += 1) {
-        const name = krpano.get(`scene[${i}].name`);
-        if (name) names.push(name);
-    }
-    return names.length > 0 ? names : Object.keys(sceneData);
 }
 
 function getSceneMeta(sceneName) {
@@ -946,39 +926,6 @@ function enforceStableNavigationHotspotTextures() {
     }
 }
 
-function formatEdgeSceneTitle(sceneName) {
-    if (!sceneName) return '';
-    const fptLabels = {
-        scene_fpt1: 'FPT - Không gian tổng quan',
-        scene_fpt2a: 'FPT - Thiết bị mạng ODN',
-        scene_fpt3a: 'FPT - Khu vực thực hành',
-        scene_fpt4a: 'FPT - Khu vực cuối phòng'
-    };
-    if (fptLabels[sceneName]) return fptLabels[sceneName];
-    const cieLabels = {
-        scene_cie_cuatruoc: 'CIE - Cửa trước',
-        scene_cie_cuasau: 'CIE - Cửa sau',
-        scene_cie_sanhchinh1h: 'CIE - Sảnh chính 1',
-        scene_cie_sanhchinh2f: 'CIE - Sảnh chính 2',
-        scene_cie_sanhchinh3f: 'CIE - Sảnh chính 3',
-        scene_cie_sanhchinh4f: 'CIE - Sảnh chính 4',
-        scene_cie_sanhchinh5: 'CIE - Sảnh chính 5',
-        scene_cie_sanhsau: 'CIE - Sảnh sau'
-    };
-    if (cieLabels[sceneName]) return cieLabels[sceneName];
-    const hallway = sceneName.match(/^scene_cie_hl(\d+)(?:_[a-z0-9]+)?$/);
-    if (hallway) return `CIE - Hành lang ${hallway[1]}`;
-    const room = sceneName.match(/^scene_cie_p(\d+)(?:_([a-z0-9]+))?$/);
-    if (room) return `CIE - Phòng ${room[1]}${room[2] ? ` (${room[2].toUpperCase()})` : ''}`;
-
-    const groupTitle = getGroupTitleForScene(sceneName);
-    if (groupTitle && /^\d+$/.test(groupTitle)) return `Điểm tham quan ${groupTitle}`;
-    if (groupTitle && groupTitle !== sceneName && !/^GPBK/i.test(groupTitle)) return groupTitle;
-    const xmlTitle = krpano ? (krpano.get(`scene[${sceneName}].title`) || '') : '';
-    if (/^\d+$/.test(xmlTitle)) return `Điểm tham quan ${xmlTitle}`;
-    return xmlTitle || sceneName.replace(/^scene_/, '').replace(/_/g, ' ');
-}
-
 let persistentHotspotLabels = [];
 let persistentHotspotLabelTimer = 0;
 let sceneVisualReady = false;
@@ -1243,65 +1190,6 @@ function renderPersistentHotspotLabels() {
     persistentHotspotLabelTimer = window.requestAnimationFrame(hotspotLabelLoop);
 }
 
-function updateEdgeSceneNavigation(sceneName) {
-    if (!krpano) return;
-    const nav = document.getElementById('edge-scene-navigation');
-    if (!nav) return;
-    nav.hidden = true;   
-    return;  
-    const isCieScene = sceneName.startsWith('scene_cie_');
-    const names = getAllSceneNamesFromTour().filter((name) =>
-        name.startsWith('scene_cie_') === isCieScene
-    );
-    if (names.length < 2) {
-        nav.hidden = true;
-        return;
-    }
-    nav.hidden = false;
-    const index = Math.max(0, names.indexOf(sceneName));
-    const previousName = index > 0 ? names[index - 1] : '';
-    const nextName = index < names.length - 1 ? names[index + 1] : '';
-    const previousButton = nav.querySelector('[data-edge-direction="previous"]');
-    const nextButton = nav.querySelector('[data-edge-direction="next"]');
-    const previousTitle = previousName ? formatEdgeSceneTitle(previousName) : '';
-    const nextTitle = nextName ? formatEdgeSceneTitle(nextName) : '';
-    previousButton.hidden = !previousName;
-    nextButton.hidden = !nextName;
-    previousButton.dataset.targetScene = previousName;
-    nextButton.dataset.targetScene = nextName;
-    previousButton.querySelector('.edge-scene-nav__label').textContent = previousTitle;
-    nextButton.querySelector('.edge-scene-nav__label').textContent = nextTitle;
-    previousButton.setAttribute('aria-label', `Scene trước: ${previousTitle}`);
-    nextButton.setAttribute('aria-label', `Scene tiếp theo: ${nextTitle}`);
-}
-
-function initEdgeSceneNavigation() {
-    if (document.getElementById('edge-scene-navigation')) return;
-    const main = document.querySelector('.app-main');
-    if (!main) return;
-    const nav = document.createElement('nav');
-    nav.id = 'edge-scene-navigation';
-    nav.className = 'edge-scene-nav';
-    nav.setAttribute('aria-label', 'Chuyển scene');
-    nav.innerHTML = `
-        <button class="edge-scene-nav__button edge-scene-nav__button--previous" data-edge-direction="previous" type="button">
-            <span class="edge-scene-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></span>
-            <span class="edge-scene-nav__copy"><small>Về scene trước</small><strong class="edge-scene-nav__label"></strong></span>
-        </button>
-        <button class="edge-scene-nav__button edge-scene-nav__button--next" data-edge-direction="next" type="button">
-            <span class="edge-scene-nav__copy"><small>Đến scene tiếp theo</small><strong class="edge-scene-nav__label"></strong></span>
-            <span class="edge-scene-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>
-        </button>`;
-    nav.addEventListener('click', (event) => {
-        const button = event.target.closest('.edge-scene-nav__button');
-        if (!button || !krpano) return;
-        const targetScene = button.dataset.targetScene;
-        if (!targetScene) return;
-        krpano.call(`skin_loadscene(${targetScene},get(skin_settings.loadscene_blend));`);
-    });
-    main.appendChild(nav);
-}
-
 function handleSceneChange(sceneName) {
     console.log("Active Scene:", sceneName);
     currentSceneName = sceneName;
@@ -1314,7 +1202,6 @@ function handleSceneChange(sceneName) {
     const oldOverlay = document.getElementById('persistent-hotspot-labels');
     if (oldOverlay) oldOverlay.replaceChildren();
     persistentHotspotLabels = [];
-    updateEdgeSceneNavigation(sceneName);
     closeHotspotInfo();
     closeInfo();
     removeLegacyInfoSpot();

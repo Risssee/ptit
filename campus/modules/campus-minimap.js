@@ -2,14 +2,15 @@
   "use strict";
 
   const MAP_COORDINATE_EDITOR = new URLSearchParams(window.location.search).get("mapedit") === "1";
+  const minimapConfig = window.PTIT_MINIMAP_POSITIONS || {};
+  const MANUAL_SCENE_POSITIONS = minimapConfig.manualScenePositions || {};
+  const configSignature = JSON.stringify(MANUAL_SCENE_POSITIONS);
   const savedScenePositions = MAP_COORDINATE_EDITOR
-    ? (window.PTITMinimapEditor?.readSavedScenePositions() || {})
+    ? (window.PTITMinimapEditor?.readSavedScenePositions(configSignature) || {})
     : {};
 
-  const minimapConfig = window.PTIT_MINIMAP_POSITIONS || {};
   const outdoorRoute = minimapConfig.outdoorRoute || [];
   const anchors = minimapConfig.anchors || {};
-  const MANUAL_SCENE_POSITIONS = minimapConfig.manualScenePositions || {};
 
   function findConfiguredLocation(sceneName) {
     return window.PTIT_FIND_LOCATION?.(sceneName) || null;
@@ -100,6 +101,7 @@
       minimap,
       toggle,
       savedScenePositions,
+      configSignature,
       getCurrentScene: () => currentScene,
       positionFor,
       setDotPosition

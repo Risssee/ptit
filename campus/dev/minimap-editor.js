@@ -4,18 +4,22 @@
   const LEGACY_STORAGE_KEY = "ptit:minimap:scene-positions:v1";
   const STORAGE_KEY = "ptit:minimap:scene-positions:v2";
 
-  function readSavedScenePositions() {
+  function readSavedScenePositions(configSignature) {
     try {
       root.localStorage.removeItem(LEGACY_STORAGE_KEY);
       const saved = JSON.parse(root.localStorage.getItem(STORAGE_KEY) || "{}");
-      return saved && typeof saved === "object" ? saved : {};
+      if (!saved || saved.configSignature !== configSignature || typeof saved.positions !== "object") {
+        root.localStorage.removeItem(STORAGE_KEY);
+        return {};
+      }
+      return saved.positions;
     } catch (_) {
       return {};
     }
   }
 
   function attach(context) {
-    const { minimap, toggle, savedScenePositions, getCurrentScene, positionFor, setDotPosition } = context;
+    const { minimap, toggle, savedScenePositions, configSignature, getCurrentScene, positionFor, setDotPosition } = context;
     minimap.classList.add("is-coordinate-editing");
     const editHistory = [];
     const editorActions = document.createElement("div");
@@ -25,7 +29,10 @@
       <button type="button" data-map-action="delete" title="Xóa tọa độ đã lưu của scene hiện tại">Xóa điểm</button>`;
     minimap.querySelector(".campus-minimap__head").insertBefore(editorActions, toggle);
 
-    const save = () => root.localStorage.setItem(STORAGE_KEY, JSON.stringify(savedScenePositions));
+    const save = () => root.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      configSignature,
+      positions: savedScenePositions
+    }));
     const activeScene = () => root.ptitKrpano?.get("xml.scene") || getCurrentScene();
     const restore = (entry) => {
       if (!entry) return;

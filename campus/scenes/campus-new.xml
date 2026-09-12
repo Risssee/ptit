@@ -861,7 +861,7 @@
 
 		<hotspot name="spot2104249991" style="skin_hotspotstyle" ath="52.497" atv="16.373" depth="1000.0" linkedscene="scene_a2_t7" linkedscene_lookat="-87.75,0.59,120.0" linkedscene_spot="spot2104249685" linkedscene_hoffset="68.47" use3dtransition="true" />
 		<!-- Diem noi campus moi -> Viettel; giu duong noi bo A2_t8 de tour khong bi dut. -->
-		<hotspot name="spot1960149780" style="skin_hotspotstyle" ath="0.956" atv="17.312" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_spot="spot2076860187" linkedscene_hoffset="0.0" use3dtransition="true" ptit_label="Vào Viettel Lab" tooltip="Vào Viettel Lab" />
+		<hotspot name="spot1960149780" style="skin_hotspotstyle" ath="0.956" atv="25" depth="1000.0" linkedscene="scene_viettel_cua1" linkedscene_spot="spot2076860187" linkedscene_hoffset="0.0" use3dtransition="true" />
 
 	</scene>
 
