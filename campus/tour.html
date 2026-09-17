@@ -40,7 +40,7 @@
 	<script>
 		document.body.classList.add('campus-ui-dark');
 	</script>
-<div id="loading" class="campus-loading loading" data-wait-for-load="true" data-initial-only="true" data-minimum-duration="3000" role="progressbar" aria-label="Đang tải không gian tham quan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+<div id="loading" class="campus-loading loading" data-wait-for-load="true" data-initial-only="true" data-minimum-duration="3000" data-settle-duration="500" role="progressbar" aria-label="Đang tải không gian tham quan" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
     <div class="campus-loading__inner">
         <div class="campus-loading__brand" aria-label="PTIT Campus 360 và CTS Lab">
             <img class="campus-loading__ptit" src="../assets/images/logo-PTIT-826x1024-removebg-preview.png" alt="" />
@@ -67,7 +67,7 @@
         </aside>
     </div>
 </div>
-<script src="../assets/tour-loading.js?v=5"></script>
+<script src="../assets/tour-loading.js?v=10"></script>
 <div class="app-container">
     <!-- Header -->
     <header class="app-header">
@@ -110,7 +110,7 @@
         <div id="pano">
             <noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;text-align:center;"><td>ERROR:<br><br>Javascript not activated<br><br></td></tr></table></noscript>
             <script src="tour.js"></script>
-            <script src="app.js?v=195"></script>
+            <script src="app.js?v=198"></script>
             <script>
                 // Khi mở trực tiếp campus mà không chỉ định scene, luôn bắt đầu ở cổng chính.
                 if (!new URLSearchParams(window.location.search).has("startscene")) {
@@ -119,7 +119,7 @@
                     window.history.replaceState(null, "", campusUrl);
                 }
 embedpano({
-    xml: "tour.xml?v=50",
+    xml: "tour.xml?v=53",
     target: "pano",
     html5: "always",
     mobilescale: 1.0,

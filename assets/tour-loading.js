@@ -27,14 +27,17 @@
   const waitForRealLoad = root.dataset.waitForLoad === "true";
   const initialOnly = root.dataset.initialOnly === "true";
   const minimumDuration = Math.max(0, Number(root.dataset.minimumDuration) || 0);
+  const settleDuration = Math.max(0, Number(root.dataset.settleDuration) || 0);
   const initialStartedAt = performance.now();
   let value = 0;
+  let targetValue = 4;
   let hasCompletedOnce = false;
   let initialFinished = false;
   let completionScheduled = false;
   let completionTimer = 0;
   let previewTimer = 0;
   let progressTimer = 0;
+  let progressCompleteSince = 0;
   let krpanoInstance = null;
   let manifest = null;
 
@@ -47,7 +50,14 @@
 
   function resetProgress() {
     value = 0;
+    targetValue = 4;
     render(4);
+  }
+
+  function advanceProgress() {
+    if (value >= targetValue) return;
+    const step = Math.max(1, Math.ceil((targetValue - value) * 0.22));
+    render(Math.min(targetValue, value + step));
   }
 
   function sceneStart() {
@@ -58,11 +68,20 @@
     root.classList.remove("done");
     if (!initialOnly) root.classList.toggle("compact", hasCompletedOnce);
     root.classList.remove("preview-ready");
+    progressCompleteSince = 0;
     if (title) title.textContent = !initialOnly && hasCompletedOnce ? "Đang tải scene tiếp theo" : defaultTitle;
     resetProgress();
     progressTimer = setInterval(() => {
       const progress = Number(krpanoInstance?.get("progress.progress"));
-      if (Number.isFinite(progress)) render(5 + progress * 94);
+      if (Number.isFinite(progress)) {
+        targetValue = Math.max(targetValue, Math.min(90, 5 + progress * 85));
+        if (progress >= 0.999) {
+          if (!progressCompleteSince) progressCompleteSince = performance.now();
+        } else {
+          progressCompleteSince = 0;
+        }
+      }
+      advanceProgress();
     }, 100);
     previewTimer = setTimeout(previewReady, 1200);
     if (!waitForRealLoad) completionTimer = setTimeout(sceneLoaded, 8000);
@@ -71,7 +90,7 @@
   function previewReady() {
     clearTimeout(previewTimer);
     root.classList.add("preview-ready");
-    render(30);
+    targetValue = Math.max(targetValue, 30);
   }
 
   function sceneLoaded() {
@@ -79,22 +98,34 @@
     if (initialOnly) completionScheduled = true;
     clearTimeout(completionTimer);
     clearTimeout(previewTimer);
-    clearInterval(progressTimer);
     root.classList.add("preview-ready");
-    render(100);
-    const remainingMinimumTime = Math.max(0, minimumDuration - (performance.now() - initialStartedAt));
-    setTimeout(() => {
-      root.classList.add("done");
-      hasCompletedOnce = true;
-      initialFinished = true;
-      if (initialOnly && krpanoInstance) {
-        krpanoInstance.set("events[ptit_loader].onnewscene", "");
-        krpanoInstance.set("events[ptit_loader].onpreviewcomplete", "");
-        krpanoInstance.set("events[ptit_loader].onloadcomplete", "");
-      }
-      if ("requestIdleCallback" in window) requestIdleCallback(preloadNextScene, { timeout: 1500 });
-      else setTimeout(preloadNextScene, 500);
-    }, Math.max(280, remainingMinimumTime));
+    // Keep the bar below 100% until loading remains complete and rendering settles.
+    targetValue = 95;
+    const now = performance.now();
+    const remainingMinimumTime = Math.max(0, minimumDuration - (now - initialStartedAt));
+    const completedFor = progressCompleteSince ? now - progressCompleteSince : 0;
+    const remainingSettleTime = Math.max(0, settleDuration - completedFor);
+
+    function finishLoading() {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        clearInterval(progressTimer);
+        render(100);
+        setTimeout(() => {
+        root.classList.add("done");
+        hasCompletedOnce = true;
+        initialFinished = true;
+        if (initialOnly && krpanoInstance) {
+          krpanoInstance.set("events[ptit_loader].onnewscene", "");
+          krpanoInstance.set("events[ptit_loader].onpreviewcomplete", "");
+          krpanoInstance.set("events[ptit_loader].onloadcomplete", "");
+        }
+        if ("requestIdleCallback" in window) requestIdleCallback(preloadNextScene, { timeout: 1500 });
+        else setTimeout(preloadNextScene, 500);
+        }, 160);
+      }));
+    }
+
+    completionTimer = setTimeout(finishLoading, Math.max(remainingMinimumTime, remainingSettleTime));
   }
 
   function resolveTemplate(template, face, level, vertical, horizontal) {

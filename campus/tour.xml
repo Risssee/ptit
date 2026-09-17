@@ -1,20 +1,12 @@
 <krpano version="1.23" title="Virtual Tour" bgcolor="0xD8DDE3">
 
-	<include url="skin/vtourskin.xml?v=6" />
-	<!-- CIE: scene XML tap trung tai campus; tai nguyen van nam trong labs/cie. -->
+	<include url="skin/vtourskin.xml?v=9" />
 	<include url="scenes/cie.xml?v=1" />
-	<!-- TOA A3 MOI: 12 scene; tai nguyen panorama nam trong campus/panos. -->
-	<!-- GAME LAB: scene XML tap trung tai campus; bang Falcon va tai nguyen van nam trong labs/game. -->
 	<include url="scenes/game.xml?v=1" />
-	<!-- CTS LAB: scene XML tap trung tai campus; anh panorama van nam trong labs/cts/panos. -->
 	<include url="scenes/cts.xml?v=1" />
-	<!-- FPT LAB: scene XML tap trung tai campus; tai nguyen van nam trong labs/fpt. -->
 	<include url="scenes/fpt.xml?v=1" />
-	<!-- THU VIEN: scene XML tap trung tai campus; tai nguyen van nam trong labs/Library. -->
 	<include url="scenes/library.xml?v=1" />
-	<!-- SAMSUNG LAB: scene XML tap trung tai campus; tai nguyen van nam trong labs/samsung. -->
 	<include url="scenes/samsung.xml?v=1" />
-	<!-- VIETTEL LAB: scene XML tap trung tai campus; tai nguyen van nam trong labs/Viettel. -->
 	<include url="scenes/viettel.xml?v=1" />
 	<style name="skin_infopoststyle"
 	       visible="false" enabled="false"
@@ -26,7 +18,6 @@
 	       onover="tween(alpha,1.0,0.18);"
 	       onout="tween(alpha,0.94,0.22);" />
 
-	<!-- Chỉnh pulse infoport ở thông số trước easeInOutSine. -->
 	<action name="infoport_pulse">
 		if(hotspot[%1],
 			tween(hotspot[%1].scale, %3, 0.4, easeInOutSine,

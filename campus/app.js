@@ -1,86 +1,8 @@
-// Data for the popup information
-const sceneData = {
-    'scene_1': { 
-        title: 'Cổng trường', 
-        description: 'Cổng chính Học viện Công nghệ Bưu chính Viễn thông. Nơi đây là bộ mặt của Học viện, mang vẻ đẹp hiện đại và uy nghiêm.', 
-        purpose: 'Lối vào chính và đón tiếp khách tham quan, sinh viên.',
-        thumb: 'panos/1.tiles/thumb.jpg' 
-    },
-    'scene_gpbk2270_1773201080635': { 
-        title: 'Phòng Lab CTS', 
-        description: 'Phòng nghiên cứu và thực hành chuyên sâu của Lab CTS (Creative Technology Space). Nơi đây tập trung các dự án nghiên cứu về VR/AR/AI.', 
-        purpose: 'Nghiên cứu khoa học, thực hành các công nghệ mới và phát triển các ứng dụng sáng tạo.',
-        thumb: 'panos/GPBK2270_1773201080635.tiles/thumb.jpg' 
-    },
-    'scene_gpbk2202_1773130555661': { 
-        title: 'Thư viện PTIT', 
-        description: 'Không gian học tập và nghiên cứu hiện đại với kho tài liệu phong phú, hệ thống tra cứu thông minh và các khu vực tự học tiện nghi.', 
-        purpose: 'Tra cứu tài liệu, mượn trả sách, học tập tập trung và hội thảo khoa học.',
-        thumb: 'panos/GPBK2202_1773130555661.tiles/thumb.jpg' 
-    },
-    'scene_gpbk2218_1773131077123': { 
-        title: 'Tòa A1', 
-        description: 'Tòa nhà điều hành và hành chính trung tâm của Học viện.', 
-        purpose: 'Nơi làm việc của Ban Giám hiệu và các phòng ban chức năng.',
-        thumb: 'panos/GPBK2218_1773131077123.tiles/thumb.jpg'
-    },
-    'scene_10': { 
-        title: 'Tòa A2', 
-        description: 'Tòa nhà giảng đường chính với quy mô lớn, nơi diễn ra các buổi học quan trọng.', 
-        purpose: 'Giảng dạy và học tập các môn lý thuyết.',
-        thumb: 'panos/10.tiles/thumb.jpg'
-    },
-};
 
-// KHU VUC VA DIEM MO DA CHUYEN SANG campus/config/*.js.
 const sceneInfoOverridesInCode = {
-  "scene_1": {
-    "purpose": "Lối vào chính và đón tiếp khách tham quan",
-    "description": "Cổng chính Học viện Công nghệ Bưu chính Viễn thông"
-  },
-  "scene_gpbk2218_1773131077123": {
-    "purpose": "Tòa nhà điều hành và hành chính",
-    "description": "Nơi làm việc của Ban Giám hiệu, các phòng ban chức năng, phòng học, phòng nghiên cứu"
-  },
-  "scene_10": {
-    "purpose": "Tòa nhà giảng đường và văn phòng khoa",
-    "description": "Nơi tập trung các phòng học lớn và văn phòng các Khoa trọng điểm như Công nghệ thông tin, Viễn thông, ..."
-  },
-  "scene_gpbk0065_1773206564173": {
-    "purpose": "Phòng học",
-    "description": "Các phòng học được trang bị đầy đủ thiết bị trình chiếu, phục vụ các tiết học chuyên sâu"
-  },
   "scene_gpbk0066_1773206449967": {
     "purpose": "Tổ chức sự kiện và hội nghị",
     "description": "Không gian rộng lớn chuyên tổ chức các buổi lễ khai giảng, bế giảng và các hoạt động văn nghệ quy mô lớn của sinh viên"
-  },
-  "scene_vswthdn_nhtgtt_1": {
-    "purpose": "Khu vực thư giãn và cảnh quan",
-    "description": "Không gian xanh với phong cách kiến trúc Nhật Bản, là địa điểm nghỉ ngơi và chụp ảnh yêu thích của sinh viên sau giờ học"
-  },
-  "scene_gpbk2195_1773130397237": {
-    "purpose": "Tòa nhà đa năng và giảng đường",
-    "description": "Tòa nhà mới với cơ sở vật chất hiện đại phục vụ học tập và nghiên cứu, nằm phía sau khu vực tòa A2"
-  },
-  "scene_gpbk2237_1773200161431": {
-    "purpose": "Phòng học",
-    "description": "Các phòng học được trang bị đầy đủ thiết bị trình chiếu, phục vụ các tiết học chuyên sâu"
-  },
-  "scene_gpbk2202_1773130555661": {
-    "purpose": "Học tập và nghiên cứu tài liệu",
-    "description": "Không gian yên tĩnh với kho tài liệu phong phú về viễn thông và CNTT, có khu tự học máy lạnh cho sinh viên"
-  },
-  "scene_gpbk2260_1773200808324": {
-    "purpose": "Hoạt động thể thao và thể chất",
-    "description": "Khu vực rèn luyện sức khỏe và tổ chức các giải đấu thể thao phong trào giữa các khoa và câu lạc bộ"
-  },
-  "scene_gpbk2286_1773201396711": {
-    "purpose": "Hoạt động thể thao và thể chất",
-    "description": "Khu vực rèn luyện sức khỏe và tổ chức các giải đấu thể thao phong trào giữa các khoa và câu lạc bộ"
-  },
-  "scene_gpbk2270_1773201080635": {
-    "purpose": "Phòng nghiên cứu",
-    "description": "Nơi thực hành và nghiên cứu chuyên sâu"
   }
 };
 
@@ -94,8 +16,6 @@ const BACKGROUND_MUSIC_VOLUME = 0.5;
 const BACKGROUND_MUSIC_DUCKED_VOLUME = 0;
 let activeDynamicHotspots = [];
 let currentSceneName = '';
-let activeInfoAnchor = null;
-let hotspotInfoFollowRaf = null;
 let runtimePlacedHotspots = {};
 const CAMPUS_INFO_HOTSPOTS_ENABLED = false;
 let sceneInfoOverrides = { ...sceneInfoOverridesInCode };
@@ -105,137 +25,6 @@ let popupSpeechUtterance = null;
 let popupSpeechActive = false;
 let popupTtsAudio = null;
 let popupSpeechDucksMusic = false;
-
-const bookshelfHotspot = {
-    id: 'library_books',
-    ath: 0.0,
-    atv: 0.0,
-    title: 'Khu vực sách và Tạp chí chuyên ngành',
-    text: 'Với hàng vạn đầu sách chuyên ngành về Công nghệ, Viễn thông, Điện tử & Kinh tế. Ngọn nguồn tri thức và cảm hứng của sinh viên PTIT.\n(Ảnh được AI Generate để tăng tính trực quan)',
-    tooltip: 'Khám phá tri thức',
-    image: '/labs/Library/assets/infoports/sach.jpg'
-};
-
-const computerHotspot = {
-    id: 'library_computers',
-    ath: 0.0,
-    atv: 0.0,
-    title: 'Khu vực Máy tính tự học',
-    text: 'Hệ thống máy tính cấu hình cao kết nối Internet và kho tài liệu số OPAC.\nPhục vụ sinh viên nghiên cứu, làm bài tập và tra cứu độc lập.\n(Ảnh được AI Generate để tăng sự sinh động)',
-    tooltip: 'Khu tự học',
-    image: '/labs/Library/assets/infoports/mt.jpg'
-};
-const hotspotData = {
-    scene_1: [],
-    // ========================================================================
-    // INFOPORT Thu vien
-    // ========================================================================
-    scene_gpbk2203_1773130660359: [bookshelfHotspot],
-    scene_gpbk2204_1773130697446: [bookshelfHotspot],
-    scene_gpbk2205_1773130740283: [computerHotspot],
-    scene_gpbk2206_1773130766175: [computerHotspot],
-    scene_gpbk2207_1773130803595: [computerHotspot],
-    scene_gpbk2201_1773130534438: [],
-    scene_gpbk2202_1773130555661: [
-        {
-            id: 'library_intro',
-            ath: 20.0,
-            atv: 0.0,
-            title: 'Chào mừng đến Thư viện PTIT',
-            text: 'Thư viện Học viện Công nghệ Bưu chính Viễn thông là không gian tự học tĩnh lặng, nơi sinh viên miệt mài với sách vở và laptop.\nKhông gian sang trọng, hiện đại với nguồn sáng ấm áp.',
-            tooltip: 'Khu vực tự đọc',
-            image: '/labs/Library/assets/infoports/tuHoc.jpg'
-        },
-        {
-            id: 'library_lookup',
-            ath: -10.0,
-            atv: 10.0,
-            title: 'Hệ thống tra cứu thông minh',
-            text: 'Sinh viên có thể sử dụng các máy tính tại đây để tra cứu vị trí sách và tài liệu số thông qua hệ thống OPAC.',
-            tooltip: 'Khu vực tra cứu'
-        }
-    ],
-    scene_gpbk2270_1773201080635: [
-        {
-            id: 'labcts_intro',
-            ath: 0.0,
-            atv: -20.0,
-            title: 'Trung tâm nghiên cứu không gian CTS',
-            text: 'Lab CTS (Creative Technologies & Simulations) tập trung vào mảng Công nghệ Sáng tạo, Đồ họa 3D, Thực tế Ảo (VR/AR) và AI. Là nơi ươm mầm các dự án xuất sắc của Học viện Công nghệ Bưu chính Viễn thông.',
-            tooltip: 'Tổng quan Lab CTS',
-            image: '9adbca54-6cdd-4fe0-b2b3-8eaaa1130de8.jpg'
-        },
-        {
-            id: 'labcts_ws1',
-            ath: 60.0,
-            atv: 10.0,
-            title: 'Siêu Máy Trạm (Workstation) AI',
-            text: 'Cấu hình siêu khủng phục vụ Render và Huấn luyện AI:\n- CPU: Intel Core i9 Gen 13/14\n- RAM: 128GB DDR5 Corsair\n- GPU: Dual NVIDIA RTX 4090 24GB\n- SSD: 4TB NVMe PCIe 4.0\nĐảm bảo sức mạnh tính toán vượt trội cho mọi mô hình 3D phức tạp nhất.',
-            tooltip: 'Click xem cấu hình PC khủng',
-            image: '664088873_1466695988458551_1776922468228806704_n.png'
-        },
-        {
-            id: 'labcts_vr',
-            ath: 20.0,
-            atv: 12.0,
-            title: 'Khu vực thử nghiệm Thực tế Ảo (VR/AR)',
-            text: 'Được trang bị loạt thiết bị tối tân nhất thị trường hiện nay:\n- Kính Meta Quest 3, Quest Pro\n- Hệ thống HTC Vive Pro 2, Valve Index\n- Kính AR HoloLens 2\nCho phép sinh viên phát triển trải nghiệm Metaverse, Game 3D tương tác đa giác quan.',
-            tooltip: 'Trang thiết bị VR/AR',
-            image: '646935640_949460840788736_8238024209070971558_n.png'
-        },
-        {
-            id: 'labcts_project_area',
-            ath: 90.0,
-            atv: 5.0,
-            title: 'Không gian triển khai Dự án',
-            text: 'Bàn làm việc nhóm chuyên dụng cho các Team Startup & Research. Khu vực này liên tục diễn ra các buổi Brainstorm, hội chẩn giải pháp công nghệ, và là cái nôi của nhiều dự án đạt giải thưởng quốc gia về Chuyển đổi số.',
-            tooltip: 'Khu vực dự án',
-            image: 'ea326538-cf53-40e8-8951-ea5b3af0f9e9.jpg'
-        },
-        {
-            id: 'labcts_activity',
-            ath: -70.0,
-            atv: 15.0,
-            title: 'Nghiên cứu sinh & Chuyên gia',
-            text: 'Đội ngũ sinh viên tài năng và giảng viên tâm huyết luôn miệt mài nghiên cứu, tối ưu code và xây dựng mô hình giả lập. Một môi trường mở tinh hoa, khuyến khích sáng tạo không giới hạn.',
-            tooltip: 'Hoạt động nghiên cứu',
-            image: '663697763_1510807277081819_4693986563420308155_n.png'
-        }
-    ],
-    scene_7: [
-        {
-            id: 'a1_scene7_intro',
-            ath: 82.781,
-            atv: 12.184,
-            title: 'Tòa A1',
-            text: 'Khu vực trước cửa Tòa A1 (scene 7).',
-            audio: '',
-            tooltip: 'Thông tin Tòa A1'
-        }
-    ],
-    scene_gpbk2222_1773131201563: [
-        {
-            id: 'a1_floor1_intro',
-            ath: null,
-            atv: null,
-            title: 'Tầng 1 Tòa A1',
-            text: 'Khu vực sảnh và lối vào Tòa A1, nơi đón tiếp và kết nối các không gian học tập.',
-            audio: '',
-            tooltip: 'Thông tin Tòa A1'
-        }
-    ],
-    scene_gpbk2287_1773201421340: [
-        {
-            id: 'a1_floor1_intro_alt',
-            ath: null,
-            atv: null,
-            title: 'Tầng 1 Tòa A1',
-            text: 'Khu vực phía trước Tòa A1, gần lối vào chính của tòa.',
-            audio: '',
-            tooltip: 'Thông tin Tòa A1'
-        }
-    ]
-};
 
 function stopHotspotAudio() {
     if (currentHotspotAudio) {
@@ -265,13 +54,6 @@ function setInfopostMusicDucked(ducked) {
     }
 }
 
-function stopHotspotInfoFollow() {
-    if (hotspotInfoFollowRaf) {
-        cancelAnimationFrame(hotspotInfoFollowRaf);
-        hotspotInfoFollowRaf = null;
-    }
-}
-
 function getRuntimeSceneHotspots(sceneName) {
     return runtimePlacedHotspots[sceneName] || [];
 }
@@ -284,7 +66,7 @@ function getConfiguredSceneHotspots(sceneName) {
         const sceneHotspots = labConfig?.infoports?.[sceneName];
         if (Array.isArray(sceneHotspots)) return sceneHotspots;
     }
-    return hotspotData[sceneName] || [];
+    return [];
 }
 
 function upsertRuntimeHotspot(sceneName, hotspot) {
@@ -357,62 +139,6 @@ window.PTITHotspotEditorAPI = {
 function renderRuntimeHotspots(sceneName) {
     const runtimeList = getRuntimeSceneHotspots(sceneName);
     runtimeList.forEach(item => buildAndRenderSingleInfoHotspot(sceneName, item));
-}
-
-function positionHotspotInfoPanel() {
-    const panel = document.getElementById('hotspot-info');
-    if (!panel || !panel.classList.contains('active') || !krpano || !activeInfoAnchor) {
-        return;
-    }
-
-    const panelParent = panel.parentElement;
-    if (!panelParent) return;
-
-    let ath = Number(activeInfoAnchor.ath);
-    let atv = Number(activeInfoAnchor.atv);
-    const hotspotName = activeInfoAnchor.hotspotName || '';
-
-    if (hotspotName && krpano.get(`hotspot[${hotspotName}]`)) {
-        ath = Number(krpano.get(`hotspot[${hotspotName}].ath`));
-        atv = Number(krpano.get(`hotspot[${hotspotName}].atv`));
-    }
-
-    if (!Number.isFinite(ath) || !Number.isFinite(atv)) {
-        ath = Number(krpano.get('view.hlookat')) || 0;
-        atv = Number(krpano.get('view.vlookat')) || 0;
-    }
-
-    krpano.call(`spheretoscreen(${ath},${atv},hotspot_screen_x,hotspot_screen_y);`);
-    const anchorX = Number(krpano.get('hotspot_screen_x'));
-    const anchorY = Number(krpano.get('hotspot_screen_y'));
-    const parentRect = panelParent.getBoundingClientRect();
-    const panelWidth = panel.offsetWidth || 320;
-    const panelHeight = panel.offsetHeight || 160;
-    const margin = 10;
-    let left = anchorX - (panelWidth / 2);
-    let top = anchorY - panelHeight - 16;
-
-    left = Math.max(margin, Math.min(left, parentRect.width - panelWidth - margin));
-    top = Math.max(margin, Math.min(top, parentRect.height - panelHeight - margin));
-
-    panel.style.left = `${left}px`;
-    panel.style.top = `${top}px`;
-    panel.style.right = 'auto';
-    panel.style.bottom = 'auto';
-}
-
-function startHotspotInfoFollow() {
-    stopHotspotInfoFollow();
-    const tick = () => {
-        const panel = document.getElementById('hotspot-info');
-        if (!panel || !panel.classList.contains('active') || !activeInfoAnchor) {
-            hotspotInfoFollowRaf = null;
-            return;
-        }
-        positionHotspotInfoPanel();
-        hotspotInfoFollowRaf = requestAnimationFrame(tick);
-    };
-    hotspotInfoFollowRaf = requestAnimationFrame(tick);
 }
 
 function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
@@ -499,8 +225,6 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
 function closeHotspotInfo() {
     const panel = document.getElementById('hotspot-info');
     if (panel) panel.classList.remove('active');
-    activeInfoAnchor = null;
-    stopHotspotInfoFollow();
     stopHotspotAudio();
 }
 
@@ -607,7 +331,7 @@ function onready(krpano_interface) {
 }
 
 function getSceneMeta(sceneName) {
-    const meta = sceneData[sceneName] ? { ...sceneData[sceneName] } : {};
+    const meta = {};
     if (krpano) {
         const thumb = krpano.get(`scene[${sceneName}].thumburl`);
         if (thumb) meta.thumb = thumb;
@@ -653,18 +377,7 @@ function getConfiguredSidebarGroups() {
 }
 
 function getSidebarGroups() {
-    const configuredGroups = getConfiguredSidebarGroups();
-    if (configuredGroups) return configuredGroups;
-
-    const groups = {};
-    Object.keys(sceneData).forEach((sceneName) => {
-        const data = getSceneMeta(sceneName);
-        if (!groups[data.title]) {
-            groups[data.title] = [];
-        }
-        groups[data.title].push({ sceneName, ...data });
-    });
-    return groups;
+    return getConfiguredSidebarGroups() || {};
 }
 
 function getGroupTitleForScene(sceneName) {
@@ -767,7 +480,7 @@ function initSidebar() {
 }
 
 function getMergedSceneInfo(sceneName) {
-    const base = sceneData[sceneName] || {
+    const base = {
         title: krpano.get(`scene[${sceneName}].title`) || sceneName,
         description: 'Thông tin chi tiết đang được cập nhật...'
     };
@@ -1213,8 +926,7 @@ function handleSceneChange(sceneName) {
     if (activeItem) {
         activeItem.classList.add('active');
         const activeThumbFromKrpano = krpano ? krpano.get(`scene[${sceneName}].thumburl`) : '';
-        const activeThumbFallback = (sceneData[sceneName] && sceneData[sceneName].thumb) ? sceneData[sceneName].thumb : '';
-        const activeThumb = activeThumbFromKrpano || activeThumbFallback;
+        const activeThumb = activeThumbFromKrpano;
         const activeImg = activeItem.querySelector('img');
         if (activeImg && activeThumb) {
             activeImg.src = activeThumb;
