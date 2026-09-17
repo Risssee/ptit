@@ -337,11 +337,7 @@
 			);
 		);
 		
-		if(scenename === 'scene_ct' OR scenename === 'scene_st_1' OR scenename === 'scene_st_2',
-			loadscene(get(scenename), null, MERGE|PRELOAD, BLEND(get(transitiontime),get(transitiontweentype)));
-		  ,
-			loadscene(get(scenename), null, MERGE, BLEND(get(transitiontime),get(transitiontweentype)));
-		);
+		loadscene(get(scenename), null, MERGE, BLEND(get(transitiontime),get(transitiontweentype)));
 	</action>
 	
 
@@ -482,13 +478,8 @@
 	
 	<action name="skin_onstart_loadscene" scope="local" autorun="onstart">
 		
-		<!-- preload only the three cold-start campus scenes -->
-		calc(startupscene, isset(startscene) ? startscene : 0);
-		if(startupscene === 'scene_ct' OR startupscene === 'scene_st_1' OR startupscene === 'scene_st_2',
-			loadscene(get(startupscene), null, MERGE|PRELOAD);
-		  ,
-			loadscene(get(startupscene), null, MERGE);
-		);
+		<!-- load first scene -->
+		loadscene(calc(isset(startscene) ? startscene : 0), null, MERGE);
 	
 		<!-- set optional startup lookat -->
 		if(isset(startlookat),
@@ -967,12 +958,7 @@
 			blendmode = skin_settings.loadscene_blend;
 		);
 		
-		copy(targetscenename, scene[get(newscenenameorindex)].name);
-		if(targetscenename === 'scene_ct' OR targetscenename === 'scene_st_1' OR targetscenename === 'scene_st_2',
-			loadscene(get(targetscenename), null, MERGE|PRELOAD, get(blendmode));
-		  ,
-			loadscene(get(targetscenename), null, get(skin_settings.loadscene_flags), get(blendmode));
-		);
+		loadscene(get(scene[get(newscenenameorindex)].name), null, get(skin_settings.loadscene_flags), get(blendmode));
 	</action>
 
 	

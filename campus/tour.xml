@@ -1,6 +1,6 @@
 <krpano version="1.23" title="Virtual Tour" bgcolor="0xD8DDE3">
 
-	<include url="skin/vtourskin.xml?v=9" />
+	<include url="skin/vtourskin.xml?v=10" />
 	<include url="scenes/cie.xml?v=1" />
 	<include url="scenes/game.xml?v=1" />
 	<include url="scenes/cts.xml?v=1" />
