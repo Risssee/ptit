@@ -26,7 +26,7 @@
   function positionFor(scene) {
     if (MAP_COORDINATE_EDITOR && savedScenePositions[scene]) return savedScenePositions[scene];
 
-    // TOA A3: hai scene dac biet dung toa do do thu cong; moi scene_a3_* con lai dung anchors.a3.
+    // TOA A3:  scene_a3_* dung anchors.a3.
     if (scene === "scene_a3_t3_2e" || scene === "scene_a3_t3_1i") {
       return MANUAL_SCENE_POSITIONS[scene] || anchors.a3;
     }
@@ -39,7 +39,7 @@
     if (MANUAL_SCENE_POSITIONS[scene]) return MANUAL_SCENE_POSITIONS[scene];
     const configuredPosition = configuredLocationPosition(scene);
     if (configuredPosition) return configuredPosition;
-    if (scene.startsWith("scene_cie_")) return anchors.cts;
+    if (scene.startsWith("scene_cie_")) return anchors.cie;
     if (scene.startsWith("scene_fpt") || scene.startsWith("scene_viettel_") || scene.startsWith("scene_ss_")) return anchors.a2;
     if (scene.startsWith("scene_game_")) return anchors.a3;
     const numeric = scene.match(/^scene_(\d+)$/);

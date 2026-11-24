@@ -1,4 +1,4 @@
-// CONFIG VI TRI DUNG CHUNG: scene, diem mo dau, goc nhin va nhom sidebar.
+
 // Sidebar, the vi tri, nut quay ve va minimap.
 (function (root) {
   'use strict';

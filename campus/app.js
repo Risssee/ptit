@@ -59,7 +59,7 @@ function getRuntimeSceneHotspots(sceneName) {
 }
 
 // Infoport của từng lab được khai báo trong labs/<lab>/lab-config.js.
-// Đọc config lúc render vì các lab-config được tải sau app.js.
+
 function getConfiguredSceneHotspots(sceneName) {
     const labConfigs = window.PTIT_LAB_CONFIGS || [];
     for (const labConfig of labConfigs) {
@@ -147,13 +147,13 @@ function openHotspotInfo(sceneName, hotspotId, hotspotName = '') {
     let hotspot = staticList.find(item => item.id === hotspotId)
         || runtimeList.find(item => item.id === hotspotId);
     
-    // Fallback if hotspot data is not explicitly found but we want to show generic scene info
+
     if (!hotspot && hotspotId && hotspotId.startsWith('info_')) {
         let genericTitle = getGroupTitleForScene(sceneName) || 'Khu vực PTIT';
         let defaultGenericText = 'Không gian học tập và nghiên cứu hiện đại, được trang bị để đáp ứng nhu cầu giao lưu, tự học và tham quan của sinh viên Học viện.';
         let dynamicImage = '';
 
-        // Inject Computer Self-Study specific data for the remaining library aisles
+
         if (sceneName === 'scene_gpbk2205_1773130740283' || sceneName === 'scene_gpbk2206_1773130766175' || sceneName === 'scene_gpbk2207_1773130803595') {
             genericTitle = 'Khu vực Máy tính tự học';
             defaultGenericText = 'Hệ thống máy tính cấu hình cao kết nối Internet và kho tài liệu số OPAC.\nPhục vụ sinh viên nghiên cứu, làm bài tập và tra cứu độc lập.\n(Ảnh được AI Generate để tăng sự sinh động)';
